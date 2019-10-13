@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>Explore UT - Search</title>
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+</head>
+<body>
+    <h1>Explore UT - Search</h1>
+    <form action="/search" method="get">
+        <input type="text" name="tag" placeholder="Tag you want to search"/>
+        <input type="submit" value="search">
+    </form>
+    {% for report in reports%}
+        <div>
+            <h2>{{ report['name'] }}</h2>
+            <h3>Tags: {% for tag in report['tags'] %} {{ tag }} {% endfor %}</h3>
+            <p>{{ report['intro'] }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
