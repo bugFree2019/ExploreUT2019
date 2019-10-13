@@ -12,7 +12,6 @@ db = client['utdb']
 
 @app.route('/search', methods=['GET'])
 def search():
-    """ This function provides a service to let users search places through tags """
     # get the query tag from the html form input
     tag = request.args.get('tag')
 
@@ -22,11 +21,10 @@ def search():
 
     # query the database and extract the report corresponding to that tag
     print(tag)
-    report = read_place(db, 'tags', tag)
-    print(report)
+    reports = read_places(db, {'tags': tag})
+    print(reports)
 
-    # convert a single report to a list of reports and send to front end html template
-    reports = [report]
+    # send the search result to the front end html template
     return render_template('search.html', reports=reports)
 
 

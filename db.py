@@ -59,6 +59,10 @@ def read_place(db, condition_key, condition_value):
     return db.place.find_one({condition_key: condition_value})
 
 
+def read_places(db, condition):
+    return db.place.find(condition)
+
+
 # note that this update method overwrite all fields of a user
 def update_place_by_id(db, old_place_id, new_place):
     db.place.update_one({'place_id': old_place_id}, {'$set': {'place_id': new_place.place_id,
