@@ -5,13 +5,17 @@ from db import *
 app = Flask(__name__)
 
 # connect to remote mongoDB database
-client = MongoClient(
-    "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority")
+URL = "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority"
+client = MongoClient(URL)
 db = client['utdb']
 
 
 @app.route('/search', methods=['GET'])
 def search():
+    """
+    The function that handle searching with a particular tag
+    :return: a html page for rendering with the matching places found
+    """
     # get the query tag from the html form input
     tag = request.args.get('tag')
 
