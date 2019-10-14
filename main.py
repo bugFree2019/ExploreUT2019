@@ -14,13 +14,10 @@
 
 import datetime
 from pymongo import MongoClient
-
 from flask import Flask, render_template, request
 from google.auth.transport import requests
 from google.cloud import datastore
 import google.oauth2.id_token
-
-
 
 firebase_request_adapter = requests.Request()
 
@@ -29,7 +26,6 @@ datastore_client = datastore.Client()
 
 # [END gae_python37_datastore_store_and_fetch_user_times]
 app = Flask(__name__)
-
 
 # [START gae_python37_datastore_store_and_fetch_user_times]
 def store_time(email, dt):
@@ -40,7 +36,6 @@ def store_time(email, dt):
 
     datastore_client.put(entity)
 
-
 def fetch_times(email, limit):
     ancestor = datastore_client.key('User', email)
     query = datastore_client.query(kind='visit', ancestor=ancestor)
@@ -49,76 +44,19 @@ def fetch_times(email, limit):
     times = query.fetch(limit=limit)
 
     return times
-# [END gae_python37_datastore_store_and_fetch_user_times]
 
-
-# [START gae_python37_datastore_render_user_times]
 @app.route('/')
-def root():
-
-    # test APIs for Place
-    # create_place(db, place_id='005', name='McCombs School of Business')
-    # new_place = Place(place_id='006', name='Jester Second Floor Dining', intro='Eating hall')
-
-    # test APIs for User
-    # create_user(db, user_id='001', email='abcd@utexas.edu', username='abcd', password='123', first='ab', last='cd')
-    # new_user = User(user_id='002', email='asdf@utexas.edu', username='asdf', password='456', first='ef', last='gh')
-    
-    # test APIs for Article
-    #create_article(db, article_id='a0001', article_title='Jester', place_id='p006', user_id='u001',
-                   #comment='Jester is delicious', create_date=datetime.datetime.now())
-    # new_article = Article(article_id='a0002', article_title='Business School', place_id='p005', user_id='u002',
-    #                       comment='Business school is beautiful', create_date=datetime.datetime.now())
-
-
-    # print the updated document
-    # Verify Firebase auth.
-    id_token = request.cookies.get("token")
-    error_message = None
-    claims = None
-    times = None
-
-    if id_token:
-        try:
-            # Verify the token against the Firebase Auth API. This example
-            # verifies the token on each page load. For improved performance,
-            # some applications may wish to cache results in an encrypted
-            # session store (see for instance
-            # http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
-            claims = google.oauth2.id_token.verify_firebase_token(
-                id_token, firebase_request_adapter)
-
-            store_time(claims['email'], datetime.datetime.now())
-            times = fetch_times(claims['email'], 10)
-
-        except ValueError as exc:
-            # This will be raised if the token is expired or any other
-            # verification checks fail.
-            error_message = str(exc)
-
-    return render_template(
-        'index2.html',
-        user_data=claims, error_message=error_message, times=times)
-# [END gae_python37_datastore_render_user_times]
-
-@app.route('/index', methods=['GET'])
 def index():
     client = MongoClient(
         "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority")
     db = client['utdb']
 
-    business_school = read_place(db, 'place_id', '005')
-    user_result = read_user(db, 'username', 'abcd')
-    article_result = read_article(db, 'article_id', 'a0001')
-
-    allplaces = read_all_place(db)
-    allusers = read_all_user(db)
-    allarticles = read_all_article(db)
-
     id_token = request.cookies.get("token")
     error_message = None
     claims = None
     times = None
+    thisuser = None
+    allarticles = None
 
     if id_token:
         try:
@@ -133,6 +71,11 @@ def index():
             store_time(claims['email'], datetime.datetime.now())
             times = fetch_times(claims['email'], 10)
 
+            thisuser = read_user(db, 'email', claims['email'])
+            print(thisuser['email'])
+            allarticles = read_articles(db, {'user_id': thisuser['user_id']})
+
+
         except ValueError as exc:
             # This will be raised if the token is expired or any other
             # verification checks fail.
@@ -140,7 +83,7 @@ def index():
 
     return render_template(
         'index2.html',
-        user_data=claims, error_message=error_message, times=times, places=allplaces, users=allusers, articles=allarticles)
+        user_data=claims, error_message=error_message, times=times, users=thisuser, articles=allarticles)
 # [END gae_python37_datastore_render_user_times]
 
 # define place object for the data model
@@ -250,6 +193,9 @@ def create_article(db, article_id=None, article_title=None, place_id=None, user_
 
 def read_article(db, condition_key, condition_value):
     return db.article.find_one({condition_key: condition_value})
+
+def read_articles(db, condition):
+    return list(db.article.find(condition))
 
 def read_all_article(db):
     return db.article.find()
