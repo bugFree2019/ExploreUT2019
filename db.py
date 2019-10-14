@@ -76,9 +76,13 @@ def read_place(db, condition_key, condition_value):
     :param db: a MongoClient that connects to a database through a particular URL
     :param condition_key: a string with the field name we are interested in
     :param condition_value: a string with the value we want to match
-    :return: a dict that represents a single place that matches the condition (can be any of them if there are many)
+    :return: a dict that represents a single place that matches the condition with decoded pictures (can be any of them if there are many)
     """
-    return db.place.find_one({condition_key: condition_value})
+    place = db.place.find_one({condition_key: condition_value})
+    if place['pics']:
+        for i in range(len(place['pics'])):
+            place['pics'][i] = place['pics'][i].decode()
+    return place
 
 
 def read_places(db, condition):
@@ -86,9 +90,16 @@ def read_places(db, condition):
     Read from the database and return a pymongo cursor with all matching places
     :param db: a MongoClient that connects to a database through a particular URL
     :param condition: a dict with key value pair(s) specifying the field(s) and value(s) we are interested in
-    :return: a pymongo cursor over all documents matching the search criteria
+    :return: a list of all documents matching the search criteria with decoded pictures
     """
-    return db.place.find(condition)
+    places = list(db.place.find(condition))
+    for place in places:
+        # skip places with empty photos
+        if not place['pics']:
+            continue
+        for i in range(len(place['pics'])):
+            place['pics'][i] = place['pics'][i].decode()
+    return places
 
 
 # note that this update method overwrite all fields of a user

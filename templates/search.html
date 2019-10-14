@@ -11,10 +11,13 @@
         <input type="text" name="tag" placeholder="Tag you want to search"/>
         <input type="submit" value="search">
     </form>
-    {% for report in reports%}
+    {% for report in reports %}
         <div>
             <h2>{{ report['name'] }}</h2>
             <h3>Tags: {% for tag in report['tags'] %} {{ tag }} {% endfor %}</h3>
+            {% for pic in report['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+            {% endfor %}
             <p>{{ report['intro'] }}</p>
         </div>
     {% endfor %}

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from pymongo import MongoClient
+import base64
 from db import *
 
 app = Flask(__name__)
@@ -24,12 +25,21 @@ def search():
         return render_template('search.html', reports=[])
 
     # query the database and extract the report corresponding to that tag
-    print(tag)
     reports = read_places(db, {'tags': tag})
-    print(reports)
 
     # send the search result to the front end html template
     return render_template('search.html', reports=reports)
+
+
+# sample function to create a place with an image
+def insert_image():
+    """
+    The sample function for creating a new place with encoded image stored in MongoDB
+    :return: None
+    """
+    with open('static/ut-tower.jpg', "rb") as image_file:
+        pic = base64.b64encode(image_file.read())
+        result = create_place(db, place_id='006', name='UT tower image test', theme=None, tags='test', address=None, intro='tower of UT', pics=[pic], reviews=None, likes=0)
 
 
 if __name__ == '__main__':
