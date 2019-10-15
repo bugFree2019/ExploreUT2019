@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCqTNB4xICzzBNOnbHkV4vIuMvi6o8X8kU",
+	    authDomain: "demopractice-28485.firebaseapp.com",
+	    databaseURL: "https://demopractice-28485.firebaseio.com",
+	    projectId: "demopractice",
+	    storageBucket: "demopractice.appspot.com",
+	    messagingSenderId: "679457894930",
+	    appId: "1:679457894930:web:c694a3a06e5c192b9fdecb",
+	    measurementId: "G-HG7V6L0FY4"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+	<script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
+  	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
+
+
+  <title>Datastore and Firebase Auth Example</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+	<h1>Here is your Assignment :)</h1>
+	<h2>Have a Good Time</h2>
+
+	<div id="firebaseui-auth-container"></div>
+
+	<button id="sign-out" hidden=true type="button" class="btn btn-primary">Sign Out</button>
+
+	<div id="login-info" hidden=true>
+	  <h2>Login info:</h2>
+	  {% if user_data %}
+	    <dl>
+	      <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
+	      <dt>Email</dt><dd>{{ user_data['email'] }}</dd>
+	      <p>Welcome Here :)</p>
+	    </dl>
+
+	    <p>Start with <a href="https://codelabs.developers.google.com/codelabs/cloud-app-engine-python3" class="external" target="_blank" rel="noreferrer noopener"><span>this simple guide</span><span aria-hidden="true" class="ui-icon ui-icon-extlink ui-icon-inline" title="Links to an external site."></span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a>. Follow the directions,&nbsp;<strong>but read every word of every sentence</strong>. When you've finished this tutorial, you will have verified that you have a working installation of Google Cloud SDK and you will have verified the process for deploying a webapp.</p>
+
+	    <h4>Building an App</h4>
+
+	    <p>Now complete the more in-depth <a href="https://cloud.google.com/appengine/docs/standard/python3/building-app/" class="external" target="_blank" rel="noreferrer noopener"><span>building an app guide</span><span aria-hidden="true" class="ui-icon ui-icon-extlink ui-icon-inline" title="Links to an external site."></span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a>. Complete the entire thing *except* for the last step. There's no programming here. It's really just a code walkthrough.&nbsp;<strong>It is imperative that you understand what you're doing and why. READ the tutorial. All of it. After submitting this assignment, we will assume that you have a basic mastery of working with Google App Engine.</strong></p>
+
+	    <h4>Make it Your Own</h4>
+
+	    <p>Do something (anything, really) to make the app your own. Make it different from the result at the end of the walkthrough. This could be as simple or as complex as you would like; it is not going to hurt you to know how to do some additional things in the app engine environment.</p>
+
+	    <h4>What to Submit</h4>
+
+	    <p>Submit the url of your working web app.&nbsp;<em><strong>It must look different from everyone else's (because of the last "make it your own" step).</strong></em></p>
+
+	    {% elif error_message %}
+		    <p>Error: {{ error_message }}</p>
+		{% endif %}
+
+	</div>
+
+</body>
+</html>
