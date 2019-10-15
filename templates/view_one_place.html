@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>View Place</title>
+        <script src="{{ url_for('static', filename="view_one_place.js") }}"></script>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='view_one_place.css') }}">
+    </head>
+    <body>
+        <h1>Explore UT</h1>
+        <nav>
+            <a href="/manage">Manage</a> |
+            <a href="/create_place">Create New Place</a> |
+            <a href="/create_report">Create New Review</a> |
+            <a href="/view_places">View Nearby Places</a> |
+            <a href="/view_one_place">View Place</a> |
+            <a href="/search">Search Places</a>
+        </nav>
+        <!-- <form action="/view_one_place" method="get">
+            <input type="text" name="placeId" placeholder="input placeid"/>
+            <input type="submit" value="view">
+        </form> -->
+
+        <h2>{{ place['name'] }}</h2>
+
+        <div>
+            {% if place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+            {% endif %}
+
+            <h3>Introduction</h3>
+            <p>{{ place['intro'] }}</p>
+        </div>
+
+        <div>
+            {% if place['pics'] %}
+            {% for pic in place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        {% if place['reviews'] %}
+        {% for review in place['reviews'] %}
+        <div>
+            <p>{{ review }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    </body>
+</html>

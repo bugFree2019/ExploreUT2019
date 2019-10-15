@@ -31,15 +31,23 @@ def search():
     return render_template('search.html', reports=reports)
 
 
-# sample function to create a place with an image
-def insert_image():
-    """
-    The sample function for creating a new place with encoded image stored in MongoDB
-    :return: None
-    """
-    with open('static/ut-tower.jpg', "rb") as image_file:
-        pic = base64.b64encode(image_file.read())
-        result = create_place(db, place_id='006', name='UT tower image test', theme=None, tags='test', address=None, intro='tower of UT', pics=[pic], reviews=None, likes=0)
+@app.route('/view_one_place', methods=['GET'])
+def view_one_place():
+    place_id = request.args.get('placeId')
+
+    if not place_id:
+        return render_template('view_one_place.html', place=[])
+
+    place = read_place(db, 'place_id', place_id)
+
+    return render_template('view_one_place.html', place=place)
+
+
+@app.route('/view_places', methods=['GET'])
+def view_places():
+    condition = request.args.get('condition')  # in the future, condition will be nearby location
+    places = read_places(db, condition)
+    return render_template('view_places.html', places=places)
 
 
 if __name__ == '__main__':
