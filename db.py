@@ -218,6 +218,10 @@ def read_article(db, condition_key, condition_value):
     return db.article.find_one({condition_key: condition_value})
 
 
+def read_articles(db, condition):
+    return list(db.article.find(condition))
+
+
 def update_article_by_id(db, old_article_id, new_article):
     """
     Update an old article in the database with a new one (overwriting each field)
