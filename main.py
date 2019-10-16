@@ -16,11 +16,13 @@ URL = "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryW
 client = MongoClient(URL)
 db = client['utdb']
 
+
 @app.route('/', methods=['GET'])
 def home_places():
     condition = request.args.get('condition')  # in the future, condition will be nearby location
     places = read_places(db, condition)
     return render_template('home.html', places=places)
+
 
 @app.route('/index', methods=['GET'])
 def index():
@@ -68,11 +70,11 @@ def search():
     if not tag:
         return render_template('search.html', reports=[])
 
-    # query the database and extract the report corresponding to that tag
-    reports = read_places(db, {'tags': tag})
+    # query the database and extract the places corresponding to that tag
+    places = read_places(db, {'tags': tag})
 
     # send the search result to the front end html template
-    return render_template('search.html', reports=reports)
+    return render_template('search.html', places=places)
 
 
 @app.route('/view_one_place', methods=['GET'])
@@ -92,6 +94,7 @@ def view_places():
     condition = request.args.get('condition')  # in the future, condition will be nearby location
     places = read_places(db, condition)
     return render_template('view_places.html', places=places)
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
