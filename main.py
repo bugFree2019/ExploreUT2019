@@ -16,8 +16,13 @@ URL = "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryW
 client = MongoClient(URL)
 db = client['utdb']
 
+@app.route('/', methods=['GET'])
+def home_places():
+    condition = request.args.get('condition')  # in the future, condition will be nearby location
+    places = read_places(db, condition)
+    return render_template('home.html', places=places)
 
-@app.route('/')
+@app.route('/index', methods=['GET'])
 def index():
     id_token = request.cookies.get("token")
     error_message = None
@@ -36,12 +41,9 @@ def index():
             claims = google.oauth2.id_token.verify_firebase_token(
                 id_token, firebase_request_adapter)
 
-            store_time(claims['email'], datetime.datetime.now())
-            times = fetch_times(claims['email'], 10)
-
             thisuser = read_user(db, 'email', claims['email'])
-            print(thisuser['email'])
-            allarticles = read_articles(db, {'user_id': thisuser['user_id']})
+            if thisuser != None:
+                allarticles = read_articles(db, {'user_id': thisuser['user_id']})
 
         except ValueError as exc:
             # This will be raised if the token is expired or any other
@@ -49,7 +51,7 @@ def index():
             error_message = str(exc)
 
     return render_template(
-        'index2.html',
+        'index.html',
         user_data=claims, error_message=error_message, times=times, users=thisuser, articles=allarticles)
 
 
@@ -90,26 +92,6 @@ def view_places():
     condition = request.args.get('condition')  # in the future, condition will be nearby location
     places = read_places(db, condition)
     return render_template('view_places.html', places=places)
-
-
-def store_time(email, dt):
-    entity = datastore.Entity(key=datastore_client.key('User', email, 'visit'))
-    entity.update({
-        'timestamp': dt
-    })
-
-    datastore_client.put(entity)
-
-
-def fetch_times(email, limit):
-    ancestor = datastore_client.key('User', email)
-    query = datastore_client.query(kind='visit', ancestor=ancestor)
-    query.order = ['-timestamp']
-
-    times = query.fetch(limit=limit)
-
-    return times
-
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
