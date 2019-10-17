@@ -8,7 +8,7 @@
     </form>
     {% for place in places %}
         <div>
-            <h2><a href="/view_one_place?placeId={{ place['place_id'] }}">{{ place['name'] }}</a></h2>
+            <h2><a href="/view_one_place?placeId={{ place['_id'] }}">{{ place['name'] }}</a></h2>
             <h3>Tags: {% for tag in place['tags'] %} {{ tag }} {% endfor %}</h3>
             {% for pic in place['pics'] %}
                 <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">

@@ -95,6 +95,7 @@ def view_places():
     places = read_places(db, condition)
     return render_template('view_places.html', places=places)
 
+
 @app.route('/create_new_place', methods=['GET', 'POST'])
 def add_place():
     if request.method == 'POST':
@@ -105,6 +106,7 @@ def add_place():
         #image_url = upload_image_file(request.files.get('image'))
         # [END image_url]
         image_file = request.files.get('pic_file')
+        print(type(image_file))
         data['pics'] = [base64.b64encode(image_file.read())]
         data['reviews'] = []
         data['likes'] = 0
@@ -116,6 +118,7 @@ def add_place():
         return redirect(url_for('.view_one_place', placeId=place_id))
 
     return render_template("add_new_place.html",action="Add", place={})
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8082, debug=True)
