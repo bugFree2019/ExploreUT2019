@@ -3,7 +3,7 @@
 {% block content %}
      {% for place in places %}
         <div>
-            <a href="/view_one_place?placeId={{ place['place_id'] }}"> <h3>{{ place['name'] }}</h3></a>
+            <a href="/view_one_place?placeId={{ place['_id'] }}"> <h3>{{ place['name'] }}</h3></a>
 
             {% if place['pics'] %}
                 <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">

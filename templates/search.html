@@ -2,10 +2,6 @@
 {% extends "base.html"%}
 
 {% block content %}
-    <form action="/search" method="get">
-        <input type="text" name="tag" placeholder="Tag you want to search"/>
-        <input type="submit" value="search">
-    </form>
     {% for place in places %}
         <div>
             <h2><a href="/view_one_place?placeId={{ place['_id'] }}">{{ place['name'] }}</a></h2>
