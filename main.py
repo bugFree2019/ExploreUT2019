@@ -1,15 +1,15 @@
 import datetime
 import google.oauth2.id_token
 import base64
-from flask import Flask, render_template, request
+
+from bson import ObjectId
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from google.auth.transport import requests
-from google.cloud import datastore
 from db import *
 
 app = Flask(__name__)
 firebase_request_adapter = requests.Request()
-datastore_client = datastore.Client()
 
 # connect to remote mongoDB database
 URL = "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority"
@@ -82,7 +82,7 @@ def view_one_place():
     if not place_id:
         return render_template('view_one_place.html', place=[])
 
-    place = read_place(db, 'place_id', place_id)
+    place = read_place(db, '_id', ObjectId(place_id))
 
     return render_template('view_one_place.html', place=place)
 
@@ -93,5 +93,27 @@ def view_places():
     places = read_places(db, condition)
     return render_template('view_places.html', places=places)
 
+@app.route('/create_new_place', methods=['GET', 'POST'])
+def add_place():
+    if request.method == 'POST':
+        data = request.form.to_dict(flat=True)
+
+        # If an image was uploaded, update the data to point to the new image.
+        # [START image_url]
+        #image_url = upload_image_file(request.files.get('image'))
+        # [END image_url]
+        image_file = request.files.get('pic_file')
+        data['pics'] = [base64.b64encode(image_file.read())]
+        data['reviews'] = []
+        data['likes'] = 0
+        # [START image_url2]
+        # [END image_url2]
+
+        place_id = create_place(db,data)
+
+        return redirect(url_for('.view_one_place', placeId=place_id))
+
+    return render_template("add_new_place.html",action="Add", place={})
+
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8082, debug=True)

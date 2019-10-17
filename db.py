@@ -50,24 +50,14 @@ class Article(object):
 
 
 # Place CRUD API
-def create_place(db, place_id=None, name=None, theme=None, tags=None, address=None, intro=None, pics=None, reviews=None,
-                 likes=0):
+def create_place(db, place_data):
     """
     Create a place, insert it into the database and return the result
     :param db: a MongoClient that connects to a database through a particular URL
-    :param place_id: a string that represents the place id
-    :param name: a string that represents the name of the place
-    :param theme: a string that  represents the theme of the place
-    :param tags: a list of strings that denote the tags of the place
-    :param address: a string that represents the address of the place
-    :param intro: a string that represents the  introduction of the place
-    :param pics: a list of strings that represent the encoded pictures
-    :param reviews: a list of strings that represent the reviews of the place from users
-    :param likes: an int that shows how many users like this place
+    :param place_data: the dict form of the place's data
     :return: a Result containing the ack and inserted id
     """
-    place = Place(place_id, name, theme, tags, address, intro, pics, reviews, likes)
-    return db.place.insert_one(place.__dict__)
+    return db.place.insert_one(place_data).inserted_id
 
 
 def read_place(db, condition_key, condition_value):
@@ -79,9 +69,10 @@ def read_place(db, condition_key, condition_value):
     :return: a dict that represents a single place that matches the condition with decoded pictures (can be any of them if there are many)
     """
     place = db.place.find_one({condition_key: condition_value})
-    if place['pics']:
-        for i in range(len(place['pics'])):
-            place['pics'][i] = place['pics'][i].decode()
+    if place is not None:
+        if place['pics']:
+            for i in range(len(place['pics'])):
+                place['pics'][i] = place['pics'][i].decode()
     return place
 
 

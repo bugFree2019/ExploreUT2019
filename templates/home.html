@@ -1,32 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+{% extends "base.html" %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Explore UT</title>
-    <script src="{{ url_for('static', filename='view_places.js') }}"></script>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='view_places.css') }}">  </head>
-  <body>
-    <h1 class="mx-auto">Explore UT</h1>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/index">Manage</a>
-      <a class="navbar-brand" href="/create_place">Create New Place</a>
-      <a class="navbar-brand" href="/create_report/">Create New Review</a>
-      <a class="navbar-brand" href="/view_places">View Nearby Places</a>
-      <a class="navbar-brand" href="/view_one_place">View Place</a>
-
-      <form class="form-inline" action="/search" method="get">
-        <input class="form-control mr-sm-2" type="text" name="tag" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav>
-
-    {% for place in places %}
+{% block content %}
+     {% for place in places %}
         <div>
             <a href="/view_one_place?placeId={{ place['place_id'] }}"> <h3>{{ place['name'] }}</h3></a>
 
@@ -40,11 +16,4 @@
             {% endif %}
         </div>
     {% endfor %}
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock %}
