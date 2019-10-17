@@ -103,17 +103,16 @@ def add_place():
 
         # If an image was uploaded, update the data to point to the new image.
         # [START image_url]
-        #image_url = upload_image_file(request.files.get('image'))
+        # image_url = upload_image_file(request.files.get('image'))
         # [END image_url]
         image_file = request.files.get('pic_file')
-        print(type(image_file))
         data['pics'] = [base64.b64encode(image_file.read())]
         data['reviews'] = []
         data['likes'] = 0
         # [START image_url2]
         # [END image_url2]
 
-        place_id = create_place(db,data)
+        place_id = create_place(db, data)
 
         return redirect(url_for('.view_one_place', placeId=place_id))
 

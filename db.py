@@ -4,9 +4,8 @@ from pymongo import MongoClient
 
 # define place object for the data model
 class Place(object):
-    def __init__(self, place_id=None, name=None, theme=None, tags=None, address=None, intro=None, pics=None,
-                 reviews=None, likes=0):
-        self.place_id = place_id
+    def __init__(self, name=None, theme=None, tags=[], address=None, intro=None, pics=[],
+                 reviews=[], likes=0):
         self.name = name
         self.theme = theme
         self.tags = tags
@@ -102,11 +101,10 @@ def update_place_by_id(db, old_place_id, new_place):
     :param new_place: a place with all the new fields we want
     :return: None
     """
-    db.place.update_one({'place_id': old_place_id}, {'$set': {'place_id': new_place.place_id,
-                                                              'place_name': new_place.name, 'theme': new_place.theme,
-                                                              'address': new_place.address, 'intro': new_place.intro,
-                                                              'pics': new_place.pics, 'reviews': new_place.reviews,
-                                                              'likes': new_place.likes}})
+    db.place.update_one({'_id': old_place_id}, {'$set': {'place_name': new_place.name, 'theme': new_place.theme,
+                                                         'address': new_place.address, 'intro': new_place.intro,
+                                                         'pics': new_place.pics, 'reviews': new_place.reviews,
+                                                         'likes': new_place.likes}})
 
 
 def delete_place_by_id(db, old_place_id):
@@ -116,7 +114,7 @@ def delete_place_by_id(db, old_place_id):
     :param old_place_id: a string with the place id we want to delete
     :return: None
     """
-    db.place.delete_one({'place_id': old_place_id})
+    db.place.delete_one({'_id': old_place_id})
 
 
 # User CRUD API
@@ -247,11 +245,12 @@ def main():
     db = client['utdb']
 
     # test APIs for Place
-    create_place(db, place_id='002', name='UT Tower')
-    new_place = Place(place_id='003', name='UT Tower', intro='The Tower of UT')
-    update_place_by_id(db, '002', new_place)
-    ut_tower = read_place(db, 'place_id', '003')
-    delete_place_by_id(db, '003')
+    place = Place(name='UT Tower')
+    place_id = create_place(db, place.__dict__)
+    new_place = Place(name='UT Tower', intro='The Tower of UT')
+    update_place_by_id(db, place_id, new_place)
+    ut_tower = read_place(db, '_id', place_id)
+    delete_place_by_id(db, place_id)
 
     # test APIs for User
     create_user(db, user_id='001', email='abcd@utexas.edu', username='abcd', password='123', first='ab', last='cd')
