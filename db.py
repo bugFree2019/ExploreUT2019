@@ -5,7 +5,7 @@ from pymongo import MongoClient
 # define place object for the data model
 class Place(object):
     def __init__(self, name=None, theme=None, tags=[], address=None, intro=None, pics=[],
-                 reviews=[], likes=0):
+                 reviews=[], likes=0, user_id=None):
         self.name = name
         self.theme = theme
         self.tags = tags
@@ -14,26 +14,24 @@ class Place(object):
         self.pics = pics
         self.reviews = reviews
         self.likes = likes
+        self.user_id = user_id
 
 
 # define user object for the data model
 class User(object):
-    def __init__(self, user_id=None, email=None, username=None, password=None, first=None, last=None, profile=None,
+    def __init__(self, user_id=None, email=None, username=None, password=None, name=None, profile=None,
                  gender=None, age=None, group='normal', level=0):
         self.user_id = user_id
         self.email = email
         self.username = username
         self.password = password
-        self.first = first
-        self.last = last
+        self.name = name
         self.profile = profile
         self.gender = gender
         self.age = age
         self.group = group
         self.level = level
 
-    def full_name(self):
-        return self.first + ' ' + self.last
 
 
 class Article(object):
@@ -118,7 +116,7 @@ def delete_place_by_id(db, old_place_id):
 
 
 # User CRUD API
-def create_user(db, user_id=None, email=None, username=None, password=None, first=None, last=None,
+def create_user(db, user_id=None, email=None, username=None, password=None, name=None,
                 profile=None, gender=None, age=None, group='normal', level=0):
     """
     Create a user, insert it into the database and return the result
@@ -136,9 +134,13 @@ def create_user(db, user_id=None, email=None, username=None, password=None, firs
     :param level: an int that represents the user's level in this app
     :return: a Result containing the ack and inserted id
     """
-    user = User(user_id, email, username, password, first, last, profile, gender, age, group, level)
+    user = User(user_id, email, username, password, name, profile, gender, age, group, level)
     return db.user.insert_one(user.__dict__)
 
+def create_user(db, email=None):
+
+    user = User(None, email)
+    return db.user.insert_one(user.__dict__)
 
 def read_user(db, condition_key, condition_value):
     """
@@ -162,7 +164,7 @@ def update_user_by_id(db, old_user_id, new_user):
     """
     db.user.update_one({'user_id': old_user_id}, {'$set': {'user_id': new_user.user_id, 'email': new_user.email,
                                                            'username': new_user.username, 'password': new_user.password,
-                                                           'first': new_user.first, 'last': new_user.last,
+                                                            'name': new_user.name,
                                                            'profile': new_user.profile, 'gender': new_user.gender,
                                                            'age': new_user.age, 'group': new_user.group,
                                                            'level': new_user.level}})
@@ -253,8 +255,8 @@ def main():
     delete_place_by_id(db, place_id)
 
     # test APIs for User
-    create_user(db, user_id='001', email='abcd@utexas.edu', username='abcd', password='123', first='ab', last='cd')
-    new_user = User(user_id='002', email='asdf@utexas.edu', username='asdf', password='456', first='ef', last='gh')
+    create_user(db, user_id='001', email='abcd@utexas.edu', username='abcd', password='123', name='cd')
+    new_user = User(user_id='002', email='asdf@utexas.edu', username='asdf', password='456', name='gh')
     update_user_by_id(db, '001', new_user)
     user_result = read_user(db, 'username', 'asdf')
     delete_user_by_id(db, '002')

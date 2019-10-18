@@ -31,7 +31,7 @@ def index():
     claims = None
     times = None
     thisuser = None
-    allarticles = None
+    allplaces = None
 
     if id_token:
         try:
@@ -45,7 +45,10 @@ def index():
 
             thisuser = read_user(db, 'email', claims['email'])
             if thisuser != None:
-                allarticles = read_articles(db, {'user_id': thisuser['user_id']})
+                allplaces = read_places(db, {'user_id': str(thisuser['_id'])})
+            else:
+            	thisuser = create_user(db, email=claims['email'])
+
 
         except ValueError as exc:
             # This will be raised if the token is expired or any other
@@ -54,7 +57,7 @@ def index():
 
     return render_template(
         'index.html',
-        user_data=claims, error_message=error_message, times=times, users=thisuser, articles=allarticles)
+        user_data=claims, error_message=error_message, times=times, users=thisuser, places=allplaces)
 
 
 @app.route('/search', methods=['GET'])
@@ -120,4 +123,4 @@ def add_place():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8082, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)

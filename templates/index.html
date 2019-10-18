@@ -13,18 +13,29 @@
   <div id="login-info" hidden=true>
     {% if user_data %}
       <h2>Login info:</h2>
+      <a class="nav-link" href="/updateuser">Update</a>  
     	<dl>
 	      <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
 	      <dt>Email</dt><dd>{{ user_data['email'] }}</dd>
 	      <p>Welcome Here :)</p>
 	    </dl>
 
-	    {% if articles %}
-          {% for article in articles %}
-			<a>{{ article['article_title'] }}</a>
-          {% endfor %}
-	    {% elif error_message %}
-		    <p>You have posted nothing</p>
+	    {% if places %}
+	     {% for place in places %}
+	        <div>
+	            <a href="/view_one_place?placeId={{ place['_id'] }}"> <h3>{{ place['name'] }}</h3></a>
+
+	            {% if place['pics'] %}
+	                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+	            {% endif %}
+
+	            <p>{{ place['intro'] }}</p>
+	            {% if places['reviews'] %}
+	            <p>{{ place['reviews'][0] }}</p>
+	            {% endif %}
+	        </div>
+	    {% endfor %}
+
 	    {% elif error_message %}
 		    <p>Error: {{ error_message }}</p>
 		{% endif %}
