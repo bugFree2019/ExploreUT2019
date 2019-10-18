@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     {% block firebase %}
       <!-- The core Firebase JS SDK is always required and must be listed first -->
 	  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
@@ -32,7 +32,7 @@
 	  <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
   	  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
     {% endblock %}
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Optional JavaScript -->
@@ -40,9 +40,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      
+
     <title>Explore UT</title>
-      
+
     {% block css %} {% endblock %}
     {% block javascript %}
       <script src="{{ url_for('static', filename='base.js') }}"></script>
@@ -56,16 +56,16 @@
 
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/index">Manage</a>  
+            <a class="nav-link" href="/index">Manage</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/create_new_place">Create New Place</a> 
+            <a class="nav-link" href="/create_new_place">Create New Place</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/create_new_report/">Create New Review</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/view_places">View Nearby Places</a> 
+            <a class="nav-link" href="/view_places">View All Places</a>
           </li>
           <li class="nav-item">
             <button id="sign-out" hidden=true type="button" class="btn btn-default">Sign Out</button>
@@ -76,7 +76,7 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </nav>
-    
+
     {% block title %} {% endblock %}
 
     {% block content %} {% endblock %}

@@ -111,6 +111,7 @@ def add_place():
         # image_url = upload_image_file(request.files.get('image'))
         # [END image_url]
         image_file = request.files.get('pic_file')
+        
         data['pics'] = [base64.b64encode(image_file.read())]
         data['reviews'] = []
         data['likes'] = 0
