@@ -19,19 +19,17 @@ class Place(object):
 
 # define user object for the data model
 class User(object):
-    def __init__(self, user_id=None, email=None, username=None, password=None, name=None, profile=None,
-                 gender=None, age=None, group='normal', level=0):
-        self.user_id = user_id
+    def __init__(self, email=None, username=None, name=None, profile=None,
+                 gender=None, age=None, group='normal', level=0, subscription=[]):
         self.email = email
         self.username = username
-        self.password = password
         self.name = name
         self.profile = profile
         self.gender = gender
         self.age = age
         self.group = group
         self.level = level
-
+        self.subscription = subscription
 
 
 class Article(object):
@@ -116,31 +114,25 @@ def delete_place_by_id(db, old_place_id):
 
 
 # User CRUD API
-def create_user(db, user_id=None, email=None, username=None, password=None, name=None,
-                profile=None, gender=None, age=None, group='normal', level=0):
+def create_user(db, email=None, username=None, name=None, profile=None, gender=None, age=None, group='normal', level=0,
+                subscription=[]):
     """
     Create a user, insert it into the database and return the result
     :param db: a MongoClient that connects to a database through a particular URL
-    :param user_id: a string that represents the user id
     :param email: a string that represents the user's email
     :param username:  a string that represents the user's username
-    :param password: a string that represents the user's password
-    :param first: a string that represents the user's first name
-    :param last: a string that represents the user's last name
+    :param name a string that represents the user's actual name
     :param profile: a string that represents the user's encoded profile picture
     :param gender: a string that represents the user's gender
     :param age: an int tha represents the user's age
     :param group: a string that represents if the user is an admin or normal user
     :param level: an int that represents the user's level in this app
+    :param subscription: a list of place ids that the user subscribed
     :return: a Result containing the ack and inserted id
     """
-    user = User(user_id, email, username, password, name, profile, gender, age, group, level)
+    user = User(email, username, name, profile, gender, age, group, level, subscription)
     return db.user.insert_one(user.__dict__)
 
-def create_user(db, email=None):
-
-    user = User(None, email)
-    return db.user.insert_one(user.__dict__)
 
 def read_user(db, condition_key, condition_value):
     """
@@ -154,30 +146,39 @@ def read_user(db, condition_key, condition_value):
 
 
 # note that this update method overwrite all fields of a user
-def update_user_by_id(db, old_user_id, new_user):
+def update_user_by_id(db, old_user_email, new_user):
     """
     Update an old user in the database with a new one (overwriting each field)
     :param db: a MongoClient that connects to a database through a particular URL
-    :param old_user_id: a string with the old user id we want to update
+    :param old_user_email: a string with the old user email we want to update
     :param new_user: an user with all the new fields we want
     :return: None
     """
-    db.user.update_one({'user_id': old_user_id}, {'$set': {'user_id': new_user.user_id, 'email': new_user.email,
-                                                           'username': new_user.username, 'password': new_user.password,
-                                                            'name': new_user.name,
-                                                           'profile': new_user.profile, 'gender': new_user.gender,
-                                                           'age': new_user.age, 'group': new_user.group,
-                                                           'level': new_user.level}})
+    db.user.update_one({'email': old_user_email}, {'$set': {'email': new_user.email, 'username': new_user.username,
+                                                      'name': new_user.name, 'profile': new_user.profile,
+                                                      'gender': new_user.gender, 'age': new_user.age,
+                                                      'group': new_user.group, 'level': new_user.level}})
 
 
-def delete_user_by_id(db, old_user_id):
+def update_user_subscription(db, user_email, place_id):
+    """
+    Update an user and a place in the database with a new subscription
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param user_email: a string with the user email we want to update
+    :param place_id: the place id that  the user subscribe
+    :return: None
+    """
+    db.user.update_one({'email': user_email}, {'$addToSet': {"subscription": str(place_id)}})
+
+
+def delete_user_by_id(db, old_user_email):
     """
     Delete an user in the database with its id
     :param db: a MongoClient that connects to a database through a particular URL
-    :param old_user_id: a string with the user id we want to delete
+    :param old_user_email: a string with the user email we want to delete
     :return: None
     """
-    db.user.delete_one({'user_id': old_user_id})
+    db.user.delete_one({'email': old_user_email})
 
 
 def create_article(db, article_id=None, article_title=None, place_id=None, user_id=None,

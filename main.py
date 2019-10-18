@@ -47,10 +47,11 @@ def index():
 
             thisuser = read_user(db, 'email', claims['email'])
             if thisuser != None:
+                print(claims)
                 allplaces = read_places(db, {'user_id': str(thisuser['_id'])})
             else:
-            	thisuser = create_user(db, email=claims['email'])
-
+                print(claims)
+                thisuser = create_user(db, email=claims['email'])
 
         except ValueError as exc:
             # This will be raised if the token is expired or any other
