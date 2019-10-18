@@ -6,9 +6,11 @@ from bson import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from google.auth.transport import requests
+from flask_googlemaps import GoogleMaps, Map
 from db import *
 
 app = Flask(__name__)
+GoogleMaps(app, key="AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw")
 firebase_request_adapter = requests.Request()
 
 # connect to remote mongoDB database
@@ -120,6 +122,37 @@ def add_place():
         return redirect(url_for('.view_one_place', placeId=place_id))
 
     return render_template("add_new_place.html",action="Add", place={})
+
+
+@app.route('/map', methods=["GET"])
+def my_map():
+    # creating a map in the view
+    mymap = Map(
+        identifier="view-side",
+        lat=37.4419,
+        lng=-122.1419,
+        markers=[(37.4419, -122.1419)]
+    )
+    sndmap = Map(
+        identifier="sndmap",
+        lat=37.4419,
+        lng=-122.1419,
+        markers=[
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+             'lat': 37.4419,
+             'lng': -122.1419,
+             'infobox': "<b>Hello World</b>"
+          },
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+             'lat': 37.4300,
+             'lng': -122.1400,
+             'infobox': "<b>Hello World from other place</b>"
+          }
+        ]
+    )
+    return render_template('map.html', mymap=mymap, sndmap=sndmap)
 
 
 if __name__ == '__main__':
