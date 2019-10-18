@@ -13,13 +13,13 @@
         <h3>Introduction</h3>
         <p>{{ place['intro'] }}</p>
     </div>
-    
+
     <style>
     div.gallery {
       margin: 5px;
       border: 1px solid #ccc;
       float: left;
-      width: 180px;
+      width: 400px;
     }
 
     div.gallery:hover {
@@ -37,13 +37,21 @@
     }
     </style>
 
-    <div>
+    {% if place['pics'] %}
+    {% for pic in place['pics'] %}
+    <div class="gallery">
+            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- <div>
         {% if place['pics'] %}
         {% for pic in place['pics'] %}
             <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
         {% endfor %}
         {% endif %}
-    </div>
+    </div> -->
 
     {% if place['reviews'] %}
     {% for review in place['reviews'] %}
