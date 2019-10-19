@@ -74,13 +74,13 @@ def search():
 
     # return empty list if tag is None or null
     if not tag:
-        return render_template('search.html', reports=[])
+        return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'tags': tag})
 
     # send the search result to the front end html template
-    return render_template('search.html', places=places)
+    return render_template('search.html', places=places, result_tag=tag)
 
 
 @app.route('/view_one_place', methods=['GET'])

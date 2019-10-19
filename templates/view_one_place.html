@@ -2,6 +2,11 @@
 
 {% block title %}
 <h1>{{ place['name'] }}</h1>
+    <h5>Tags: 
+        {% for tag in place['tags'] %} 
+            <a href="/search?tag={{ tag }}">{{ tag }}</a> 
+        {% endfor %}
+    </h5>
 {% endblock %}
 
 {% block content %}
@@ -41,16 +46,18 @@
     </style>
 
     {% if place['pics'] %}
-    {% for pic in place['pics'] %}
-    <div class="gallery">
-        <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
-    </div>
+        {% for pic in place['pics'] %}
+        <div class="gallery">
+            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+        </div>
+        {% endfor %}
+    {% endif %}
 
     {% if place['reviews'] %}
-    {% for review in place['reviews'] %}
-    <div>
-        <p>{{ review }}</p>
-    </div>
-    {% endfor %}
+        {% for review in place['reviews'] %}
+        <div>
+            <p>{{ review }}</p>
+        </div>
+        {% endfor %}
     {% endif %}
 {% endblock %}
