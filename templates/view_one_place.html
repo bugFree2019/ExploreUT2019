@@ -23,41 +23,41 @@
     </div>
 
     <style>
-    div.gallery {
-      margin: 5px;
-      border: 1px solid #ccc;
-      float: left;
-      height: 250px;
-    }
+        div.gallery {
+          margin: 5px;
+          border: 1px solid #ccc;
+          float: left;
+          height: 250px;
+        }
 
-    div.gallery:hover {
-      border: 1px solid #777;
-    }
+        div.gallery:hover {
+          border: 1px solid #777;
+        }
 
-    div.gallery img {
-      height: 100%;
-      width: auto;
-    }
+        div.gallery img {
+          height: 100%;
+          width: auto;
+        }
 
-    div.desc {
-      padding: 15px;
-      text-align: center;
-    }
+        div.desc {
+          padding: 15px;
+          text-align: center;
+        }
     </style>
 
     {% if place['pics'] %}
         {% for pic in place['pics'] %}
-        <div class="gallery">
-            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
-        </div>
+            <div class="gallery">
+                <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+            </div>
         {% endfor %}
     {% endif %}
 
     {% if place['reviews'] %}
         {% for review in place['reviews'] %}
-        <div>
-            <p>{{ review }}</p>
-        </div>
+            <div>
+                <p>{{ review }}</p>
+            </div>
         {% endfor %}
     {% endif %}
 {% endblock %}
