@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h2>{{ place['name'] }}</h2>
+<h1>{{ place['name'] }}</h1>
 {% endblock %}
 
 {% block content %}
-    <div>
-        {% if place['pics'] %}
-            <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
-        {% endif %}
-
-        <h3>Introduction</h3>
-        <p>{{ place['intro'] }}</p>
+    <div class="row">
+        <div class="col-9">
+            <h3>Introduction</h3>
+            <p>{{ place['intro'] }}</p>
+        </div>
+        <div class="col-3">
+            {% if place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+            {% endif %}
+        </div>
     </div>
 
     <style>
@@ -36,14 +39,15 @@
       text-align: center;
     }
     </style>
-
-    {% if place['pics'] %}
-    {% for pic in place['pics'] %}
-    <div class="gallery">
-            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+    <div class="row">
+        {% if place['pics'] %}
+            {% for pic in place['pics'] %}
+                <div class="gallery">
+                    <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    {% endfor %}
-    {% endif %}
 
     <!-- <div>
         {% if place['pics'] %}

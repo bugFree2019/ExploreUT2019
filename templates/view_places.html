@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h2>All Places Nearby</h2>
+<h1>All Places</h1>
 {% endblock %}
 
 {% block content %}
      {% for place in places %}
-        <div>
-            <a href="/view_one_place?placeId={{ place['_id'] }}"> <h3>{{ place['name'] }}</h3></a>
-
-            {% if place['pics'] %}
-                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
-            {% endif %}
-
-            <p>{{ place['intro'] }}</p>
-            {% if places['reviews'] %}
-            <p>{{ place['reviews'][0] }}</p>
-            {% endif %}
+        <div class="row">
+            <div class="col-9">
+                <a href="/view_one_place?placeId={{ place['_id'] }}"> <h3>{{ place['name'] }}</h3></a>
+                <p>{{ place['intro'] }}</p>
+                {% if places['reviews'] %}
+                    <p>{{ place['reviews'][0] }}</p>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if place['pics'] %}
+                    <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+                {% endif %}
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
