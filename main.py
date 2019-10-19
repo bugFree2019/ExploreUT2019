@@ -113,11 +113,11 @@ def add_place():
         # [END image_url]
         # image_file = request.files.get('pic_file')
 
-        image_files = request.files.getlist("pic_file")
+        image_files = request.files.getlist("pic_files")
         data['pics'] = []
         for image in image_files:
             data['pics'].append(base64.b64encode(image.read()))
-            
+
         data['reviews'] = []
         data['likes'] = 0
         # [START image_url2]

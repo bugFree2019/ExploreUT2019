@@ -19,7 +19,7 @@
       margin: 5px;
       border: 1px solid #ccc;
       float: left;
-      width: 400px;
+      height: 250px;
     }
 
     div.gallery:hover {
@@ -27,8 +27,8 @@
     }
 
     div.gallery img {
-      width: 100%;
-      height: auto;
+      height: 100%;
+      width: auto;
     }
 
     div.desc {
@@ -40,18 +40,10 @@
     {% if place['pics'] %}
     {% for pic in place['pics'] %}
     <div class="gallery">
-            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+        <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
     </div>
     {% endfor %}
     {% endif %}
-
-    <!-- <div>
-        {% if place['pics'] %}
-        {% for pic in place['pics'] %}
-            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
-        {% endfor %}
-        {% endif %}
-    </div> -->
 
     {% if place['reviews'] %}
     {% for review in place['reviews'] %}
