@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h2>{{ place['name'] }}</h2>
+<h1>{{ place['name'] }}</h1>
 {% endblock %}
 
 {% block content %}
-    <div>
-        {% if place['pics'] %}
-            <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
-        {% endif %}
-
-        <h3>Introduction</h3>
-        <p>{{ place['intro'] }}</p>
+    <div class="row">
+        <div class="col-9">
+            <h3>Introduction</h3>
+            <p>{{ place['intro'] }}</p>
+        </div>
+        <div class="col-3">
+            {% if place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+            {% endif %}
+        </div>
     </div>
 
     <style>
@@ -42,8 +45,6 @@
     <div class="gallery">
         <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
     </div>
-    {% endfor %}
-    {% endif %}
 
     {% if place['reviews'] %}
     {% for review in place['reviews'] %}
