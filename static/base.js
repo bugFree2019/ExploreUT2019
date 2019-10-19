@@ -43,6 +43,7 @@ window.addEventListener('load', function () {
     if (user) {
       // User is signed in, so display the "sign out" button.
       document.getElementById('sign-out').hidden = false;
+      document.getElementById('subscribe').hidden = false;
       user.getIdToken().then(function (token) {
         // Add the token to the browser's cookies. The server will then be
         // able to verify the token against the API.
@@ -54,6 +55,7 @@ window.addEventListener('load', function () {
     } else {
       // User is signed out.
       document.getElementById('sign-out').hidden = true;
+      document.getElementById('subscribe').hidden = true;
       // Clear the token cookie.
       document.cookie = "token=";
     }

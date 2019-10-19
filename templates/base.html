@@ -32,7 +32,9 @@
 	  <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
   	  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
     {% endblock %}
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.css">    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Optional JavaScript -->
@@ -45,6 +47,7 @@
       
     {% block css %} {% endblock %}
     {% block javascript %}
+
       <script src="{{ url_for('static', filename='base.js') }}"></script>
     {% endblock %}
   </head>

@@ -47,10 +47,10 @@ def index():
 
             thisuser = read_user(db, 'email', claims['email'])
             if thisuser != None:
-                print(claims)
+                # print(claims)
                 allplaces = read_places(db, {'user_id': str(thisuser['_id'])})
             else:
-                print(claims)
+                # print(claims)
                 thisuser = create_user(db, email=claims['email'])
 
         except ValueError as exc:
@@ -82,17 +82,38 @@ def search():
     # send the search result to the front end html template
     return render_template('search.html', places=places)
 
+# @app.route('/subscribe', methods=['POST'])
+# def subscribe():
+#     place_id = request.args.get('placeId')
+#     place = read_place(db, '_id', ObjectId(place_id))
 
-@app.route('/view_one_place', methods=['GET'])
+
+#     return render_template('view_one_place.html', place=place)
+
+
+
+@app.route('/view_one_place', methods=['GET', 'POST'])
 def view_one_place():
-    place_id = request.args.get('placeId')
+    if request.method == 'GET':
+        place_id = request.args.get('placeId')
 
-    if not place_id:
-        return render_template('view_one_place.html', place=[])
+        if not place_id:
+            return render_template('view_one_place.html', place=[])
+        place = read_place(db, '_id', ObjectId(place_id))
+        return render_template('view_one_place.html', place=place)
 
-    place = read_place(db, '_id', ObjectId(place_id))
+    if request.method == 'POST':
+        id_token = request.cookies.get("token")
+        print(id_token)
+        if id_token:
+            claims = google.oauth2.id_token.verify_firebase_token(
+                id_token, firebase_request_adapter)
+            print(claims)
+            place_id = request.args.get('placeId')
+            update_user_subscription(db, claims['email'], place_id)
+        return redirect(url_for('.view_one_place', placeId=place_id))
+        
 
-    return render_template('view_one_place.html', place=place)
 
 
 @app.route('/view_places', methods=['GET'])
