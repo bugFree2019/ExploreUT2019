@@ -74,13 +74,13 @@ def search():
 
     # return empty list if tag is None or null
     if not tag:
-        return render_template('search.html', reports=[])
+        return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'tags': tag})
 
     # send the search result to the front end html template
-    return render_template('search.html', places=places)
+    return render_template('search.html', places=places, result_tag=tag)
 
 # @app.route('/subscribe', methods=['POST'])
 # def subscribe():
@@ -132,8 +132,13 @@ def add_place():
         # [START image_url]
         # image_url = upload_image_file(request.files.get('image'))
         # [END image_url]
-        image_file = request.files.get('pic_file')
-        data['pics'] = [base64.b64encode(image_file.read())]
+        # image_file = request.files.get('pic_file')
+
+        image_files = request.files.getlist("pic_files")
+        data['pics'] = []
+        for image in image_files:
+            data['pics'].append(base64.b64encode(image.read()))
+
         data['reviews'] = []
         data['likes'] = 0
         # [START image_url2]
@@ -143,7 +148,7 @@ def add_place():
 
         return redirect(url_for('.view_one_place', placeId=place_id))
 
-    return render_template("add_new_place.html",action="Add", place={})
+    return render_template("add_new_place.html", action="Add", place={})
 
 
 @app.route('/map', methods=["GET"])

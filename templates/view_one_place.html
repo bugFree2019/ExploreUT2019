@@ -1,33 +1,64 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h2>{{ place['name'] }}</h2>
+<h1>{{ place['name'] }}</h1>
+    <h5>Tags: 
+        {% for tag in place['tags'] %} 
+            <a href="/search?tag={{ tag }}">{{ tag }}</a> 
+        {% endfor %}
+    </h5>
 {% endblock %}
 
 {% block content %}
-    <div>
-        {% if place['pics'] %}
-            <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
-        {% endif %}
-
-        <h3>Introduction</h3>
-        <p>{{ place['intro'] }}</p>
+    <div class="row">
+        <div class="col-9">
+            <h3>Introduction</h3>
+            <p>{{ place['intro'] }}</p>
+        </div>
+        <div class="col-3">
+            {% if place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+            {% endif %}
+        </div>
     </div>
 
-    <div>
-        {% if place['pics'] %}
+    <style>
+        div.gallery {
+          margin: 5px;
+          border: 1px solid #ccc;
+          float: left;
+          height: 250px;
+        }
+
+        div.gallery:hover {
+          border: 1px solid #777;
+        }
+
+        div.gallery img {
+          height: 100%;
+          width: auto;
+        }
+
+        div.desc {
+          padding: 15px;
+          text-align: center;
+        }
+    </style>
+
+    {% if place['pics'] %}
         {% for pic in place['pics'] %}
-            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}" width="250">
+            <div class="gallery">
+                <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+            </div>
         {% endfor %}
-        {% endif %}
-    </div>
+    {% endif %}
 
     {% if place['reviews'] %}
-    {% for review in place['reviews'] %}
-    <div>
-        <p>{{ review }}</p>
-    </div>
-    {% endfor %}
+        {% for review in place['reviews'] %}
+            <div>
+                <p>{{ review }}</p>
+            </div>
+        {% endfor %}
     {% endif %}
     <form method="POST">
     <button id="subscribe" hidden=true type="button">Subcribe</button>

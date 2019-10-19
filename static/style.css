@@ -1,4 +1,6 @@
 body {
-  font-family: "helvetica", sans-serif;
-  text-align: center;
+    /* background-image: url(/static/images/back.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
