@@ -328,7 +328,7 @@ def main():
     # test APIs for Article
     article = Article(article_id='a999', article_title='UT tower', place_id='p002', user_id='u001',
                       comment='UT tower is beautiful', create_date=dt.datetime.now())
-    create_article(db, article)
+    create_article(db, article.__dict__)
     new_article = Article(article_id='a1000', article_title='UT tower', place_id='p002', user_id='u001',
                           comment='UT tower is orange at night', create_date=dt.datetime.now())
     update_article_by_id(db, 'a999', new_article)
