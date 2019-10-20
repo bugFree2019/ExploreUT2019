@@ -24,12 +24,12 @@
 
     <div>
         <form method="POST" action="/subscribe/{{ place['_id'] }}">
-            <button id="subscribe" hidden=true type="submit">Subscribe</button>
+                <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
         </form>
         <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
-            <button id="unsubscribe" hidden=true type="submit">Unsubscribe</button>
+            <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
         </form>
-        <button id="add_report" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+        <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
     </div>
 
     <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>
@@ -54,27 +54,39 @@
       width: auto;
     }
 
-    div.desc {
-      padding: 15px;
-      text-align: center;
-    }
-</style>
-
-{% if place['pics'] %}
-    {% for pic in place['pics'] %}
-    <div class="gallery">
+    {% if place['pics'] %}
+        {% for pic in place['pics'] %}
+        <div class="gallery">
             <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endblock %}
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    {% block reviews %}
+    <div>
+    <h5>Comments about this place:</h5>
+    {% if place['reviews'] %}
+        <ul>
+        {% for review in place['reviews'] %}
+            <li><p>{{ review }}</p></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
     </div>
-    {% endfor %}
-{% endif %}
-{% endblock %}
-
-{% block reviews %}
-<div>
-{% if place['reviews'] %}
-    {% for review in place['reviews'] %}
-
-            <p>{{ review }}</p>
+    {% endblock%}
 
     {% endfor %}
 {% endif %}
