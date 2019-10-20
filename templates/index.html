@@ -10,7 +10,7 @@
   <div id="login-info" hidden=true>
     {% if user_data %}
       <h2>Login info:</h2>
-      <a class="nav-link" href="/updateuser">Update</a>  
+      <a class="nav-link" href="/updateuser" hidden=true>Update</a>  
     	<dl>
 	      <dt>Name</dt><dd>{{ user_data['name'] }}</dd>
 	      <dt>Email</dt><dd>{{ user_data['email'] }}</dd>

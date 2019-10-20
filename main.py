@@ -148,6 +148,7 @@ def view_places():
 def add_place():
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
+        data['tags'] = request.form.getlist('tags')
         image_files = request.files.getlist("pic_files")
         data['pics'] = []
         for image in image_files:
