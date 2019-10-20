@@ -24,7 +24,7 @@
 
     <div>
         <form method="POST" action="/subscribe/{{ place['_id'] }}">
-            <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
+                <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
         </form>
         <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
             <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
@@ -61,20 +61,33 @@
     {% if place['pics'] %}
         {% for pic in place['pics'] %}
         <div class="gallery">
-                <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
         </div>
         {% endfor %}
     {% endif %}
     {% endblock %}
 
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
     {% block reviews %}
     <div>
+    <h5>Comments about this place:</h5>
     {% if place['reviews'] %}
+        <ul>
         {% for review in place['reviews'] %}
-
-                <p>{{ review }}</p>
-
+            <li><p>{{ review }}</p></li>
         {% endfor %}
+        </ul>
     {% endif %}
     </div>
     {% endblock%}
