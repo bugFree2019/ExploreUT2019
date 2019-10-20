@@ -5,7 +5,7 @@ from pymongo import MongoClient
 # define place object for the data model
 class Place(object):
     def __init__(self, name=None, theme=None, tags=[], address=None, intro=None, pics=[],
-                 reviews=[], likes=0, user_id=None):
+                 reviews=[], likes=0):
         self.name = name
         self.theme = theme
         self.tags = tags
@@ -14,7 +14,6 @@ class Place(object):
         self.pics = pics
         self.reviews = reviews
         self.likes = likes
-        self.user_id = user_id
 
 
 # define user object for the data model
@@ -67,7 +66,8 @@ def read_place(db, condition_key, condition_value):
     if place is not None:
         if place['pics']:
             for i in range(len(place['pics'])):
-                place['pics'][i] = place['pics'][i].decode()
+                if isinstance(place['pics'][i], bytes):
+                    place['pics'][i] = place['pics'][i].decode()
     return place
 
 
@@ -84,7 +84,8 @@ def read_places(db, condition):
         if not place['pics']:
             continue
         for i in range(len(place['pics'])):
-            place['pics'][i] = place['pics'][i].decode()
+            if isinstance(place['pics'][i], bytes):
+                place['pics'][i] = place['pics'][i].decode()
     return places
 
 
@@ -145,8 +146,19 @@ def read_user(db, condition_key, condition_value):
     return db.user.find_one({condition_key: condition_value})
 
 
+def place_subscribed_by_user(db, user_id, place_id):
+    """
+    Read from the database and return a single user that matches the search condition
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param condition_key: a string with the field name we are interested in
+    :param condition_value: a string with the value we want to match
+    :return: a dict that represents a single user that matches the condition (can be any of them if there are many)
+    """
+    return db.user.find_one({condition_key: condition_value})
+
+
 # note that this update method overwrite all fields of a user
-def update_user_by_id(db, old_user_email, new_user):
+def update_user_by_email(db, old_user_email, new_user):
     """
     Update an old user in the database with a new one (overwriting each field)
     :param db: a MongoClient that connects to a database through a particular URL
@@ -155,9 +167,9 @@ def update_user_by_id(db, old_user_email, new_user):
     :return: None
     """
     db.user.update_one({'email': old_user_email}, {'$set': {'email': new_user.email, 'username': new_user.username,
-                                                      'name': new_user.name, 'profile': new_user.profile,
-                                                      'gender': new_user.gender, 'age': new_user.age,
-                                                      'group': new_user.group, 'level': new_user.level}})
+                                                            'name': new_user.name, 'profile': new_user.profile,
+                                                            'gender': new_user.gender, 'age': new_user.age,
+                                                            'group': new_user.group, 'level': new_user.level}})
 
 
 def update_user_subscription(db, user_email, place_id):
@@ -168,12 +180,25 @@ def update_user_subscription(db, user_email, place_id):
     :param place_id: the place id that  the user subscribe
     :return: None
     """
-    db.user.update_one({'email': user_email}, {'$addToSet': {"subscription": str(place_id)}})
+    db.user.update_one({'email': user_email}, {'$addToSet': {'subscription': place_id}})
+    db.place.update_one({'_id': place_id}, {'$inc': {'likes': 1}})
 
 
-def delete_user_by_id(db, old_user_email):
+def update_user_unsubscription(db, user_email, place_id):
     """
-    Delete an user in the database with its id
+    Update an user and a place in the database with a new unsubscription
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param user_email: a string with the user email we want to update
+    :param place_id: the place id that  the user unsubscribe
+    :return: None
+    """
+    db.user.update_one({'email': user_email}, {'$pull': {'subscription': place_id}})
+    db.place.update_one({'_id': place_id}, {'$inc': {'likes': -1}})
+
+
+def delete_user_by_email(db, old_user_email):
+    """
+    Delete an user in the database with its email
     :param db: a MongoClient that connects to a database through a particular URL
     :param old_user_email: a string with the user email we want to delete
     :return: None
@@ -243,8 +268,8 @@ def delete_article_by_id(db, old_article_id):
 # execute and test the APIs
 def main():
     # connect to the remote database instance
-    client = MongoClient(
-        "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority")
+    URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
+    client = MongoClient(URL)
     db = client['utdb']
 
     # test APIs for Place
@@ -256,11 +281,12 @@ def main():
     delete_place_by_id(db, place_id)
 
     # test APIs for User
-    create_user(db, user_id='001', email='abcd@utexas.edu', username='abcd', password='123', name='cd')
-    new_user = User(user_id='002', email='asdf@utexas.edu', username='asdf', password='456', name='gh')
-    update_user_by_id(db, '001', new_user)
-    user_result = read_user(db, 'username', 'asdf')
-    delete_user_by_id(db, '002')
+    user_email = 'abcd@utexas.edu'
+    create_user(db, email=user_email, username='abcd', name='cd')
+    new_user = User(email=user_email, username='asdf', name='gh')
+    update_user_by_email(db, user_email, new_user)
+    user_result = read_user(db, 'email', user_email)
+    delete_user_by_email(db, user_email)
 
     # test APIs for Article
     create_article(db, article_id='a999', article_title='UT tower', place_id='p002', user_id='u001',

@@ -1,4 +1,3 @@
-import datetime
 import google.oauth2.id_token
 import base64
 
@@ -10,11 +9,11 @@ from flask_googlemaps import GoogleMaps, Map
 from db import *
 
 app = Flask(__name__)
-GoogleMaps(app, key="AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw")
+GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
 firebase_request_adapter = requests.Request()
 
 # connect to remote mongoDB database
-URL = "mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority"
+URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
 client = MongoClient(URL)
 db = client['utdb']
 
@@ -28,7 +27,7 @@ def home_places():
 
 @app.route('/index', methods=['GET'])
 def index():
-	id_token = request.cookies.get("token")
+	id_token = request.cookies.get('token')
 	error_message = None
 	claims = None
 	times = None
@@ -42,15 +41,13 @@ def index():
 			# some applications may wish to cache results in an encrypted
 			# session store (see for instance
 			# http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
-			claims = google.oauth2.id_token.verify_firebase_token(
-				id_token, firebase_request_adapter)
+			claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
 
 			thisuser = read_user(db, 'email', claims['email'])
 			if thisuser != None:
-				# print(claims)
-				allplaces = read_places(db, {'user_id': str(thisuser['_id'])})
+				# user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
+				allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
 			else:
-				# print(claims)
 				thisuser = create_user(db, email=claims['email'])
 
 		except ValueError as exc:
@@ -58,9 +55,8 @@ def index():
 			# verification checks fail.
 			error_message = str(exc)
 
-	return render_template(
-		'index.html',
-		user_data=claims, error_message=error_message, times=times, users=thisuser, places=allplaces)
+	return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=thisuser,
+							places=allplaces)
 
 
 @app.route('/search', methods=['GET'])
@@ -82,39 +78,60 @@ def search():
 	# send the search result to the front end html template
 	return render_template('search.html', places=places, result_tag=tag)
 
-# @app.route('/subscribe', methods=['POST'])
-# def subscribe():
-#     place_id = request.args.get('placeId')
-#     place = read_place(db, '_id', ObjectId(place_id))
+
+@app.route('/subscribe/<place_id>', methods=['POST'])
+def subscribe(place_id):
+	subscribe_helper(place_id, True)
+	return redirect(url_for('.view_one_place', placeId=place_id))
 
 
-#     return render_template('view_one_place.html', place=place)
+@app.route('/unsubscribe/<place_id>', methods=['POST'])
+def unsubscribe(place_id):
+	subscribe_helper(place_id, False)
+	return redirect(url_for('.view_one_place', placeId=place_id))
 
 
+def subscribe_helper(place_id, is_subscribe):
+	id_token = request.cookies.get("token")
+	if id_token:
+		claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+		if is_subscribe:
+			update_user_subscription(db, claims['email'], ObjectId(place_id))
+		else:
+			update_user_unsubscription(db, claims['email'], ObjectId(place_id))
 
-@app.route('/view_one_place', methods=['GET', 'POST'])
+
+@app.route('/view_one_place', methods=['GET'])
 def view_one_place():
 	# print(request.method)
 	if request.method == 'GET':
 		place_id = request.args.get('placeId')
-
+		# subscribe_status: -1 denotes not logged in, 0 denotes not not subscribed 1 denotes subscribed
+		subscribe_status = -1
 		if not place_id:
-			return render_template('view_one_place.html', place=[])
+			return render_template('view_one_place.html', place=[], subscribe_status=subscribe_status, error_message=None)
+
 		place = read_place(db, '_id', ObjectId(place_id))
-		return render_template('view_one_place.html', place=place)
-
-	if request.method == 'POST':
-		id_token = request.cookies.get("token")
-		# print(id_token)
+		id_token = request.cookies.get('token')
 		if id_token:
-			claims = google.oauth2.id_token.verify_firebase_token(
-				id_token, firebase_request_adapter)
-			# print(claims)
-			place_id = request.args.get('placeId')
-			update_user_subscription(db, claims['email'], place_id)
-		return redirect(url_for('.view_one_place', placeId=place_id))
-		
+			try:
+				claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+				current_user = read_user(db, 'email', claims['email'])
+				if current_user is not None:
+					if ObjectId(place_id) in current_user['subscription']:
+						print("yes")
+						subscribe_status = 1
+						return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
+					else:
+						print("no")
+						subscribe_status = 0
+						return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
+			except ValueError as exc:
+				error_message = str(exc)
+				return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
+										error_message=error_message)
 
+		return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
 
 
 @app.route('/view_places', methods=['GET'])

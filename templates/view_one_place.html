@@ -60,10 +60,44 @@
             </div>
         {% endfor %}
     {% endif %}
+
     <div>
-        <form method="POST">
-        <button id="subscribe" hidden=true type="submit">Subcribe</button>
+        <form method="POST" action="unsubscribe/{{ place['_id'] }}">
+            <button id="unsubscribe" hidden=true type="submit">Unsubscribe</button>
         </form>
     </div>
+    <div>
+        <form method="POST" action="/subscribe/{{ place['_id'] }}">
+            <button id="subscribe" hidden=true type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var subscribe = document.getElementById("subscribe");
+        var unsubscribe = document.getElementById("unsubscribe");
+		function with_subscription() {
+            subscribe.hidden = true;
+            unsubscribe.hidden = false;
+            console.log('with')
+        }
+        function without_subscription() {
+            subscribe.hidden = false;
+            unsubscribe.hidden = true;
+            console.log('without')
+        }
+        function not_logged_in() {
+            subscribe.hidden = true;
+            unsubscribe.hidden = true;
+            console.log('not logged in')
+        }
+        
+        {% if subscribe_status == 1 %}
+            with_subscription();
+        {% elif subscribe_status == 0 %}
+            without_subscription();
+        {% else %}
+            not_logged_in();
+        {% endif %}
+    </script>
 
 {% endblock %}
