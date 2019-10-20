@@ -4,11 +4,33 @@
 <h3>{{action}} report for {{place_name}}</h3>
 
 <script>
-  function save_user_id(){
+  function form_submit(){
       var user_email = firebase.auth().currentUser.email;
       document.getElementById('user_id').value=user_email;
-      console.log(user_email);
+      if(validInput()){
+          document.form_report.submit();
+      }
   };
+
+  function validInput(){
+      //to be added: input check
+      var title  = document.getElementById('title').value;
+      var comment  = document.getElementById('comment').value;
+      var files = document.getElementById('pic_files').files;
+      if(title.length==0){
+          alert("The title can't be empty!");
+          return false;
+      }
+      if(comment.length==0){
+          alert("The review cantent can't be empty!");
+          return false;
+      }
+      if(files.length==0) {
+          alert("haven't uploaded picture")
+          return false;
+      }
+      return true;
+  }
 
   function showPreview() {
     var preview = document.querySelector('#preview');
@@ -40,7 +62,7 @@
 
 </script>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" name="form_report">
 
   <div class="form-group">
     <label for="title">Review Title</label>
@@ -70,7 +92,7 @@
   <div id="preview"></div>
 
 
-  <button type="submit" id="button_submit" class="btn btn-success" onclick="save_user_id()" >Save</button>
+  <button type="button" id="button_submit" class="btn btn-success" onclick="form_submit()" >Save</button>
   <button type="reset" id="button_reset" class="btn btn-secondary">Reset</button>
 </form>
 

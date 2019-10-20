@@ -4,6 +4,22 @@
 <h3>{{action}} place</h3>
 
   <script>
+    function form_submit(){
+      if(validInput()){
+          document.form_place.submit();
+      }
+  };
+
+  function validInput(){
+      //to be added: input check
+      var files = document.getElementById('pic_files').files;
+      if(files.length==0) {
+          alert("haven't uploaded picture")
+          return false;
+      }
+      return true;
+  }
+
   function showPreview() {
     var preview = document.querySelector('#preview');
     var files = document.querySelector('input[type=file]').files;
@@ -33,7 +49,7 @@
 
   </script>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" name="form_place">
 
   <div class="form-group">
     <label for="name">Place Name</label>
@@ -82,7 +98,7 @@
 
 <div id="preview"></div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" class="btn btn-success" onclick="form_submit()">Submit</button>
     <button type="reset" class="btn btn-secondary">Reset</button>
 </form>
 
