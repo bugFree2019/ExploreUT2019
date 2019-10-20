@@ -15,6 +15,36 @@
 
 'use strict';
 
+function with_subscription() {
+    if(document.getElementById("subscribe")) {
+        document.getElementById("subscribe").hidden = true;
+    }
+    if (document.getElementById("unsubscribe")) {
+        document.getElementById("unsubscribe").hidden = false;
+    }
+    console.log('with subscription');
+}
+
+function without_subscription() {
+    if (document.getElementById("subscribe")) {
+        document.getElementById("subscribe").hidden = false;
+    }
+    if (document.getElementById("unsubscribe")) {
+        document.getElementById("unsubscribe").hidden = true;
+    }
+    console.log('without subscription');
+}
+
+function not_logged_in() {
+    if (document.getElementById("subscribe")) {
+        document.getElementById("subscribe").hidden = true;
+    }
+    if (document.getElementById("unsubscribe")) {
+        udocument.getElementById("unsubscribe").hidden = true;
+    }
+    console.log('not logged in');
+}
+
 
 window.addEventListener('load', function () {
 
@@ -55,11 +85,21 @@ window.addEventListener('load', function () {
         if(document.getElementById('login-info')) {
           document.getElementById('login-info').hidden = false;
         }
-        if(document.getElementById('subscribe')) {
-          document.getElementById('subscribe').hidden = false;
-        }
         if(document.getElementById('add_report')) {
           document.getElementById('add_report').hidden = false;
+        }
+          
+        if (document.getElementById("subscribe_status")) {
+          var subscribe_status = document.getElementById("subscribe_status").textContent;
+          if (subscribe_status === "1") {
+            with_subscription();
+          }
+          else if (subscribe_status === "0") {
+            without_subscription();
+          }
+          else if (subscribe_status === "-1") {
+            not_logged_in();
+          }
         }
         document.cookie = "token=" + token;
       });
@@ -77,6 +117,9 @@ window.addEventListener('load', function () {
       }
       if(document.getElementById('subscribe')) {
         document.getElementById('subscribe').hidden = true;
+      }
+      if(document.getElementById('unsubscribe')) {
+        document.getElementById('unsubscribe').hidden = true;
       }
       if(document.getElementById('add_report')) {
         document.getElementById('add_report').hidden = true;

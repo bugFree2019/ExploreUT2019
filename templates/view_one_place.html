@@ -60,8 +60,17 @@
                 <p>{{ review }}</p>
             </div>
         {% endfor %}
-    {% endif %}    <form method="POST">
-    <button id="subscribe" name= "subscribe" hidden=true type="button">Subcribe</button>
-    <button id="add_report" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
-    </form>
+    {% endif %}
+
+    <div>
+        <form method="POST" action="/subscribe/{{ place['_id'] }}">
+            <button id="subscribe" hidden=true type="submit">Subscribe</button>
+        </form>
+        <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
+            <button id="unsubscribe" hidden=true type="submit">Unsubscribe</button>
+        </form>
+        <button id="add_report" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+    </div>
+        
+    <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>
 {% endblock %}
