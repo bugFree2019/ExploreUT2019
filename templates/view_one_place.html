@@ -24,12 +24,12 @@
 
     <div>
         <form method="POST" action="/subscribe/{{ place['_id'] }}">
-            <button id="subscribe" hidden=true type="submit">Subscribe</button>
+            <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
         </form>
         <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
-            <button id="unsubscribe" hidden=true type="submit">Unsubscribe</button>
+            <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
         </form>
-        <button id="add_report" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+        <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
     </div>
 
     <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>

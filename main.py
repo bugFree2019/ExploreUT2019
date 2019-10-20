@@ -4,7 +4,6 @@ import time
 
 from bson import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
-from pymongo import MongoClient
 from google.auth.transport import requests
 from flask_googlemaps import GoogleMaps, Map
 from db import *
@@ -13,16 +12,10 @@ app = Flask(__name__)
 GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
 firebase_request_adapter = requests.Request()
 
-# connect to remote mongoDB database
-URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
-client = MongoClient(URL)
-db = client['utdb']
-
 
 @app.route('/', methods=['GET'])
 def home_places():
-    condition = request.args.get('condition')  # in the future, condition will be nearby location
-    places = read_places(db, condition)
+    places = read_places(db, {})
     return render_template('home.html', places=places)
 
 
@@ -120,12 +113,10 @@ def view_one_place():
                 current_user = read_user(db, 'email', claims['email'])
                 if current_user is not None:
                     if ObjectId(place_id) in current_user['subscription']:
-                        print("yes")
                         subscribe_status = 1
                         return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
                                                error_message=None)
                     else:
-                        print("no")
                         subscribe_status = 0
                         return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
                                                error_message=None)
