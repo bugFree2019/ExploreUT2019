@@ -3,6 +3,11 @@ import datetime as dt
 from bson import ObjectId
 from pymongo import MongoClient
 
+# connect to the remote database instance
+DB_URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
+client = MongoClient(DB_URL)
+db = client['utdb']
+
 
 # define place object for the data model
 class Place(object):
@@ -34,9 +39,8 @@ class User(object):
 
 
 class Article(object):
-    def __init__(self, article_id=None, article_title=None, place_id=None,
-                 user_id=None, pics=None, comment=None, create_date=None):
-        self.article_id = article_id
+    def __init__(self, article_title=None, place_id=None,
+                 user_id=None, pics=[], comment=None, create_date=None):
         self.article_title = article_title
         self.place_id = place_id
         self.user_id = user_id
@@ -78,7 +82,7 @@ def read_places(db, condition):
     Read from the database and return a pymongo cursor with all matching places
     :param db: a MongoClient that connects to a database through a particular URL
     :param condition: a dict with key value pair(s) specifying the field(s) and value(s) we are interested in
-    :return: a list of all documents matching the search criteria with decoded pictures
+    :return: a list of all places matching the search criteria with decoded pictures
     """
     places = list(db.place.find(condition))
     for place in places:
@@ -116,18 +120,18 @@ def delete_place_by_id(db, old_place_id):
     db.place.delete_one({'_id': old_place_id})
 
 
-def get_place_name_by_id(db,place_id):
+def get_place_name_by_id(db, place_id):
     """
     Get a place's name with its id
     :param db: a MongoClient that connects to a database through a particular URL
     :param place_id: the id of the place that we want to search
     :return: a string of the name of the place with given place_id
     """
-    place = db.place.find_one({"_id":place_id})
+    place = db.place.find_one({"_id": place_id})
     return place['name']
 
 
-def update_place_pics_by_id(db,place_id,pic):
+def update_place_pics_by_id(db, place_id, pic):
     """
     Get a place's name with its id
     :param db: a MongoClient that connects to a database through a particular URL
@@ -135,7 +139,7 @@ def update_place_pics_by_id(db,place_id,pic):
     :param pic: the binary form of a picture
     :return: None
     """
-    db.place.update({"_id":ObjectId(place_id)},{ "$addToSet": {"pics": pic}})
+    db.place.update({"_id": ObjectId(place_id)}, {"$addToSet": {"pics": pic}})
 
 
 def update_place_reviews_by_id(db, place_id, review):
@@ -171,17 +175,6 @@ def create_user(db, email=None, username=None, name=None, profile=None, gender=N
 
 
 def read_user(db, condition_key, condition_value):
-    """
-    Read from the database and return a single user that matches the search condition
-    :param db: a MongoClient that connects to a database through a particular URL
-    :param condition_key: a string with the field name we are interested in
-    :param condition_value: a string with the value we want to match
-    :return: a dict that represents a single user that matches the condition (can be any of them if there are many)
-    """
-    return db.user.find_one({condition_key: condition_value})
-
-
-def place_subscribed_by_user(db, user_id, place_id):
     """
     Read from the database and return a single user that matches the search condition
     :param db: a MongoClient that connects to a database through a particular URL
@@ -240,14 +233,15 @@ def delete_user_by_email(db, old_user_email):
     """
     db.user.delete_one({'email': old_user_email})
 
-def get_user_id_from_email(db,user_email):
+
+def get_user_id_from_email(db, user_email):
     """
     Get user's id from his or her email
     :param db: a MongoClient that connects to a database through a particular URL
     :param user_email: a string with the user email we want to search
     :return: a string of the id of the user with given email
     """
-    user = db.user.find_one({"email":user_email})
+    user = db.user.find_one({"email": user_email})
     return user['_id']
 
 
@@ -256,9 +250,9 @@ def create_article(db, data):
     Create a article, insert it into the database and return the result
     :param db: a MongoClient that connects to a database through a particular URL
     :param data: the dict form of the article's data
-    :return: None
+    :return: the inserted article id
     """
-    db.article.insert_one(data)
+    return db.article.insert_one(data).inserted_id
 
 
 def read_article(db, condition_key, condition_value):
@@ -273,6 +267,12 @@ def read_article(db, condition_key, condition_value):
 
 
 def read_articles(db, condition):
+    """
+    Read from the database and return a pymongo cursor with all matching articles
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param condition: a dict with key value pair(s) specifying the field(s) and value(s) we are interested in
+    :return: a list of all articles matching the search criteria
+    """
     return list(db.article.find(condition))
 
 
@@ -284,12 +284,10 @@ def update_article_by_id(db, old_article_id, new_article):
     :param new_article:  an article with all the new fields we want
     :return: None
     """
-    db.article.update_one({'article_id': old_article_id}, {'$set': {'article_id': new_article.article_id,
-                                                                    'place_id': new_article.place_id,
-                                                                    'user_id': new_article.user_id,
-                                                                    'pics': new_article.pics,
-                                                                    'comment': new_article.comment,
-                                                                    'create_date': new_article.create_date}})
+    db.article.update_one({'_id': old_article_id}, {'$set': {'place_id': new_article.place_id,
+                                                             'user_id': new_article.user_id, 'pics': new_article.pics,
+                                                             'comment': new_article.comment,
+                                                             'create_date': new_article.create_date}})
 
 
 def delete_article_by_id(db, old_article_id):
@@ -299,16 +297,11 @@ def delete_article_by_id(db, old_article_id):
     :param old_article_id:  a string with the article id we want to delete
     :return: None
     """
-    db.article.delete_one({'article_id': old_article_id})
+    db.article.delete_one({'_id': old_article_id})
 
 
 # execute and test the APIs
 def main():
-    # connect to the remote database instance
-    URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
-    client = MongoClient(URL)
-    db = client['utdb']
-
     # test APIs for Place
     place = Place(name='UT Tower')
     place_id = create_place(db, place.__dict__)
@@ -326,14 +319,14 @@ def main():
     delete_user_by_email(db, user_email)
 
     # test APIs for Article
-    article = Article(article_id='a999', article_title='UT tower', place_id='p002', user_id='u001',
-                      comment='UT tower is beautiful', create_date=dt.datetime.now())
-    create_article(db, article.__dict__)
-    new_article = Article(article_id='a1000', article_title='UT tower', place_id='p002', user_id='u001',
+    article = Article(article_title='UT tower', place_id='p002', user_id='u001', comment='UT tower is beautiful',
+                      create_date=dt.datetime.now())
+    article_id = create_article(db, article.__dict__)
+    new_article = Article(article_title='UT tower', place_id='p002', user_id='u001',
                           comment='UT tower is orange at night', create_date=dt.datetime.now())
-    update_article_by_id(db, 'a999', new_article)
-    article_result = read_article(db, 'article_id', 'a1000')
-    delete_article_by_id(db, 'a1000')
+    update_article_by_id(db, article_id, new_article)
+    article_result = read_article(db, '_id', article_id)
+    delete_article_by_id(db, article_id)
 
     # print the updated document
     print(str(ut_tower))
