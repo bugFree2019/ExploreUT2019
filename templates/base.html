@@ -30,7 +30,6 @@
 	    };
 	    // Initialize Firebase
 	    firebase.initializeApp(firebaseConfig);
-	    firebase.analytics();
 	  </script>
 
 	  <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
@@ -51,10 +50,7 @@
 
     <title>Explore UT</title>
 
-    {% block javascript %}
-
-    <script src="{{ url_for('static', filename='base.js') }}"></script>
-    {% endblock %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
 
   <body>
@@ -66,9 +62,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/create_new_place">Create New Place</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/create_new_report/">Create New Review</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/view_places">View All Places</a>

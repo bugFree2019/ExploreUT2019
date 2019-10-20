@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block content %}
+
     <div class="row">
         <div class="col-9">
             <h3>Introduction</h3>
@@ -59,11 +60,8 @@
                 <p>{{ review }}</p>
             </div>
         {% endfor %}
-    {% endif %}
-    <div>
-        <form method="POST">
-        <button id="subscribe" hidden=true type="submit">Subcribe</button>
-        </form>
-    </div>
-
+    {% endif %}    <form method="POST">
+    <button id="subscribe" name= "subscribe" hidden=true type="button">Subcribe</button>
+    <button id="add_report" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+    </form>
 {% endblock %}

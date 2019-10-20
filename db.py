@@ -1,4 +1,6 @@
 import datetime as dt
+
+from bson import ObjectId
 from pymongo import MongoClient
 
 
@@ -112,6 +114,35 @@ def delete_place_by_id(db, old_place_id):
     """
     db.place.delete_one({'_id': old_place_id})
 
+def get_place_name_by_id(db,place_id):
+    """
+    Get a place's name with its id
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param place_id: the id of the place that we want to search
+    :return: a string of the name of the place with given place_id
+    """
+    place = db.place.find_one({"_id":place_id})
+    return place['name']
+
+def update_place_pics_by_id(db,place_id,pic):
+    """
+    Get a place's name with its id
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param place_id: the id of the place that we want to search
+    :param pic: the binary form of a picture
+    :return: None
+    """
+    db.place.update({"_id":ObjectId(place_id)},{ "$addToSet": {"pics": pic}})
+
+def update_place_reviews_by_id(db, place_id, review):
+    """
+    Get a place's name with its id
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param place_id: the id of the place that we want to search
+    :param review: the review of the user
+    :return: None
+    """
+    db.place.update({"_id": ObjectId(place_id)}, {"$addToSet": {"reviews": review}})
 
 # User CRUD API
 def create_user(db, email=None, username=None, name=None, profile=None, gender=None, age=None, group='normal', level=0,
@@ -180,23 +211,24 @@ def delete_user_by_id(db, old_user_email):
     """
     db.user.delete_one({'email': old_user_email})
 
+def get_user_id_from_email(db,user_email):
+    """
+    Get user's id from his or her email
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param user_email: a string with the user email we want to search
+    :return: a string of the id of the user with given email
+    """
+    user = db.user.find_one({"email":user_email})
+    return user['_id']
 
-def create_article(db, article_id=None, article_title=None, place_id=None, user_id=None,
-                   pics=None, comment=None, create_date=None):
+def create_article(db, data):
     """
     Create a article, insert it into the database and return the result
     :param db: a MongoClient that connects to a database through a particular URL
-    :param article_id: a string that represents the id of the article
-    :param article_title: a string that represents the title of the article
-    :param place_id: a string that represents the id of the place associated with this article
-    :param user_id: a string that represents the id of the user that post this article
-    :param pics: a list of strings that represent the encoded pictures in the article
-    :param comment: a string that represents the article body
-    :param create_date: the time when this article is created
-    :return: a Result containing the ack and inserted id
+    :param data: the dict form of the article's data
+    :return: None
     """
-    article = Article(article_id, article_title, place_id, user_id, pics, comment, create_date)
-    return db.article.insert_one(article.__dict__)
+    db.article.insert_one(data)
 
 
 def read_article(db, condition_key, condition_value):

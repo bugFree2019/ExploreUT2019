@@ -1,4 +1,4 @@
-/**
+      /**
  * Copyright 2018, Google LLC
  * Licensed under the Apache License, Version 2.0 (the `License`);
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
 
 'use strict';
 
+
 window.addEventListener('load', function () {
-  
+
   // [START gae_python37_auth_signout]
   document.getElementById('sign-out').onclick = function () {
     firebase.auth().signOut();
+    alert("Sign out successfully!")
   };
   // [END gae_python37_auth_signout]
 
@@ -39,11 +41,9 @@ window.addEventListener('load', function () {
   // [END gae_python37_auth_UIconfig_variable]
 
   // [START gae_python37_auth_request]
+
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in, so display the "sign out" button and login info.
-      document.getElementById('sign-out').hidden = false;
-      document.getElementById('login-info').hidden = false;
       console.log(`Signed in as ${user.displayName} (${user.email})`);
       user.getIdToken().then(function (token) {
         // Add the token to the browser's cookies. The server will then be
@@ -51,17 +51,36 @@ window.addEventListener('load', function () {
         // SECURITY NOTE: As cookies can easily be modified, only put the
         // token (which is verified server-side) in a cookie; do not add other
         // user information.
+        document.getElementById('sign-out').hidden = false;
+        if(document.getElementById('login-info')) {
+          document.getElementById('login-info').hidden = false;
+        }
+        if(document.getElementById('subscribe')) {
+          document.getElementById('subscribe').hidden = false;
+        }
+        if(document.getElementById('add_report')) {
+          document.getElementById('add_report').hidden = false;
+        }
         document.cookie = "token=" + token;
       });
     } else {
       // User is signed out.
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // Show the Firebase login button.
-      ui.start('#firebaseui-auth-container', uiConfig);
       // Update the login state indicators.
+      // Initialize the FirebaseUI Widget using Firebase.
+      if(document.getElementById('firebaseui-auth-container')){
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', uiConfig);
+      }
       document.getElementById('sign-out').hidden = true;
-      document.getElementById('login-info').hidden = true;
+      if(document.getElementById('login-info')) {
+        document.getElementById('login-info').hidden = true;
+      }
+      if(document.getElementById('subscribe')) {
+        document.getElementById('subscribe').hidden = true;
+      }
+      if(document.getElementById('add_report')) {
+        document.getElementById('add_report').hidden = true;
+      }
       // Clear the token cookie.
       document.cookie = "token=";
     }
