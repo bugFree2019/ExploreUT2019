@@ -41,6 +41,7 @@ def index():
             if thisuser != None:
                 # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
                 allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
+                allarticles = read_articles(db, {'user_id': thisuser['_id']})
             else:
                 thisuser = create_user(db, email=claims['email'])
 
@@ -50,7 +51,7 @@ def index():
             error_message = str(exc)
 
     return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=thisuser,
-                           places=allplaces)
+                           places=allplaces, articles=allarticles)
 
 
 @app.route('/search', methods=['GET'])
