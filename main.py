@@ -68,7 +68,7 @@ def search():
         return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
-    places = read_places(db, {'tags': tag})
+    places = read_places(db, {'tags': {'$regex': tag, '$options': 'i'}})
 
     # send the search result to the front end html template
     return render_template('search.html', places=places, result_tag=tag)
