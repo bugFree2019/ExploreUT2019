@@ -18,7 +18,7 @@
 	    </dl>
 
 	    {% if places %}
-        <h3>All Places subscribed</h3>
+        <h3>Places Subscribed</h3>
 	     {% for place in places %}
 	        <div>
 	            <a href="/view_one_place?placeId={{ place['_id'] }}"> <h3>{{ place['name'] }}</h3></a>
@@ -35,7 +35,7 @@
 	    {% endfor %}
 
         {% if articles %}
-        <h3>All reviews posted</h3>
+        <h3>Reviews Posted</h3>
             {% for article in articles %}
             <div>
                 <p>{{ article['comment'] }}</p>
