@@ -27,6 +27,7 @@ def index():
     times = None
     thisuser = None
     allplaces = None
+    allarticles = None
 
     if id_token:
         try:

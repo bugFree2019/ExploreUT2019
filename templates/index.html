@@ -34,18 +34,19 @@
 	        </div>
 	    {% endfor %}
 
+        {% if articles %}
+        <h3>All reviews posted</h3>
+            {% for article in articles %}
+            <div>
+                <p>{{ article['comment'] }}</p>
+            </div>
+            {% endfor %}
+        {% endif %}
+
 	    {% elif error_message %}
 		    <p>Error: {{ error_message }}</p>
 		{% endif %}
-    {% endif %}
 
-    {% if articles %}
-    <h3>All reviews posted</h3>
-        {% for article in articles %}
-        <div>
-            <p>{{ article['comment'] }}</p>
-        </div>
-        {% endfor %}
     {% endif %}
   </div>
 {% endblock %}
