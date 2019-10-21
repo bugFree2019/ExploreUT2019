@@ -24,12 +24,12 @@
 
     <div>
         <form method="POST" action="/subscribe/{{ place['_id'] }}">
-                <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
+            <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
         </form>
         <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
             <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
         </form>
-        <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+            <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
     </div>
 
     <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>
@@ -53,7 +53,7 @@
       height: 100%;
       width: auto;
     }
-
+</style>
     {% if place['pics'] %}
         {% for pic in place['pics'] %}
         <div class="gallery">
@@ -61,8 +61,9 @@
         </div>
         {% endfor %}
     {% endif %}
-    {% endblock %}
+{% endblock %}
 
+{% block reviews %}
     <br/>
     <br/>
     <br/>
@@ -74,8 +75,7 @@
     <br/>
     <br/>
     <br/>
-
-    {% block reviews %}
+    
     <div>
     <h5>Comments about this place:</h5>
     {% if place['reviews'] %}
@@ -86,9 +86,4 @@
         </ul>
     {% endif %}
     </div>
-    {% endblock%}
-
-    {% endfor %}
-{% endif %}
-</div>
 {% endblock%}
