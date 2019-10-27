@@ -242,7 +242,7 @@ def get_user_id_from_email(db, user_email):
     :return: a string of the id of the user with given email
     """
     user = db.user.find_one({"email": user_email})
-    return user['_id']
+    return str(user['_id'])
 
 
 def create_article(db, data):
@@ -281,7 +281,7 @@ def update_article_by_id(db, old_article_id, new_article):
     Update an old article in the database with a new one (overwriting each field)
     :param db: a MongoClient that connects to a database through a particular URL
     :param old_article_id: a string with the old article id we want to update
-    :param new_article:  an article with all the new fields we want
+    :param new_article:  an article with all the new fields we wantg
     :return: None
     """
     db.article.update_one({'_id': old_article_id}, {'$set': {'place_id': new_article.place_id,
