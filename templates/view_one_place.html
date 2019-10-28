@@ -29,7 +29,7 @@
         <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
             <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
         </form>
-            <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?placeId={{ place['_id'] }}';">Add Report</button>
+            <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?place_id={{ place['_id'] }}';">Add Report</button>
     </div>
 
     <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>
@@ -75,7 +75,7 @@
     <br/>
     <br/>
     <br/>
-    
+
     <div>
     <h5>Comments about this place:</h5>
     {% if place['reviews'] %}

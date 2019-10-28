@@ -78,13 +78,13 @@ def search():
 @app.route('/subscribe/<place_id>', methods=['POST'])
 def subscribe(place_id):
     subscribe_helper(place_id, True)
-    return redirect(url_for('.view_one_place', placeId=place_id))
+    return redirect(url_for('.view_one_place', place_id=place_id))
 
 
 @app.route('/unsubscribe/<place_id>', methods=['POST'])
 def unsubscribe(place_id):
     subscribe_helper(place_id, False)
-    return redirect(url_for('.view_one_place', placeId=place_id))
+    return redirect(url_for('.view_one_place', place_id=place_id))
 
 
 def subscribe_helper(place_id, is_subscribe):
@@ -103,7 +103,7 @@ def view_one_place():
         # subscribe_status: -1 denotes not logged in, 0 denotes not not subscribed 1 denotes subscribed
         subscribe_status = -1
 
-        place_id = request.args.get('placeId')
+        place_id = request.args.get('place_id')
         if not place_id:
             return render_template('view_one_place.html', place=[], subscribe_status=subscribe_status, error_message=None)
 
@@ -149,7 +149,7 @@ def add_place():
 
         place_id = create_place(db, data)
 
-        return redirect(url_for('.view_one_place', placeId=place_id))
+        return redirect(url_for('.view_one_place', place_id=place_id))
 
     return render_template("add_new_place.html", action="Add", place={})
 
@@ -158,7 +158,7 @@ def add_place():
 def add_report():
     place_id = ""
     if request.method == 'GET':
-        place_id = request.args.get('placeId')
+        place_id = request.args.get('place_id')
         place_name = get_place_name_by_id(db, ObjectId(place_id))
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
@@ -172,7 +172,7 @@ def add_report():
         data['user_id'] = get_user_id_from_email(db, data['user_id'])
         data['create_date'] = time.asctime(time.localtime(time.time()))
         create_article(db, data)
-        return redirect(url_for('.view_one_place', placeId=data['place_id']))
+        return redirect(url_for('.view_one_place', place_id=data['place_id']))
 
     return render_template("add_new_report.html", action="Add", place_name=place_name, place_id=place_id, article={})
 
