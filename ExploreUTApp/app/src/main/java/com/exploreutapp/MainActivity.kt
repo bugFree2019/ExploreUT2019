@@ -3,6 +3,7 @@ package com.exploreutapp
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -53,8 +54,10 @@ interface ExploreUTService {
 }
 
 class MainActivity : AppCompatActivity() {
+    // handle the response with an arraylist of places
     private fun handleResponse(result: ArrayList<Place>) {
         try {
+            val textView = findViewById<TextView>(R.id.textView)
             for(r in result) {
                 Log.d("myTag", r._id.toString())
                 Log.d("myTag", r.name)
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("myTag", r.tags.toString())
                 Log.d("myTag", r.address)
                 Log.d("myTag", r.intro)
+                textView.text = r.name
             }
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -81,15 +85,14 @@ class MainActivity : AppCompatActivity() {
 
         // load the image into an image view through Picasso
         val imageView = findViewById<ImageView>(R.id.imageView)
-        Picasso.get().load("http://10.0.2.2:8080/place_image/5db8cdbd6e730da24966a327/0.jpg").resize(360, 640).into(imageView)
+        Picasso.get().load("http://10.0.2.2:8080/place_image/5db8cdbd6e730da24966a327/0.jpg")
+            .resize(360, 640).into(imageView)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
+            setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
