@@ -6,7 +6,8 @@ from pymongo import MongoClient
 # connect to the remote database instance
 DB_URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
 client = MongoClient(DB_URL)
-db = client['utdb']
+# this db is for app testing, eventually we have to change it back to 'utdb'
+db = client['utdb_app']
 
 
 # define place object for the data model
@@ -93,6 +94,17 @@ def read_places(db, condition):
             if isinstance(place['pics'][i], bytes):
                 place['pics'][i] = place['pics'][i].decode()
     return places
+
+
+def read_place_images(db, place_id):
+    """
+    Read from the database and return the images of a place with place_id
+    :param db: a MongoClient that connects to a database through a particular URL
+    :param place_id: an ObjectId identifying the place
+    :return: a list of images about the place
+    """
+    images = db.place.find_one({'_id': place_id}, {'pics': 1, '_id': 0})
+    return images['pics']
 
 
 # note that this update method overwrite all fields of a user

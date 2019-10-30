@@ -1,9 +1,11 @@
 import google.oauth2.id_token
 import base64
 import time
+import io
 
 from bson import ObjectId
-from flask import Flask, render_template, request, redirect, url_for
+from bson.json_util import dumps
+from flask import Flask, render_template, request, redirect, url_for, send_file, make_response, abort
 from google.auth.transport import requests
 from flask_googlemaps import GoogleMaps, Map
 from db import *
@@ -16,6 +18,14 @@ firebase_request_adapter = requests.Request()
 @app.route('/', methods=['GET'])
 def home_places():
     places = read_places(db, {})
+    # return json object to android app
+    user_agent = request.headers.get('User-Agent')
+    if 'android' in user_agent.lower():
+        # return a json serialization of the places and exclude images if the request comes from the android app
+        for place in places:
+            del place['pics']
+        response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
+        return response
     return render_template('home.html', places=places)
 
 
@@ -206,6 +216,28 @@ def my_map():
         ]
     )
     return render_template('map.html', mymap=mymap, sndmap=sndmap)
+
+
+@app.route('/place_image/<place_id>/<image_id>.jpg', methods=["GET"])
+def get_place_image(place_id, image_id):
+    """
+    This method return the image with specified place id and image id (list index)
+    Note that the extension of the file has to be jpg in this function
+    :param place_id: the place id where we want  to extract image from
+    :param image_id: the image index for the place
+    :return: a response with image_id th image about the place
+    """
+    image_id = int(image_id)
+    images = read_place_images(db, ObjectId(place_id))
+    if images and image_id >= 0 and image_id < len(images):
+        image = images[image_id]
+        byte_io = io.BytesIO(base64.decodebytes(image))
+        response = make_response(send_file(byte_io, mimetype='image/jpg'))
+        response.headers['Content-Transfer-Encoding'] = 'base64'
+        return response
+    else:
+        # return 404 not found if the image or place does not exist
+        abort(404)
 
 
 if __name__ == '__main__':
