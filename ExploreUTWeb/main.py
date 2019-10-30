@@ -21,11 +21,7 @@ def home_places():
     # return json object to android app
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        # return a json serialization of the places and exclude images if the request comes from the android app
-        for place in places:
-            del place['pics']
-        response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
-        return response
+        return json_response(places)
     return render_template('home.html', places=places)
 
 
@@ -74,12 +70,20 @@ def search():
     # get the query tag from the html form input
     tag = request.args.get('tag')
 
+    # get the user agent from the request
+    user_agent = request.headers.get('User-Agent')
+
     # return empty list if tag is None or null
     if not tag:
+        if 'android' in user_agent.lower():
+            return json_response(None)
         return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'tags': {'$regex': tag, '$options': 'i'}})
+
+    if 'android' in user_agent.lower():
+        return json_response(places)
 
     # send the search result to the front end html template
     return render_template('search.html', places=places, result_tag=tag)
@@ -238,6 +242,24 @@ def get_place_image(place_id, image_id):
     else:
         # return 404 not found if the image or place does not exist
         abort(404)
+
+
+def json_response(places):
+    """
+    return a json serialization of the place(s) and exclude images
+    :param places:
+    :return: a response of json form containing all the place(s)
+    """
+    # exclude the images
+    if isinstance(places, list):
+        for place in places:
+            del place['pics']
+    elif isinstance(places, Place):
+        del places['pics']
+
+    # serialize the places to json and return the response
+    response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
+    return response
 
 
 if __name__ == '__main__':
