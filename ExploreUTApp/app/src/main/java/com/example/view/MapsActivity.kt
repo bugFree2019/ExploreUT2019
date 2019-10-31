@@ -134,7 +134,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                             // Move camera
                             mMap!!.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                            mMap!!.animateCamera(CameraUpdateFactory.zoomTo(20f))
+                            mMap!!.animateCamera(CameraUpdateFactory.zoomTo(15f))
 
                         }
 
@@ -183,7 +183,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMarker = mMap.addMarker(markerOptions)
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                mMap.moveCamera(CameraUpdateFactory.zoomTo(20f))
+                mMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
 
             }
         }
