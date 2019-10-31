@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>{{ place['name'] }}</h1>
+    <h5>Tags:
+        {% for tag in place['tags'] %}
+            <a href="/search?tag={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+    </h5>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-9">
+            <h3>Introduction</h3>
+            <p>{{ place['intro'] }}</p>
+        </div>
+        <div class="col-3">
+            {% if place['pics'] %}
+                <img alt="sample" src="data:image/jpeg;base64,{{ place['pics'][0] }}" width="125">
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+        <form method="POST" action="/subscribe/{{ place['_id'] }}">
+            <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>
+        </form>
+        <form method="POST" action="/unsubscribe/{{ place['_id'] }}">
+            <button id="unsubscribe" class="btn btn-outline-warning" hidden=true type="submit">Unsubscribe</button>
+        </form>
+            <button id="add_report" class="btn btn-outline-primary" name= "add_report" hidden=true type="button" onclick="window.location.href = '/create_new_report?place_id={{ place['_id'] }}';">Add Report</button>
+    </div>
+
+    <p id="subscribe_status" hidden=true>{{ subscribe_status }}</p>
+
+{% endblock %}
+
+{% block gallery %}
+<style>
+    div.gallery {
+      margin: 5px;
+      border: 1px solid #ccc;
+      float: left;
+      height: 250px;
+    }
+
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+
+    div.gallery img {
+      height: 100%;
+      width: auto;
+    }
+</style>
+    {% if place['pics'] %}
+        {% for pic in place['pics'] %}
+        <div class="gallery">
+            <img alt="sample" src="data:image/jpeg;base64,{{ pic }}">
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block reviews %}
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div>
+    <h5>Comments about this place:</h5>
+    {% if place['reviews'] %}
+        <ul>
+        {% for review in place['reviews'] %}
+            <li><p>{{ review }}</p></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+{% endblock%}
