@@ -27,7 +27,7 @@
         android:id="@+id/action_view"
         android:enabled="true"
         android:title="Street View"
-        android:icon="@drawable/ic_streetview_black_24dp"
+        android:icon="@drawable/ic_street_view_black_24dp"
         app:showAsAction="ifRoom"/>
 
 </menu>

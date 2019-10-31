@@ -84,14 +84,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Looper.myLooper()
             )
         }
-        bottom_navigation_view.setOnNavigationItemReselectedListener { item->
+        bottom_navigation_view.setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
                 R.id.action_fitness -> nearByPlace("fitness")
                 R.id.action_library -> nearByPlace("library")
                 R.id.action_school -> nearByPlace("school")
                 R.id.action_view -> nearByPlace("street view")
             }
-
+            true
         }
     }
 
@@ -134,7 +134,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                             // Move camera
                             mMap!!.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                            mMap!!.animateCamera(CameraUpdateFactory.zoomTo(15f))
+                            mMap!!.animateCamera(CameraUpdateFactory.zoomTo(20f))
 
                         }
 
@@ -143,7 +143,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 override fun onFailure (call: Call<MyPlaces>?, t: Throwable?) {
-                    Toast.makeText(baseContext,""+t!!.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext,""+t!!.message, Toast.LENGTH_LONG).show()
                 }
             })
 
@@ -154,9 +154,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val googlePlaceUrl = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
         googlePlaceUrl.append("?location=$latitude,$longitude")
-        googlePlaceUrl.append("&radius=10000")
+        googlePlaceUrl.append("&radius=1000")
         googlePlaceUrl.append("&type=$typePlace")
-        googlePlaceUrl.append("&key=AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw")
+        googlePlaceUrl.append("&key=AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E")
 
         Log.d("URL_DEBUG",googlePlaceUrl.toString())
         return googlePlaceUrl.toString()
@@ -183,7 +183,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMarker = mMap.addMarker(markerOptions)
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                mMap.moveCamera(CameraUpdateFactory.zoomTo(11f))
+                mMap.moveCamera(CameraUpdateFactory.zoomTo(20f))
 
             }
         }
@@ -240,7 +240,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
                     }
                 } else {
-                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_LONG).show()
                 }
             }
         }
