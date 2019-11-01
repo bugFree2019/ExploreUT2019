@@ -254,9 +254,10 @@ def json_response(places):
     if isinstance(places, list):
         for place in places:
             del place['pics']
+            place['_id'] = str(place['_id'])
     elif isinstance(places, Place):
         del places['pics']
-
+        places['_id'] = places['_id']
     # serialize the places to json and return the response
     response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
     return response
