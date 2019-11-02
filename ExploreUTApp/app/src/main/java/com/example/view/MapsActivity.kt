@@ -2,6 +2,7 @@ package com.example.view
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Location
@@ -269,6 +270,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         else
             mMap.isMyLocationEnabled = true
+
+        // make event clickable on markers
+
+        mMap!!.setOnMarkerClickListener { marker ->
+            // when user select marker, just get result of place assign to static variable
+            Common.currentResult = currentPlace!!.results!![Integer.parseInt(marker.snippet)]
+
+            // start new activity
+            startActivity(Intent(this@MapsActivity, ViewPlace::class.java))
+            true
+        }
 
         mMap.uiSettings.isZoomControlsEnabled = true
     }
