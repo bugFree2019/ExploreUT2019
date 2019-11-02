@@ -167,7 +167,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun buildLocationCallBack() {
         locationCallback = object: LocationCallback() {
             override fun onLocationResult(p0: LocationResult?) {
-                mLastLocation = p0!!.locations[(p0.locations.size-1)]
+                mLastLocation = p0!!.locations[p0.locations.size-1]
 
                 if(mMarker != null) {
                     mMarker!!.remove()
@@ -190,7 +190,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun buildLocationRequest() {
+     private fun buildLocationRequest() {
         locationRequest = LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 5000
@@ -203,20 +203,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
                 )
-            } else {
-                ActivityCompat.requestPermissions(
-                    this, arrayOf(
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ), MY_PERMISSION_CODE
-                )
-            }
+            } else ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                ), MY_PERMISSION_CODE
+            )
             return false
-        } else {
+        } else
             return true
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -258,10 +257,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in UT and move the camera
-//        val ut = LatLng(30.285, -97.734)
-//        mMap.addMarker(MarkerOptions().position(ut).title("Marker in UT"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(ut))
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
