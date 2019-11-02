@@ -108,7 +108,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     currentPlace = response!!.body()!!
 
                     if(response.isSuccessful) {
-                        for (i in 0 until response!!.body()!!.results!!.size) {
+                        for (i in 0 until response.body()!!.results!!.size) {
                             val markerOptions = MarkerOptions()
                             val googlePlace = response.body()!!.results!![i]
                             val lat = googlePlace.geometry!!.location!!.lat
@@ -131,11 +131,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             }
                             markerOptions.snippet(i.toString()) // Assign index for Marker
                             // Add marker to map
-                            mMap!!.addMarker(markerOptions)
+                            mMap.addMarker(markerOptions)
 
                             // Move camera
-                            mMap!!.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                            mMap!!.animateCamera(CameraUpdateFactory.zoomTo(15f))
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+                            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
 
                         }
 
@@ -200,16 +200,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun checkLocationPermission(): Boolean {
         if(checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(
-                        android.Manifest.permission.ACCESS_FINE_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION
                     ), MY_PERMISSION_CODE
                 )
             } else {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(
-                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                        Manifest.permission.ACCESS_COARSE_LOCATION
                     ), MY_PERMISSION_CODE
                 )
             }
@@ -273,7 +273,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // make event clickable on markers
 
-        mMap!!.setOnMarkerClickListener { marker ->
+        mMap.setOnMarkerClickListener { marker ->
             // when user select marker, just get result of place assign to static variable
             Common.currentResult = currentPlace!!.results!![Integer.parseInt(marker.snippet)]
 

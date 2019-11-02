@@ -40,7 +40,7 @@ class ViewPlace : AppCompatActivity() {
         }
 
         // load photo of place
-        if (Common.currentResult!!.photos != null && Common.currentResult!!.photos!!.size > 0) {
+        if (Common.currentResult!!.photos != null && Common.currentResult!!.photos!!.isNotEmpty()) {
             Picasso.get()
                 .load(getPhotoOfPlace(Common.currentResult!!.photos!![0].photo_reference!!,1000))
                 .into(photo)
