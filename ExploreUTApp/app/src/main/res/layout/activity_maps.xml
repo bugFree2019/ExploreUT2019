@@ -22,12 +22,12 @@
         app:itemTextColor="@drawable/nav_selector"
         app:menu="@menu/bottom_menu" />
 
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/common_google_signin_btn_text_light_normal"
-        android:inputType="text" />
+<!--    <SearchView-->
+<!--        android:id="@+id/search_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/common_google_signin_btn_text_light_normal"-->
+<!--        android:inputType="text" />-->
 
 
 </RelativeLayout>
