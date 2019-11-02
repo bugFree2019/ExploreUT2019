@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import com.example.view.Common.Common
@@ -14,7 +13,6 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Url
 
 
 class ViewPlace : AppCompatActivity() {
@@ -49,11 +47,8 @@ class ViewPlace : AppCompatActivity() {
         }
 
         // load rating
-        if (Common.currentResult!!.rating != null) {
-            rating_bar.rating = Common.currentResult!!.rating.toFloat()
-        } else {
-            rating_bar.visibility = View.GONE
-        }
+        if (Common.currentResult!!.rating != null) rating_bar.rating = Common.currentResult!!.rating.toFloat()
+        else rating_bar.visibility = View.GONE
 
         // load open hours
         if (Common.currentResult!!.opening_hour != null) {
@@ -66,11 +61,11 @@ class ViewPlace : AppCompatActivity() {
         mService.getDetailPlace(getPlaceDetailUrl(Common.currentResult!!.place_id!!))
             .enqueue(object: retrofit2.Callback<PlaceDetail> {
                 override fun onFailure(call: Call<PlaceDetail>, t: Throwable) {
-                    Toast.makeText(baseContext, "" + t!!.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, "" + t.message, Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(call: Call<PlaceDetail>, response: Response<PlaceDetail>) {
-                    mPlace = response!!.body()
+                    mPlace = response.body()
 
                     place_address.text = mPlace!!.result!!.formatted_address
                     place_name.text = mPlace!!.result!!.name
