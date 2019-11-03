@@ -4,11 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import com.example.view.Common.Common
-import com.example.view.Model.PlaceDetail
-import com.example.view.Remote.IGoogleAPIService
+import com.example.view.common.Common
+import com.example.view.model.PlaceDetail
+import com.example.view.remote.IExploreUTService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import retrofit2.Call
@@ -17,7 +16,7 @@ import retrofit2.Response
 
 class ViewPlace : AppCompatActivity() {
 
-    internal lateinit var  mService:IGoogleAPIService
+    internal lateinit var  mService:IExploreUTService
     var mPlace:PlaceDetail?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +24,7 @@ class ViewPlace : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         // Init service
-        mService = Common.googleApiService
+        mService = Common.exploreUtService
 
         // Set empty for all text view
 
@@ -58,7 +57,7 @@ class ViewPlace : AppCompatActivity() {
 //        }
 
         // use service to fetch address and name
-        mService.getDetailPlace(getPlaceDetailUrl(Common.currentResult!!.place_id!!))
+        mService.getDetailPlace(getPlaceDetailUrl(Common.currentResult!!._id!!))
             .enqueue(object: retrofit2.Callback<PlaceDetail> {
                 override fun onFailure(call: Call<PlaceDetail>, t: Throwable) {
                     Toast.makeText(baseContext, "" + t.message, Toast.LENGTH_LONG).show()
@@ -67,17 +66,17 @@ class ViewPlace : AppCompatActivity() {
                 override fun onResponse(call: Call<PlaceDetail>, response: Response<PlaceDetail>) {
                     mPlace = response.body()
 
-                    place_address.text = mPlace!!.result!!.formatted_address
+                    place_address.text = mPlace!!.result!!.address
                     place_name.text = mPlace!!.result!!.name
 
                 }
             })
     }
 
-    private fun getPlaceDetailUrl(place_id: String): String {
+    private fun getPlaceDetailUrl(_id: String): String {
 
         val url = StringBuilder ("https://maps.googleapis.com/maps/api/place/details/json")
-        url.append("?place_id=$place_id")
+        url.append("?_id=$_id")
         url.append("&key=AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E")
         return url.toString()
     }

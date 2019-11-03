@@ -1,7 +1,7 @@
-package com.example.view.Remote
+package com.example.view.remote
 
-import com.example.view.Model.MyPlaces
-import com.example.view.Model.PlaceDetail
+import com.example.view.model.MyPlaces
+import com.example.view.model.PlaceDetail
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url

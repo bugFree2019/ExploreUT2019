@@ -1,4 +1,4 @@
-package com.example.view.Remote
+package com.example.view.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

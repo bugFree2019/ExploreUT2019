@@ -1,4 +1,4 @@
-package com.example.view.Model
+package com.example.view.model
 
 class Location {
     var lat:Double=0.0

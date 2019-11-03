@@ -1,9 +1,7 @@
 package com.example.view
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
@@ -14,11 +12,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
-import com.example.view.Common.Common
-import com.example.view.Model.MyPlaces
-import com.example.view.Remote.IGoogleAPIService
+import com.example.view.common.Common
+import com.example.view.model.MyPlaces
+import com.example.view.remote.IExploreUTService
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 
@@ -45,7 +42,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         private const val MY_PERMISSION_CODE: Int = 1000
     }
 
-    lateinit var mService: IGoogleAPIService
+    lateinit var mService: IExploreUTService
 
     internal lateinit var currentPlace: MyPlaces
 
@@ -59,7 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         //Init Service
-        mService = Common.googleApiService
+        mService = Common.exploreUtService
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
@@ -110,10 +107,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if(response.isSuccessful) {
                         for (i in 0 until response.body()!!.results!!.size) {
                             val markerOptions = MarkerOptions()
-                            val googlePlace = response.body()!!.results!![i]
-                            val lat = googlePlace.geometry!!.location!!.lat
-                            val lng = googlePlace.geometry!!.location!!.lng
-                            val placeName = googlePlace.name
+                            val utPlace = response.body()!!.results!![i]
+                            val lat = utPlace.location!!.lat
+                            val lng = utPlace.location!!.lng
+                            val placeName = utPlace.name
                             val latLng = LatLng(lat,lng)
 
                             markerOptions.position(latLng)
@@ -153,14 +150,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun getUrl(latitude: Double, longitude: Double, typePlace: String): String {
 
-        val googlePlaceUrl = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
-        googlePlaceUrl.append("?location=$latitude,$longitude")
-        googlePlaceUrl.append("&radius=1000")
-        googlePlaceUrl.append("&type=$typePlace")
-        googlePlaceUrl.append("&key=AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E")
+        val webEndUrl = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
+        webEndUrl.append("?location=$latitude,$longitude")
+        webEndUrl.append("&radius=1000")
+        webEndUrl.append("&type=$typePlace")
+        webEndUrl.append("&key=AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E")
 
-        Log.d("URL_DEBUG",googlePlaceUrl.toString())
-        return googlePlaceUrl.toString()
+        Log.d("URL_DEBUG",webEndUrl.toString())
+        return webEndUrl.toString()
     }
 
     private fun buildLocationCallBack() {
