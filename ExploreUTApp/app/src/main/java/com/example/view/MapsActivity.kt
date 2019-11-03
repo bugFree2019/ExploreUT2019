@@ -161,7 +161,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         Log.d("URL_DEBUG",googlePlaceUrl.toString())
         return googlePlaceUrl.toString()
-
     }
 
     private fun buildLocationCallBack() {

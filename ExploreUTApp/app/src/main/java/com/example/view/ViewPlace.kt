@@ -46,16 +46,16 @@ class ViewPlace : AppCompatActivity() {
                 .into(photo)
         }
 
-        // load rating
-        if (Common.currentResult!!.rating != null) rating_bar.rating = Common.currentResult!!.rating.toFloat()
-        else rating_bar.visibility = View.GONE
+//        // load rating
+//        if (Common.currentResult!!.rating != null) rating_bar.rating = Common.currentResult!!.rating.toFloat()
+//        else rating_bar.visibility = View.GONE
 
-        // load open hours
-        if (Common.currentResult!!.opening_hour != null) {
-            place_open_hour.text = "Open now: " + Common.currentResult!!.opening_hour!!.open_now
-        } else {
-            place_open_hour.visibility = View.GONE
-        }
+//        // load open hours
+//        if (Common.currentResult!!.opening_hour != null) {
+//            place_open_hour.text = "Open now: " + Common.currentResult!!.opening_hour!!.open_now
+//        } else {
+//            place_open_hour.visibility = View.GONE
+//        }
 
         // use service to fetch address and name
         mService.getDetailPlace(getPlaceDetailUrl(Common.currentResult!!.place_id!!))
