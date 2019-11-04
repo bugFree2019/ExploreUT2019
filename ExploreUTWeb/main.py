@@ -148,6 +148,8 @@ def view_one_place():
 def view_places():
     condition = request.args.get('condition')  # in the future, condition will be nearby location
     places = read_places(db, condition)
+    if 'android' in user_agent.lower():
+        return json_response(places)
     return render_template('view_places.html', places=places)
 
 
@@ -261,6 +263,16 @@ def json_response(places):
     # serialize the places to json and return the response
     response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
     return response
+
+
+@app.route('/posttest', methods=['POST'])
+def post_test():
+    j = request.get_json()
+    print(j)
+    print(type(j))
+    print(j[0])
+    print(j[1])
+    return dumps(j)
 
 
 if __name__ == '__main__':

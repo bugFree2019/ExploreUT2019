@@ -11,17 +11,17 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.ui.AppBarConfiguration
 import com.squareup.picasso.Picasso
-import java.lang.Thread.sleep
 
 
 class SearchActivity : AppCompatActivity() {
@@ -35,6 +35,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     // handle the response with an arraylist of places
     private fun handleResponse(result: ArrayList<Place>) {
@@ -54,6 +55,8 @@ class SearchActivity : AppCompatActivity() {
                 adapter = viewAdapter
 
             }
+
+            // log the received objects to the console
             for(r in result) {
                 Log.d("myTag", r._id)
                 Log.d("myTag", r.name)
@@ -69,6 +72,10 @@ class SearchActivity : AppCompatActivity() {
         Log.d("myTag", "Done")
     }
 
+    private fun handleResponseTest(result: ArrayList<Place>) {
+
+    }
+
     private fun handleError(error: Throwable) {
         Log.d("myTag", error.localizedMessage!!)
     }
@@ -77,25 +84,42 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.search_container)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(), drawerLayout
+        )
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+
         // Verify the action and get the query
-        Log.d("myTag", "search activity")
         if (Intent.ACTION_SEARCH == intent.action) {
             intent.getStringExtra(SearchManager.QUERY)?.also { query ->
-                Log.d("myTag", query)
                 search(query)
             }
         }
 
+        val tags = ArrayList<String>()
+        tags.add("tags")
+        val place = Place("001", "name", "theme",tags, "address", "intro")
+        val place2 = Place("002", "name", "theme",tags, "address", "intro")
+        val ps = ArrayList<Place>()
+        ps.add(place)
+        ps.add(place2)
+        postTest(ps)
+    }
 
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
 
-//        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed();
+        return true;
     }
 
     private fun search(tag: String) {
@@ -103,6 +127,13 @@ class SearchActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
+    }
+
+    private fun postTest(place: ArrayList<Place>) {
+        var disposable: Disposable? = exploreUTServe.postTest(place)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponseTest, this::handleError)
     }
 }
 
@@ -133,8 +164,7 @@ internal class MyAdapter(private val places: ArrayList<Place>) :
         // - replace the contents of the view with that element
         holder.personName.setText(places[position].name)
         holder.personAge.setText(places[position].tags[0])
-        var id = "5db8cdbd6e730da24966a327"
-        id = places[position]._id
+        var id = places[position]._id
         val imageId = 0
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
                     .resize(360, 640).into(holder.personPhoto)
