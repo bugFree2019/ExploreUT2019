@@ -1,4 +1,4 @@
-package com.exploreutapp.ui.send
+package com.exploreutapp.ui.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.R
 
-class SendFragment : Fragment() {
+class AddFragment : Fragment() {
 
-    private lateinit var sendViewModel: SendViewModel
+    private lateinit var addViewModel: AddViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sendViewModel =
-            ViewModelProviders.of(this).get(SendViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_send, container, false)
-        val textView: TextView = root.findViewById(R.id.text_send)
-        sendViewModel.text.observe(this, Observer {
+        addViewModel =
+            ViewModelProviders.of(this).get(AddViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_add, container, false)
+        val textView: TextView = root.findViewById(R.id.text_add)
+        addViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

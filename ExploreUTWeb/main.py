@@ -237,7 +237,8 @@ def get_place_image(place_id, image_id):
     images = read_place_images(db, ObjectId(place_id))
     if images and image_id >= 0 and image_id < len(images):
         image = images[image_id]
-        byte_io = io.BytesIO(base64.decodebytes(image))
+        # byte_io = io.BytesIO(base64.decodebytes(image))
+        byte_io = io.BytesIO(bytes(image))
         response = make_response(send_file(byte_io, mimetype='image/jpg'))
         response.headers['Content-Transfer-Encoding'] = 'base64'
         return response
@@ -263,16 +264,6 @@ def json_response(places):
     # serialize the places to json and return the response
     response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
     return response
-
-
-@app.route('/posttest', methods=['POST'])
-def post_test():
-    j = request.get_json()
-    print(j)
-    print(type(j))
-    print(j[0])
-    print(j[1])
-    return dumps(j)
 
 
 if __name__ == '__main__':

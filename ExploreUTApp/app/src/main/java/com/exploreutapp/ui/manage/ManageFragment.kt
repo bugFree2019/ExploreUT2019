@@ -1,4 +1,4 @@
-package com.exploreutapp.ui.slideshow
+package com.exploreutapp.ui.manage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.R
 
-class SlideshowFragment : Fragment() {
+class ManageFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var manageViewModel: ManageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(this, Observer {
+        manageViewModel =
+            ViewModelProviders.of(this).get(ManageViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_manage, container, false)
+        val textView: TextView = root.findViewById(R.id.text_manage)
+        manageViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

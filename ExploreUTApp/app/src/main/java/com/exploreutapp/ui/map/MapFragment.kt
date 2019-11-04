@@ -1,4 +1,4 @@
-package com.exploreutapp.ui.share
+package com.exploreutapp.ui.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.R
 
-class ShareFragment : Fragment() {
+class MapFragment : Fragment() {
 
-    private lateinit var shareViewModel: ShareViewModel
+    private lateinit var mapViewModel: MapViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_share, container, false)
-        val textView: TextView = root.findViewById(R.id.text_share)
-        shareViewModel.text.observe(this, Observer {
+        mapViewModel =
+            ViewModelProviders.of(this).get(MapViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_map, container, false)
+        val textView: TextView = root.findViewById(R.id.text_map)
+        mapViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
