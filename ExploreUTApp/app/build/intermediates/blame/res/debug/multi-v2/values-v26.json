@@ -4,7 +4,26 @@
             "outputFile": "/Users/changpengtong/Team6-Project/ExploreUTApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/Users/changpengtong/.gradle/caches/transforms-2/files-2.1/0c59e42970579c9c36ddd604ba39521e/appcompat-1.1.0/res/values-v26/values-v26.xml",
+                    "source": "/Users/changpengtong/.gradle/caches/transforms-2/files-2.1/c0687c94ea50646f42fece5d1b79cebc/firebase-ui-auth-6.0.2/res/values-v26/values-v26.xml",
+                    "from": {
+                        "startLines": "2,6,10,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,253,438,631",
+                        "endLines": "5,9,13,17",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "248,433,626,806"
+                    },
+                    "to": {
+                        "startLines": "17,21,25,29",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "989,1187,1372,1565",
+                        "endLines": "20,24,28,32",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "1182,1367,1560,1740"
+                    }
+                },
+                {
+                    "source": "/Users/changpengtong/.gradle/caches/transforms-2/files-2.1/a58f655ff4691d6ffebb2706ae10f33c/appcompat-1.1.0/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

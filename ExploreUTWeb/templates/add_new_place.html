@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{action}} place</h3>
+
+  <script>
+    function form_submit(){
+      if(validInput()){
+          document.form_place.submit();
+      }
+  };
+
+  function validInput(){
+      //to be added: input check
+      var files = document.getElementById('pic_files').files;
+      if(files.length==0) {
+          alert("haven't uploaded picture")
+          return false;
+      }
+      return true;
+  }
+
+  function showPreview() {
+    var preview = document.querySelector('#preview');
+    var files = document.querySelector('input[type=file]').files;
+
+    function filePreview(file) {
+
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+        var image = new Image();
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        preview.appendChild( image );
+      }, false);
+
+        reader.readAsDataURL(file);
+    }
+
+    }
+    if (files) {
+        [].forEach.call(files, filePreview);
+    }
+  }
+
+
+  </script>
+
+<form method="POST" enctype="multipart/form-data" name="form_place">
+
+  <div class="form-group">
+    <label for="name">Place Name</label>
+    <input type="text" name="name" id="name" value="{{place.name}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="theme">Theme</label>
+      <select name="theme">
+          <option value="Museum">Museum</option>
+          <option value="Statue">Statue</option>
+          <option value="Stadium">Stadium</option>
+          <option value="Outdoors">Outdoors</option>
+          <option value="Buildings">Buildings</option>
+          <option value="Monuments">Monuments</option>
+          <option value="Libraries">Libraries</option>
+      </select>
+  </div>
+
+   <div class="form-group">
+    <label for="tags">Tag</label>
+      <select multiple name="tags">
+          <option value="Best Scenic View">Best Scenic Views</option>
+          <option value="Best Dating Place">Best Dating Places</option>
+          <option value="Most Famous Place">Most Famous Place</option>
+          <option value="Landmark">Landmark</option>
+          <option value="Study">Study Place</option>
+      </select>
+  </div>
+
+   <div class="form-group">
+       <label for="address">Place Address</label>
+       <input type="text" name="address" id="address" value="{{place.address}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+      <label for="intro">Place Introduction</label>
+      <textarea name="intro" id="intro" class="form-control">{{place.intro}}</textarea>
+  </div>
+
+
+  <div class="form-group">
+      <label for="pic_files">Images</label>
+      <input type="file" name="pic_files" id="pic_files" class="form-control" onchange="showPreview()" multiple/>
+  </div>
+
+<div id="preview"></div>
+
+    <button type="button" class="btn btn-success" onclick="form_submit()">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>
+
+{% endblock %}
+{# [END form] #}
