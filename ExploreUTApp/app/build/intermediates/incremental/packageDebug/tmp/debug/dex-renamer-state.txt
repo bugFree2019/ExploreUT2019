@@ -1,0 +1,4 @@
+#Sun Nov 03 22:17:23 CST 2019
+base.0=/Users/changpengtong/Team6-Project/ExploreUTApp/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
