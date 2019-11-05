@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#cc5500"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/contact_form_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Create New Report"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="26sp"
+            android:typeface="serif" />
+
+        <EditText
+            android:id="@+id/report_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <EditText
+            android:id="@+id/report_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:breakStrategy="balanced"
+            android:fitsSystemWindows="true"
+            android:gravity="top"
+            android:hint="Comment"
+            android:inputType="textMultiLine"
+            android:padding="5dp"
+            android:singleLine="false"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="130sp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_gallery"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|fill_vertical"
+                    android:onClick="getImageFromGallery"
+                    android:text="Get Image from gallery"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/button_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|fill_vertical"
+                    android:onClick="getImageFromCamera"
+                    android:text="camera"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="4dp"
+            android:onClick="reset"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="Reset"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="4dp"
+            android:onClick="postData"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="SUBMIT"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

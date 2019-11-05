@@ -4,7 +4,24 @@
             "outputFile": "C:\\Users\\Ruei-Bang\\Documents\\Team6-Project\\ExploreUTApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\86f0106df4e02c6e19eeadbbeded03c4\\material-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\a672f6b75ce9f69399f22d8458d08248\\imagepicker-2.2.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,101",
+                        "endColumns": "45,44",
+                        "endOffsets": "96,141"
+                    },
+                    "to": {
+                        "startLines": "19,20",
+                        "startColumns": "4,4",
+                        "startOffsets": "1173,1219",
+                        "endColumns": "45,44",
+                        "endOffsets": "1214,1259"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\b2869cfb54b6c62249691e80e7f3958a\\material-1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -14,16 +31,16 @@
                         "endOffsets": "110,180,251,323,381,439,548,612,675,847"
                     },
                     "to": {
-                        "startLines": "10,11,12,13,14,15,16,18,19,20",
+                        "startLines": "10,11,12,13,14,15,16,18,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "611,671,741,812,884,942,1000,1109,1173,1236",
-                        "endLines": "10,11,12,13,14,15,17,18,19,23",
+                        "startOffsets": "611,671,741,812,884,942,1000,1109,1264,1327",
+                        "endLines": "10,11,12,13,14,15,17,18,21,25",
                         "endColumns": "59,69,70,71,57,57,10,63,62,10",
-                        "endOffsets": "666,736,807,879,937,995,1104,1168,1231,1403"
+                        "endOffsets": "666,736,807,879,937,995,1104,1168,1322,1494"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\a58f655ff4691d6ffebb2706ae10f33c\\appcompat-1.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\d31c928c7e7b5a908fd437ed85e5b75a\\appcompat-1.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -1,4 +1,0 @@
-#Sun Nov 03 21:52:49 CST 2019
-base.0=/Users/changpengtong/Team6-Project/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

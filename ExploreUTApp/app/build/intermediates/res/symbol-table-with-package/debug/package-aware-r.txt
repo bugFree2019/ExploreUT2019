@@ -43,6 +43,8 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array tag_array
+array theme_array
 attr action
 attr actionBarDivider
 attr actionBarItemBackground
@@ -735,6 +737,15 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color ef_black_alpha_50
+color ef_black_alpha_aa
+color ef_colorAccent
+color ef_colorPrimary
+color ef_colorPrimaryDark
+color ef_colorTextPrimary
+color ef_grey
+color ef_teal
+color ef_white
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -952,6 +963,19 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen ef_font_medium
+dimen ef_font_small
+dimen ef_height_snackbar
+dimen ef_item_padding
+dimen ef_margin_large
+dimen ef_margin_medium
+dimen ef_margin_small
+dimen ef_padding_medium
+dimen ef_padding_small
+dimen ef_spacing
+dimen ef_spacing_double
+dimen ef_spacing_half
+dimen ef_toolbar_elevation
 dimen fab_margin
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
@@ -1170,12 +1194,19 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable cursor_color
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ef_folder_placeholder
+drawable ef_ic_arrow_back
+drawable ef_ic_arrow_forward
+drawable ef_ic_camera_white
+drawable ef_ic_done_white
+drawable ef_image_placeholder
 drawable fui_ic_anonymous_white_24dp
 drawable fui_ic_check_circle_black_128dp
 drawable fui_ic_facebook_white_22dp
@@ -1303,6 +1334,9 @@ id alertTitle
 id all
 id always
 id anonymous_button
+id as_space
+id as_space_
+id as_space_2
 id async
 id auto
 id barrier
@@ -1320,12 +1354,17 @@ id btn_show_map
 id btn_sign_out
 id button
 id buttonPanel
+id button_camera
 id button_continue
 id button_create
 id button_done
+id button_gallery
+id button_loc
 id button_next
 id button_resend_email
+id button_reset
 id button_sign_in
+id button_submit
 id cancel_action
 id center
 id center_horizontal
@@ -1340,6 +1379,7 @@ id clip_vertical
 id collapseActionView
 id confirmation_code
 id confirmation_code_layout
+id contact_form_title
 id container
 id content
 id contentPanel
@@ -1364,6 +1404,11 @@ id disableHome
 id dynamic
 id edit_phone_number
 id edit_query
+id ef_imagepicker_fragment_placeholder
+id ef_item_file_type_indicator
+id ef_snackbar
+id ef_snackbar_btn_action
+id ef_snackbar_txt_bottom_caption
 id email
 id email_button
 id email_footer_tos_and_pp_text
@@ -1387,6 +1432,7 @@ id forever
 id fragment_phone
 id fragment_register_email
 id ghost_view
+id glide_custom_view_target_tag
 id gone
 id group_divider
 id groups
@@ -1403,11 +1449,14 @@ id icon_only
 id ifRoom
 id image
 id imageView
+id image_view
 id info
 id invisible
 id invisible_frame
 id italic
 id item_touch_helper_previous_elevation
+id label_tags
+id label_theme
 id labeled
 id largeLabel
 id left
@@ -1417,11 +1466,14 @@ id line3
 id listMode
 id list_item
 id logo
+id main
 id main_tos_and_pp
 id manage_container
 id map
 id masked
 id media_actions
+id menu_camera
+id menu_done
 id message
 id middle
 id mini
@@ -1469,10 +1521,14 @@ id place_name
 id place_photo
 id place_reviews
 id place_tag
+id progress_bar
 id progress_circular
 id progress_horizontal
 id radio
 id rating_bar
+id recyclerView
+id report_comment
+id report_title
 id resend_barrier
 id resend_code
 id right
@@ -1516,6 +1572,8 @@ id snackbar_text
 id snap
 id snapMargins
 id spacer
+id spinner_tags
+id spinner_theme
 id split_action_bar
 id spread
 id spread_inside
@@ -1548,8 +1606,11 @@ id text_add
 id text_gallery
 id text_home
 id text_input_password_toggle
+id text_intro
+id text_loc
 id text_manage
 id text_map
+id text_name
 id text_send
 id text_share
 id text_slideshow
@@ -1557,6 +1618,7 @@ id text_tools
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id textview
 id ticker
 id time
 id title
@@ -1575,11 +1637,15 @@ id transition_scene_layoutid_cache
 id transition_transform
 id trouble_signing_in
 id trouble_signing_in_possible_fixes
+id tv_empty_images
+id tv_name
+id tv_number
 id unchecked
 id uniform
 id unlabeled
 id up
 id useLogo
+id view_alpha
 id view_offset_helper
 id visible
 id welcome_back_email_link_body
@@ -1657,6 +1723,8 @@ layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout cardview
 layout content_main
+layout create_new_place
+layout create_new_report
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1672,6 +1740,12 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout ef_activity_image_picker
+layout ef_fragment_image_picker
+layout ef_imagepicker_item_folder
+layout ef_imagepicker_item_image
+layout ef_imagepicker_toolbar
+layout ef_imagepikcer_snackbar
 layout fragment_add
 layout fragment_gallery
 layout fragment_home
@@ -1729,6 +1803,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu activity_main_drawer
 menu bottom_menu
+menu ef_image_picker_menu_main
 menu main
 mipmap ic_launcher
 mipmap ic_launcher_round
@@ -1786,6 +1861,26 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string default_web_client_id
+string ef_camera
+string ef_content_desc_folder
+string ef_content_desc_image
+string ef_done
+string ef_error_create_image_file
+string ef_error_no_camera
+string ef_error_null_cursor
+string ef_gif
+string ef_ltitle_permission_denied
+string ef_msg_empty_images
+string ef_msg_limit_images
+string ef_msg_no_camera_permission
+string ef_msg_no_write_external_permission
+string ef_ok
+string ef_permission_write_external_rationale
+string ef_selected
+string ef_selected_with_limit
+string ef_title_folder
+string ef_title_select_image
+string ef_video
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string facebook_application_id
@@ -2483,6 +2578,9 @@ style Widget_MaterialProgressBar_ProgressBar_NoPadding
 style Widget_MaterialProgressBar_ProgressBar_Small
 style Widget_MaterialProgressBar_ProgressBar_Small_NoPadding
 style Widget_Support_CoordinatorLayout
+style ef_AppTheme
+style ef_BaseTheme
+style ef_CustomToolbarTheme
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -2577,4 +2675,6 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml image_picker_provider_paths
+xml network_security
 xml search

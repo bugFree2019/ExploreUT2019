@@ -186,14 +186,24 @@ def add_place():
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
         data['tags'] = request.form.getlist('tags')
-        image_files = request.files.getlist("pic_files")
+        image_file = request.files.get('pic_file')
         data['pics'] = []
-        for image in image_files:
-            data['pics'].append(base64.b64encode(image.read()))
+        location_str = data['location']
+        coordinates = location_str.split(" ")
+        lat = float(coordinates[0])
+        lng = float(coordinates[1])
+        location = {'lat': lat, 'lng': lng}
+        data['location'] = location
+
+        #print(type(image_file))
+        binary = base64.b64encode(image_file.read())
+        #print(type(binary))
+
+        data['pics'].append(binary)
 
         place_id = create_place(db, data)
 
-        return redirect(url_for('.view_one_place', place_id=place_id))
+        return redirect(url_for('.view_one_place', placeId=place_id))
 
     return render_template("add_new_place.html", action="Add", place={})
 
@@ -202,21 +212,22 @@ def add_place():
 def add_report():
     place_id = ""
     if request.method == 'GET':
-        place_id = request.args.get('place_id')
+        place_id = request.args.get('placeId')
         place_name = get_place_name_by_id(db, ObjectId(place_id))
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
         place = read_place(db, '_id', ObjectId(data['place_id']))
-        image_files = request.files.getlist("pic_files")
+        image_file = request.files.get('pic_file')
+        update_place_pics_by_id(db, data['place_id'], base64.b64encode(image_file.read()))
         # add this pic to the pics array of the place
-        for image in image_files:
-            update_place_pics_by_id(db,data['place_id'],base64.b64encode(image.read()))
+        #for image in image_files:
+        #    update_place_pics_by_id(db,data['place_id'],base64.b64encode(image.read()))
         # add the comment to the reviews array of the plac
         update_place_reviews_by_id(db,data['place_id'],data['comment'])
         data['user_id'] = get_user_id_from_email(db, data['user_id'])
         data['create_date'] = time.asctime(time.localtime(time.time()))
         create_article(db, data)
-        return redirect(url_for('.view_one_place', place_id=data['place_id']))
+        return redirect(url_for('.view_one_place', placeId=data['place_id']))
 
     return render_template("add_new_report.html", action="Add", place_name=place_name, place_id=place_id, article={})
 

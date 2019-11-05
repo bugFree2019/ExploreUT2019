@@ -6,7 +6,7 @@
 6    android:versionName="1.0" >
 7
 8    <uses-sdk
-9        android:minSdkVersion="16"
+9        android:minSdkVersion="25"
 9-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 10        android:targetSdkVersion="29" />
 10-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
@@ -20,491 +20,555 @@
 14    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 14-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:8:5-85
 14-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:8:22-82
-15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:5-67
-15-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:22-64
-16
-17    <dist:module dist:instant="true" />
-17-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:5-40
-17-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:18-37
-18
-19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-19-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:12:5-79
-19-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:12:22-76
-20
-21    <uses-feature
-21-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
-22        android:glEsVersion="0x00020000"
-22-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
-23        android:required="true" />
-23-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
-24
-25    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-25-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:5-68
-25-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:22-65
-26    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-26-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:26:5-82
-26-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:26:22-79
-27    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-27-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:26:5-110
-27-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:26:22-107
-28
-29    <application
-29-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:13:5-75:19
-30        android:name="androidx.multidex.MultiDexApplication"
-31        android:allowBackup="true"
-31-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:9-35
-32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-32-->[androidx.core:core:1.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\d249ff4919560ee555799da98ac9e05e\core-1.1.0\AndroidManifest.xml:24:18-86
-33        android:debuggable="true"
-34        android:icon="@mipmap/ic_launcher"
-34-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:9-43
-35        android:label="@string/app_name"
-35-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:16:9-41
-36        android:roundIcon="@mipmap/ic_launcher_round"
-36-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:17:9-54
-37        android:supportsRtl="true"
-37-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:18:9-35
-38        android:testOnly="true"
-39        android:theme="@style/AppTheme"
-39-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:19:9-40
-40        android:usesCleartextTraffic="true" >
-40-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:20:9-44
-41        <activity
-41-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:9-25:20
-42            android:name="com.exploreutapp.manage"
-42-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:19-41
-43            android:theme="@style/AppTheme.NoActionBar" >
-43-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:23:13-56
-44        </activity>
-45
-46        <meta-data
-46-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:27:9-29:47
-47            android:name="android.app.default_searchable"
-47-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:13-58
-48            android:value=".SearchActivity" />
-48-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:13-44
-49
-50        <activity
-50-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:9-40:20
-51            android:name="com.exploreutapp.MainActivity"
-51-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:32:13-41
-52            android:label="@string/app_name"
-52-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:33:13-45
-53            android:theme="@style/AppTheme.NoActionBar" >
-53-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:34:13-56
-54
-55            <!-- <intent-filter> -->
-56            <!-- <action android:name="android.intent.action.MAIN" /> -->
-57
-58
-59            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-60            <!-- </intent-filter> -->
-61        </activity>
-62        <activity android:name="com.exploreutapp.ViewPlace" />
-62-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:9-56
-62-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:19-44
-63        <!--
-64             The API key for Google Maps-based APIs is defined as a string resource.
-65             (See the file "res/values/google_maps_api.xml").
-66             Note that the API key is linked to the encryption key used to sign the APK.
-67             You need a different API key for each encryption key, including the release key that is used to
-68             sign the APK for publishing.
-69             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-70        -->
-71        <meta-data
-71-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:51:9-53:55
-72            android:name="com.google.android.geo.API_KEY"
-72-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:52:13-58
-73            android:value="@string/google_maps_key" />
-73-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:53:13-52
-74
-75        <activity
-75-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:55:9-63:20
-76            android:name="com.exploreutapp.MapsActivity"
-76-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:56:13-41
-77            android:label="@string/title_activity_maps" >
-77-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:57:13-56
-78            <intent-filter>
-78-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:58:13-62:29
-79                <action android:name="android.intent.action.MAIN" />
-79-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:59:17-69
-79-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:59:25-66
-80
-81                <category android:name="android.intent.category.LAUNCHER" />
-81-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:61:17-77
-81-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:61:27-74
-82            </intent-filter>
-83        </activity>
-84        <activity
-84-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:64:9-74:20
-85            android:name="com.exploreutapp.SearchActivity"
-85-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:65:13-43
-86            android:theme="@style/AppTheme.NoActionBar" >
-86-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:66:13-56
-87            <intent-filter>
-87-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:67:13-69:29
-88                <action android:name="android.intent.action.SEARCH" />
-88-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:68:17-71
-88-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:68:25-68
-89            </intent-filter>
-90
-91            <meta-data
-91-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:71:13-73:50
-92                android:name="android.app.searchable"
-92-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:72:17-54
-93                android:resource="@xml/search" />
-93-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:73:17-47
-94        </activity>
-95
-96        <meta-data
-96-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:16:9-18:69
-97            android:name="com.google.android.gms.version"
-97-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:17:13-58
-98            android:value="@integer/google_play_services_version" />
-98-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:18:13-66
-99        <meta-data
-99-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:19:9-21:63
-100            android:name="com.facebook.sdk.ApplicationId"
-100-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:20:13-58
-101            android:value="@string/facebook_application_id" />
-101-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:21:13-60
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:5-80
+15-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:22-78
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:10:5-79
+16-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:10:22-77
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:5-64
+17-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:22-62
+18    <uses-permission android:name="android.permission.INTERNET" />
+18-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:12:5-67
+18-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:12:22-64
+19
+20    <dist:module dist:instant="true" />
+20-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:5-40
+20-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:18-37
+21
+22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+22-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:12:5-79
+22-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:12:22-76
+23
+24    <uses-feature
+24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+25        android:glEsVersion="0x00020000"
+25-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+26        android:required="true" />
+26-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+27
+28    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+28-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\0138b38b808e5e566b8baac49d4b6853\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:5-68
+28-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\0138b38b808e5e566b8baac49d4b6853\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:22-65
+29    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+29-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:26:5-82
+29-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:26:22-79
+30    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+30-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:26:5-110
+30-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:26:22-107
+31
+32    <application
+32-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:16:5-88:19
+33        android:allowBackup="true"
+33-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:17:9-35
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\46987fcfc10f80cc3bd074038da3503f\core-1.1.0\AndroidManifest.xml:24:18-86
+35        android:debuggable="true"
+36        android:icon="@mipmap/ic_launcher"
+36-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:18:9-43
+37        android:label="@string/app_name"
+37-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:19:9-41
+38        android:networkSecurityConfig="@xml/network_security"
+38-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:9-62
+39        android:roundIcon="@mipmap/ic_launcher_round"
+39-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:20:9-54
+40        android:supportsRtl="true"
+40-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:21:9-35
+41        android:testOnly="true"
+42        android:theme="@style/AppTheme"
+42-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:23:9-40
+43        android:usesCleartextTraffic="true" >
+43-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:24:9-44
+44        <activity
+44-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:9-29:20
+45            android:name="com.exploreutapp.manage"
+45-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:19-41
+46            android:theme="@style/AppTheme.NoActionBar" >
+46-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:27:13-56
+47        </activity>
+48
+49        <meta-data
+49-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:9-33:47
+50            android:name="android.app.default_searchable"
+50-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:32:13-58
+51            android:value=".SearchActivity" />
+51-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:33:13-44
+52
+53        <activity
+53-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:35:9-44:20
+54            android:name="com.exploreutapp.MainActivity"
+54-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:36:13-41
+55            android:label="@string/app_name"
+55-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:37:13-45
+56            android:theme="@style/AppTheme.NoActionBar" >
+56-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:13-56
+57            <intent-filter>
+57-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:39:13-43:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:40:17-69
+58-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:40:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:17-77
+60-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:27-74
+61            </intent-filter>
+62        </activity>
+63        <activity android:name="com.exploreutapp.ViewPlace" />
+63-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:46:9-56
+63-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:46:19-44
+64        <!--
+65             The API key for Google Maps-based APIs is defined as a string resource.
+66             (See the file "res/values/google_maps_api.xml").
+67             Note that the API key is linked to the encryption key used to sign the APK.
+68             You need a different API key for each encryption key, including the release key that is used to
+69             sign the APK for publishing.
+70             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+71        -->
+72        <meta-data
+72-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:55:9-57:55
+73            android:name="com.google.android.geo.API_KEY"
+73-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:56:13-58
+74            android:value="@string/google_maps_key" />
+74-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:57:13-52
+75
+76        <activity
+76-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:59:9-67:20
+77            android:name="com.exploreutapp.MapsActivity"
+77-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:60:13-41
+78            android:label="@string/title_activity_maps" >
+78-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:61:13-56
+79
+80            <!-- <intent-filter> -->
+81            <!-- <action android:name="android.intent.action.MAIN" /> -->
+82
+83
+84            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+85            <!-- </intent-filter> -->
+86        </activity>
+87        <activity
+87-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:68:9-78:20
+88            android:name="com.exploreutapp.SearchActivity"
+88-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:69:13-43
+89            android:theme="@style/AppTheme.NoActionBar" >
+89-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:70:13-56
+90            <intent-filter>
+90-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:71:13-73:29
+91                <action android:name="android.intent.action.SEARCH" />
+91-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:72:17-71
+91-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:72:25-68
+92            </intent-filter>
+93
+94            <meta-data
+94-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:75:13-77:50
+95                android:name="android.app.searchable"
+95-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:76:17-54
+96                android:resource="@xml/search" />
+96-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:77:17-47
+97        </activity>
+98        <activity android:name="com.exploreutapp.CreateReportActivity" />
+98-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:80:9-67
+98-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:80:19-55
+99        <activity android:name="com.exploreutapp.CreatePlaceActivity" >
+99-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:81:9-87:20
+99-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:81:19-54
+100            <intent-filter>
+100-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:39:13-43:29
+101                <action android:name="android.intent.action.MAIN" />
+101-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:40:17-69
+101-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:40:25-66
 102
-103        <activity
-103-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:23:9-27:61
-104            android:name="com.firebase.ui.auth.KickoffActivity"
-104-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:24:13-64
-105            android:exported="false"
-105-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:25:13-37
-106            android:label=""
-106-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:26:13-29
-107            android:theme="@style/FirebaseUI.Transparent" />
-107-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:27:13-58
-108        <activity
-108-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:28:9-32:61
-109            android:name="com.firebase.ui.auth.ui.idp.SingleSignInActivity"
-109-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:29:13-76
-110            android:exported="false"
-110-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:30:13-37
-111            android:label=""
-111-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:31:13-29
-112            android:theme="@style/FirebaseUI.Transparent" />
-112-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:32:13-58
-113        <activity
-113-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:33:9-37:61
-114            android:name="com.firebase.ui.auth.ui.credentials.CredentialSaveActivity"
-114-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:34:13-86
-115            android:exported="false"
-115-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:35:13-37
-116            android:label=""
-116-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:36:13-29
-117            android:theme="@style/FirebaseUI.Transparent" />
-117-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:37:13-58
-118        <activity
-118-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:38:9-42:58
-119            android:name="com.firebase.ui.auth.ui.email.RecoverPasswordActivity"
-119-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:39:13-81
-120            android:exported="false"
-120-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:40:13-37
-121            android:label="@string/fui_title_recover_password_activity"
-121-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:41:13-72
-122            android:windowSoftInputMode="adjustResize" />
-122-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:42:13-55
-123        <activity
-123-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:43:9-47:58
-124            android:name="com.firebase.ui.auth.ui.email.EmailActivity"
-124-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:44:13-71
-125            android:exported="false"
-125-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:45:13-37
-126            android:label="@string/fui_sign_in_default"
-126-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:46:13-56
-127            android:windowSoftInputMode="adjustResize" />
-127-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:47:13-55
-128        <activity
-128-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:48:9-52:77
-129            android:name="com.firebase.ui.auth.ui.phone.PhoneActivity"
-129-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:49:13-71
-130            android:exported="false"
-130-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:50:13-37
-131            android:label="@string/fui_sign_in_with_phone_number"
-131-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:51:13-66
-132            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
-132-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:52:13-74
-133        <activity
-133-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:53:9-57:58
-134            android:name="com.firebase.ui.auth.ui.idp.WelcomeBackIdpPrompt"
-134-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:54:13-76
-135            android:exported="false"
-135-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:55:13-37
-136            android:label="@string/fui_title_welcome_back_idp_prompt"
-136-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:56:13-70
-137            android:windowSoftInputMode="adjustResize" />
-137-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:57:13-55
-138        <activity
-138-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:58:9-62:58
-139            android:name="com.firebase.ui.auth.ui.email.WelcomeBackPasswordPrompt"
-139-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:59:13-83
-140            android:exported="false"
-140-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:60:13-37
-141            android:label="@string/fui_title_welcome_back_password_prompt"
-141-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:61:13-75
-142            android:windowSoftInputMode="adjustResize" />
-142-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:62:13-55
-143        <activity
-143-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:63:9-67:58
-144            android:name="com.firebase.ui.auth.ui.email.WelcomeBackEmailLinkPrompt"
-144-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:64:13-84
-145            android:exported="false"
-145-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:65:13-37
-146            android:label="@string/fui_title_welcome_back_password_prompt"
-146-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:66:13-75
-147            android:windowSoftInputMode="adjustResize" />
-147-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:67:13-55
-148        <activity
-148-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:68:9-73:58
-149            android:name="com.firebase.ui.auth.ui.email.EmailLinkCatcherActivity"
-149-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:69:13-82
-150            android:exported="false"
-150-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:70:13-37
-151            android:label=""
-151-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:71:13-29
-152            android:theme="@style/FirebaseUI.Transparent"
-152-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:72:13-58
+103                <category android:name="android.intent.category.LAUNCHER" />
+103-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:17-77
+103-->C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:27-74
+104            </intent-filter>
+105        </activity>
+106
+107        <meta-data
+107-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:16:9-18:69
+108            android:name="com.google.android.gms.version"
+108-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:17:13-58
+109            android:value="@integer/google_play_services_version" />
+109-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:18:13-66
+110        <meta-data
+110-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:19:9-21:63
+111            android:name="com.facebook.sdk.ApplicationId"
+111-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:20:13-58
+112            android:value="@string/facebook_application_id" />
+112-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:21:13-60
+113
+114        <activity
+114-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:23:9-27:61
+115            android:name="com.firebase.ui.auth.KickoffActivity"
+115-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:24:13-64
+116            android:exported="false"
+116-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:25:13-37
+117            android:label=""
+117-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:26:13-29
+118            android:theme="@style/FirebaseUI.Transparent" />
+118-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:27:13-58
+119        <activity
+119-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:28:9-32:61
+120            android:name="com.firebase.ui.auth.ui.idp.SingleSignInActivity"
+120-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:29:13-76
+121            android:exported="false"
+121-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:30:13-37
+122            android:label=""
+122-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:31:13-29
+123            android:theme="@style/FirebaseUI.Transparent" />
+123-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:32:13-58
+124        <activity
+124-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:33:9-37:61
+125            android:name="com.firebase.ui.auth.ui.credentials.CredentialSaveActivity"
+125-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:34:13-86
+126            android:exported="false"
+126-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:35:13-37
+127            android:label=""
+127-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:36:13-29
+128            android:theme="@style/FirebaseUI.Transparent" />
+128-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:37:13-58
+129        <activity
+129-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:38:9-42:58
+130            android:name="com.firebase.ui.auth.ui.email.RecoverPasswordActivity"
+130-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:39:13-81
+131            android:exported="false"
+131-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:40:13-37
+132            android:label="@string/fui_title_recover_password_activity"
+132-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:41:13-72
+133            android:windowSoftInputMode="adjustResize" />
+133-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:42:13-55
+134        <activity
+134-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:43:9-47:58
+135            android:name="com.firebase.ui.auth.ui.email.EmailActivity"
+135-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:44:13-71
+136            android:exported="false"
+136-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:45:13-37
+137            android:label="@string/fui_sign_in_default"
+137-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:46:13-56
+138            android:windowSoftInputMode="adjustResize" />
+138-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:47:13-55
+139        <activity
+139-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:48:9-52:77
+140            android:name="com.firebase.ui.auth.ui.phone.PhoneActivity"
+140-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:49:13-71
+141            android:exported="false"
+141-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:50:13-37
+142            android:label="@string/fui_sign_in_with_phone_number"
+142-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:51:13-66
+143            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
+143-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:52:13-74
+144        <activity
+144-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:53:9-57:58
+145            android:name="com.firebase.ui.auth.ui.idp.WelcomeBackIdpPrompt"
+145-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:54:13-76
+146            android:exported="false"
+146-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:55:13-37
+147            android:label="@string/fui_title_welcome_back_idp_prompt"
+147-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:56:13-70
+148            android:windowSoftInputMode="adjustResize" />
+148-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:57:13-55
+149        <activity
+149-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:58:9-62:58
+150            android:name="com.firebase.ui.auth.ui.email.WelcomeBackPasswordPrompt"
+150-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:59:13-83
+151            android:exported="false"
+151-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:60:13-37
+152            android:label="@string/fui_title_welcome_back_password_prompt"
+152-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:61:13-75
 153            android:windowSoftInputMode="adjustResize" />
-153-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:73:13-55
+153-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:62:13-55
 154        <activity
-154-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:74:9-78:58
-155            android:name="com.firebase.ui.auth.ui.email.EmailLinkErrorRecoveryActivity"
-155-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:75:13-88
+154-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:63:9-67:58
+155            android:name="com.firebase.ui.auth.ui.email.WelcomeBackEmailLinkPrompt"
+155-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:64:13-84
 156            android:exported="false"
-156-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:76:13-37
-157            android:label="@string/fui_sign_in_default"
-157-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:77:13-56
+156-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:65:13-37
+157            android:label="@string/fui_title_welcome_back_password_prompt"
+157-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:66:13-75
 158            android:windowSoftInputMode="adjustResize" />
-158-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:78:13-55
+158-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:67:13-55
 159        <activity
-159-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:79:9-82:65
-160            android:name="com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity"
-160-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:80:13-80
+159-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:68:9-73:58
+160            android:name="com.firebase.ui.auth.ui.email.EmailLinkCatcherActivity"
+160-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:69:13-82
 161            android:exported="false"
-161-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:81:13-37
-162            android:label="@string/fui_default_toolbar_title" />
-162-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:82:13-62
-163        <activity
-163-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:83:9-87:48
-164            android:name="com.facebook.FacebookActivity"
-164-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:84:13-57
-165            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-165-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:85:13-96
-166            android:label="@string/app_name" />
-166-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:86:13-45
-167        <activity
-167-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:88:9-100:20
-168            android:name="com.facebook.CustomTabActivity"
-168-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:89:13-58
-169            android:exported="true" >
-169-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:90:13-36
-170            <intent-filter>
-170-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:92:13-99:29
-171                <action android:name="android.intent.action.VIEW" />
-171-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:93:17-69
-171-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:93:25-66
-172
-173                <category android:name="android.intent.category.DEFAULT" />
-173-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:95:17-76
-173-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:95:27-73
-174                <category android:name="android.intent.category.BROWSABLE" />
-174-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:96:17-78
-174-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:96:27-75
-175
-176                <data android:scheme="@string/facebook_login_protocol_scheme" />
-176-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:98:17-81
-176-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:98:23-78
-177            </intent-filter>
-178        </activity>
-179
-180        <provider
-180-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:102:9-106:38
-181            android:name="com.firebase.ui.auth.data.client.AuthUiInitProvider"
-181-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:103:13-79
-182            android:authorities="com.exploreutapp.authuiinitprovider"
-182-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:104:13-70
-183            android:exported="false"
-183-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:105:13-37
-184            android:initOrder="90" />
-184-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:106:13-35
-185
-186        <activity
-186-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:24:9-31:50
-187            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-187-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:25:13-85
-188            android:excludeFromRecents="true"
-188-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:26:13-46
-189            android:exported="true"
-189-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:27:13-36
-190            android:launchMode="singleTask"
-190-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:28:13-44
-191            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-191-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:29:13-102
-192            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-192-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:30:13-72
-193
-194        <service
-194-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:33:9-39:19
-195            android:name="com.google.firebase.components.ComponentDiscoveryService"
-195-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:34:13-84
-196            android:exported="false" >
-196-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:35:13-37
-197            <meta-data
-197-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:36:13-38:85
-198                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-198-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:37:17-109
-199                android:value="com.google.firebase.components.ComponentRegistrar" />
-199-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:38:17-82
-200            <meta-data
-200-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:30:13-32:85
-201                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-201-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:31:17-139
-202                android:value="com.google.firebase.components.ComponentRegistrar" />
-202-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:32:17-82
-203            <meta-data
-203-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:32:13-34:85
-204                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-204-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:33:17-96
-205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:34:17-82
-206        </service> <!-- Needs to be explicitly declared on P+ -->
-207        <uses-library
-207-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
-208            android:name="org.apache.http.legacy"
-208-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
-209            android:required="false" />
-209-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
-210
-211        <provider
-211-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-212            android:name="com.squareup.picasso.PicassoProvider"
-212-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
-213            android:authorities="com.exploreutapp.com.squareup.picasso"
-213-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-214            android:exported="false" />
-214-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-215
-216        <activity
-216-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
-217            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-217-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
-218            android:excludeFromRecents="true"
-218-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
-219            android:exported="false"
-219-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
-220            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-220-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
-221        <!--
-222            Service handling Google Sign-In user revocation. For apps that do not integrate with
-223            Google Sign-In, this service will never be started.
-224        -->
+161-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:70:13-37
+162            android:label=""
+162-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:71:13-29
+163            android:theme="@style/FirebaseUI.Transparent"
+163-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:72:13-58
+164            android:windowSoftInputMode="adjustResize" />
+164-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:73:13-55
+165        <activity
+165-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:74:9-78:58
+166            android:name="com.firebase.ui.auth.ui.email.EmailLinkErrorRecoveryActivity"
+166-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:75:13-88
+167            android:exported="false"
+167-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:76:13-37
+168            android:label="@string/fui_sign_in_default"
+168-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:77:13-56
+169            android:windowSoftInputMode="adjustResize" />
+169-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:78:13-55
+170        <activity
+170-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:79:9-82:65
+171            android:name="com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity"
+171-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:80:13-80
+172            android:exported="false"
+172-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:81:13-37
+173            android:label="@string/fui_default_toolbar_title" />
+173-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:82:13-62
+174        <activity
+174-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:83:9-87:48
+175            android:name="com.facebook.FacebookActivity"
+175-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:84:13-57
+176            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+176-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:85:13-96
+177            android:label="@string/app_name" />
+177-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:86:13-45
+178        <activity
+178-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:88:9-100:20
+179            android:name="com.facebook.CustomTabActivity"
+179-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:89:13-58
+180            android:exported="true" >
+180-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:90:13-36
+181            <intent-filter>
+181-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:92:13-99:29
+182                <action android:name="android.intent.action.VIEW" />
+182-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:93:17-69
+182-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:93:25-66
+183
+184                <category android:name="android.intent.category.DEFAULT" />
+184-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:95:17-76
+184-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:95:27-73
+185                <category android:name="android.intent.category.BROWSABLE" />
+185-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:96:17-78
+185-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:96:27-75
+186
+187                <data android:scheme="@string/facebook_login_protocol_scheme" />
+187-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:98:17-81
+187-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:98:23-78
+188            </intent-filter>
+189        </activity>
+190
+191        <provider
+191-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:102:9-106:38
+192            android:name="com.firebase.ui.auth.data.client.AuthUiInitProvider"
+192-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:103:13-79
+193            android:authorities="com.exploreutapp.authuiinitprovider"
+193-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:104:13-70
+194            android:exported="false"
+194-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:105:13-37
+195            android:initOrder="90" />
+195-->[com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a7c1e8a01b8608fd7852b64267b63f36\firebase-ui-auth-6.0.2\AndroidManifest.xml:106:13-35
+196
+197        <activity
+197-->[com.github.esafirm.android-image-picker:rximagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\419b5ef53d74b675c483080c012871a0\rximagepicker-2.2.0\AndroidManifest.xml:12:9-16:75
+198            android:name="com.esafirm.rximagepicker.ShadowActivity"
+198-->[com.github.esafirm.android-image-picker:rximagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\419b5ef53d74b675c483080c012871a0\rximagepicker-2.2.0\AndroidManifest.xml:13:13-68
+199            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+199-->[com.github.esafirm.android-image-picker:rximagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\419b5ef53d74b675c483080c012871a0\rximagepicker-2.2.0\AndroidManifest.xml:14:13-122
+200            android:launchMode="singleTop"
+200-->[com.github.esafirm.android-image-picker:rximagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\419b5ef53d74b675c483080c012871a0\rximagepicker-2.2.0\AndroidManifest.xml:15:13-43
+201            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+201-->[com.github.esafirm.android-image-picker:rximagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\419b5ef53d74b675c483080c012871a0\rximagepicker-2.2.0\AndroidManifest.xml:16:13-72
+202        <activity
+202-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:16:9-19:50
+203            android:name="com.esafirm.imagepicker.features.ImagePickerActivity"
+203-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:17:13-80
+204            android:configChanges="orientation|screenSize"
+204-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:18:13-59
+205            android:theme="@style/ef_AppTheme" />
+205-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:19:13-47
+206
+207        <provider
+207-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:21:9-29:20
+208            android:name="com.esafirm.imagepicker.helper.ImagePickerFileProvider"
+208-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:22:13-82
+209            android:authorities="com.exploreutapp.imagepicker.provider"
+209-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:23:13-72
+210            android:exported="false"
+210-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:24:13-37
+211            android:grantUriPermissions="true" >
+211-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:25:13-47
+212            <meta-data
+212-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:26:13-28:71
+213                android:name="android.support.FILE_PROVIDER_PATHS"
+213-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:27:17-67
+214                android:resource="@xml/image_picker_provider_paths" />
+214-->[com.github.esafirm.android-image-picker:imagepicker:2.2.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\a672f6b75ce9f69399f22d8458d08248\imagepicker-2.2.0\AndroidManifest.xml:28:17-68
+215        </provider>
+216
+217        <activity
+217-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:24:9-31:50
+218            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+218-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:25:13-85
+219            android:excludeFromRecents="true"
+219-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:26:13-46
+220            android:exported="true"
+220-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:27:13-36
+221            android:launchMode="singleTask"
+221-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:28:13-44
+222            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+222-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:29:13-102
+223            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+223-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:30:13-72
+224
 225        <service
-225-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
-226            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-226-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
-227            android:exported="true"
-227-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
-228            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-228-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\5ca56a397e85d809c51e5e55a25a1398\play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
-229
-230        <receiver
-230-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:37:9-44:20
-231            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-231-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:38:13-78
-232            android:exported="true"
-232-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:39:13-36
-233            android:permission="com.google.android.c2dm.permission.SEND" >
-233-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:40:13-73
-234            <intent-filter>
-234-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:41:13-43:29
-235                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-235-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:42:17-81
-235-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:42:25-78
-236            </intent-filter>
-237        </receiver>
-238
-239        <activity
-239-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\330a5e8e37482138000a2b898f6e18b1\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
-240            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-240-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\330a5e8e37482138000a2b898f6e18b1\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
-241            android:exported="false"
-241-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\330a5e8e37482138000a2b898f6e18b1\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
-242            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-242-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\330a5e8e37482138000a2b898f6e18b1\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
-243
-244        <provider
-244-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:12:9-16:39
-245            android:name="com.google.firebase.provider.FirebaseInitProvider"
-245-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:13:13-77
-246            android:authorities="com.exploreutapp.firebaseinitprovider"
-246-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:14:13-72
-247            android:exported="false"
-247-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:15:13-37
-248            android:initOrder="100" />
-248-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:16:13-36
-249
-250        <receiver
-250-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:29:9-33:20
-251            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-251-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:30:13-85
-252            android:enabled="true"
-252-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:31:13-35
-253            android:exported="false" >
-253-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:32:13-37
-254        </receiver>
-255        <receiver
-255-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:34:9-42:20
-256            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-256-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:35:13-100
-257            android:enabled="true"
-257-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:36:13-35
+225-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:33:9-39:19
+226            android:name="com.google.firebase.components.ComponentDiscoveryService"
+226-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:34:13-84
+227            android:exported="false" >
+227-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:35:13-37
+228            <meta-data
+228-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:36:13-38:85
+229                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+229-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:37:17-109
+230                android:value="com.google.firebase.components.ComponentRegistrar" />
+230-->[com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ea7fd9e1777c16bf1c5799a673ea907b\firebase-auth-19.1.0\AndroidManifest.xml:38:17-82
+231            <meta-data
+231-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\0138b38b808e5e566b8baac49d4b6853\play-services-measurement-api-17.2.1\AndroidManifest.xml:30:13-32:85
+232                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+232-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\0138b38b808e5e566b8baac49d4b6853\play-services-measurement-api-17.2.1\AndroidManifest.xml:31:17-139
+233                android:value="com.google.firebase.components.ComponentRegistrar" />
+233-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\0138b38b808e5e566b8baac49d4b6853\play-services-measurement-api-17.2.1\AndroidManifest.xml:32:17-82
+234            <meta-data
+234-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:32:13-34:85
+235                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+235-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:33:17-96
+236                android:value="com.google.firebase.components.ComponentRegistrar" />
+236-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:34:17-82
+237        </service> <!-- Needs to be explicitly declared on P+ -->
+238        <uses-library
+238-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+239            android:name="org.apache.http.legacy"
+239-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+240            android:required="false" />
+240-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8290948e94174670c2db9bf6f81ac473\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+241
+242        <provider
+242-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\af3e6a61039f6e6618f018eece770fae\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+243            android:name="com.squareup.picasso.PicassoProvider"
+243-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\af3e6a61039f6e6618f018eece770fae\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+244            android:authorities="com.exploreutapp.com.squareup.picasso"
+244-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\af3e6a61039f6e6618f018eece770fae\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+245            android:exported="false" />
+245-->[com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\af3e6a61039f6e6618f018eece770fae\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+246
+247        <activity
+247-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
+248            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+248-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
+249            android:excludeFromRecents="true"
+249-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
+250            android:exported="false"
+250-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
+251            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+251-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
+252        <!--
+253            Service handling Google Sign-In user revocation. For apps that do not integrate with
+254            Google Sign-In, this service will never be started.
+255        -->
+256        <service
+256-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
+257            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+257-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
 258            android:exported="true"
-258-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:37:13-36
-259            android:permission="android.permission.INSTALL_PACKAGES" >
-259-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:38:13-69
-260            <intent-filter>
-260-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:39:13-41:29
-261                <action android:name="com.android.vending.INSTALL_REFERRER" />
-261-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:40:17-79
-261-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:40:25-76
-262            </intent-filter>
-263        </receiver>
-264
-265        <service
-265-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:44:9-47:40
-266            android:name="com.google.android.gms.measurement.AppMeasurementService"
-266-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:45:13-84
-267            android:enabled="true"
-267-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:46:13-35
-268            android:exported="false" />
-268-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:47:13-37
-269        <service
-269-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:48:9-52:72
-270            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-270-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:49:13-87
-271            android:enabled="true"
-271-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:50:13-35
+258-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
+259            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+259-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\1fe78abd45dee95aab5e30f3afe23c7b\play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
+260
+261        <receiver
+261-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:37:9-44:20
+262            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+262-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:38:13-78
+263            android:exported="true"
+263-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:39:13-36
+264            android:permission="com.google.android.c2dm.permission.SEND" >
+264-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:40:13-73
+265            <intent-filter>
+265-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:41:13-43:29
+266                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+266-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:42:17-81
+266-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\9d1fa028b53a7999932c69aefcb6ffb9\firebase-iid-19.0.0\AndroidManifest.xml:42:25-78
+267            </intent-filter>
+268        </receiver>
+269
+270        <activity
+270-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\bb4e4052ab3e29768bd96b4b931a9d1d\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+271            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+271-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\bb4e4052ab3e29768bd96b4b931a9d1d\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
 272            android:exported="false"
-272-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:51:13-37
-273            android:permission="android.permission.BIND_JOB_SERVICE" />
-273-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:52:13-69
+272-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\bb4e4052ab3e29768bd96b4b931a9d1d\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+273            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+273-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\bb4e4052ab3e29768bd96b4b931a9d1d\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
 274
 275        <provider
-275-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fffebda7b6b476ba1c62c209c78f857a\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
-276            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-276-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fffebda7b6b476ba1c62c209c78f857a\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
-277            android:authorities="com.exploreutapp.lifecycle-process"
-277-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fffebda7b6b476ba1c62c209c78f857a\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+275-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ad86c78dbdb0d7240ae1b28bc779e4f4\firebase-common-19.0.0\AndroidManifest.xml:12:9-16:39
+276            android:name="com.google.firebase.provider.FirebaseInitProvider"
+276-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ad86c78dbdb0d7240ae1b28bc779e4f4\firebase-common-19.0.0\AndroidManifest.xml:13:13-77
+277            android:authorities="com.exploreutapp.firebaseinitprovider"
+277-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ad86c78dbdb0d7240ae1b28bc779e4f4\firebase-common-19.0.0\AndroidManifest.xml:14:13-72
 278            android:exported="false"
-278-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fffebda7b6b476ba1c62c209c78f857a\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
-279            android:multiprocess="true" />
-279-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fffebda7b6b476ba1c62c209c78f857a\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
-280    </application>
-281
-282</manifest>
+278-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ad86c78dbdb0d7240ae1b28bc779e4f4\firebase-common-19.0.0\AndroidManifest.xml:15:13-37
+279            android:initOrder="100" />
+279-->[com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\ad86c78dbdb0d7240ae1b28bc779e4f4\firebase-common-19.0.0\AndroidManifest.xml:16:13-36
+280
+281        <receiver
+281-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:29:9-33:20
+282            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+282-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:30:13-85
+283            android:enabled="true"
+283-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:31:13-35
+284            android:exported="false" >
+284-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:32:13-37
+285        </receiver>
+286        <receiver
+286-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:34:9-42:20
+287            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+287-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:35:13-100
+288            android:enabled="true"
+288-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:36:13-35
+289            android:exported="true"
+289-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:37:13-36
+290            android:permission="android.permission.INSTALL_PACKAGES" >
+290-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:38:13-69
+291            <intent-filter>
+291-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:39:13-41:29
+292                <action android:name="com.android.vending.INSTALL_REFERRER" />
+292-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:40:17-79
+292-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:40:25-76
+293            </intent-filter>
+294        </receiver>
+295
+296        <service
+296-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:44:9-47:40
+297            android:name="com.google.android.gms.measurement.AppMeasurementService"
+297-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:45:13-84
+298            android:enabled="true"
+298-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:46:13-35
+299            android:exported="false" />
+299-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:47:13-37
+300        <service
+300-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:48:9-52:72
+301            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+301-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:49:13-87
+302            android:enabled="true"
+302-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:50:13-35
+303            android:exported="false"
+303-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:51:13-37
+304            android:permission="android.permission.BIND_JOB_SERVICE" />
+304-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\6036a81e163bd7e87fe8d1bc051971a4\play-services-measurement-17.2.1\AndroidManifest.xml:52:13-69
+305
+306        <provider
+306-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7aec549609f44b43694cbcc196acd8f3\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+307            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+307-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7aec549609f44b43694cbcc196acd8f3\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+308            android:authorities="com.exploreutapp.lifecycle-process"
+308-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7aec549609f44b43694cbcc196acd8f3\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+309            android:exported="false"
+309-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7aec549609f44b43694cbcc196acd8f3\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+310            android:multiprocess="true" />
+310-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7aec549609f44b43694cbcc196acd8f3\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+311    </application>
+312
+313</manifest>
