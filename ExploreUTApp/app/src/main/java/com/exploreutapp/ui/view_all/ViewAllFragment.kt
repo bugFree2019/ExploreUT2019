@@ -42,13 +42,14 @@ class ViewAllFragment : Fragment() {
             ViewModelProviders.of(this).get(ViewAllViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_view_all, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.my_recycler_view_all)
-        viewAllViewModel.text.observe(this, Observer {
-            recyclerView
-        })
+        viewAll()
+//        viewAllViewModel.text.observe(this, Observer {
+//            recyclerView
+//        })
         return root
     }
 
-    private fun viewAll(tag: String) {
+    private fun viewAll() {
         var disposable: Disposable? = exploreUTServe.getAllPlaces()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -59,6 +60,10 @@ class ViewAllFragment : Fragment() {
     private fun handleResponse(result: ArrayList<Place>) {
         try {
             places = result
+            Log.d("myTag", "handling response")
+            for (r in result) {
+                Log.d("myTag", r.name)
+            }
             viewManager = LinearLayoutManager(context)
             viewAdapter = RecyclerViewAdapter(places)
             recyclerView = getView()!!.findViewById<RecyclerView>(R.id.my_recycler_view).apply {

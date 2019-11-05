@@ -18,9 +18,9 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
     class PlaceViewHolder internal constructor(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var cv: CardView = itemView.findViewById(R.id.cv)
-        var personName: TextView = itemView.findViewById(R.id.person_name)
-        var personAge: TextView = itemView.findViewById(R.id.person_age)
-        var personPhoto: ImageView = itemView.findViewById(R.id.person_photo)
+        var placeName: TextView = itemView.findViewById(R.id.place_name)
+        var placeTag: TextView = itemView.findViewById(R.id.place_tag)
+        var placePhoto: ImageView = itemView.findViewById(R.id.place_photo)
     }
 
     // Create new views (invoked by the layout manager)
@@ -34,12 +34,12 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.personName.setText(places[position].name)
-        holder.personAge.setText(places[position].tags[0])
+        holder.placeName.setText(places[position].name)
+        holder.placeTag.setText(places[position].tags[0])
         val id = places[position]._id
         val imageId = 0
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(360, 640).into(holder.personPhoto)
+            .resize(360, 640).into(holder.placePhoto)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
