@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\46761e18235e12784956ec3473fa66e9\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\b97f20571ba523e91d5bcfc2e740d8de\navigation-ui-ktx-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\551e0d3d2d14e5c4e783e5aa63777c89\jetified-navigation-ui-2.1.0\AndroidManifest.xml:17:1-24:12
@@ -85,20 +85,20 @@ MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Ruei-Bang\.gra
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4d8debac0b95124e119f739a432f1263\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7334c2f2493f07c52c91260c5dfdb635\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\44dd5eb5d6723de407ca06b5cd7928ab\print-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
 	package
 		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:3:5-31
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-44:12
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
 		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:11-69
@@ -119,7 +119,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] C:
 	android:name
 		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:7:5-42:19
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:7:5-45:19
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:15:5-107:19
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:15:5-107:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\86f0106df4e02c6e19eeadbbeded03c4\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -191,51 +191,53 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gra
 	android:usesCleartextTraffic
 		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:9-44
 activity#com.exploreutapp.manage
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:9-53
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:9-18:20
+	android:theme
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:16:13-56
 	android:name
 		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:19-41
 meta-data#android.app.default_searchable
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:17:9-19:47
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:20:9-22:47
 	android:value
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:19:13-44
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:13-44
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:18:13-58
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:21:13-58
 activity#com.exploreutapp.MainActivity
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:21:9-30:20
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:24:9-33:20
 	android:label
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:23:13-45
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:13-45
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:24:13-56
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:27:13-56
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:13-41
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:25:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:27-74
 activity#com.exploreutapp.SearchActivity
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:9-41:20
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:34:9-44:20
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:33:13-56
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:36:13-56
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:32:13-43
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:35:13-43
 intent-filter#action:name:android.intent.action.SEARCH
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:34:13-36:29
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:37:13-39:29
 action#android.intent.action.SEARCH
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:35:17-71
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:17-71
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:35:25-68
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:25-68
 meta-data#android.app.searchable
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:13-40:50
+ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:41:13-43:50
 	android:resource
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:40:17-47
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:43:17-47
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:39:17-54
+		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:17-54
 uses-sdk
 INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml

@@ -1377,6 +1377,7 @@ id listMode
 id list_item
 id logo
 id main_tos_and_pp
+id manage_container
 id masked
 id media_actions
 id message

@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".manage"></activity>
+        <activity android:name=".manage"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
 
         <meta-data
             android:name="android.app.default_searchable"
