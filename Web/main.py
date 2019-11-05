@@ -147,6 +147,9 @@ def add_place():
         for image in image_files:
             data['pics'].append(base64.b64encode(image.read()))
 
+        data['pics'].append(base64.b64encode(image))
+
+
         place_id = create_place(db, data)
 
         return redirect(url_for('.view_one_place', placeId=place_id))
@@ -209,4 +212,4 @@ def my_map():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8082, debug=True)

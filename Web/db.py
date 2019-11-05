@@ -6,7 +6,7 @@ from pymongo import MongoClient
 # connect to the remote database instance
 DB_URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
 client = MongoClient(DB_URL)
-db = client['utdb']
+db = client['utdb_app']
 
 
 # define place object for the data model

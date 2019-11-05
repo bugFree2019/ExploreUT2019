@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">testokhttp</string>
+    <string-array name="tag_array">
+        <item>Best Scenic View</item>
+        <item>Best Dating Place</item>
+        <item>Most Famous Place</item>
+        <item>Landmark</item>
+        <item>Study Place</item>
+    </string-array>
+    <string-array name="theme_array">
+        <item>Museum</item>
+        <item>Statue</item>
+        <item>Stadium</item>
+        <item>Outdoors</item>
+        <item>Buildings</item>
+        <item>Monuments</item>
+        <item>Libraries</item>
+    </string-array>
+</resources>
