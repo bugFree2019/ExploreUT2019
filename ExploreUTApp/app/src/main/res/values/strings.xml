@@ -15,4 +15,6 @@
     <string name="menu_view_all">View All Places</string>
     <string name="menu_manage">Manage</string>
     <string name="menu_search">Search</string>
+    <string name="manage">Manage</string>
+    <string name="signout">SIGNOUT</string>
 </resources>

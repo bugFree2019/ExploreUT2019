@@ -25,41 +25,68 @@ def home_places():
     return render_template('home.html', places=places)
 
 
-@app.route('/index', methods=['GET'])
+@app.route('/index', methods=['GET', 'POST'])
+
+
 def index():
-    id_token = request.cookies.get('token')
-    error_message = None
-    claims = None
-    times = None
-    thisuser = None
-    allplaces = None
-    allarticles = None
+    if request.method == 'GET':
+        id_token = request.cookies.get('token')
+        error_message = None
+        claims = None
+        times = None
+        thisuser = None
+        allplaces = None
+        allarticles = None
 
-    if id_token:
-        try:
-            # Verify the token against the Firebase Auth API. This example
-            # verifies the token on each page load. For improved performance,
-            # some applications may wish to cache results in an encrypted
-            # session store (see for instance
-            # http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
-            claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+        if id_token:
+            try:
+                # Verify the token against the Firebase Auth API. This example
+                # verifies the token on each page load. For improved performance,
+                # some applications may wish to cache results in an encrypted
+                # session store (see for instance
+                # http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
+                claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
 
-            thisuser = read_user(db, 'email', claims['email'])
-            if thisuser != None:
-                # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
-                allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
-                allarticles = read_articles(db, {'user_id': thisuser['_id']})
-            else:
-                thisuser = create_user(db, email=claims['email'])
+                thisuser = read_user(db, 'email', claims['email'])
+                if thisuser != None:
+                    # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
+                    allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
+                    allarticles = read_articles(db, {'user_id': thisuser['_id']})
+                else:
+                    thisuser = create_user(db, email=claims['email'])
 
-        except ValueError as exc:
-            # This will be raised if the token is expired or any other
-            # verification checks fail.
-            error_message = str(exc)
+            except ValueError as exc:
+                # This will be raised if the token is expired or any other
+                # verification checks fail.
+                error_message = str(exc)
 
-    return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=thisuser,
-                           places=allplaces, articles=allarticles)
+        return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=thisuser,
+                               places=allplaces, articles=allarticles)
 
+    else:
+        thisuser = None
+        allplaces = None
+        allarticles = None
+        user = request.get_json()
+        user_agent = request.headers.get('User-Agent')
+        # print(user['email'])
+        thisuser = read_user(db, 'email', user['email'])
+
+        if thisuser != None:
+    # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
+            allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
+            allarticles = read_articles(db, {'user_id': thisuser['_id']})
+            if 'android' in user_agent.lower():
+                print(allplaces[0]['name'])
+                return json_response(allplaces)
+            return render_template('index.html', users=thisuser,
+                               places=allplaces, articles=allarticles)
+        else:
+            thisuser = create_user(db, email=user['email'])
+            if 'android' in user_agent.lower():
+                return json_response(None)
+            return render_template('index.html', users=thisuser,
+                               places=allplaces, articles=allarticles)
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -238,8 +265,7 @@ def get_place_image(place_id, image_id):
     images = read_place_images(db, ObjectId(place_id))
     if images and image_id >= 0 and image_id < len(images):
         image = images[image_id]
-        # byte_io = io.BytesIO(base64.decodebytes(image))
-        byte_io = io.BytesIO(bytes(image))
+        byte_io = io.BytesIO(base64.decodebytes(image))
         response = make_response(send_file(byte_io, mimetype='image/jpg'))
         response.headers['Content-Transfer-Encoding'] = 'base64'
         return response

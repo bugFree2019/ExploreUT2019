@@ -1,5 +1,6 @@
 package com.exploreutapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -50,5 +51,10 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun manage (view: View) {
+        val manageIntent = Intent(this, manage::class.java)
+        startActivity(manageIntent)
     }
 }
