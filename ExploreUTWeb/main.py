@@ -148,6 +148,7 @@ def view_one_place():
 def view_places():
     condition = request.args.get('condition')  # in the future, condition will be nearby location
     places = read_places(db, condition)
+    user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
         return json_response(places)
     return render_template('view_places.html', places=places)
