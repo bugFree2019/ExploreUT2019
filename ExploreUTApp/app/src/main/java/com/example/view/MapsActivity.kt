@@ -13,17 +13,18 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
-import com.example.view.common.Common
-import com.example.view.model.MyPlaces
+import com.example.view.model.Results
 import com.example.view.remote.IExploreUTService
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_maps.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.json.JSONException
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -40,12 +41,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private const val MY_PERMISSION_CODE: Int = 1000
+        val mService by lazy {
+            IExploreUTService.create()
+        }
     }
 
-    lateinit var mService: IExploreUTService
 
-    internal lateinit var currentPlace: MyPlaces
-
+    private var currentPlace: ArrayList<Results> = ArrayList()
+    var currentResult:Results?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +58,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        //Init Service
-        mService = Common.exploreUtService
-
+        //1. if the operation is not permitted, should we request the permissions?
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
                 buildLocationRequest()
@@ -82,83 +83,97 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Looper.myLooper()
             )
         }
+
+
         bottom_navigation_view.setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
-                R.id.action_fitness -> nearByPlace("fitness")
-                R.id.action_library -> nearByPlace("library")
-                R.id.action_school -> nearByPlace("school")
-                R.id.action_view -> nearByPlace("street view")
+                R.id.action_fitness -> nearByPlace("Museum")
+                R.id.action_library -> nearByPlace("Library")
+                R.id.action_school -> nearByPlace("School")
+                R.id.action_view -> nearByPlace("Statue")
             }
             true
         }
     }
 
-    private fun nearByPlace(typePlace: String) {
+    private fun nearByPlace(place_theme: String) {
 
         // Clear all marker on Map
         mMap.clear()
-        val url = getUrl(latitude,longitude,typePlace)
 
-        mService.getNearbyPlaces(url)
-            .enqueue(object : Callback<MyPlaces> {
-                override fun onResponse(call: Call<MyPlaces>?, response: Response<MyPlaces>?) {
-                    currentPlace = response!!.body()!!
+        var disposable: Disposable? = mService.getThemePlaces()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse, this::handleError)
 
-                    if(response.isSuccessful) {
-                        for (i in 0 until response.body()!!.results!!.size) {
-                            val markerOptions = MarkerOptions()
-                            val utPlace = response.body()!!.results!![i]
-                            val lat = utPlace.location!!.lat
-                            val lng = utPlace.location!!.lng
-                            val placeName = utPlace.name
-                            val latLng = LatLng(lat,lng)
+        if (currentPlace.isNotEmpty()) {
 
-                            markerOptions.position(latLng)
-                            markerOptions.title(placeName)
-                            if(typePlace.equals("fitness")) {
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_fitness)))
-                            } else if(typePlace.equals("library")) {
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                            } else if (typePlace.equals("school")) {
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_school)))
-                            } else if (typePlace.equals("street view")) {
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
-                            } else {
-                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                            }
-                            markerOptions.snippet(i.toString()) // Assign index for Marker
-                            // Add marker to map
-                            mMap.addMarker(markerOptions)
+            for (i in 0 until currentPlace.size) {
+                val markerOptions = MarkerOptions()
+                val utPlace = currentPlace[i]
 
-                            // Move camera
-                            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                            mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+                val placeTheme = utPlace.theme
+                val placeName = utPlace.name
+                val lat = utPlace.location!!.lat
+                val lng = utPlace.location!!.lng
+                val latLng = LatLng(lat,lng)
 
-                        }
-
-
+                if (latLng != null) {
+                    markerOptions.position(latLng)
+                    markerOptions.title(placeName)
+                    if (place_theme.equals(placeTheme)) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_fitness)))
+                    } else if (place_theme.equals(placeTheme)) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
+                    } else if (place_theme.equals(placeTheme)) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_school)))
+                    } else if (place_theme.equals(placeTheme)) {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
+                    } else {
+                        markerOptions.icon(
+                            BitmapDescriptorFactory.defaultMarker(
+                                BitmapDescriptorFactory.HUE_GREEN
+                            )
+                        )
                     }
+                    markerOptions.snippet(i.toString()) // Assign index for Marker
+                    // Add marker to map
+                    mMap.addMarker(markerOptions)
+
+                    // Move camera
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
                 }
-
-                override fun onFailure (call: Call<MyPlaces>?, t: Throwable?) {
-                    Toast.makeText(baseContext,""+t!!.message, Toast.LENGTH_LONG).show()
-                }
-            })
-
-
+            }
+        }
     }
 
-    private fun getUrl(latitude: Double, longitude: Double, typePlace: String): String {
+    // handle the response with an arraylist of places
+    private fun handleResponse(result: ArrayList<Results>) {
+        try {
+            currentPlace = result
 
-        val webEndUrl = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
-        webEndUrl.append("?location=$latitude,$longitude")
-        webEndUrl.append("&radius=1000")
-        webEndUrl.append("&type=$typePlace")
-        webEndUrl.append("&key=AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E")
-
-        Log.d("URL_DEBUG",webEndUrl.toString())
-        return webEndUrl.toString()
+            for(r in result) {
+                Log.d("myTag", r._id)
+                Log.d("myTag", r.name)
+                Log.d("myTag", r.theme)
+                Log.d("myTag", r.tags.toString())
+                Log.d("myTag", r.address)
+                Log.d("myTag", r.intro)
+                Log.d("myTag", r.location!!.lat.toString())
+                Log.d("myTag", r.location!!.lng.toString())
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            Log.d("myTag", "No valid json")
+        }
+        Log.d("myTag", "Done")
     }
+
+    private fun handleError(error: Throwable) {
+        Log.d("myTag", error.localizedMessage!!)
+    }
+
 
     private fun buildLocationCallBack() {
         locationCallback = object: LocationCallback() {
@@ -186,7 +201,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-     private fun buildLocationRequest() {
+    private fun buildLocationRequest() {
         locationRequest = LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 5000
@@ -266,7 +281,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setOnMarkerClickListener { marker ->
             // when user select marker, just get result of place assign to static variable
-            Common.currentResult = currentPlace!!.results!![Integer.parseInt(marker.snippet)]
+            currentResult = currentPlace!![Integer.parseInt(marker.snippet)]
 
             // start new activity
             startActivity(Intent(this@MapsActivity, ViewPlace::class.java))

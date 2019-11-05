@@ -2,12 +2,11 @@ package com.example.view.model
 
 class Review {
 
-    var author_name:String?=null
-    var author_url:String?=null
-    var language:String?=null
-    var profile_photo_url:String?=null
+    var _id:String?=null
+    var user_id:String?=null
+    var place_id:String?=null
+    var comment:String?=null
+    var user_name:String?=null
     var rating:Int=0
-    var relative_time_description:String?=null
-    var text:String?=null
-    var time:Int=0
+    var create_date:String?=null
 }

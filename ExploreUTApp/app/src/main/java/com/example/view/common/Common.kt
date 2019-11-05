@@ -3,6 +3,11 @@ package com.example.view.common
 import com.example.view.model.Results
 import com.example.view.remote.IExploreUTService
 import com.example.view.remote.RetrofitClient
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object Common {
 
@@ -12,4 +17,5 @@ object Common {
 
     val exploreUtService : IExploreUTService
         get() = RetrofitClient.getClient(BASE_URL).create(IExploreUTService::class.java)
+
 }

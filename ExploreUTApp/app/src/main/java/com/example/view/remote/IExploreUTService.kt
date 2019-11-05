@@ -2,33 +2,34 @@ package com.example.view.remote
 
 import com.example.view.model.MyPlaces
 import com.example.view.model.PlaceDetail
+import com.example.view.model.Results
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
-import retrofit2.http.Url
 import retrofit2.Call
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Observable
+import retrofit2.http.Header
 import java.util.concurrent.TimeUnit
 
 
 interface IExploreUTService {
-    @GET
-    fun getNearbyPlaces(@Url url:String): Call<MyPlaces>
 
-    @GET
-    fun getDetailPlace(@Url url:String): Call<PlaceDetail>
-
-    @GET("/")
+    @GET("view_one_place")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getAllPlaces() : Observable<MyPlaces>
+    fun getOnePlace(@Query("_id")  _id: String): Observable<Results>
+
+    @GET("/view_places")
+    @Headers("Accept: application/json", "User-Agent: Android")
+    fun getThemePlaces(): Observable<ArrayList<Results>>
+
 
     @GET("/search")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getTagPlaces(@Query("tag")  tag: String) : Observable<MyPlaces>
+    fun getTagPlaces(@Query("tag")  tag: String) : Observable<ArrayList<Results>>
 
 
     companion object {

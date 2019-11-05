@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_school"
         android:enabled="true"
-        android:title="School"
+        android:title="Building"
         android:icon="@drawable/ic_school_black_24dp"
         app:showAsAction="ifRoom"/>
 
@@ -19,14 +19,14 @@
     <item
         android:id="@+id/action_fitness"
         android:enabled="true"
-        android:title="Gym"
+        android:title="Museum"
         android:icon="@drawable/ic_fitness_center_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_view"
         android:enabled="true"
-        android:title="Street View"
+        android:title="Statue"
         android:icon="@drawable/ic_street_view_black_24dp"
         app:showAsAction="ifRoom"/>
 
