@@ -118,16 +118,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val lng = utPlace.location!!.lng
                 val latLng = LatLng(lat,lng)
 
+
                 if (latLng != null) {
                     markerOptions.position(latLng)
                     markerOptions.title(placeName)
-                    if (place_theme.equals(placeTheme)) {
+                    if (place_theme == placeTheme) {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_fitness)))
-                    } else if (place_theme.equals(placeTheme)) {
+                    } else if (place_theme == placeTheme) {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                    } else if (place_theme.equals(placeTheme)) {
+                    } else if (place_theme == placeTheme) {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_school)))
-                    } else if (place_theme.equals(placeTheme)) {
+                    } else if (place_theme == placeTheme) {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
                     } else {
                         markerOptions.icon(

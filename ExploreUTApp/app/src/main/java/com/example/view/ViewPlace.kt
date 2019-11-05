@@ -43,10 +43,11 @@ class ViewPlace : AppCompatActivity() {
 //            startActivity(mapIntent)
 //        }
 
-        // load photo of place
+
+//        // load photo of place
 //        if (Common.currentResult!!.pics != null && Common.currentResult!!.pics!!.isNotEmpty()) {
 //            Picasso.get()
-//                .load(getPhotoOfPlace(Common.currentResult!!.pics!![0].photo_reference!!,1000))
+//                .load(IExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
 //                .into(photo)
 //        }
 
@@ -55,17 +56,17 @@ class ViewPlace : AppCompatActivity() {
 //        else rating_bar.visibility = View.GONE
 
         // load reviews
-        if (Common.currentResult!!.reviews != null) {
-            place_reviews.text = "Reviews: " + Common.currentResult!!.reviews!![0]
-        } else {
-            place_reviews.visibility = View.GONE
-        }
+//        if (Common.currentResult!!.reviews != null) {
+//            place_reviews.text = "Reviews: " + Common.currentResult!!.reviews!![0]
+//        } else {
+//            place_reviews.visibility = View.GONE
+//        }
 //
-        // load address
-        if (Common.currentResult!!.name != null) {
-            place_name.text = Common.currentResult!!.name
-            place_address.text = Common.currentResult!!.address
-        }
+//        // load address
+//        if (Common.currentResult!!.name != null) {
+//            place_name.text = Common.currentResult!!.name
+//            place_address.text = Common.currentResult!!.address
+//        }
 
     }
 }

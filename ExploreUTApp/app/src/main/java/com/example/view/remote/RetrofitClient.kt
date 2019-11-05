@@ -26,20 +26,4 @@ object RetrofitClient {
         return retrofit!!
     }
 
-    //            fun create(): IExploreUTService {
-//
-//            val client = OkHttpClient().newBuilder()
-//                .readTimeout(10, TimeUnit.SECONDS)
-//                .connectTimeout(10, TimeUnit.SECONDS).build()
-//
-//            val retrofit = Retrofit.Builder()
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .baseUrl(BASE_URL)
-//                .client(client)
-//                .build()
-//
-//            return retrofit.create(IExploreUTService::class.java)
-//        }
-
 }

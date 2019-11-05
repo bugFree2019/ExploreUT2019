@@ -1,7 +1,5 @@
 package com.example.view.remote
 
-import com.example.view.model.MyPlaces
-import com.example.view.model.PlaceDetail
 import com.example.view.model.Results
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -9,10 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
-import retrofit2.Call
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Observable
-import retrofit2.http.Header
 import java.util.concurrent.TimeUnit
 
 
