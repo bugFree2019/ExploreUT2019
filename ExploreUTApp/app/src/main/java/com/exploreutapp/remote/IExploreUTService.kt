@@ -1,6 +1,6 @@
 package com.exploreutapp.remote
 
-import com.exploreutapp.model.Results
+import com.exploreutapp.model.Places
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,16 +16,16 @@ interface IExploreUTService {
 
     @GET("view_one_place")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getOnePlace(@Query("_id")  _id: String): Observable<Results>
+    fun getOnePlace(@Query("_id")  _id: String): Observable<Places>
 
     @GET("/view_places")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getThemePlaces(): Observable<ArrayList<Results>>
+    fun getThemePlaces(): Observable<ArrayList<Places>>
 
 
     @GET("/search")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getTagPlaces(@Query("tag")  tag: String) : Observable<ArrayList<Results>>
+    fun getTagPlaces(@Query("tag")  tag: String) : Observable<ArrayList<Places>>
 
 
     companion object {

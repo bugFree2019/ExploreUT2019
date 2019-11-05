@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ruei-Bang\\Documents\\Team6-Project\\ExploreUTApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "/Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\a58f655ff4691d6ffebb2706ae10f33c\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/a58f655ff4691d6ffebb2706ae10f33c/appcompat-1.1.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\6371b9ba1e425ad143d7d8584901e415\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/6371b9ba1e425ad143d7d8584901e415/media-1.0.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

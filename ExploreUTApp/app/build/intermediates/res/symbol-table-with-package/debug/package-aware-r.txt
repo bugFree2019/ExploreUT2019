@@ -1316,7 +1316,6 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btn_holder
-id btn_show_map
 id btn_sign_out
 id button
 id buttonPanel
@@ -1465,6 +1464,7 @@ id phone_number
 id photo
 id pin
 id place_address
+id place_intro
 id place_name
 id place_photo
 id place_reviews
@@ -1472,7 +1472,6 @@ id place_tag
 id progress_circular
 id progress_horizontal
 id radio
-id rating_bar
 id resend_barrier
 id resend_code
 id right

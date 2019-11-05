@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
-import com.exploreutapp.model.Results
+import com.exploreutapp.model.Places
 import com.exploreutapp.remote.IExploreUTService
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
@@ -24,6 +24,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_maps.*
 import org.json.JSONException
+import java.io.Serializable
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -47,8 +48,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    private var currentPlace: ArrayList<Results> = ArrayList()
-    var currentResult:Results?=null
+    private var currentPlace: ArrayList<Places> = ArrayList()
+    var currentResult:Places?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -150,7 +151,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Results>) {
+    private fun handleResponse(result: ArrayList<Places>) {
         try {
             currentPlace = result
 
@@ -161,6 +162,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.d("myTag", r.tags.toString())
                 Log.d("myTag", r.address)
                 Log.d("myTag", r.intro)
+                Log.d("myTag", r.reviews.toString())
                 Log.d("myTag", r.location!!.lat.toString())
                 Log.d("myTag", r.location!!.lng.toString())
             }
@@ -284,11 +286,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // when user select marker, just get result of place assign to static variable
             currentResult = currentPlace!![Integer.parseInt(marker.snippet)]
 
+            val viewIntent = Intent(this@MapsActivity, ViewPlace::class.java)
             // start new activity
-            startActivity(Intent(this@MapsActivity, ViewPlace::class.java))
+            viewIntent.putExtra("place_to_show", currentResult as Serializable)
+            startActivity(viewIntent)
             true
         }
 
         mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isCompassEnabled = true
+        mMap.uiSettings.setAllGesturesEnabled(true)
+        mMap.uiSettings.isCompassEnabled = true
     }
 }

@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ruei-Bang\\Documents\\Team6-Project\\ExploreUTApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-iw\\values-iw.xml",
+            "outputFile": "/Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\330a5e8e37482138000a2b898f6e18b1\\play-services-base-17.1.0\\res\\values-iw\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "245,346,532,655,757,955,1078,1216,1344,1539,1640,1816,1937,2130,2301,2387,2473",
-                        "endColumns": "100,185,122,101,197,122,137,127,194,100,175,120,192,170,85,85,105",
-                        "endOffsets": "345,531,654,756,954,1077,1215,1343,1538,1639,1815,1936,2129,2300,2386,2472,2578"
-                    },
-                    "to": {
-                        "startLines": "30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3267,3372,3558,3685,3791,3989,4116,4258,4567,4762,4867,5043,5168,5361,5536,5626,5716",
-                        "endColumns": "104,185,126,105,197,126,141,131,194,104,175,124,192,174,89,89,109",
-                        "endOffsets": "3367,3553,3680,3786,3984,4111,4253,4385,4757,4862,5038,5163,5356,5531,5621,5711,5821"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\a58f655ff4691d6ffebb2706ae10f33c\\appcompat-1.1.0\\res\\values-iw\\values-iw.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/a58f655ff4691d6ffebb2706ae10f33c/appcompat-1.1.0/res/values-iw/values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\d249ff4919560ee555799da98ac9e05e\\core-1.1.0\\res\\values-iw\\values-iw.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "138",
-                        "startColumns": "4",
-                        "startOffsets": "14132",
-                        "endColumns": "100",
-                        "endOffsets": "14228"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\af0d6aa572d499df66f1a6a954c00cc3\\jetified-play-services-basement-17.0.0\\res\\values-iw\\values.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/ca5882df09a2f3166e1983a8c352be33/jetified-play-services-basement-17.0.0/res/values-iw/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -72,7 +38,41 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\c0687c94ea50646f42fece5d1b79cebc\\firebase-ui-auth-6.0.2\\res\\values-iw\\values-iw.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/330a5e8e37482138000a2b898f6e18b1/play-services-base-17.1.0/res/values-iw/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,346,532,655,757,955,1078,1216,1344,1539,1640,1816,1937,2130,2301,2387,2473",
+                        "endColumns": "100,185,122,101,197,122,137,127,194,100,175,120,192,170,85,85,105",
+                        "endOffsets": "345,531,654,756,954,1077,1215,1343,1538,1639,1815,1936,2129,2300,2386,2472,2578"
+                    },
+                    "to": {
+                        "startLines": "30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3267,3372,3558,3685,3791,3989,4116,4258,4567,4762,4867,5043,5168,5361,5536,5626,5716",
+                        "endColumns": "104,185,126,105,197,126,141,131,194,104,175,124,192,174,89,89,109",
+                        "endOffsets": "3367,3553,3680,3786,3984,4111,4253,4385,4757,4862,5038,5163,5356,5531,5621,5711,5821"
+                    }
+                },
+                {
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/8fc2feef597d24cae55146df48c3d85d/jetified-navigation-ui-2.1.0/res/values-iw/values-iw.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,161",
+                        "endColumns": "105,119",
+                        "endOffsets": "156,276"
+                    },
+                    "to": {
+                        "startLines": "135,136",
+                        "startColumns": "4,4",
+                        "startOffsets": "13825,13931",
+                        "endColumns": "105,119",
+                        "endOffsets": "13926,14046"
+                    }
+                },
+                {
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/c0687c94ea50646f42fece5d1b79cebc/firebase-ui-auth-6.0.2/res/values-iw/values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -89,20 +89,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\551e0d3d2d14e5c4e783e5aa63777c89\\jetified-navigation-ui-2.1.0\\res\\values-iw\\values-iw.xml",
+                    "source": "/Users/blackhole/.gradle/caches/transforms-2/files-2.1/d249ff4919560ee555799da98ac9e05e/core-1.1.0/res/values-iw/values-iw.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,161",
-                        "endColumns": "105,119",
-                        "endOffsets": "156,276"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "135,136",
-                        "startColumns": "4,4",
-                        "startOffsets": "13825,13931",
-                        "endColumns": "105,119",
-                        "endOffsets": "13926,14046"
+                        "startLines": "138",
+                        "startColumns": "4",
+                        "startOffsets": "14132",
+                        "endColumns": "100",
+                        "endOffsets": "14228"
                     }
                 }
             ]
