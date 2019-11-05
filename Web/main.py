@@ -142,13 +142,20 @@ def add_place():
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
         data['tags'] = request.form.getlist('tags')
-        image_files = request.files.getlist("pic_files")
+        image_file = request.files.get('pic_file')
         data['pics'] = []
-        for image in image_files:
-            data['pics'].append(base64.b64encode(image.read()))
+        location_str = data['location']
+        coordinates = location_str.split(" ")
+        lat = float(coordinates[0])
+        lng = float(coordinates[1])
+        location = {'lat': lat, 'lng': lng}
+        data['location'] = location
 
-        data['pics'].append(base64.b64encode(image))
+        #print(type(image_file))
+        binary = base64.b64encode(image_file.read())
+        #print(type(binary))
 
+        data['pics'].append(binary)
 
         place_id = create_place(db, data)
 
@@ -166,10 +173,11 @@ def add_report():
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
         place = read_place(db, '_id', ObjectId(data['place_id']))
-        image_files = request.files.getlist("pic_files")
+        image_file = request.files.get('pic_file')
+        update_place_pics_by_id(db, data['place_id'], base64.b64encode(image_file.read()))
         # add this pic to the pics array of the place
-        for image in image_files:
-            update_place_pics_by_id(db,data['place_id'],base64.b64encode(image.read()))
+        #for image in image_files:
+        #    update_place_pics_by_id(db,data['place_id'],base64.b64encode(image.read()))
         # add the comment to the reviews array of the plac
         update_place_reviews_by_id(db,data['place_id'],data['comment'])
         data['user_id'] = get_user_id_from_email(db, data['user_id'])
