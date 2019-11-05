@@ -2,21 +2,12 @@ package com.exploreutapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.exploreutapp.model.Results
-import com.exploreutapp.remote.IExploreUTService
+import android.view.View
+import com.exploreutapp.model.Places
 import kotlinx.android.synthetic.main.activity_view_place.*
 
 
 class ViewPlace : AppCompatActivity() {
-
-    var mPlace: Results?=null
-
-    companion object {
-        private const val MY_PERMISSION_CODE: Int = 1000
-        val mService by lazy {
-            IExploreUTService.create()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +15,15 @@ class ViewPlace : AppCompatActivity() {
 
         // Set empty for all text view
 
+        val place = intent.getSerializableExtra("place_to_show") as Places
+
+        var id = place!!._id
+        var imageId = 0
+
         place_name.text=""
         place_address.text=""
         place_reviews.text=""
+        place_intro.text=""
 
 //        btn_show_map.setOnClickListener{
 //            // open map intent to view
@@ -36,7 +33,7 @@ class ViewPlace : AppCompatActivity() {
 
 
 //        // load photo of place
-//        if (Common.currentResult!!.pics != null && Common.currentResult!!.pics!!.isNotEmpty()) {
+//        if (place!!.pics != null && place!!.pics!!.isNotEmpty()) {
 //            Picasso.get()
 //                .load(IExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
 //                .into(photo)
@@ -47,17 +44,26 @@ class ViewPlace : AppCompatActivity() {
 //        else rating_bar.visibility = View.GONE
 
         // load reviews
-//        if (Common.currentResult!!.reviews != null) {
-//            place_reviews.text = "Reviews: " + Common.currentResult!!.reviews!![0]
-//        } else {
-//            place_reviews.visibility = View.GONE
-//        }
-//
-//        // load address
-//        if (Common.currentResult!!.name != null) {
-//            place_name.text = Common.currentResult!!.name
-//            place_address.text = Common.currentResult!!.address
-//        }
+        if (place!!.reviews != null) {
+            place_reviews.text = "Reviews: " + place!!.reviews!![0]
+        } else {
+            place_reviews.visibility = View.GONE
+        }
+
+        // load address
+        if (place!!.name != null) {
+            place_name.text = place!!.name
+            place_address.text = place!!.address
+        } else {
+            place_address.visibility = View.GONE
+        }
+
+        // load introduction
+        if (place!!.intro != null) {
+            place_intro.text = "Introduction: " + place!!.intro
+        } else {
+            place_intro.visibility = View.GONE
+        }
 
     }
 }
