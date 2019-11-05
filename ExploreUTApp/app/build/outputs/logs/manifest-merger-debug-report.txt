@@ -1,0 +1,938 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/5b92815b0062fafff99f0b161c2888ae/navigation-ui-ktx-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-ui:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c8417b2570e090cddefd720cc9e56814/jetified-navigation-ui-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:2:1-109:12
+MERGED from [com.google.android.material:material:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b2869cfb54b6c62249691e80e7f3958a/material-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:2:1-19:12
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:2:1-32:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.6.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6784b32eb445fe8354580876864193fd/library-1.6.1/AndroidManifest.xml:6:1-15:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d31c928c7e7b5a908fd437ed85e5b75a/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e7d8802ee3684b87a0edf90ca06531a/core-ktx-1.1.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1dc225fedac4711e4382ee870cc5858d/constraintlayout-1.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/78eaaa39b3108681d617c64244cbdf87/appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bc1a397285a2b3e8ef87bf195bd3918/jetified-glide-4.9.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b9e99b7a0db775a21f6ef1faf084820e/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bc0a09e1038f44c29ed583f5d6e0b649/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f16470dcc1fe43767cde27409a0573a3/navigation-fragment-ktx-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/894785a4954e45500213ec4c8c18704f/navigation-fragment-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1c42d7291dea7660c99db501df4c587a/lifecycle-extensions-2.1.0/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.recyclerview:recyclerview-selection:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c6d0bfca66237cb57c75c95103058fb3/recyclerview-selection-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1ccc9def2420faae8ab6416f08b40217/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2da38faac1374e9a39762656762097fa/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:17:1-42:12
+MERGED from [com.google.firebase:firebase-core:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb43d59705eab6653a35c66bf760c74/firebase-core-17.2.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a1dabf4c36a35df71e4dede90c4a329c/play-services-location-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:17:1-38:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/e31862a380e55a149511e2ee2e319fb2/rxandroid-2.0.1/AndroidManifest.xml:15:1-21:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12df9336d949d3ff4f15d9998b66e41e/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.zhy:okhttputils:2.6.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/30122151a66a90c9203d4033b68f9a64/okhttputils-2.6.2/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e4dfae7032e6c7cf81e86cc69a0ceb2/navigation-runtime-ktx-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8bef9809b4721ba8db0c160da9a89e15/fragment-ktx-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e8450f07a10cdc7c4fad1930f0757d4/activity-ktx-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b7a31eae75b95e4bc17d446002809a98/lifecycle-viewmodel-ktx-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb84815468d0eaee1f907bbdbd96ba2/navigation-common-ktx-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0a84dc4ee3314bcf3cc3004a483b3bfc/firebase-auth-interop-18.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f1a934b70db7a81714566661cad402e5/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/570d41201d24c7b1c026e965e166f355/play-services-auth-base-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-analytics:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/51b34d5ff83b76bd18022cf44df84402/firebase-analytics-17.2.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:17:1-36:12
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/20d2d67e7f0dfa39bc61c997d104251f/firebase-iid-interop-17.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:2:1-19:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/3377dee325b6531c9417137b23d19987/play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f35d63de3c5466f7a67b639344d6b01b/play-services-places-placereport-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8f0125283cc85929bbe03fdf27edf3a0/play-services-measurement-sdk-17.2.1/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/233a62fe15e849676ed23b33348f21aa/play-services-measurement-base-17.2.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9310ded1ed908b0ad953057d6f6cc6b5/play-services-stats-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4da3d8d95b4424caccb70757f2b49074/firebase-measurement-connector-18.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/836003de7beacf9764efb13d0f8f7cb9/play-services-ads-identifier-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/687949ea4f1343b85e34a5753ea2bb71/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f166daf8bbf5b8aadb0141ea62d0f065/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7ae7a549425ad0687981d5c49d5cdf32/browser-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/36139afff930d11dc1ce875bcf414d1b/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/918d4d31f0acefd2f1672bdc52595724/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e29764eef5a75a3cd1a2840771f7888/transition-1.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d99416c3e0c087c44ea8d2895e081597/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fc6802099a838d94618094100f5cdd3/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fb2952747b3ce136c59bdce0dd61053/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/383cced8f7749d19549b709a7349b2a9/navigation-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/04dce763baf680e5eee9312ddd3f4945/activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/49e6eda368e41ffb7e1ee467c82400d0/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80a1ba397da09ac625230ca660ef1f27/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/aef788ae09a931a1b607b86ffe671d32/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12ce29268cab42b130bc0c1884088bd6/navigation-common-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09383dd428cb9f51c1855a1f48c3b450/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/88d27fc0fe7ec6b74b90e2e8c2827981/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2ab5a2ef3d971302367f8a2aeae34568/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b3f266603ed937ac0d4be6f4f3454d58/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f6acd495f24400c4143d155aa0c6052e/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/653c198e4e43c1276c3232573239b753/lifecycle-service-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f00ee22c0414ec8193299699ed91f229/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/eee1a8a517e6d909ba81ed4a13a00699/lifecycle-livedata-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80779a030cc03bc9fd68045c86dfa0eb/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7fedbf15278bd2ba7a9b4c6994695fe5/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f69ee3ad283edd1b0dbc26a5d3bc4481/savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bcb64effa7c27799952f356561ddc62/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/11519f21cd354f37022436df4a473822/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/fc26547810568d7acfdf05c9529215a3/exifinterface-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4ec69ea8c11f32a7b8424a702e1d86ca/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/82bd7de49ab6947d9ef355d6652207d2/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ba44278b016131893c299806c796abba/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/64a4daef4363434d4e3740a9e5f19251/jetified-gifdecoder-4.9.0/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+	package
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:4:5-31
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+	xmlns:dist
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:3:5-61
+	android:versionCode
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:1-90:12
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:8:5-85
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:8:22-82
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:9:5-80
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:12:5-81
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:10:5-79
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:11:5-80
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:10:22-77
+uses-permission#android.permission.CAMERA
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:11:5-64
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:13:5-65
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:13:5-65
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:11:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:12:5-67
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:13:5-67
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:13:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:12:22-64
+dist:module
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:14:5-40
+	dist:instant
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:14:18-37
+application
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:16:5-88:19
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:15:5-107:19
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:15:5-107:19
+MERGED from [com.google.android.material:material:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b2869cfb54b6c62249691e80e7f3958a/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b2869cfb54b6c62249691e80e7f3958a/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:11:5-17:19
+MERGED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:11:5-17:19
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:15:5-30:19
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:15:5-30:19
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1dc225fedac4711e4382ee870cc5858d/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1dc225fedac4711e4382ee870cc5858d/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bc1a397285a2b3e8ef87bf195bd3918/jetified-glide-4.9.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bc1a397285a2b3e8ef87bf195bd3918/jetified-glide-4.9.0/AndroidManifest.xml:10:5-20
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1c42d7291dea7660c99db501df4c587a/lifecycle-extensions-2.1.0/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1c42d7291dea7660c99db501df4c587a/lifecycle-extensions-2.1.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:23:5-40:19
+MERGED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:23:5-40:19
+MERGED from [com.google.firebase:firebase-core:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb43d59705eab6653a35c66bf760c74/firebase-core-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb43d59705eab6653a35c66bf760c74/firebase-core-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a1dabf4c36a35df71e4dede90c4a329c/play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a1dabf4c36a35df71e4dede90c4a329c/play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:30:5-36:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0a84dc4ee3314bcf3cc3004a483b3bfc/firebase-auth-interop-18.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0a84dc4ee3314bcf3cc3004a483b3bfc/firebase-auth-interop-18.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.firebase:firebase-analytics:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/51b34d5ff83b76bd18022cf44df84402/firebase-analytics-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-analytics:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/51b34d5ff83b76bd18022cf44df84402/firebase-analytics-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/20d2d67e7f0dfa39bc61c997d104251f/firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/20d2d67e7f0dfa39bc61c997d104251f/firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:11:5-17:19
+MERGED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:11:5-17:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/3377dee325b6531c9417137b23d19987/play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/3377dee325b6531c9417137b23d19987/play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f35d63de3c5466f7a67b639344d6b01b/play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f35d63de3c5466f7a67b639344d6b01b/play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8f0125283cc85929bbe03fdf27edf3a0/play-services-measurement-sdk-17.2.1/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8f0125283cc85929bbe03fdf27edf3a0/play-services-measurement-sdk-17.2.1/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/233a62fe15e849676ed23b33348f21aa/play-services-measurement-base-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/233a62fe15e849676ed23b33348f21aa/play-services-measurement-base-17.2.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9310ded1ed908b0ad953057d6f6cc6b5/play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9310ded1ed908b0ad953057d6f6cc6b5/play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4da3d8d95b4424caccb70757f2b49074/firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4da3d8d95b4424caccb70757f2b49074/firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/836003de7beacf9764efb13d0f8f7cb9/play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/836003de7beacf9764efb13d0f8f7cb9/play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f6acd495f24400c4143d155aa0c6052e/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f6acd495f24400c4143d155aa0c6052e/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:22:5-28:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:22:5-28:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/64a4daef4363434d4e3740a9e5f19251/jetified-gifdecoder-4.9.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/64a4daef4363434d4e3740a9e5f19251/jetified-gifdecoder-4.9.0/AndroidManifest.xml:9:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:21:9-35
+	android:label
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:19:9-41
+	android:roundIcon
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:20:9-54
+	android:icon
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:18:9-43
+	android:allowBackup
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:17:9-35
+	android:theme
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:23:9-40
+	android:networkSecurityConfig
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:22:9-62
+	android:usesCleartextTraffic
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:24:9-44
+activity#com.exploreutapp.manage
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:26:9-29:20
+	android:theme
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:27:13-56
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:26:19-41
+meta-data#android.app.default_searchable
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:31:9-33:47
+	android:value
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:33:13-44
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:32:13-58
+activity#com.exploreutapp.MainActivity
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:35:9-44:20
+	android:label
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:37:13-45
+	android:theme
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:38:13-56
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:36:13-41
+activity#com.exploreutapp.ViewPlace
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:46:9-56
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:46:19-44
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:55:9-57:55
+	android:value
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:57:13-52
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:56:13-58
+activity#com.exploreutapp.MapsActivity
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:59:9-67:20
+	android:label
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:61:13-56
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:60:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:62:13-66:29
+action#android.intent.action.MAIN
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:63:17-69
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:63:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:65:17-77
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:65:27-74
+activity#com.exploreutapp.SearchActivity
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:68:9-78:20
+	android:theme
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:70:13-56
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:69:13-43
+intent-filter#action:name:android.intent.action.SEARCH
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:71:13-73:29
+action#android.intent.action.SEARCH
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:72:17-71
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:72:25-68
+meta-data#android.app.searchable
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:75:13-77:50
+	android:resource
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:77:17-47
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:76:17-54
+activity#com.exploreutapp.CreateReportActivity
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:80:9-67
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:80:19-55
+activity#com.exploreutapp.CreatePlaceActivity
+ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:81:9-87:20
+	android:name
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml:81:19-54
+uses-sdk
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/5b92815b0062fafff99f0b161c2888ae/navigation-ui-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/5b92815b0062fafff99f0b161c2888ae/navigation-ui-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c8417b2570e090cddefd720cc9e56814/jetified-navigation-ui-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c8417b2570e090cddefd720cc9e56814/jetified-navigation-ui-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:8:5-10:41
+MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.android.material:material:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b2869cfb54b6c62249691e80e7f3958a/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b2869cfb54b6c62249691e80e7f3958a/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:7:5-9:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.6.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6784b32eb445fe8354580876864193fd/library-1.6.1/AndroidManifest.xml:11:5-13:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.6.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6784b32eb445fe8354580876864193fd/library-1.6.1/AndroidManifest.xml:11:5-13:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d31c928c7e7b5a908fd437ed85e5b75a/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d31c928c7e7b5a908fd437ed85e5b75a/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e7d8802ee3684b87a0edf90ca06531a/core-ktx-1.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e7d8802ee3684b87a0edf90ca06531a/core-ktx-1.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1dc225fedac4711e4382ee870cc5858d/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1dc225fedac4711e4382ee870cc5858d/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/78eaaa39b3108681d617c64244cbdf87/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/78eaaa39b3108681d617c64244cbdf87/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bc1a397285a2b3e8ef87bf195bd3918/jetified-glide-4.9.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bc1a397285a2b3e8ef87bf195bd3918/jetified-glide-4.9.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b9e99b7a0db775a21f6ef1faf084820e/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b9e99b7a0db775a21f6ef1faf084820e/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bc0a09e1038f44c29ed583f5d6e0b649/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bc0a09e1038f44c29ed583f5d6e0b649/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f16470dcc1fe43767cde27409a0573a3/navigation-fragment-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f16470dcc1fe43767cde27409a0573a3/navigation-fragment-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/894785a4954e45500213ec4c8c18704f/navigation-fragment-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/894785a4954e45500213ec4c8c18704f/navigation-fragment-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1c42d7291dea7660c99db501df4c587a/lifecycle-extensions-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1c42d7291dea7660c99db501df4c587a/lifecycle-extensions-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview-selection:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c6d0bfca66237cb57c75c95103058fb3/recyclerview-selection-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview-selection:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c6d0bfca66237cb57c75c95103058fb3/recyclerview-selection-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1ccc9def2420faae8ab6416f08b40217/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1ccc9def2420faae8ab6416f08b40217/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2da38faac1374e9a39762656762097fa/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2da38faac1374e9a39762656762097fa/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-core:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb43d59705eab6653a35c66bf760c74/firebase-core-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb43d59705eab6653a35c66bf760c74/firebase-core-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a1dabf4c36a35df71e4dede90c4a329c/play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a1dabf4c36a35df71e4dede90c4a329c/play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/e31862a380e55a149511e2ee2e319fb2/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/e31862a380e55a149511e2ee2e319fb2/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12df9336d949d3ff4f15d9998b66e41e/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12df9336d949d3ff4f15d9998b66e41e/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [com.zhy:okhttputils:2.6.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/30122151a66a90c9203d4033b68f9a64/okhttputils-2.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.zhy:okhttputils:2.6.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/30122151a66a90c9203d4033b68f9a64/okhttputils-2.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e4dfae7032e6c7cf81e86cc69a0ceb2/navigation-runtime-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e4dfae7032e6c7cf81e86cc69a0ceb2/navigation-runtime-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8bef9809b4721ba8db0c160da9a89e15/fragment-ktx-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8bef9809b4721ba8db0c160da9a89e15/fragment-ktx-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e8450f07a10cdc7c4fad1930f0757d4/activity-ktx-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4e8450f07a10cdc7c4fad1930f0757d4/activity-ktx-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b7a31eae75b95e4bc17d446002809a98/lifecycle-viewmodel-ktx-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b7a31eae75b95e4bc17d446002809a98/lifecycle-viewmodel-ktx-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb84815468d0eaee1f907bbdbd96ba2/navigation-common-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common-ktx:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bfb84815468d0eaee1f907bbdbd96ba2/navigation-common-ktx-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0a84dc4ee3314bcf3cc3004a483b3bfc/firebase-auth-interop-18.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0a84dc4ee3314bcf3cc3004a483b3bfc/firebase-auth-interop-18.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f1a934b70db7a81714566661cad402e5/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f1a934b70db7a81714566661cad402e5/play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/570d41201d24c7b1c026e965e166f355/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/570d41201d24c7b1c026e965e166f355/play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-analytics:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/51b34d5ff83b76bd18022cf44df84402/firebase-analytics-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-analytics:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/51b34d5ff83b76bd18022cf44df84402/firebase-analytics-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/20d2d67e7f0dfa39bc61c997d104251f/firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/20d2d67e7f0dfa39bc61c997d104251f/firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/3377dee325b6531c9417137b23d19987/play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/3377dee325b6531c9417137b23d19987/play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f35d63de3c5466f7a67b639344d6b01b/play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f35d63de3c5466f7a67b639344d6b01b/play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8f0125283cc85929bbe03fdf27edf3a0/play-services-measurement-sdk-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8f0125283cc85929bbe03fdf27edf3a0/play-services-measurement-sdk-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/233a62fe15e849676ed23b33348f21aa/play-services-measurement-base-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/233a62fe15e849676ed23b33348f21aa/play-services-measurement-base-17.2.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9310ded1ed908b0ad953057d6f6cc6b5/play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9310ded1ed908b0ad953057d6f6cc6b5/play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4da3d8d95b4424caccb70757f2b49074/firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4da3d8d95b4424caccb70757f2b49074/firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/836003de7beacf9764efb13d0f8f7cb9/play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/836003de7beacf9764efb13d0f8f7cb9/play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/687949ea4f1343b85e34a5753ea2bb71/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/687949ea4f1343b85e34a5753ea2bb71/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f166daf8bbf5b8aadb0141ea62d0f065/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f166daf8bbf5b8aadb0141ea62d0f065/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7ae7a549425ad0687981d5c49d5cdf32/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7ae7a549425ad0687981d5c49d5cdf32/browser-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/36139afff930d11dc1ce875bcf414d1b/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/36139afff930d11dc1ce875bcf414d1b/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/918d4d31f0acefd2f1672bdc52595724/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/918d4d31f0acefd2f1672bdc52595724/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e29764eef5a75a3cd1a2840771f7888/transition-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2e29764eef5a75a3cd1a2840771f7888/transition-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d99416c3e0c087c44ea8d2895e081597/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/d99416c3e0c087c44ea8d2895e081597/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fc6802099a838d94618094100f5cdd3/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fc6802099a838d94618094100f5cdd3/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fb2952747b3ce136c59bdce0dd61053/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9fb2952747b3ce136c59bdce0dd61053/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/383cced8f7749d19549b709a7349b2a9/navigation-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/383cced8f7749d19549b709a7349b2a9/navigation-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/04dce763baf680e5eee9312ddd3f4945/activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/04dce763baf680e5eee9312ddd3f4945/activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/49e6eda368e41ffb7e1ee467c82400d0/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/49e6eda368e41ffb7e1ee467c82400d0/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80a1ba397da09ac625230ca660ef1f27/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80a1ba397da09ac625230ca660ef1f27/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/aef788ae09a931a1b607b86ffe671d32/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/aef788ae09a931a1b607b86ffe671d32/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12ce29268cab42b130bc0c1884088bd6/navigation-common-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/12ce29268cab42b130bc0c1884088bd6/navigation-common-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09383dd428cb9f51c1855a1f48c3b450/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09383dd428cb9f51c1855a1f48c3b450/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/88d27fc0fe7ec6b74b90e2e8c2827981/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/88d27fc0fe7ec6b74b90e2e8c2827981/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2ab5a2ef3d971302367f8a2aeae34568/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2ab5a2ef3d971302367f8a2aeae34568/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/46987fcfc10f80cc3bd074038da3503f/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b3f266603ed937ac0d4be6f4f3454d58/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/b3f266603ed937ac0d4be6f4f3454d58/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f6acd495f24400c4143d155aa0c6052e/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f6acd495f24400c4143d155aa0c6052e/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/653c198e4e43c1276c3232573239b753/lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/653c198e4e43c1276c3232573239b753/lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f00ee22c0414ec8193299699ed91f229/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f00ee22c0414ec8193299699ed91f229/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/eee1a8a517e6d909ba81ed4a13a00699/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/eee1a8a517e6d909ba81ed4a13a00699/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80779a030cc03bc9fd68045c86dfa0eb/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/80779a030cc03bc9fd68045c86dfa0eb/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7fedbf15278bd2ba7a9b4c6994695fe5/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7fedbf15278bd2ba7a9b4c6994695fe5/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f69ee3ad283edd1b0dbc26a5d3bc4481/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/f69ee3ad283edd1b0dbc26a5d3bc4481/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bcb64effa7c27799952f356561ddc62/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/2bcb64effa7c27799952f356561ddc62/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/11519f21cd354f37022436df4a473822/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/11519f21cd354f37022436df4a473822/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/fc26547810568d7acfdf05c9529215a3/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/fc26547810568d7acfdf05c9529215a3/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4ec69ea8c11f32a7b8424a702e1d86ca/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/4ec69ea8c11f32a7b8424a702e1d86ca/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/82bd7de49ab6947d9ef355d6652207d2/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/82bd7de49ab6947d9ef355d6652207d2/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ba44278b016131893c299806c796abba/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ba44278b016131893c299806c796abba/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/64a4daef4363434d4e3740a9e5f19251/jetified-gifdecoder-4.9.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/64a4daef4363434d4e3740a9e5f19251/jetified-gifdecoder-4.9.0/AndroidManifest.xml:5:5-7:41
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		ADDED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/blackhole/Documents/github/Team6-Project/ExploreUTApp/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:12:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:12:22-76
+meta-data#com.google.android.gms.version
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:16:9-18:69
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/95275af7146fc90cbaa5ef7cfd060527/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:18:13-66
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:17:13-58
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:19:9-21:63
+	android:value
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:21:13-60
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:20:13-58
+activity#com.firebase.ui.auth.KickoffActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:23:9-27:61
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:26:13-29
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:27:13-58
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:24:13-64
+activity#com.firebase.ui.auth.ui.idp.SingleSignInActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:28:9-32:61
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:31:13-29
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:30:13-37
+	android:theme
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:32:13-58
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:29:13-76
+activity#com.firebase.ui.auth.ui.credentials.CredentialSaveActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:33:9-37:61
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:36:13-29
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:35:13-37
+	android:theme
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:37:13-58
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:34:13-86
+activity#com.firebase.ui.auth.ui.email.RecoverPasswordActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:38:9-42:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:41:13-72
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:42:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:40:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:39:13-81
+activity#com.firebase.ui.auth.ui.email.EmailActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:43:9-47:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:46:13-56
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:47:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:45:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:44:13-71
+activity#com.firebase.ui.auth.ui.phone.PhoneActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:48:9-52:77
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:51:13-66
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:52:13-74
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:50:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:49:13-71
+activity#com.firebase.ui.auth.ui.idp.WelcomeBackIdpPrompt
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:53:9-57:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:56:13-70
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:57:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:55:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:54:13-76
+activity#com.firebase.ui.auth.ui.email.WelcomeBackPasswordPrompt
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:58:9-62:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:61:13-75
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:62:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:60:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:59:13-83
+activity#com.firebase.ui.auth.ui.email.WelcomeBackEmailLinkPrompt
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:63:9-67:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:66:13-75
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:67:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:65:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:64:13-84
+activity#com.firebase.ui.auth.ui.email.EmailLinkCatcherActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:68:9-73:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:71:13-29
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:73:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:70:13-37
+	android:theme
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:72:13-58
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:69:13-82
+activity#com.firebase.ui.auth.ui.email.EmailLinkErrorRecoveryActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:74:9-78:58
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:77:13-56
+	android:windowSoftInputMode
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:78:13-55
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:76:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:75:13-88
+activity#com.firebase.ui.auth.ui.idp.AuthMethodPickerActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:79:9-82:65
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:82:13-62
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:81:13-37
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:80:13-80
+activity#com.facebook.FacebookActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:83:9-87:48
+	android:label
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:86:13-45
+	tools:ignore
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:87:13-45
+	android:configChanges
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:85:13-96
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:84:13-57
+activity#com.facebook.CustomTabActivity
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:88:9-100:20
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:90:13-36
+	tools:ignore
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:91:13-45
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:89:13-58
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/facebook_login_protocol_scheme
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:92:13-99:29
+action#android.intent.action.VIEW
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:93:17-69
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:93:25-66
+category#android.intent.category.DEFAULT
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:95:17-76
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:95:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:96:17-78
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:96:27-75
+data
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:98:17-81
+	android:scheme
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:98:23-78
+provider#com.firebase.ui.auth.data.client.AuthUiInitProvider
+ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:102:9-106:38
+	android:authorities
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:104:13-70
+	android:exported
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:105:13-37
+	android:initOrder
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:106:13-35
+	android:name
+		ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a7c1e8a01b8608fd7852b64267b63f36/firebase-ui-auth-6.0.2/AndroidManifest.xml:103:13-79
+activity#com.esafirm.rximagepicker.ShadowActivity
+ADDED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:12:9-16:75
+	android:launchMode
+		ADDED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:15:13-43
+	android:configChanges
+		ADDED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:14:13-122
+	android:theme
+		ADDED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:16:13-72
+	android:name
+		ADDED from [com.github.esafirm.android-image-picker:rximagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/419b5ef53d74b675c483080c012871a0/rximagepicker-2.2.0/AndroidManifest.xml:13:13-68
+activity#com.esafirm.imagepicker.features.ImagePickerActivity
+ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:16:9-19:50
+	android:configChanges
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:18:13-59
+	android:theme
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:19:13-47
+	android:name
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:17:13-80
+provider#com.esafirm.imagepicker.helper.ImagePickerFileProvider
+ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:21:9-29:20
+	android:grantUriPermissions
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:25:13-47
+	android:authorities
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:23:13-72
+	android:exported
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:24:13-37
+	android:name
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:22:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:26:13-28:71
+	android:resource
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:28:17-68
+	android:name
+		ADDED from [com.github.esafirm.android-image-picker:imagepicker:2.2.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/a672f6b75ce9f69399f22d8458d08248/imagepicker-2.2.0/AndroidManifest.xml:27:17-67
+activity#com.google.firebase.auth.internal.FederatedSignInActivity
+ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:24:9-31:50
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:26:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:28:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:27:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:29:13-102
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:30:13-72
+	tools:replace
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:31:13-47
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:25:13-85
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:33:9-39:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:29:9-35:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:34:13-84
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:36:13-38:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:38:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:19.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ea7fd9e1777c16bf1c5799a673ea907b/firebase-auth-19.1.0/AndroidManifest.xml:37:17-109
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/8290948e94174670c2db9bf6f81ac473/play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/09e86b8245cac08173dae4f2f2359992/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:17.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/1fe78abd45dee95aab5e30f3afe23c7b/play-services-auth-17.0.0/AndroidManifest.xml:34:13-89
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/35a5e779ed653b35806d12705df403ca/play-services-measurement-sdk-api-17.2.1/AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:24:22-65
+meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
+ADDED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:30:13-32:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement-api:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/0138b38b808e5e566b8baac49d4b6853/play-services-measurement-api-17.2.1/AndroidManifest.xml:31:17-139
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:26:22-79
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:33:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:37:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:39:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:40:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:38:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:41:13-43:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:42:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/9d1fa028b53a7999932c69aefcb6ffb9/firebase-iid-19.0.0/AndroidManifest.xml:42:25-78
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/bb4e4052ab3e29768bd96b4b931a9d1d/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:12:9-16:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:14:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:15:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:16:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.0.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/ad86c78dbdb0d7240ae1b28bc779e4f4/firebase-common-19.0.0/AndroidManifest.xml:13:13-77
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:26:5-110
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:26:22-107
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:29:9-33:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:30:13-85
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:34:9-42:20
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:29:9-37:20
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/c74052ae7974c0ee8796f3e2e75c9871/play-services-measurement-impl-17.2.1/AndroidManifest.xml:29:9-37:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:37:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:38:13-69
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:35:13-100
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:39:13-41:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:40:17-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:40:25-76
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:44:9-47:40
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:46:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:45:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:48:9-52:72
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:50:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:51:13-37
+	android:permission
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:52:13-69
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.1] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/6036a81e163bd7e87fe8d1bc051971a4/play-services-measurement-17.2.1/AndroidManifest.xml:49:13-87
+provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:23:9-27:43
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:25:13-69
+	android:multiprocess
+		ADDED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:27:13-40
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.1.0] /Users/blackhole/.gradle/caches/transforms-2/files-2.1/7aec549609f44b43694cbcc196acd8f3/lifecycle-process-2.1.0/AndroidManifest.xml:24:13-79
