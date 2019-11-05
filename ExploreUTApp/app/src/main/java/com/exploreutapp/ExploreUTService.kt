@@ -21,6 +21,10 @@ interface ExploreUTService {
     @Headers("Accept: application/json", "Content-Type: application/json", "User-Agent: Android")
     fun postTest(@Body place: ArrayList<Place>) : Observable<ArrayList<Place>>
 
+    @POST("/index")
+    @Headers("Accept: application/json", "Content-Type: application/json", "User-Agent: Android")
+    fun checkUsers(@Body user: User) : Observable<User>
+
     companion object {
         // This is the URL when developed on the local emulator
         const val baseURL: String = "http://10.0.2.2:8080"

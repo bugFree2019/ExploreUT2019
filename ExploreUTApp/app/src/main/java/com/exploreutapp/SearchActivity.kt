@@ -76,6 +76,10 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
+    private fun handleResponseTest(result: User) {
+
+    }
+
     private fun handleError(error: Throwable) {
         Log.d("myTag", error.localizedMessage!!)
     }
@@ -135,6 +139,7 @@ class SearchActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponseTest, this::handleError)
     }
+
 }
 
 internal class MyAdapter(private val places: ArrayList<Place>) :
