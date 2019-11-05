@@ -48,7 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    private var currentPlace: ArrayList<Places> = ArrayList()
+    private var currentPlaces: ArrayList<Places> = ArrayList()
     var currentResult:Places?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,11 +107,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
 
-        if (currentPlace.isNotEmpty()) {
+        if (currentPlaces.isNotEmpty()) {
 
-            for (i in 0 until currentPlace.size) {
+            for (i in 0 until currentPlaces.size) {
                 val markerOptions = MarkerOptions()
-                val utPlace = currentPlace[i]
+                val utPlace = currentPlaces[i]
 
                 val placeTheme = utPlace.theme
                 val placeName = utPlace.name
@@ -153,7 +153,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     // handle the response with an arraylist of places
     private fun handleResponse(result: ArrayList<Places>) {
         try {
-            currentPlace = result
+            currentPlaces = result
 
             for(r in result) {
                 Log.d("myTag", r._id)
@@ -263,6 +263,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     override fun onStop() {
+
+        //remove current location information when stop app
         fusedLocationProviderClient.removeLocationUpdates(locationCallback)
         super.onStop()
     }
@@ -284,7 +286,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setOnMarkerClickListener { marker ->
             // when user select marker, just get result of place assign to static variable
-            currentResult = currentPlace!![Integer.parseInt(marker.snippet)]
+            currentResult = currentPlaces!![Integer.parseInt(marker.snippet)]
 
             val viewIntent = Intent(this@MapsActivity, ViewPlace::class.java)
             // start new activity
@@ -296,6 +298,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.setAllGesturesEnabled(true)
-        mMap.uiSettings.isCompassEnabled = true
     }
 }

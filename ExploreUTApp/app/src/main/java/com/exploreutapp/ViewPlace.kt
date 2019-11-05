@@ -9,10 +9,6 @@ import kotlinx.android.synthetic.main.activity_view_place.*
 
 class ViewPlace : AppCompatActivity() {
 
-//    companion object {
-//        var mPlace: Places?=null
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_place)
@@ -64,7 +60,7 @@ class ViewPlace : AppCompatActivity() {
 
         // load introduction
         if (place!!.intro != null) {
-            place_reviews.text = "Introduction: " + place!!.intro
+            place_intro.text = "Introduction: " + place!!.intro
         } else {
             place_intro.visibility = View.GONE
         }

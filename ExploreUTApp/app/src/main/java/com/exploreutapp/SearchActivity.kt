@@ -89,7 +89,7 @@ class SearchActivity : AppCompatActivity() {
         Log.d("myTag", error.localizedMessage!!)
     }
 
-    // override some functions to make navaigation bar work
+    // override some functions to make navigation bar work
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
