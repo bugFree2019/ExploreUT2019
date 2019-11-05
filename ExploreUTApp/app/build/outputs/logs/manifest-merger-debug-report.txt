@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\46761e18235e12784956ec3473fa66e9\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\b97f20571ba523e91d5bcfc2e740d8de\navigation-ui-ktx-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\551e0d3d2d14e5c4e783e5aa63777c89\jetified-navigation-ui-2.1.0\AndroidManifest.xml:17:1-24:12
@@ -24,6 +24,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\Ruei-Bang\.gradl
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\d15ce2ea1b3e54eec2be547f72f41914\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:17:1-42:12
 MERGED from [com.google.firebase:firebase-core:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3817c78ac7590dc83cbfee2f4029b1fb\firebase-core-17.2.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4cdff6c9dc1f87159fe258bc6ee033b8\play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\2706d8315498f710c8fa92a35a1bb003\rxandroid-2.0.1\AndroidManifest.xml:15:1-21:12
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.navigation:navigation-runtime-ktx:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\27f1a197cf61119d35a5d2deb9f281a4\navigation-runtime-ktx-2.1.0\AndroidManifest.xml:17:1-24:12
@@ -42,6 +44,7 @@ MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Ruei-Bang
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\330a5e8e37482138000a2b898f6e18b1\play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:2:1-19:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\41788bf16eb24ca2d290e3ee829c808a\play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\f60ccb3166b138a3d42f57558c5260fc\play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:17:1-55:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8b3ca5e505dd1ec1db7b1a1b671af60e\play-services-measurement-sdk-17.2.1\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\e58991f9cf749fa1c21555493461af2d\play-services-measurement-impl-17.2.1\AndroidManifest.xml:17:1-40:12
@@ -85,27 +88,43 @@ MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Ruei-Bang\.gra
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4d8debac0b95124e119f739a432f1263\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7334c2f2493f07c52c91260c5dfdb635\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\44dd5eb5d6723de407ca06b5cd7928ab\print-1.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
 	package
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:3:5-31
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:4:5-31
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+	xmlns:dist
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:3:5-61
 	android:versionCode
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-47:12
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:1-77:12
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:8:5-85
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:8:22-82
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:5:5-67
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:5-67
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:13:5-67
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:13:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:23:5-67
@@ -117,9 +136,13 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.1] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3d9bb12901a6421888185e60b9a90601\play-services-measurement-sdk-api-17.2.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3d9bb12901a6421888185e60b9a90601\play-services-measurement-sdk-api-17.2.1\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:22-64
+dist:module
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:5-40
+	dist:instant
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:18-37
 application
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:7:5-45:19
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:13:5-75:19
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:15:5-107:19
 MERGED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:15:5-107:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\86f0106df4e02c6e19eeadbbeded03c4\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -132,6 +155,10 @@ MERGED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradl
 MERGED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-core:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3817c78ac7590dc83cbfee2f4029b1fb\firebase-core-17.2.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-core:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3817c78ac7590dc83cbfee2f4029b1fb\firebase-core-17.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4cdff6c9dc1f87159fe258bc6ee033b8\play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4cdff6c9dc1f87159fe258bc6ee033b8\play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.firebase:firebase-auth-interop:18.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\d02684c7e810146279eb182a87c3dc2e\firebase-auth-interop-18.0.0\AndroidManifest.xml:7:5-8:19
@@ -152,6 +179,8 @@ MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gra
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:11:5-17:19
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\41788bf16eb24ca2d290e3ee829c808a\play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\41788bf16eb24ca2d290e3ee829c808a\play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\f60ccb3166b138a3d42f57558c5260fc\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\f60ccb3166b138a3d42f57558c5260fc\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:28:5-53:19
 MERGED from [com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:28:5-53:19
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8b3ca5e505dd1ec1db7b1a1b671af60e\play-services-measurement-sdk-17.2.1\AndroidManifest.xml:22:5-23:19
@@ -177,71 +206,87 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Ruei-Bang\.gra
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\d249ff4919560ee555799da98ac9e05e\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:13:9-40
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:19:9-40
 	android:usesCleartextTraffic
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:14:9-44
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:20:9-44
 activity#com.exploreutapp.manage
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:9-18:20
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:9-25:20
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:16:13-56
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:23:13-56
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:15:19-41
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:19-41
 meta-data#android.app.default_searchable
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:20:9-22:47
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:27:9-29:47
 	android:value
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:22:13-44
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:13-44
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:21:13-58
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:13-58
 activity#com.exploreutapp.MainActivity
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:24:9-33:20
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:9-40:20
 	android:label
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:26:13-45
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:33:13-45
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:27:13-56
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:34:13-56
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:25:13-41
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:32:13-41
+activity#com.exploreutapp.ViewPlace
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:9-56
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:19-44
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:51:9-53:55
+	android:value
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:53:13-52
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:52:13-58
+activity#com.exploreutapp.MapsActivity
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:55:9-63:20
+	android:label
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:57:13-56
+	android:name
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:56:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:28:13-32:29
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:58:13-62:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:17-69
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:59:17-69
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:29:25-66
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:59:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:17-77
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:61:17-77
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:31:27-74
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:61:27-74
 activity#com.exploreutapp.SearchActivity
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:34:9-44:20
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:64:9-74:20
 	android:theme
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:36:13-56
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:66:13-56
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:35:13-43
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:65:13-43
 intent-filter#action:name:android.intent.action.SEARCH
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:37:13-39:29
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:67:13-69:29
 action#android.intent.action.SEARCH
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:17-71
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:68:17-71
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:38:25-68
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:68:25-68
 meta-data#android.app.searchable
-ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:41:13-43:50
+ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:71:13-73:50
 	android:resource
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:43:17-47
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:73:17-47
 	android:name
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:42:17-54
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml:72:17-54
 uses-sdk
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\46761e18235e12784956ec3473fa66e9\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\46761e18235e12784956ec3473fa66e9\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.navigation:navigation-ui-ktx:2.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\b97f20571ba523e91d5bcfc2e740d8de\navigation-ui-ktx-2.1.0\AndroidManifest.xml:20:5-22:41
@@ -282,6 +327,10 @@ MERGED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradl
 MERGED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-core:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3817c78ac7590dc83cbfee2f4029b1fb\firebase-core-17.2.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-core:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\3817c78ac7590dc83cbfee2f4029b1fb\firebase-core-17.2.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4cdff6c9dc1f87159fe258bc6ee033b8\play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\4cdff6c9dc1f87159fe258bc6ee033b8\play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\2706d8315498f710c8fa92a35a1bb003\rxandroid-2.0.1\AndroidManifest.xml:19:5-43
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\2706d8315498f710c8fa92a35a1bb003\rxandroid-2.0.1\AndroidManifest.xml:19:5-43
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
@@ -318,6 +367,8 @@ MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gra
 MERGED from [com.google.firebase:firebase-common:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\abf4cd3b5a0ec32de29279f26a0db4d6\firebase-common-19.0.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\41788bf16eb24ca2d290e3ee829c808a\play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\41788bf16eb24ca2d290e3ee829c808a\play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\f60ccb3166b138a3d42f57558c5260fc\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\f60ccb3166b138a3d42f57558c5260fc\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\fe4941f88ec176532aa5a2e501fb6bde\play-services-measurement-17.2.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\8b3ca5e505dd1ec1db7b1a1b671af60e\play-services-measurement-sdk-17.2.1\AndroidManifest.xml:20:5-44
@@ -404,18 +455,20 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Ruei-Bang\.gradl
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\7334c2f2493f07c52c91260c5dfdb635\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\44dd5eb5d6723de407ca06b5cd7928ab\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\44dd5eb5d6723de407ca06b5cd7928ab\print-1.0.0\AndroidManifest.xml:20:5-44
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Ruei-Bang\Desktop\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Ruei-Bang\Documents\Team6-Project\ExploreUTApp\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.firebaseui:firebase-ui-auth:6.0.2] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c0687c94ea50646f42fece5d1b79cebc\firebase-ui-auth-6.0.2\AndroidManifest.xml:12:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c3c95869afaafb6cf80f8c2a80395017\play-services-measurement-api-17.2.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-iid:19.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\22e362094ce5798a7d3bd74035db6ac2\firebase-iid-19.0.0\AndroidManifest.xml:22:5-79
@@ -640,6 +693,18 @@ ADDED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle
 		ADDED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:38:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:19.1.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\59e0346884c8c3cd72cdfc756b9250b0\firebase-auth-19.1.0\AndroidManifest.xml:37:17-109
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\c43266d18edfd9966cbc1b1be2474da8\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
 provider#com.squareup.picasso.PicassoProvider
 ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Ruei-Bang\.gradle\caches\transforms-2\files-2.1\37a2e0517e69ee84263fc891298e9b9f\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
 	android:authorities

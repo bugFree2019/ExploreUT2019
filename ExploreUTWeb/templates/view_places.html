@@ -9,9 +9,9 @@
         <hr/>
         <div class="row">
             <div class="col-9">
-                <h3><a href="/view_one_place?placeId={{ place['_id'] }}">{{ place['name'] }}</a></h3>
-                <h5>Tags: 
-                    {% for tag in place['tags'] %} 
+                <h3><a href="/view_one_place?place_id={{ place['_id'] }}">{{ place['name'] }}</a></h3>
+                <h5>Tags:
+                    {% for tag in place['tags'] %}
                         <a href="/search?tag={{ tag }}">{{ tag }}</a> 
                     {% endfor %}
                 </h5>

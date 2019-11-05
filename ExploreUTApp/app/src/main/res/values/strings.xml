@@ -17,4 +17,5 @@
     <string name="menu_search">Search</string>
     <string name="manage">Manage</string>
     <string name="signout">SIGNOUT</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

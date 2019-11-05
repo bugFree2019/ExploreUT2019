@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ruei-Bang\\Desktop\\Team6-Project\\ExploreUTApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rBR\\values-pt-rBR.xml",
+            "outputFile": "C:\\Users\\Ruei-Bang\\Documents\\Team6-Project\\ExploreUTApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rBR\\values-pt-rBR.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ruei-Bang\\.gradle\\caches\\transforms-2\\files-2.1\\330a5e8e37482138000a2b898f6e18b1\\play-services-base-17.1.0\\res\\values-pt-rBR\\values.xml",
