@@ -10,21 +10,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_manage.*
+import org.json.JSONException
 import java.util.*
 
 class manage : AppCompatActivity() {
 
 
+    private var allplaces: ArrayList<Place> = ArrayList()
     lateinit var providers: List<AuthUI.IdpConfig>
     val MY_REQUEST_CODE: Int = 7117
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +76,28 @@ class manage : AppCompatActivity() {
             .subscribe (this::handleResponseTest, this::handleError)
     }
 
-    private fun handleResponseTest(result: User) {
-
+    private fun handleResponseTest(result: ArrayList<Place>) {
+        try {
+            allplaces = result
+            for (p in allplaces) {
+                Log.d("myTag", p.name)
+            }
+            viewManager = LinearLayoutManager(this)
+            viewAdapter = RecyclerViewAdapter(allplaces)
+            recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view).apply {
+                // use this setting to improve performance if you know that changes
+                // in content do not change the layout size of the RecyclerView
+                setHasFixedSize(true)
+                // use a linear layout manager
+                layoutManager = viewManager
+                // specify an viewAdapter (see also next example)
+                adapter = viewAdapter
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            Log.d("myTag", "No valid json")
+        }
+        Log.d("myTag", "Done")
     }
 
     private fun handleError(error: Throwable) {
@@ -82,12 +110,14 @@ class manage : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
             if(resultCode == Activity.RESULT_OK) {
                 val users = FirebaseAuth.getInstance().currentUser
+                println(users!!.email)
                 val user = User(email = users!!.email!!, _id = "", username = "", name = "",
                                 profile = "", gender = "", age = 0, group = "",
                                 level = 0, subscription = ArrayList<String>()
 
                     )
                 checkUsers(user)
+
                 Toast.makeText(this,""+users!!.email, Toast.LENGTH_SHORT).show()
 
                 btn_sign_out.isEnabled = true
@@ -99,10 +129,12 @@ class manage : AppCompatActivity() {
 
     private fun showSignInOptions() {
 
-        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .setTheme(R.style.MyTheme)
-            .build(),MY_REQUEST_CODE)
+        startActivityForResult(AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+
+                .setTheme(R.style.MyTheme)
+                .build(),MY_REQUEST_CODE)
     }
 
     // override some functions to make navaigation bar work
