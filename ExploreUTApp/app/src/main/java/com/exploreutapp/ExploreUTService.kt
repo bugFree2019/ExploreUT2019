@@ -23,7 +23,7 @@ interface ExploreUTService {
 
     @POST("/index")
     @Headers("Accept: application/json", "Content-Type: application/json", "User-Agent: Android")
-    fun checkUsers(@Body user: User) : Observable<User>
+    fun checkUsers(@Body user: User) : Observable<ArrayList<Place>>
 
     companion object {
         // This is the URL when developed on the local emulator

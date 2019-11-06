@@ -187,6 +187,7 @@ def add_place():
         data = request.form.to_dict(flat=True)
         data['tags'] = request.form.getlist('tags')
         image_file = request.files.get('pic_file')
+        print(image_file)
         data['pics'] = []
         location_str = data['location']
         coordinates = location_str.split(" ")
