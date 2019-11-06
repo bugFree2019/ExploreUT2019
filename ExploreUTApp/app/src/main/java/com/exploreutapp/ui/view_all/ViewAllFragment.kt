@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.Place
-import com.exploreutapp.R
 import com.exploreutapp.ExploreUTService
 import com.exploreutapp.RecyclerViewAdapter
+import com.exploreutapp.ui.RecyclerItemClickListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
+
 
 class ViewAllFragment : Fragment() {
     companion object {
@@ -26,12 +27,12 @@ class ViewAllFragment : Fragment() {
 
     private var places: ArrayList<Place> = ArrayList()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewAdapter: RecyclerViewAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_view_all, container, false)
+        val root = inflater.inflate(com.exploreutapp.R.layout.fragment_view_all, container, false)
         viewAll()
         return root
     }
@@ -55,7 +56,7 @@ class ViewAllFragment : Fragment() {
 
             viewManager = LinearLayoutManager(context)
             viewAdapter = RecyclerViewAdapter(places)
-            recyclerView = getView()!!.findViewById<RecyclerView>(R.id.my_recycler_view_all).apply {
+            recyclerView = getView()!!.findViewById<RecyclerView>(com.exploreutapp.R.id.my_recycler_view_all).apply {
                 // use this setting to improve performance if you know that changes
                 // in content do not change the layout size of the RecyclerView
                 setHasFixedSize(true)
@@ -64,6 +65,24 @@ class ViewAllFragment : Fragment() {
                 // specify an viewAdapter (see also next example)
                 adapter = viewAdapter
             }
+
+//          test click events on recycler view
+            recyclerView.addOnItemTouchListener(
+                RecyclerItemClickListener(
+                    context!!,
+                    recyclerView,
+                    object : RecyclerItemClickListener.OnItemClickListener {
+                        override fun onItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item clicked")
+
+                        }
+
+                        override fun onLongItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item long clicked")
+
+                        }
+                    })
+            )
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d("myTag", "No valid json")

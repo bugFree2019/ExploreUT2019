@@ -9,14 +9,14 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
+
 class RecyclerViewAdapter(private val places: ArrayList<Place>) :
     RecyclerView.Adapter<RecyclerViewAdapter.PlaceViewHolder>() {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
-    class PlaceViewHolder internal constructor(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    class PlaceViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cv: CardView = itemView.findViewById(R.id.cv)
         var placeName: TextView = itemView.findViewById(R.id.place_name)
         var placeTag: TextView = itemView.findViewById(R.id.place_tag)
