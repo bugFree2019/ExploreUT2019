@@ -13,7 +13,7 @@ db = client['utdb_app']
 # define place object for the data model
 class Place(object):
     def __init__(self, name=None, theme=None, tags=[], address=None, intro=None, pics=[],
-                 reviews=[], likes=0):
+                 reviews=[], likes=0, **location):
         self.name = name
         self.theme = theme
         self.tags = tags
@@ -22,6 +22,7 @@ class Place(object):
         self.pics = pics
         self.reviews = reviews
         self.likes = likes
+        self.location = location
 
 
 # define user object for the data model
@@ -116,10 +117,10 @@ def update_place_by_id(db, old_place_id, new_place):
     :param new_place: a place with all the new fields we want
     :return: None
     """
-    db.place.update_one({'_id': old_place_id}, {'$set': {'place_name': new_place.name, 'theme': new_place.theme,
+    db.place.update_one({'_id': old_place_id}, {'$set': {'name': new_place.name, 'theme': new_place.theme,
                                                          'address': new_place.address, 'intro': new_place.intro,
                                                          'pics': new_place.pics, 'reviews': new_place.reviews,
-                                                         'likes': new_place.likes}})
+                                                         'likes': new_place.likes, 'location':new_place.location}})
 
 
 def delete_place_by_id(db, old_place_id):
@@ -317,10 +318,10 @@ def main():
     # test APIs for Place
     place = Place(name='UT Tower')
     place_id = create_place(db, place.__dict__)
-    new_place = Place(name='UT Tower', intro='The Tower of UT')
+    new_place = Place(name='UT Tower', intro='The Tower of UT',lat=33.0, lng=-97.4)
     update_place_by_id(db, place_id, new_place)
     ut_tower = read_place(db, '_id', place_id)
-    delete_place_by_id(db, place_id)
+    # delete_place_by_id(db, place_id)
 
     # test APIs for User
     user_email = 'abcd@utexas.edu'
