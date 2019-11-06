@@ -39,9 +39,6 @@ class ViewPlace : AppCompatActivity() {
 //                .into(photo)
 //        }
 
-//        // load rating
-//        if (Common.currentResult!!.rating != null) rating_bar.rating = Common.currentResult!!.rating.toFloat()
-//        else rating_bar.visibility = View.GONE
 
         // load reviews
         if (place!!.reviews != null) {

@@ -59,7 +59,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        //1. if the operation is not permitted, should we request the permissions?
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
                 buildLocationRequest()
@@ -90,7 +90,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             when(item.itemId) {
                 R.id.action_fitness -> nearByPlace("Museum")
                 R.id.action_library -> nearByPlace("Library")
-                R.id.action_school -> nearByPlace("School")
+                R.id.action_school -> nearByPlace("Stadium")
                 R.id.action_view -> nearByPlace("Statue")
             }
             true
@@ -113,10 +113,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val markerOptions = MarkerOptions()
                 val utPlace = currentPlaces[i]
 
-                val placeTheme = utPlace.theme
-                val placeName = utPlace.name
-                val lat = utPlace.location!!.lat
-                val lng = utPlace.location!!.lng
+                val placeTheme = utPlace!!.theme
+                val placeName = utPlace!!.name
+                val lat = utPlace!!.location!!.lat
+                val lng = utPlace!!.location!!.lng
                 val latLng = LatLng(lat,lng)
 
 
