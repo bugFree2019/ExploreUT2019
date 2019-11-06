@@ -1,7 +1,5 @@
 package com.exploreutapp
 
-import kotlinx.android.synthetic.main.nav_header_main.*
-
 //import com.esafirm.imagepicker.features.ImagePicker
 
 import android.app.Activity
@@ -30,9 +28,7 @@ import androidx.core.app.ActivityCompat
 import com.google.gson.Gson
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.create_new_place.*
-import kotlinx.android.synthetic.main.nav_header_main.imageView
 import okhttp3.Call
 import java.io.ByteArrayOutputStream
 import java.io.File

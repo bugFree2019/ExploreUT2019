@@ -1,6 +1,6 @@
 *.pyc
 *.swp
-*.idea
+*.idea*
 *.iml
 .gradle
 /local.properties
@@ -9,3 +9,4 @@
 /captures
 .externalNativeBuild
 .cxx
+/__pycache__

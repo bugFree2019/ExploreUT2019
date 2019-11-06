@@ -276,7 +276,9 @@ def get_place_image(place_id, image_id):
     images = read_place_images(db, ObjectId(place_id))
     if images and image_id >= 0 and image_id < len(images):
         image = images[image_id]
-        byte_io = io.BytesIO(base64.decodebytes(image))
+        if isinstance(image, bytes):
+            image = base64.decodebytes(image)
+        byte_io = io.BytesIO(image)
         response = make_response(send_file(byte_io, mimetype='image/jpg'))
         response.headers['Content-Transfer-Encoding'] = 'base64'
         return response

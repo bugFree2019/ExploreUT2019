@@ -5,10 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.Place
@@ -31,21 +28,11 @@ class ViewAllFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var viewAllViewModel: ViewAllViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewAllViewModel =
-            ViewModelProviders.of(this).get(ViewAllViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_view_all, container, false)
-        val recyclerView: RecyclerView = root.findViewById(R.id.my_recycler_view_all)
         viewAll()
-//        viewAllViewModel.text.observe(this, Observer {
-//            recyclerView
-//        })
         return root
     }
 
@@ -60,10 +47,12 @@ class ViewAllFragment : Fragment() {
     private fun handleResponse(result: ArrayList<Place>) {
         try {
             places = result
+
             Log.d("myTag", "handling response")
             for (r in result) {
                 Log.d("myTag", r.name)
             }
+
             viewManager = LinearLayoutManager(context)
             viewAdapter = RecyclerViewAdapter(places)
             recyclerView = getView()!!.findViewById<RecyclerView>(R.id.my_recycler_view_all).apply {
