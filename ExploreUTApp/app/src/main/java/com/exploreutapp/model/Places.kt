@@ -12,7 +12,7 @@ class Places: Serializable {
     var reviews: ArrayList<String>? = null
     var intro: String? = null
     var location: Location? = null
-    var likes: Int = 0
+   // var likes: Int = 0
 
     //   var pics:ArrayList<Photos>?=null
 //    var url:String?=null

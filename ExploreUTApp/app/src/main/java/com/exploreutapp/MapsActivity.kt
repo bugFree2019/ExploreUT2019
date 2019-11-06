@@ -102,25 +102,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Clear all marker on Map
         mMap.clear()
 
+
+
         var disposable: Disposable? = mService.getThemePlaces()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
 
-        if (currentPlaces.isNotEmpty()) {
+
+        if (currentPlaces != null) {
 
             for (i in 0 until currentPlaces.size) {
                 val markerOptions = MarkerOptions()
                 val utPlace = currentPlaces[i]
 
-                val placeTheme = utPlace!!.theme
-                val placeName = utPlace!!.name
-                val lat = utPlace!!.location!!.lat
-                val lng = utPlace!!.location!!.lng
-                val latLng = LatLng(lat,lng)
+                if (utPlace.location != null && utPlace.location != null) {
 
+                    val placeTheme = utPlace.theme
+                    val placeName = utPlace.name
+                    val lat = utPlace.location!!.lat
+                    val lng = utPlace.location!!.lng
 
-                if (latLng != null) {
+//                    println(lat.toString())
+//                    println(lng.toString())
+
+                    val latLng = LatLng(lat,lng)
+
                     markerOptions.position(latLng)
                     markerOptions.title(placeName)
                     if (place_theme == placeTheme) {
@@ -151,11 +158,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Places>) {
+    private fun handleResponse(response: ArrayList<Places>) {
         try {
-            currentPlaces = result
+            currentPlaces = response
 
-            for(r in result) {
+            for(r in response) {
                 Log.d("myTag", r._id)
                 Log.d("myTag", r.name)
                 Log.d("myTag", r.theme)
