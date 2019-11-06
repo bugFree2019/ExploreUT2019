@@ -117,7 +117,7 @@ def update_place_by_id(db, old_place_id, new_place):
     :param new_place: a place with all the new fields we want
     :return: None
     """
-    db.place.update_one({'_id': old_place_id}, {'$set': {'name': new_place.name, 'theme': new_place.theme,
+    db.place.update_one({'_id': ObjectId(old_place_id)}, {'$set': {'name': new_place.name, 'theme': new_place.theme,
                                                          'address': new_place.address, 'intro': new_place.intro,
                                                          'pics': new_place.pics, 'reviews': new_place.reviews,
                                                          'likes': new_place.likes, 'location':new_place.location}})
@@ -318,10 +318,10 @@ def main():
     # test APIs for Place
     place = Place(name='UT Tower')
     place_id = create_place(db, place.__dict__)
-    new_place = Place(name='UT Tower', intro='The Tower of UT',lat=33.0, lng=-97.4)
+    new_place = Place(name='UT Tower', intro='The Tower of UT',lat=30.286435, lng=-97.739388)
     update_place_by_id(db, place_id, new_place)
     ut_tower = read_place(db, '_id', place_id)
-    # delete_place_by_id(db, place_id)
+    delete_place_by_id(db, place_id)
 
     # test APIs for User
     user_email = 'abcd@utexas.edu'
