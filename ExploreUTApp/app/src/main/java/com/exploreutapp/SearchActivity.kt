@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
-import com.exploreutapp.ui.RecyclerItemClickListener
 
 
 class SearchActivity : AppCompatActivity() {

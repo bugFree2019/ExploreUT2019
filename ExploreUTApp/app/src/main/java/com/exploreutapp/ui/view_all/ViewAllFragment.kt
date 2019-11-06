@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.Place
 import com.exploreutapp.ExploreUTService
 import com.exploreutapp.RecyclerViewAdapter
-import com.exploreutapp.ui.RecyclerItemClickListener
+import com.exploreutapp.RecyclerItemClickListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

@@ -1,4 +1,4 @@
-package com.exploreutapp.ui
+package com.exploreutapp
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class RecyclerItemClickListener(context: Context, recyclerView: RecyclerView,
-                                listener: OnItemClickListener) : RecyclerView.OnItemTouchListener {
+                                listener: OnItemClickListener
+) : RecyclerView.OnItemTouchListener {
     private val  mListener: OnItemClickListener = listener
 
     interface OnItemClickListener {
