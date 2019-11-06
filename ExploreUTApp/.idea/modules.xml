@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Desktop-Team6-Project-ExploreUTApp.iml" filepath="$PROJECT_DIR$/Desktop-Team6-Project-ExploreUTApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExploreUTApp.iml" filepath="$PROJECT_DIR$/ExploreUTApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/ExploreUTApp-app.iml" filepath="$PROJECT_DIR$/app/ExploreUTApp-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/Team6-Project-ExploreUTApp.iml" filepath="$PROJECT_DIR$/Team6-Project-ExploreUTApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Team6-Project-ExploreUTApp-app.iml" filepath="$PROJECT_DIR$/app/Team6-Project-ExploreUTApp-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
