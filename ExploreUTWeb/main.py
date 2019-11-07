@@ -26,8 +26,6 @@ def home_places():
 
 
 @app.route('/index', methods=['GET', 'POST'])
-
-
 def index():
     if request.method == 'GET':
         id_token = request.cookies.get('token')
@@ -87,6 +85,7 @@ def index():
                 return json_response(None)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
+
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -231,6 +230,34 @@ def add_report():
         return redirect(url_for('.view_one_place', placeId=data['place_id']))
 
     return render_template("add_new_report.html", action="Add", place_name=place_name, place_id=place_id, article={})
+
+
+@app.route('/view_places_by_theme', methods=['GET'])
+def view_palces_by_theme():
+    """
+    The function that handle searching with a particular tag
+    :return: a html page for rendering with the matching places found
+    """
+    # get the query tag from the html form input
+    theme = request.args.get('theme')
+
+    # get the user agent from the request
+    user_agent = request.headers.get('User-Agent')
+
+    # return empty list if tag is None or null
+    if not theme:
+        if 'android' in user_agent.lower():
+            return json_response(None)
+        return abort(404)
+
+    # query the database and extract the places corresponding to that tag
+    places = read_places(db, {'theme': {'$regex': theme, '$options': 'i'}})
+
+    if 'android' in user_agent.lower():
+        return json_response(places)
+
+    # send the search result to the front end html template
+    return abort(404)
 
 
 @app.route('/map', methods=["GET"])

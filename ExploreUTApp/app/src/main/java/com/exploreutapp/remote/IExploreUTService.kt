@@ -18,9 +18,9 @@ interface IExploreUTService {
     @Headers("Accept: application/json", "User-Agent: Android")
     fun getOnePlace(@Query("_id")  _id: String): Observable<Places>
 
-    @GET("/view_places")
+    @GET("/view_places_by_theme")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getThemePlaces(): Observable<ArrayList<Places>>
+    fun getThemePlaces(@Query("theme")  tag: String): Observable<ArrayList<Places>>
 
 
     @GET("/search")

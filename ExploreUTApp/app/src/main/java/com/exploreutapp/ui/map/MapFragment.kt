@@ -62,18 +62,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.activity_maps, container, false)
 
-//        mMapView = root.findViewById(R.id.mapView) as MapView
-//        mMapView.onCreate(savedInstanceState)
-//
-//        mMapView.onResume() // needed to get the map to display immediately
-//
-//        try {
-//            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
-//        } catch (e: Exception) {
-//            e.printStackTrace();
-//        }
-//
-//        mMapView.getMapAsync(this)
+        mMapView = root.findViewById(R.id.mapView) as MapView
+        mMapView.onCreate(savedInstanceState)
+
+        mMapView.onResume() // needed to get the map to display immediately
+
+        try {
+            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
+        } catch (e: Exception) {
+            e.printStackTrace();
+        }
+
+        mMapView.getMapAsync(this)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = (activity!!.supportFragmentManager
@@ -126,73 +126,72 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         // Clear all marker on Map
         mMap.clear()
 
-        var disposable: Disposable? = mService.getThemePlaces()
+        var disposable: Disposable? = mService.getThemePlaces(place_theme)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
-
-        if (currentPlaces != null) {
-
-            for (i in 0 until currentPlaces.size) {
-                val markerOptions = MarkerOptions()
-                val utPlace = currentPlaces[i]
-
-                // making sure the place we are looking at does have location
-                if (utPlace.location != null && utPlace.location != null) {
-                    val placeTheme = utPlace.theme
-                    val placeName = utPlace.name
-                    val lat = utPlace.location!!.lat
-                    val lng = utPlace.location!!.lng
-
-//                    println(lat.toString())
-//                    println(lng.toString())
-
-                    val latLng = LatLng(lat,lng)
-
-                    markerOptions.position(latLng)
-                    markerOptions.title(placeName)
-                    if (place_theme == placeTheme && place_theme == "Activity") {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
-                    } else if (place_theme == placeTheme && place_theme == "Study") {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                    } else if (place_theme == placeTheme && place_theme == "Building") {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_building)))
-                    } else if (place_theme == placeTheme && place_theme == "Monument") {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
-                    } else {
-                        markerOptions.icon(
-                            BitmapDescriptorFactory.defaultMarker(
-                                BitmapDescriptorFactory.HUE_GREEN
-                            )
-                        )
-                    }
-                    markerOptions.snippet(i.toString()) // Assign index for Marker
-                    // Add marker to map
-                    mMap.addMarker(markerOptions)
-
-                    // Move camera
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
-                }
-            }
-        }
     }
 
     // handle the response with an arraylist of places
     private fun handleResponse(result: ArrayList<Places>) {
         try {
             currentPlaces = result
-
-            for(r in result) {
+            for(r in currentPlaces) {
                 Log.d("myTag", r._id)
                 Log.d("myTag", r.name)
                 Log.d("myTag", r.theme)
                 Log.d("myTag", r.tags.toString())
-                Log.d("myTag", r.address)
+//                Log.d("myTag", r.address)
                 Log.d("myTag", r.intro)
                 Log.d("myTag", r.reviews.toString())
                 Log.d("myTag", r.location!!.lat.toString())
                 Log.d("myTag", r.location!!.lng.toString())
+            }
+
+            if (currentPlaces != null) {
+                Log.d("myTag", currentPlaces.size.toString())
+                for (i in 0 until currentPlaces.size) {
+                    val markerOptions = MarkerOptions()
+                    val utPlace = currentPlaces[i]
+
+                    // making sure the place we are looking at does have location
+                    if (utPlace.location != null && utPlace.location != null) {
+                        val placeTheme = utPlace.theme
+                        val placeName = utPlace.name
+                        val lat = utPlace.location!!.lat
+                        val lng = utPlace.location!!.lng
+
+//                    println(lat.toString())
+//                    println(lng.toString())
+
+                        val latLng = LatLng(lat,lng)
+
+                        markerOptions.position(latLng)
+                        markerOptions.title(placeName)
+                        if (placeTheme == "Activity") {
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
+                        } else if (placeTheme == "Study") {
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
+                        } else if (placeTheme == "Building") {
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_building)))
+                        } else if (placeTheme == "Monument") {
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
+                        } else {
+                            markerOptions.icon(
+                                BitmapDescriptorFactory.defaultMarker(
+                                    BitmapDescriptorFactory.HUE_GREEN
+                                )
+                            )
+                        }
+                        markerOptions.snippet(i.toString()) // Assign index for Marker
+                        // Add marker to map
+                        mMap.addMarker(markerOptions)
+
+                        // Move camera
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+                    }
+                }
             }
         } catch (e: JSONException) {
             e.printStackTrace()
