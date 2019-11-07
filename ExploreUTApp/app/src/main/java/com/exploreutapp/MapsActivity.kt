@@ -88,10 +88,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         bottom_navigation_view.setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
-                R.id.action_fitness -> nearByPlace("Museum")
-                R.id.action_library -> nearByPlace("Library")
-                R.id.action_school -> nearByPlace("Stadium")
-                R.id.action_view -> nearByPlace("Statue")
+                R.id.action_activity -> nearByPlace("Activity")
+                R.id.action_library -> nearByPlace("Study")
+                R.id.action_building -> nearByPlace("Building")
+                R.id.action_view -> nearByPlace("Monument")
             }
             true
         }
@@ -116,6 +116,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val markerOptions = MarkerOptions()
                 val utPlace = currentPlaces[i]
 
+                // making sure the place we are looking at does have location
                 if (utPlace.location != null && utPlace.location != null) {
 
                     val placeTheme = utPlace.theme
@@ -130,13 +131,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     markerOptions.position(latLng)
                     markerOptions.title(placeName)
-                    if (place_theme == placeTheme) {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_fitness)))
-                    } else if (place_theme == placeTheme) {
+                    if (place_theme == placeTheme && place_theme == "Activity") {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
+                    } else if (place_theme == placeTheme && place_theme == "Study") {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                    } else if (place_theme == placeTheme) {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_school)))
-                    } else if (place_theme == placeTheme) {
+                    } else if (place_theme == placeTheme && place_theme == "Building") {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_building)))
+                    } else if (place_theme == placeTheme && place_theme == "Monument") {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
                     } else {
                         markerOptions.icon(

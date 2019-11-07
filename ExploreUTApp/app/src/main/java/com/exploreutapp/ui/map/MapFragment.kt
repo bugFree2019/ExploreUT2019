@@ -1,7 +1,6 @@
 package com.exploreutapp.ui.map
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -12,14 +11,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.MapsActivity
 import com.exploreutapp.R
 import com.exploreutapp.ViewPlace
@@ -106,9 +102,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         bottom_navigation_view.setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
-                R.id.action_fitness -> nearByPlace("Museum")
+                R.id.action_activity -> nearByPlace("Museum")
                 R.id.action_library -> nearByPlace("Library")
-                R.id.action_school -> nearByPlace("School")
+                R.id.action_building -> nearByPlace("School")
                 R.id.action_view -> nearByPlace("Statue")
             }
             true
@@ -128,29 +124,34 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
 
-        if (currentPlaces.isNotEmpty()) {
+        if (currentPlaces != null) {
 
             for (i in 0 until currentPlaces.size) {
                 val markerOptions = MarkerOptions()
                 val utPlace = currentPlaces[i]
 
-                val placeTheme = utPlace.theme
-                val placeName = utPlace.name
-                val lat = utPlace.location!!.lat
-                val lng = utPlace.location!!.lng
-                val latLng = LatLng(lat,lng)
+                // making sure the place we are looking at does have location
+                if (utPlace.location != null && utPlace.location != null) {
 
+                    val placeTheme = utPlace.theme
+                    val placeName = utPlace.name
+                    val lat = utPlace.location!!.lat
+                    val lng = utPlace.location!!.lng
 
-                if (latLng != null) {
+//                    println(lat.toString())
+//                    println(lng.toString())
+
+                    val latLng = LatLng(lat,lng)
+
                     markerOptions.position(latLng)
                     markerOptions.title(placeName)
-                    if (place_theme == placeTheme) {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_fitness)))
-                    } else if (place_theme == placeTheme) {
+                    if (place_theme == placeTheme && place_theme == "Activity") {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
+                    } else if (place_theme == placeTheme && place_theme == "Study") {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                    } else if (place_theme == placeTheme) {
-                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_school)))
-                    } else if (place_theme == placeTheme) {
+                    } else if (place_theme == placeTheme && place_theme == "Building") {
+                        markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_building)))
+                    } else if (place_theme == placeTheme && place_theme == "Monument") {
                         markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
                     } else {
                         markerOptions.icon(

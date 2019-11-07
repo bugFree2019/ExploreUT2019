@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_school"
+        android:id="@+id/action_building"
         android:enabled="true"
         android:title="Building"
-        android:icon="@drawable/ic_school_black_24dp"
+        android:icon="@drawable/ic_building_24dp_black"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_library"
         android:enabled="true"
-        android:title="Library"
-        android:icon="@drawable/ic_local_library_black_24dp"
+        android:title="Study"
+        android:icon="@drawable/ic_library_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_fitness"
+        android:id="@+id/action_activity"
         android:enabled="true"
-        android:title="Museum"
-        android:icon="@drawable/ic_fitness_center_black_24dp"
+        android:title="Activity"
+        android:icon="@drawable/ic_activity_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_view"
         android:enabled="true"
         android:title="Statue"
-        android:icon="@drawable/ic_street_view_black_24dp"
+        android:icon="@drawable/ic_view_black_24dp"
         app:showAsAction="ifRoom"/>
 
 </menu>
