@@ -30,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_maps.*
 import org.json.JSONException
 import java.io.Serializable
 
@@ -61,18 +62,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.activity_maps, container, false)
 
-        mMapView = root.findViewById(R.id.mapView) as MapView
-        mMapView.onCreate(savedInstanceState)
+//        mMapView = root.findViewById(R.id.mapView) as MapView
+//        mMapView.onCreate(savedInstanceState)
+//
+//        mMapView.onResume() // needed to get the map to display immediately
+//
+//        try {
+//            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
+//        } catch (e: Exception) {
+//            e.printStackTrace();
+//        }
+//
+//        mMapView.getMapAsync(this)
 
-        mMapView.onResume() // needed to get the map to display immediately
-
-        try {
-            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
-        } catch (e: Exception) {
-            e.printStackTrace();
-        }
-
-        mMapView.getMapAsync(this)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = (activity!!.supportFragmentManager
 //            .findFragmentById(R.id.map) as SupportMapFragment?)?.let {
@@ -293,7 +295,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     }
 
-
     override fun onStop() {
 
         //remove current location information when stop app
@@ -333,5 +334,26 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.setAllGesturesEnabled(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mMapView.onResume()
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        mMapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mMapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mMapView.onLowMemory()
     }
 }
