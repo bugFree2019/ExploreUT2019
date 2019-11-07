@@ -316,9 +316,9 @@ def delete_article_by_id(db, old_article_id):
 # execute and test the APIs
 def main():
     # test APIs for Place
-    place = Place(name='UT Tower')
+    place = Place(name='Boats', theme="Monument", lat=30.287465, lng=-97.737044)
     place_id = create_place(db, place.__dict__)
-    new_place = Place(name='UT Tower', intro='The Tower of UT',lat=30.286435, lng=-97.739388)
+    new_place = Place(name='UT Tower', theme="Building", intro='The Tower of UT',lat=30.286435, lng=-97.739388)
     update_place_by_id(db, place_id, new_place)
     ut_tower = read_place(db, '_id', place_id)
     delete_place_by_id(db, place_id)
