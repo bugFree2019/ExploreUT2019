@@ -102,10 +102,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         bottom_navigation_view.setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
-                R.id.action_activity -> nearByPlace("Museum")
-                R.id.action_library -> nearByPlace("Library")
-                R.id.action_building -> nearByPlace("School")
-                R.id.action_view -> nearByPlace("Statue")
+                R.id.action_activity -> nearByPlace("Activity")
+                R.id.action_library -> nearByPlace("Study")
+                R.id.action_building -> nearByPlace("Building")
+                R.id.action_view -> nearByPlace("Monument")
             }
             true
         }
