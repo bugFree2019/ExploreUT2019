@@ -7,11 +7,10 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
-import kotlinx.android.synthetic.main.cardview.*
 
 
 class ViewPlace : AppCompatActivity() {
@@ -21,7 +20,7 @@ class ViewPlace : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_place)
 
-        val place = intent.getSerializableExtra("place_to_show") as Places
+        val place = intent.getSerializableExtra("place_to_show") as Place
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)

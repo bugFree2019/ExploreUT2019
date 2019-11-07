@@ -2,7 +2,7 @@ package com.exploreutapp.model
 
 import java.io.Serializable
 
-class Places: Serializable {
+class Place: Serializable {
     var name: String = ""
     var _id: String = ""
 

@@ -17,7 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 //import androidx.annotation.RequiresApi
 //import androidx.core.app.ActivityCompat
 //import androidx.core.content.ContextCompat.checkSelfPermission
-//import com.exploreutapp.model.Places
+//import com.exploreutapp.model.Place
 //import com.exploreutapp.remote.IExploreUTService
 //import com.google.android.gms.location.*
 //import com.google.android.gms.maps.*
@@ -52,8 +52,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 //    }
 //
 //
-//    private var currentPlaces: ArrayList<Places> = ArrayList()
-//    var currentResult:Places?=null
+//    private var currentPlaces: ArrayList<Place> = ArrayList()
+//    var currentResult:Place?=null
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -163,7 +163,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 //    }
 //
 //    // handle the response with an arraylist of places
-//    private fun handleResponse(response: ArrayList<Places>) {
+//    private fun handleResponse(response: ArrayList<Place>) {
 //        try {
 //            currentPlaces = response
 //

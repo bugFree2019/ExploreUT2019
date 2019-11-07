@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -26,7 +26,7 @@ class ViewAllFragment : Fragment() {
         }
     }
 
-    private var places: ArrayList<Places> = ArrayList()
+    private var places: ArrayList<Place> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerViewAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -46,7 +46,7 @@ class ViewAllFragment : Fragment() {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Places>) {
+    private fun handleResponse(result: ArrayList<Place>) {
         try {
             places = result
 

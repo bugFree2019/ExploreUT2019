@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.squareup.picasso.Picasso
 
 
-class RecyclerViewAdapter(private val places: ArrayList<Places>) :
+class RecyclerViewAdapter(private val places: ArrayList<Place>) :
     RecyclerView.Adapter<RecyclerViewAdapter.PlaceViewHolder>() {
 
     // Provide a reference to the views for each data item

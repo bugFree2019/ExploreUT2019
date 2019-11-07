@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import java.io.Serializable
 
@@ -28,7 +28,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private var places: ArrayList<Places> = ArrayList()
+    private var places: ArrayList<Place> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -66,7 +66,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Places>) {
+    private fun handleResponse(result: ArrayList<Place>) {
         try {
             places = result
             for (p in places) {

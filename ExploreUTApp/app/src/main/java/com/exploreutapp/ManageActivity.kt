@@ -13,7 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +26,7 @@ import java.io.Serializable
 import java.util.*
 
 class ManageActivity : AppCompatActivity() {
-    private var allplaces: ArrayList<Places> = ArrayList()
+    private var allplaces: ArrayList<Place> = ArrayList()
     lateinit var providers: List<AuthUI.IdpConfig>
     val MY_REQUEST_CODE: Int = 7117
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -77,7 +77,7 @@ class ManageActivity : AppCompatActivity() {
             .subscribe (this::handleResponseTest, this::handleError)
     }
 
-    private fun handleResponseTest(result: ArrayList<Places>) {
+    private fun handleResponseTest(result: ArrayList<Place>) {
         try {
             allplaces = result
             for (p in allplaces) {

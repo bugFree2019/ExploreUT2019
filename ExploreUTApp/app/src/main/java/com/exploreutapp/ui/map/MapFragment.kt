@@ -19,7 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.exploreutapp.R
 import com.exploreutapp.ViewPlace
-import com.exploreutapp.model.Places
+import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
@@ -55,8 +55,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private var currentPlaces: ArrayList<Places> = ArrayList()
-    var currentResult: Places?=null
+    private var currentPlaces: ArrayList<Place> = ArrayList()
+    var currentResult: Place?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -137,7 +137,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Places>) {
+    private fun handleResponse(result: ArrayList<Place>) {
         try {
             currentPlaces = result
             for(r in currentPlaces) {
