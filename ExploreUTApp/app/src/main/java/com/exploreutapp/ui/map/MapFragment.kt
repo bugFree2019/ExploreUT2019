@@ -159,7 +159,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     val utPlace = currentPlaces[i]
 
                     // making sure the place we are looking at does have location
-                    if (utPlace.location != null && utPlace.location != null) {
+                    if (utPlace.location != null) {
                         val placeTheme = utPlace.theme
                         val placeName = utPlace.name
                         val lat = utPlace.location!!.lat
@@ -172,13 +172,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
                         markerOptions.position(latLng)
                         markerOptions.title(placeName)
-                        if (placeTheme == "Activity") {
+                        if (Regex("Activity").containsMatchIn(placeTheme) ||
+                            Regex("Museum").containsMatchIn(placeTheme)) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
-                        } else if (placeTheme == "Study") {
+                        } else if (Regex("Study").containsMatchIn(placeTheme) ||
+                            Regex("Library").containsMatchIn(placeTheme)) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_library)))
-                        } else if (placeTheme == "Building") {
+                        } else if (Regex("Building").containsMatchIn(placeTheme)) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_building)))
-                        } else if (placeTheme == "Monument") {
+                        } else if (Regex("Monument").containsMatchIn(placeTheme)
+                            || Regex("Statue").containsMatchIn(placeTheme)) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_view)))
                         } else {
                             markerOptions.icon(
