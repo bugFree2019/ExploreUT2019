@@ -1,71 +1,48 @@
 package com.exploreutapp
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Base64
+import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.esafirm.imagepicker.features.ImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import kotlinx.android.synthetic.main.create_new_report.*
 import okhttp3.Call
-import java.io.ByteArrayOutputStream
+import java.io.File
 
 class CreateReportActivity : AppCompatActivity(){
-    var iview: ImageView?=null
+    var picker:ImagePicker = ImagePicker.create(this)
+    var images: List<Image>? = null
+    var image: Image? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_new_report)
-        iview = findViewById(R.id.imageView)
     }
 
-    fun getImageFromGallery(view:View){
-        //picker.start() // start image picker activity with request code
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/*"
-        startActivityForResult(intent, 1)
+    fun pickImages(view: View){
+        picker.imageDirectory("Camera").start()
     }
 
-    fun getImageFromCamera(view:View){
-        //picker.start() // start image picker activity with request code
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, 2)
-    }
-
+    @Override
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            // Get a list of picked images
+            images = ImagePicker.getImages(data)
+            // or get a single image onlyp
+            image = ImagePicker.getFirstImageOrNull(data)
+            Glide.with(imageView)
+                .load(image!!.path)
+                .into(imageView)
+        }
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK) {
-
-            if (requestCode == 2) {
-
-                val bundle = data!!.extras
-                val bmp = bundle!!.get("data") as Bitmap?
-                iview?.setImageBitmap(bmp)
-
-            } else if (requestCode == 1) {
-
-                val selectedImageUri = data!!.data
-                iview?.setImageURI(selectedImageUri)
-            }
-
-        }
     }
 
-    fun encodeImage(bm: Bitmap):String {
-        var baos =  ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG,100,baos)
-        var b = baos.toByteArray()
-        var encImage = Base64.encodeToString(b, Base64.DEFAULT)
-
-        return encImage
-    }
 
     fun reset(view:View){
         //views that need to be reset:
@@ -75,26 +52,21 @@ class CreateReportActivity : AppCompatActivity(){
         imageView.setImageDrawable(null)
     }
 
-    fun checkValidity(name:String, intro:String, coordinates:String):Boolean{
-        if(name.length==0){
-            Toast.makeText(getApplicationContext(), "Please input the place name.",
+    private fun checkValidity():Boolean{
+        if(report_title.text.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please input the report title.",
                 Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if(coordinates.equals("Latitude: Longitude")){
-            Toast.makeText(getApplicationContext(), "Please get the current location.",
+        if(report_comment.text.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please input the report comment.",
                 Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if(intro.length==0){
-            Toast.makeText(getApplicationContext(), "Please input the intro.",
-                Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if(iview?.getDrawable()==null){
-            Toast.makeText(getApplicationContext(), "Please add one image for the place.",
+        if(imageView.getDrawable()==null){
+            Toast.makeText(getApplicationContext(), "Please add images for the review.",
                 Toast.LENGTH_SHORT).show()
             return false
         }
@@ -102,30 +74,39 @@ class CreateReportActivity : AppCompatActivity(){
     }
 
     fun postData(view: View){
+        if(!checkValidity()){
+            return
+        }
         var title = report_title.text.toString()
         var comment = report_comment.text.toString()
 
-        var bitmapdrawable = iview?.getDrawable() as BitmapDrawable
-        var bitmap = bitmapdrawable.bitmap
-
-        var encodedimage = encodeImage(bitmap)
 
 
-        OkHttpUtils
-            .post()
-            .url("http://10.0.2.2:8082/create_new_report")
-            .addParams("title", title)
-            .addParams("comment", comment)
-            .addParams("encoded_pic",encodedimage)
-            .build()
+        var builder=OkHttpUtils.post()
+        builder.url("http://10.0.2.2:8080/create_new_report")
+        builder.addParams("title", title)
+        builder.addParams("comment", comment)
+
+        val image_iterator = images!!.iterator()
+        while(image_iterator.hasNext()){
+            var image = image_iterator.next()
+            var pic_file = File(image.path)
+            builder.addFile("pic_files",pic_file.name,pic_file)
+            Log.d("image_path",image.path)
+            Log.d("image_name",pic_file.name)
+        }
+
+        builder.addHeader("Connection","close").build()
             .execute(object: StringCallback(){
                 override fun onResponse(p0: String?, p1: Int) {
-
+                    Toast.makeText(getApplicationContext(), p0,
+                        Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onError(p0: Call?, p1: java.lang.Exception?, p2: Int) {
+                    Toast.makeText(getApplicationContext(), p1.toString(),
+                        Toast.LENGTH_LONG).show()
                 }
-
             })
 
     }

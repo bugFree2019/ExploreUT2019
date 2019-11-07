@@ -1,59 +1,74 @@
+
 package com.exploreutapp
+
 
 //import com.esafirm.imagepicker.features.ImagePicker
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.provider.Settings
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.google.gson.Gson
+import com.bumptech.glide.Glide
+import com.esafirm.imagepicker.features.ImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import kotlinx.android.synthetic.main.create_new_place.*
 import okhttp3.Call
-import java.io.ByteArrayOutputStream
 import java.io.File
 
 
 class CreatePlaceActivity : AppCompatActivity(){
 
-    private var image: ImageView? = null
 
     private var locationManager:LocationManager?=null
     private var listener:LocationListener?=null
-    var iview:ImageView?=null
     var selectedImageUri:Uri?=null
+    var images: List<Image>? = null
+    var image:Image? = null
+    var picker:ImagePicker = ImagePicker.create(this)
+    var loc:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_new_place)
 
-        ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+
+        setSpinners()
+        requestReadAndWritePermissions()
+        registerLocationUpdates()
+
+
+    }
+
+    private fun requestReadAndWritePermissions(){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                ,11)
+        }
+    }
+
+
+
+    private fun registerLocationUpdates(){
+
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-        iview = findViewById<ImageView>(R.id.imageView)
+
         listener = object:LocationListener {
 
-            override fun onLocationChanged(location:Location) {
-                text_loc.text = "" + location.getLatitude() + " " + location.getLongitude()
+            override fun onLocationChanged(location: Location) {
+                loc = "" + location.getLatitude() + " " + location.getLongitude()
             }
 
 
@@ -67,14 +82,20 @@ class CreatePlaceActivity : AppCompatActivity(){
             }
 
             override fun onProviderDisabled(s:String) {
-
                 var i = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(i)
             }
         }
 
+        var i:Float=5f
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION)
+                ,10)
+        }
+        locationManager?.requestLocationUpdates("gps", 5000, i, listener)
+    }
 
-
+    private fun setSpinners(){
         val adapter1 = ArrayAdapter.createFromResource(this, R.array.tag_array,android.R.layout.simple_spinner_item)
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_tags.adapter = adapter1
@@ -96,88 +117,31 @@ class CreatePlaceActivity : AppCompatActivity(){
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         })
-        requestReadAndWritePermissions()
-
-
     }
 
-    fun getImageFromGallery(view:View){
-        //picker.start() // start image picker activity with request code
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/*"
-        startActivityForResult(intent, 1)
-    }
-
-    fun getImageFromCamera(view:View){
-        //picker.start() // start image picker activity with request code
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, 2)
+    fun getLocation(view: View){
+        text_loc.setText(loc)
     }
 
 
-    fun getLocation(view:View){
-        var i:Float=0f
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION)
-                ,10)
-        }
-        locationManager?.requestLocationUpdates("gps", 5000, i, listener)
+    fun pickImages(view: View){
+        picker.imageDirectory("Camera").start()
     }
 
-    fun requestReadAndWritePermissions(){
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                ,11)
-        }
-    }
-
-
-
-
+    @Override
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            // Get a list of picked images
+            images = ImagePicker.getImages(data)
+            // or get a single image onlyp
+            image = ImagePicker.getFirstImageOrNull(data)
+            Glide.with(imageView)
+                .load(image!!.path)
+                .into(imageView)
+        }
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK) {
-
-            if (requestCode == 2) {
-
-                val bundle = data!!.extras
-                val bmp = bundle!!.get("data") as Bitmap?
-                iview?.setImageBitmap(bmp)
-
-            } else if (requestCode == 1) {
-
-                selectedImageUri = data!!.data
-                iview?.setImageURI(selectedImageUri)
-            }
-
-        }
     }
-
-    fun encodeImage(bm:Bitmap):String {
-        var baos =  ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG,100,baos)
-        var b = baos.toByteArray()
-        var encImage = Base64.encodeToString(b, Base64.DEFAULT)
-
-        return encImage
-    }
-
-    fun getRealPathFromUri(context: Context, contentUri:Uri):String {
-        var cursor: Cursor?= null
-        try {
-            var proj = arrayOf( MediaStore.Images.Media.DATA )
-            cursor = context.getContentResolver().query(contentUri, proj, null, null, null)
-            var column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            cursor?.moveToFirst()
-            return cursor!!.getString(column_index)
-        } finally {
-            if (cursor != null) {
-                cursor.close()
-            }
-        }
-    }
-
 
     fun reset(view:View){
         //views that need to be reset:
@@ -191,7 +155,7 @@ class CreatePlaceActivity : AppCompatActivity(){
     }
 
     //Check the validity of inputs (name, location, intro, )
-    fun checkValidity():Boolean{
+    private fun checkValidity():Boolean{
         if(text_name.text.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please input the place name.",
                 Toast.LENGTH_SHORT).show()
@@ -210,8 +174,8 @@ class CreatePlaceActivity : AppCompatActivity(){
             return false
         }
 
-        if(iview?.getDrawable()==null){
-            Toast.makeText(getApplicationContext(), "Please add one image for the place.",
+        if(imageView.getDrawable()==null){
+            Toast.makeText(getApplicationContext(), "Please add images for the place.",
                 Toast.LENGTH_SHORT).show()
             return false
         }
@@ -228,39 +192,28 @@ class CreatePlaceActivity : AppCompatActivity(){
         var theme = spinner_theme.selectedItem.toString()
         var tag = spinner_tags.selectedItem.toString()
         var intro = text_intro.text.toString()
-        var coordinates = text_loc.text.split(" ")
+        var coordinates = text_loc.text.toString()
 
 
-        var map = HashMap<String,Double>()
-        map.put("lat",coordinates[0].toDouble())
-        map.put("lng",coordinates[1].toDouble())
+        var builder=OkHttpUtils.post()
+        builder.url("http://10.0.2.2:8080/create_new_place")
+        builder.addParams("theme", theme)
+        builder.addParams("tag", tag)
+        builder.addParams("name", name)
+        builder.addParams("intro", intro)
+        builder.addParams("location", coordinates)
 
-        var gson = Gson()
-        var coordinates_json = gson.toJson(map).toString()
+        val image_iterator = images!!.iterator()
+        while(image_iterator.hasNext()){
+            var image = image_iterator.next()
+            var pic_file = File(image.path)
+            builder.addFile("pic_files",pic_file.name,pic_file)
+            Log.d("image_path",image.path)
+            Log.d("image_name",pic_file.name)
 
-        var bitmapdrawable = iview?.getDrawable() as BitmapDrawable
-        var bitmap = bitmapdrawable.bitmap
-        val image_uri = selectedImageUri
-        var path:String?=null
-        if(image_uri!=null){
-            path = getRealPathFromUri(this,image_uri)
         }
-        var image = File(path)
-        Log.d("image_path",path)
-        //Log.d("image_name",)
-        //var encodedimage = encodeImage(bitmap)
 
-
-        OkHttpUtils
-            .post()
-            .url("http://10.0.2.2:8082/create_new_place")
-            .addParams("theme", theme)
-            .addParams("tags", tag)
-            .addParams("name", name)
-            .addParams("intro", intro)
-            .addParams("location", coordinates_json)
-            //.addFile("pic_files",image.name,image)
-            .build()
+        builder.addHeader("Connection","close").build()
             .execute(object: StringCallback(){
                 override fun onResponse(p0: String?, p1: Int) {
                     Toast.makeText(getApplicationContext(), p0,
@@ -273,28 +226,5 @@ class CreatePlaceActivity : AppCompatActivity(){
                 }
             })
     }
-
-    /*
-    Multi-image upload test
-    */
-    /*
-    var picker:ImagePicker =ImagePicker.create(this)
-
-    fun onClick_test(view: View){
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-            ||  ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA)
-                    , 11)
-            }
-        }
-        picker.imageDirectory("Camera").start()
-    }
-    */
-
-
-
-    companion object {
-        private val TAG = "MainActivity"
-    }
 }
+

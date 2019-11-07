@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CreateReportActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,17 +65,8 @@
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:gravity="left|fill_vertical"
-                    android:onClick="getImageFromGallery"
-                    android:text="Get Image from gallery"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/button_camera"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|fill_vertical"
-                    android:onClick="getImageFromCamera"
-                    android:text="camera"
+                    android:onClick="pickImages"
+                    android:text="Pick Images"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -84,6 +75,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:onClick="pickImages"
                 tools:srcCompat="@tools:sample/avatars" />
 
         </LinearLayout>

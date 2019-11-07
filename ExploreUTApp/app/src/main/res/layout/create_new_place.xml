@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CreatePlaceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimaryDark"
             android:hint="Name"
-            android:inputType="textPersonName"
+            android:longClickable="false"
+            android:textIsSelectable="true"
             android:textCursorDrawable="@drawable/cursor_color" />
 
         <LinearLayout
@@ -150,6 +151,8 @@
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:singleLine="false"
+            android:longClickable="false"
+            android:textIsSelectable="true"
             android:textCursorDrawable="@drawable/cursor_color" />
 
         <LinearLayout
@@ -163,21 +166,12 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button_gallery"
-                    android:layout_width="113dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|fill_vertical"
-                    android:onClick="getImageFromGallery"
-                    android:text="Get Image from gallery"
-                    android:textSize="12sp" />
-
-                <Button
                     android:id="@+id/button_camera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|fill_vertical"
-                    android:onClick="getImageFromCamera"
-                    android:text="camera"
+                    android:onClick="pickImages"
+                    android:text="Pick images"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -215,12 +209,6 @@
             android:paddingRight="70dp"
             android:text="SUBMIT"
             android:textColor="#fff" />
-
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
