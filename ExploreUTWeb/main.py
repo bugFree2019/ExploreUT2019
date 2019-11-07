@@ -75,7 +75,8 @@ def index():
             allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
             allarticles = read_articles(db, {'user_id': thisuser['_id']})
             if 'android' in user_agent.lower():
-                print(allplaces[0]['name'])
+                if (len(allplaces) > 0):
+                    print(allplaces[0]['name'])
                 return json_response(allplaces)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
