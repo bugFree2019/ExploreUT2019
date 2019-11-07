@@ -44,7 +44,7 @@
             android:id="@+id/toolbar"
             android:layout_width="331dp"
             android:layout_height="60dp"
-            android:background="#BF5700"
+            android:background="@color/utOrange"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
