@@ -67,22 +67,22 @@ class ViewAllFragment : Fragment() {
             }
 
 //          test click events on recycler view
-            recyclerView.addOnItemTouchListener(
-                RecyclerItemClickListener(
-                    context!!,
-                    recyclerView,
-                    object : RecyclerItemClickListener.OnItemClickListener {
-                        override fun onItemClick(view: View, position: Int) {
-                            Log.d("myTag", "$position item clicked")
-
-                        }
-
-                        override fun onLongItemClick(view: View, position: Int) {
-                            Log.d("myTag", "$position item long clicked")
-
-                        }
-                    })
-            )
+//            recyclerView.addOnItemTouchListener(
+//                RecyclerItemClickListener(
+//                    context!!,
+//                    recyclerView,
+//                    object : RecyclerItemClickListener.OnItemClickListener {
+//                        override fun onItemClick(view: View, position: Int) {
+//                            Log.d("myTag", "$position item clicked")
+//
+//                        }
+//
+//                        override fun onLongItemClick(view: View, position: Int) {
+//                            Log.d("myTag", "$position item long clicked")
+//
+//                        }
+//                    })
+//            )
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d("myTag", "No valid json")
