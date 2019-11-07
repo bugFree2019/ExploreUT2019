@@ -23,14 +23,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".manage"
+        <activity android:name=".ManageActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
 
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".SearchActivity" />
+
+<!--     The API key for Google Maps-based APIs is defined as a string resource.-->
+<!--     (See the file "res/values/google_maps_api.xml").-->
+<!--     Note that the API key is linked to the encryption key used to sign the APK.-->
+<!--     You need a different API key for each encryption key, including the release key that is used to-->
+<!--     sign the APK for publishing.-->
+<!--     You can define the keys for the debug and release targets in src/debug/ and src/release/.-->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MainActivity"
@@ -43,28 +53,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ViewPlace"></activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".ViewPlace"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+<!--        <activity-->
+<!--            android:name=".MapsActivity"-->
+<!--            android:label="@string/title_activity_maps">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".SearchActivity"
             android:theme="@style/AppTheme.NoActionBar">

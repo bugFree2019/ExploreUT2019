@@ -36,7 +36,6 @@ import java.io.File
 
 class AddFragment : Fragment() {
 
-    private lateinit var addViewModel: AddViewModel
     private var image: ImageView? = null
 
     private var locationManager: LocationManager? = null
@@ -78,6 +77,7 @@ class AddFragment : Fragment() {
             android.R.layout.simple_spinner_item
         )
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinner_tags = root.findViewById<Spinner>(R.id.spinner_tags)
         spinner_tags.adapter = adapter1
         spinner_tags.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -98,6 +98,7 @@ class AddFragment : Fragment() {
             android.R.layout.simple_spinner_item
         )
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinner_theme = root.findViewById<Spinner>(R.id.spinner_theme)
         spinner_theme.adapter = adapter2
         spinner_theme.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(

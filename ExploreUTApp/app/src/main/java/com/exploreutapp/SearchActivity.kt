@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
+import com.exploreutapp.model.Place
+import com.exploreutapp.remote.ExploreUTService
+import java.io.Serializable
 
 
 class SearchActivity : AppCompatActivity() {
@@ -36,6 +39,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle("Search Result")
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.search_container)
@@ -44,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
         )
 
         // enable the back button on top left corner
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         // Verify the action and get the query
         if (Intent.ACTION_SEARCH == intent.action) {
@@ -80,7 +84,7 @@ class SearchActivity : AppCompatActivity() {
                 adapter = viewAdapter
             }
 
-            //          test click events on recycler view
+            // test click events on recycler view
             recyclerView.addOnItemTouchListener(
                 RecyclerItemClickListener(
                     this,
@@ -88,6 +92,10 @@ class SearchActivity : AppCompatActivity() {
                     object : RecyclerItemClickListener.OnItemClickListener {
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
+                            val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", places[position] as Serializable)
+                            startActivity(viewIntent)
                         }
 
                         override fun onLongItemClick(view: View, position: Int) {
@@ -116,7 +124,7 @@ class SearchActivity : AppCompatActivity() {
 
     // for back button navigation
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed();
-        return true;
+        onBackPressed()
+        return true
     }
 }

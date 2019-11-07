@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.exploreutapp.model.Place
+import com.exploreutapp.remote.ExploreUTService
 import com.squareup.picasso.Picasso
 
 
@@ -35,7 +37,11 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.placeName.setText(places[position].name)
-        holder.placeTag.setText(places[position].tags[0])
+        var tags = ""
+        for (tag in places[position].tags) {
+            tags += "$tag "
+        }
+        holder.placeTag.setText(tags)
         val id = places[position]._id
         val imageId = 0
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")

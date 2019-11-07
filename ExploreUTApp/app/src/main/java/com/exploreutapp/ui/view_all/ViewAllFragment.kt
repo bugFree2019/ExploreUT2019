@@ -1,5 +1,6 @@
 package com.exploreutapp.ui.view_all
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,14 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.exploreutapp.Place
-import com.exploreutapp.ExploreUTService
-import com.exploreutapp.RecyclerViewAdapter
-import com.exploreutapp.RecyclerItemClickListener
+import com.exploreutapp.*
+import com.exploreutapp.model.Place
+import com.exploreutapp.remote.ExploreUTService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
+import java.io.Serializable
 
 
 class ViewAllFragment : Fragment() {
@@ -66,23 +67,26 @@ class ViewAllFragment : Fragment() {
                 adapter = viewAdapter
             }
 
-//          test click events on recycler view
-//            recyclerView.addOnItemTouchListener(
-//                RecyclerItemClickListener(
-//                    context!!,
-//                    recyclerView,
-//                    object : RecyclerItemClickListener.OnItemClickListener {
-//                        override fun onItemClick(view: View, position: Int) {
-//                            Log.d("myTag", "$position item clicked")
-//
-//                        }
-//
-//                        override fun onLongItemClick(view: View, position: Int) {
-//                            Log.d("myTag", "$position item long clicked")
-//
-//                        }
-//                    })
-//            )
+            // test click events on recycler view
+            recyclerView.addOnItemTouchListener(
+                RecyclerItemClickListener(
+                    context!!,
+                    recyclerView,
+                    object : RecyclerItemClickListener.OnItemClickListener {
+                        override fun onItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item clicked")
+                            val viewIntent = Intent(activity!!, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", places[position] as Serializable)
+                            startActivity(viewIntent)
+                        }
+
+                        override fun onLongItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item long clicked")
+
+                        }
+                    })
+            )
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d("myTag", "No valid json")

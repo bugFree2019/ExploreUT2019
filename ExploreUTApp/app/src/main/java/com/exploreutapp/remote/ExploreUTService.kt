@@ -1,5 +1,7 @@
-package com.exploreutapp
+package com.exploreutapp.remote
 
+import com.exploreutapp.User
+import com.exploreutapp.model.Place
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -24,6 +26,14 @@ interface ExploreUTService {
     @POST("/index")
     @Headers("Accept: application/json", "Content-Type: application/json", "User-Agent: Android")
     fun checkUsers(@Body user: User) : Observable<ArrayList<Place>>
+
+    @GET("view_one_place")
+    @Headers("Accept: application/json", "User-Agent: Android")
+    fun getOnePlace(@Query("_id")  _id: String): Observable<Place>
+
+    @GET("/view_places_by_theme")
+    @Headers("Accept: application/json", "User-Agent: Android")
+    fun getThemePlaces(@Query("theme")  tag: String): Observable<ArrayList<Place>>
 
     companion object {
         // This is the URL when developed on the local emulator
