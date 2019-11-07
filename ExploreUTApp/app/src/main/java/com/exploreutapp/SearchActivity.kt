@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
 import android.view.Menu
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -78,6 +79,23 @@ class SearchActivity : AppCompatActivity() {
                 // specify an viewAdapter (see also next example)
                 adapter = viewAdapter
             }
+
+            //          test click events on recycler view
+            recyclerView.addOnItemTouchListener(
+                RecyclerItemClickListener(
+                    this,
+                    recyclerView,
+                    object : RecyclerItemClickListener.OnItemClickListener {
+                        override fun onItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item clicked")
+                        }
+
+                        override fun onLongItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item long clicked")
+                            // do whatever
+                        }
+                    })
+            )
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d("myTag", "No valid json")

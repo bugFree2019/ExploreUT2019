@@ -279,10 +279,12 @@ def get_place_image(place_id, image_id):
         image = images[image_id]
         if isinstance(image, bytes):
             image = base64.decodebytes(image)
-        byte_io = io.BytesIO(image)
-        response = make_response(send_file(byte_io, mimetype='image/jpg'))
-        response.headers['Content-Transfer-Encoding'] = 'base64'
-        return response
+            byte_io = io.BytesIO(image)
+            response = make_response(send_file(byte_io, mimetype='image/jpg'))
+            response.headers['Content-Transfer-Encoding'] = 'base64'
+            return response
+        else:
+            abort(404)
     else:
         # return 404 not found if the image or place does not exist
         abort(404)
