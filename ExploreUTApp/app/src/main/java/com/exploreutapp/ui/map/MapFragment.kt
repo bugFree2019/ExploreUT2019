@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -99,6 +100,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 Looper.myLooper()
             )
         }
+
+        // get current location button shown on map
+        val buttonHelper: View = (mMapView.findViewById<View>(Integer.parseInt("1")).getParent()) as View
+        val locationButton: View = buttonHelper.findViewById(Integer.parseInt("2"));
+        val rlp: RelativeLayout.LayoutParams = locationButton.getLayoutParams() as RelativeLayout.LayoutParams
+
+        // position on right bottom
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+        rlp.setMargins(0, 180, 180, 0);
 
         root.findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
