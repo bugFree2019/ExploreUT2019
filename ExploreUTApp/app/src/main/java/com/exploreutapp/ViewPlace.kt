@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.exploreutapp.model.Places
+import com.exploreutapp.remote.ExploreUTService
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 
 
@@ -40,6 +42,9 @@ class ViewPlace : AppCompatActivity() {
 //        }
 
 
+        Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
+            .resize(360, 640).into(photo)
+
         // load reviews
         println("hello world")
         if (place.reviews != null && place.reviews!!.isNotEmpty()) {
@@ -62,6 +67,5 @@ class ViewPlace : AppCompatActivity() {
         } else {
             place_intro.visibility = View.GONE
         }
-
     }
 }

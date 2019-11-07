@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import com.exploreutapp.R
 import com.exploreutapp.ViewPlace
 import com.exploreutapp.model.Places
-import com.exploreutapp.remote.IExploreUTService
+import com.exploreutapp.remote.ExploreUTService
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -51,7 +51,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     companion object {
         private const val MY_PERMISSION_CODE: Int = 1000
         val mService by lazy {
-            IExploreUTService.create()
+            ExploreUTService.create()
         }
     }
 

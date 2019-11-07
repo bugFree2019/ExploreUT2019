@@ -16,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
+import com.exploreutapp.model.Places
+import com.exploreutapp.remote.ExploreUTService
+import java.io.Serializable
+import java.security.AccessController.getContext
 
 
 class SearchActivity : AppCompatActivity() {
@@ -25,7 +29,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private var places: ArrayList<Place> = ArrayList()
+    private var places: ArrayList<Places> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -62,7 +66,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     // handle the response with an arraylist of places
-    private fun handleResponse(result: ArrayList<Place>) {
+    private fun handleResponse(result: ArrayList<Places>) {
         try {
             places = result
             for (p in places) {
@@ -80,7 +84,7 @@ class SearchActivity : AppCompatActivity() {
                 adapter = viewAdapter
             }
 
-            //          test click events on recycler view
+            // test click events on recycler view
             recyclerView.addOnItemTouchListener(
                 RecyclerItemClickListener(
                     this,
@@ -88,6 +92,10 @@ class SearchActivity : AppCompatActivity() {
                     object : RecyclerItemClickListener.OnItemClickListener {
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
+                            val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", places[position] as Serializable)
+                            startActivity(viewIntent)
                         }
 
                         override fun onLongItemClick(view: View, position: Int) {

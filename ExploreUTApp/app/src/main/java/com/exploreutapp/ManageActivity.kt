@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -12,21 +13,22 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.exploreutapp.model.Places
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_manage.*
 import org.json.JSONException
+import java.io.Serializable
 import java.util.*
 
-class manage : AppCompatActivity() {
+class ManageActivity : AppCompatActivity() {
 
 
-    private var allplaces: ArrayList<Place> = ArrayList()
+    private var allplaces: ArrayList<Places> = ArrayList()
     lateinit var providers: List<AuthUI.IdpConfig>
     val MY_REQUEST_CODE: Int = 7117
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -58,13 +60,13 @@ class manage : AppCompatActivity() {
 
         btn_sign_out.setOnClickListener{
             //Signout
-            AuthUI.getInstance().signOut(this@manage)
+            AuthUI.getInstance().signOut(this@ManageActivity)
                 .addOnCompleteListener{
                     btn_sign_out.isEnabled=false
                     showSignInOptions()
                 }
                 .addOnFailureListener{
-                        e-> Toast.makeText(this@manage,e.message, Toast.LENGTH_SHORT).show()
+                        e-> Toast.makeText(this@ManageActivity,e.message, Toast.LENGTH_SHORT).show()
                 }
         }
     }
@@ -76,7 +78,7 @@ class manage : AppCompatActivity() {
             .subscribe (this::handleResponseTest, this::handleError)
     }
 
-    private fun handleResponseTest(result: ArrayList<Place>) {
+    private fun handleResponseTest(result: ArrayList<Places>) {
         try {
             allplaces = result
             for (p in allplaces) {
@@ -93,6 +95,27 @@ class manage : AppCompatActivity() {
                 // specify an viewAdapter (see also next example)
                 adapter = viewAdapter
             }
+
+            // test click events on recycler view
+            recyclerView.addOnItemTouchListener(
+                RecyclerItemClickListener(
+                    this,
+                    recyclerView,
+                    object : RecyclerItemClickListener.OnItemClickListener {
+                        override fun onItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item clicked")
+                            val viewIntent = Intent(this@ManageActivity, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", allplaces[position] as Serializable)
+                            startActivity(viewIntent)
+                        }
+
+                        override fun onLongItemClick(view: View, position: Int) {
+                            Log.d("myTag", "$position item long clicked")
+                            // do whatever
+                        }
+                    })
+            )
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d("myTag", "No valid json")
