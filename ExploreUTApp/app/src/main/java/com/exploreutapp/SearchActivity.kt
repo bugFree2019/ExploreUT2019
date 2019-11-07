@@ -19,7 +19,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.exploreutapp.model.Places
 import com.exploreutapp.remote.ExploreUTService
 import java.io.Serializable
-import java.security.AccessController.getContext
 
 
 class SearchActivity : AppCompatActivity() {
@@ -40,6 +39,7 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle("Search Result")
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.search_container)
@@ -48,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
         )
 
         // enable the back button on top left corner
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         // Verify the action and get the query
         if (Intent.ACTION_SEARCH == intent.action) {
@@ -124,7 +124,7 @@ class SearchActivity : AppCompatActivity() {
 
     // for back button navigation
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed();
-        return true;
+        onBackPressed()
+        return true
     }
 }

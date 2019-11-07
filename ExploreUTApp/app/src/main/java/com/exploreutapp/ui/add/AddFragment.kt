@@ -36,7 +36,6 @@ import java.io.File
 
 class AddFragment : Fragment() {
 
-    private lateinit var addViewModel: AddViewModel
     private var image: ImageView? = null
 
     private var locationManager: LocationManager? = null

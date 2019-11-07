@@ -11,21 +11,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.R
 
 class ManageFragment : Fragment() {
-
-    private lateinit var manageViewModel: ManageViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        manageViewModel =
-            ViewModelProviders.of(this).get(ManageViewModel::class.java)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_manage, container, false)
-        val textView: TextView = root.findViewById(R.id.text_manage)
-        manageViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
         return root
     }
 }

@@ -26,8 +26,6 @@ import java.io.Serializable
 import java.util.*
 
 class ManageActivity : AppCompatActivity() {
-
-
     private var allplaces: ArrayList<Places> = ArrayList()
     lateinit var providers: List<AuthUI.IdpConfig>
     val MY_REQUEST_CODE: Int = 7117
@@ -41,6 +39,7 @@ class ManageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_manage)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle("Manage")
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.manage_container)
