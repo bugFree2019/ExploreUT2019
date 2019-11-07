@@ -1,7 +1,6 @@
 package com.exploreutapp.ui.map
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -12,39 +11,32 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.exploreutapp.MapsActivity
 import com.exploreutapp.R
 import com.exploreutapp.ViewPlace
 import com.exploreutapp.model.Places
 import com.exploreutapp.remote.IExploreUTService
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_maps.*
 import org.json.JSONException
 import java.io.Serializable
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
-    private lateinit var mapViewModel: MapViewModel
-
+    private lateinit var mMapView: MapView
     private lateinit var mMap: GoogleMap
     private var latitude: Double=0.toDouble()
     private var longitude: Double=0.toDouble()
@@ -63,7 +55,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-
     private var currentPlaces: ArrayList<Places> = ArrayList()
     var currentResult: Places?=null
 
@@ -71,11 +62,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.activity_maps, container, false)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = (activity!!.supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment?)?.let {
-            it.getMapAsync(this)
+        mMapView = root.findViewById(R.id.mapView) as MapView
+        mMapView.onCreate(savedInstanceState)
+
+        mMapView.onResume() // needed to get the map to display immediately
+
+        try {
+            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
+        } catch (e: Exception) {
+            e.printStackTrace();
         }
+
+        mMapView.getMapAsync(this)
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+//        val mapFragment = (activity!!.supportFragmentManager
+//            .findFragmentById(R.id.map) as SupportMapFragment?)?.let {
+//            it.getMapAsync(this)
+//        }
 
         //1. if the operation is not permitted, should we request the permissions?
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -103,8 +106,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             )
         }
 
-
-        bottom_navigation_view.setOnNavigationItemSelectedListener { item->
+//        var bottom_navigation_view: BottomNavigationView = BottomNavigationView(context)
+        root.findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
                 R.id.action_fitness -> nearByPlace("Museum")
                 R.id.action_library -> nearByPlace("Library")
@@ -128,20 +131,20 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
 
-        if (currentPlaces.isNotEmpty()) {
+        if (currentPlaces != null) {
 
             for (i in 0 until currentPlaces.size) {
                 val markerOptions = MarkerOptions()
                 val utPlace = currentPlaces[i]
 
-                val placeTheme = utPlace.theme
-                val placeName = utPlace.name
-                val lat = utPlace.location!!.lat
-                val lng = utPlace.location!!.lng
-                val latLng = LatLng(lat,lng)
+                if (utPlace.location != null && utPlace.location != null) {
+                    val placeTheme = utPlace.theme
+                    val placeName = utPlace.name
+                    val lat = utPlace.location!!.lat
+                    val lng = utPlace.location!!.lng
+                    val latLng = LatLng(lat,lng)
 
 
-                if (latLng != null) {
                     markerOptions.position(latLng)
                     markerOptions.title(placeName)
                     if (place_theme == placeTheme) {
