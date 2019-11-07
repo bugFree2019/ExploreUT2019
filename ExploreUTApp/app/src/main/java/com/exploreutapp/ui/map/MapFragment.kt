@@ -30,7 +30,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_maps.*
 import org.json.JSONException
 import java.io.Serializable
 
@@ -74,12 +73,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
 
         mMapView.getMapAsync(this)
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-//        val mapFragment = (activity!!.supportFragmentManager
-//            .findFragmentById(R.id.map) as SupportMapFragment?)?.let {
-//            it.getMapAsync(this)
-//        }
 
         //1. if the operation is not permitted, should we request the permissions?
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -336,23 +329,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onResume() {
-        super.onResume()
         mMapView.onResume()
+        super.onResume()
     }
 
 
     override fun onPause() {
-        super.onPause()
         mMapView.onPause()
+        super.onPause()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         mMapView.onDestroy()
+        super.onDestroy()
     }
 
     override fun onLowMemory() {
-        super.onLowMemory()
         mMapView.onLowMemory()
+        super.onLowMemory()
     }
 }
