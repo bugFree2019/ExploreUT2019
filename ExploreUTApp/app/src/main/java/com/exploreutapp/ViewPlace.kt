@@ -45,7 +45,7 @@ class ViewPlace : AppCompatActivity() {
 
 
 
-//        // load photo of place
+        // load photo of place
 //        if (place!!.pics != null && place!!.pics!!.isNotEmpty()) {
 //            Picasso.get()
 //                .load(IExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
@@ -54,10 +54,10 @@ class ViewPlace : AppCompatActivity() {
 
 
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(360, 640).into(photo)
+            .resize(480, 360).into(photo)
 
         // load reviews
-        println("hello world")
+
         if (place.reviews != null && place.reviews!!.isNotEmpty()) {
             place_reviews.text = "Reviews: " + place!!.reviews!![0]
 
@@ -80,7 +80,7 @@ class ViewPlace : AppCompatActivity() {
         }
     }
 
-    // override some functions to make navaigation bar work
+    // override some functions to make navigation bar work
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
