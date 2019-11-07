@@ -57,14 +57,6 @@
                 android:layout_height="wrap_content" />
 
 
-
-
-<!--            <RatingBar-->
-<!--                android:id="@+id/rating_bar"-->
-<!--                android:max="5"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content" />-->
-
         </LinearLayout>
 
         <TextView

@@ -25,11 +25,6 @@ class ViewPlace : AppCompatActivity() {
         place_reviews.text=""
         place_intro.text=""
 
-//        btn_show_map.setOnClickListener{
-//            // open map intent to view
-//            val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mPlace!!.result!!.url))
-//            startActivity(mapIntent)
-//        }
 
 
 //        // load photo of place
@@ -44,6 +39,7 @@ class ViewPlace : AppCompatActivity() {
         println("hello world")
         if (place.reviews != null && place.reviews!!.isNotEmpty()) {
             place_reviews.text = "Reviews: " + place!!.reviews!![0]
+
         } else {
             place_reviews.visibility = View.GONE
         }

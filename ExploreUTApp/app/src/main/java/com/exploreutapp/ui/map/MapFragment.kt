@@ -218,7 +218,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 val latLng = LatLng(latitude, longitude)
                 val markerOptions = MarkerOptions()
                     .position(latLng)
-                    .title("Your position")
+                    .title("Current position")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
 
                 mMarker = mMap.addMarker(markerOptions)
@@ -283,6 +283,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             )
 
                             mMap.isMyLocationEnabled = true
+
                         }
                     }
                 } else {
