@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_file,
 from google.auth.transport import requests
 from flask_googlemaps import GoogleMaps, Map
 from db import *
+from bson.binary import Binary
 
 app = Flask(__name__)
 GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
@@ -184,10 +185,10 @@ def view_places():
 def add_place():
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
-        data['tags'] = request.form.getlist('tags')
-        image_file = request.files.get('pic_file')
-        print(image_file)
-        data['pics'] = []
+        data['tags'] = []
+        data['tags'].append(data['tag'])
+        data.pop('tag')
+
         location_str = data['location']
         coordinates = location_str.split(" ")
         lat = float(coordinates[0])
@@ -195,11 +196,11 @@ def add_place():
         location = {'lat': lat, 'lng': lng}
         data['location'] = location
 
-        #print(type(image_file))
-        binary = base64.b64encode(image_file.read())
-        #print(type(binary))
-
-        data['pics'].append(binary)
+        data['pics'] = []
+        image_files = request.files.getlist('pic_files')
+        for image_file in image_files:
+            binary = Binary(base64.b64encode(image_file.read()))
+            data['pics'].append(binary)
 
         place_id = create_place(db, data)
 
