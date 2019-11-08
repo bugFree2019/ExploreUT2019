@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreatePlaceActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,7 +113,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="fill|fill_horizontal|fill_vertical"
-                android:onClick="getLocation"
                 android:text="Get location"
                 android:textSize="12sp" />
 
@@ -166,11 +164,10 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button_camera"
+                    android:id="@+id/button_images"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left|fill_vertical"
-                    android:onClick="pickImages"
                     android:text="Pick images"
                     android:textSize="12sp" />
 
@@ -191,7 +188,6 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:elevation="4dp"
-            android:onClick="reset"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
             android:text="Reset"
@@ -204,7 +200,6 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:elevation="4dp"
-            android:onClick="postData"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
             android:text="SUBMIT"
