@@ -1,9 +1,10 @@
 package com.exploreutapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
@@ -101,5 +102,10 @@ class ViewPlace : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun addReport(view:View){
+        val addReportIntent = Intent(this, CreateReportActivity::class.java)
+        startActivity(addReportIntent)
     }
 }
