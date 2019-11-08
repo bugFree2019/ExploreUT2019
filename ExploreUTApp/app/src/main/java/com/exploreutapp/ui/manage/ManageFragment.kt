@@ -59,16 +59,16 @@ class ManageFragment : Fragment() {
 
         val users = FirebaseAuth.getInstance().currentUser
 
-        println(users!!.email)
+//        println(users!!.email)
 
 
 
-            providers = Arrays.asList<AuthUI.IdpConfig>(
-                AuthUI.IdpConfig.EmailBuilder().build(),
-                AuthUI.IdpConfig.GoogleBuilder().build()
-            )
+        providers = Arrays.asList<AuthUI.IdpConfig>(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
 
-            showSignInOptions()
+        showSignInOptions()
 
 
 
@@ -180,4 +180,3 @@ class ManageFragment : Fragment() {
     }
 
 }
-
