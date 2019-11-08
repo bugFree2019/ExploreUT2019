@@ -150,6 +150,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 Log.d("myTag", r.reviews.toString())
                 Log.d("myTag", r.location!!.lat.toString())
                 Log.d("myTag", r.location!!.lng.toString())
+                Log.d("myTag", r.num_pics!!.toString())
             }
 
             if (currentPlaces != null) {
