@@ -205,8 +205,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         root!!.findViewById<Spinner>(R.id.spinner_tags).setSelection(0)
         root!!.findViewById<TextView>(R.id.text_loc).setText("Latitude: Longitude")
         root!!.findViewById<EditText>(R.id.text_intro).setText("")
-        root!!.findViewById<ImageView>(R.id.imageView).setImageDrawable(null)
-        root!!.findViewById<GridView>(R.id.gridview).removeAllViews()
+        root!!.findViewById<GridView>(R.id.gridview).adapter = null
     }
 
     //Check the validity of inputs (name, location, intro, )
