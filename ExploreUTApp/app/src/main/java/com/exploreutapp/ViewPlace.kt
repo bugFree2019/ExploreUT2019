@@ -59,8 +59,9 @@ class ViewPlace : AppCompatActivity() {
         // load reviews
 
         if (place.reviews != null && place.reviews!!.isNotEmpty()) {
-            place_reviews.text = "Reviews: " + place!!.reviews!![0]
-
+            for (i in 0 until place.reviews!!.size) {
+                place_reviews.text = "Reviews: " + place!!.reviews!![i]
+            }
         } else {
             place_reviews.visibility = View.GONE
         }

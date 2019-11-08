@@ -328,11 +328,21 @@ def json_response(places):
     # exclude the images
     if isinstance(places, list):
         for place in places:
-            del place['pics']
+            num_pics = 0
+            if place.__contains__('pics'):
+                num_pics = len(place['pics'])
+                del place['pics']
+            place.update({'num_pics':num_pics})
             place['_id'] = str(place['_id'])
+
     elif isinstance(places, Place):
+        num_pics = 0
+        if places.__contains__('pics'):
+            num_pics = len(place['pics'])
         del places['pics']
+        places.update({'num_pics':num_pics})
         places['_id'] = places['_id']
+        print(num_pics)
     # serialize the places to json and return the response
     response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
     return response

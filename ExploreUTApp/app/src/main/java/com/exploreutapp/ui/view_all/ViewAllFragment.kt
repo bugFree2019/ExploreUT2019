@@ -83,7 +83,6 @@ class ViewAllFragment : Fragment() {
 
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
-
                         }
                     })
             )
