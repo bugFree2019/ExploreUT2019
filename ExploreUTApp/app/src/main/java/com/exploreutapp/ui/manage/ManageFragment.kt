@@ -57,14 +57,21 @@ class ManageFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.activity_manage, container, false)
 
-        providers = Arrays.asList<AuthUI.IdpConfig> (
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
+        val users = FirebaseAuth.getInstance().currentUser
 
-        showSignInOptions()
+        println(users!!.email)
 
-        root.btn_sign_out.bringToFront()
+
+
+            providers = Arrays.asList<AuthUI.IdpConfig>(
+                AuthUI.IdpConfig.EmailBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build()
+            )
+
+            showSignInOptions()
+
+
+
         root.btn_sign_out.setOnClickListener{
             //Signout
             AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
@@ -81,17 +88,15 @@ class ManageFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-
-
         if(requestCode == MY_REQUEST_CODE) {
             val response = IdpResponse.fromResultIntent(data)
             if(resultCode == Activity.RESULT_OK) {
                 val users = FirebaseAuth.getInstance().currentUser
-                println(users!!.email)
+//                println(users!!.email)
+                Log.d("myTag", users!!.email)
                 val user = User(email = users!!.email!!, _id = "", username = "", name = "",
                     profile = "", gender = "", age = 0, group = "",
                     level = 0, subscription = ArrayList<String>()
-
                 )
                 checkUsers(user)
 
@@ -146,6 +151,10 @@ class ManageFragment : Fragment() {
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
                             // do whatever
+                            val viewIntent = Intent(context!!, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", allplaces[position] as Serializable)
+                            startActivity(viewIntent)
                         }
                     })
             )
@@ -165,7 +174,7 @@ class ManageFragment : Fragment() {
         startActivityForResult(AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
-
+            .setIsSmartLockEnabled(false)
             .setTheme(R.style.MyTheme)
             .build(),MY_REQUEST_CODE)
     }

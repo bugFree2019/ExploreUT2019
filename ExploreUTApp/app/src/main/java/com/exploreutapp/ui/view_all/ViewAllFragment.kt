@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -24,6 +25,7 @@ class ViewAllFragment : Fragment() {
         val exploreUTServe by lazy {
             ExploreUTService.create()
         }
+
     }
 
     private var places: ArrayList<Place> = ArrayList()
@@ -35,6 +37,11 @@ class ViewAllFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(com.exploreutapp.R.layout.fragment_view_all, container, false)
         viewAll()
+        val users = FirebaseAuth.getInstance().currentUser
+        if (users != null) {
+            println(users!!.email)
+            Log.d("myTag", users!!.email)
+        }
         return root
     }
 
@@ -69,6 +76,7 @@ class ViewAllFragment : Fragment() {
 
             // test click events on recycler view
             recyclerView.addOnItemTouchListener(
+
                 RecyclerItemClickListener(
                     context!!,
                     recyclerView,
@@ -83,6 +91,10 @@ class ViewAllFragment : Fragment() {
 
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
+                            val viewIntent = Intent(activity!!, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", places[position] as Serializable)
+                            startActivity(viewIntent)
                         }
                     })
             )

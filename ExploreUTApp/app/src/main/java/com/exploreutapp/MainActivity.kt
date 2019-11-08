@@ -54,9 +54,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun manage (view: View) {
-        val manageIntent = Intent(this, ManageActivity::class.java)
-        startActivity(manageIntent)
-    }
-
 }

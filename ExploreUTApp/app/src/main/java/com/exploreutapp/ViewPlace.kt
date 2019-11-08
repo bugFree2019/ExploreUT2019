@@ -11,6 +11,7 @@ import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
+import java.util.ArrayList
 
 
 class ViewPlace : AppCompatActivity() {
@@ -79,6 +80,14 @@ class ViewPlace : AppCompatActivity() {
         } else {
             place_intro.visibility = View.GONE
         }
+    }
+
+    companion object {
+
+        val user = User(email = "", _id = "", username = "", name = "",
+            profile = "", gender = "", age = 0, group = "",
+            level = 0, subscription = ArrayList<String>()
+        )
     }
 
     // override some functions to make navigation bar work

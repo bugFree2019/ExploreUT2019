@@ -37,6 +37,7 @@
                 android:layout_below="@+id/place_name"
                 android:layout_toRightOf="@+id/place_photo" />
 
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
