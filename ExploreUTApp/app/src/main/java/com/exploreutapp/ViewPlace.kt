@@ -66,14 +66,14 @@ class ViewPlace : AppCompatActivity() {
         }
 
         // load address
-        if (place!!.address != null) {
+        if (place.address != null) {
             place_address.text = place!!.address
         } else {
             place_address.visibility = View.GONE
         }
 
         // load introduction
-        if (place!!.intro != null) {
+        if (place.intro != null) {
             place_intro.text = "Introduction: " + place!!.intro
         } else {
             place_intro.visibility = View.GONE

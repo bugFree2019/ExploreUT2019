@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:text="Place Reviews: "
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold" /> 
         </LinearLayout>
     </RelativeLayout>
 
