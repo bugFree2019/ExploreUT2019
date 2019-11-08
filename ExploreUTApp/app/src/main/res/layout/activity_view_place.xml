@@ -79,7 +79,14 @@
                 android:layout_height="wrap_content"
                 android:text="Place Reviews: "
                 android:textSize="18sp"
-                android:textStyle="bold" /> 
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addReport"
+                android:text="add report" />
         </LinearLayout>
     </RelativeLayout>
 
