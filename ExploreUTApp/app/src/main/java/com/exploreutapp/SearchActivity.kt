@@ -90,6 +90,7 @@ class SearchActivity : AppCompatActivity() {
                     this,
                     recyclerView,
                     object : RecyclerItemClickListener.OnItemClickListener {
+
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
                             val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
@@ -101,6 +102,10 @@ class SearchActivity : AppCompatActivity() {
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
                             // do whatever
+                            val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
+                            // start new activity
+                            viewIntent.putExtra("place_to_show", places[position] as Serializable)
+                            startActivity(viewIntent)
                         }
                     })
             )

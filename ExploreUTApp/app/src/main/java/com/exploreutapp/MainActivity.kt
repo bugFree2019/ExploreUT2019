@@ -56,4 +56,5 @@ class MainActivity : AppCompatActivity() {
         val manageIntent = Intent(this, ManageActivity::class.java)
         startActivity(manageIntent)
     }
+
 }
