@@ -56,7 +56,7 @@ class ViewPlace : AppCompatActivity() {
 
 
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(480, 360).into(photo)
+            .resize(480, 0).into(photo)
 
         // load reviews
 
