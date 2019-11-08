@@ -64,7 +64,7 @@ class ManageFragment : Fragment() {
 
         showSignInOptions()
 
-
+        root.btn_sign_out.bringToFront()
         root.btn_sign_out.setOnClickListener{
             //Signout
             AuthUI.getInstance().signOut(context!!).addOnCompleteListener{

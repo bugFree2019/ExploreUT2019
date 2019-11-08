@@ -26,6 +26,7 @@
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="false"
+            android:layout_marginTop="64dp"
             android:background="@color/utOrange"
             android:enabled="false"
             android:text="@string/signout"
