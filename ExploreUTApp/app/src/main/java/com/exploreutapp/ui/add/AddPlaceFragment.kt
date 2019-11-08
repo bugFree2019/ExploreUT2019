@@ -15,14 +15,14 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
+import com.exploreutapp.GridViewAdapter
 import com.exploreutapp.R
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
-import kotlinx.android.synthetic.main.create_new_place.*
 import okhttp3.Call
 import java.io.File
 
@@ -30,7 +30,6 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
     private var locationManager:LocationManager?=null
     private var listener:LocationListener?=null
     var images: List<Image>? = null
-    var image: Image? = null
     var loc:String?=null
     var root:View?=null
 
@@ -182,11 +181,13 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             // Get a list of picked images
             images = ImagePicker.getImages(data)
+            var images_list = images as  ArrayList<Image>
             // or get a single image onlyp
-            image = ImagePicker.getFirstImageOrNull(data)
-            Glide.with(imageView)
-                .load(image!!.path)
-                .into(imageView)
+            //image = ImagePicker.getFirstImageOrNull(data)
+            var gridview = root!!.findViewById<GridView>(R.id.gridview)
+            var g_adapter = GridViewAdapter(context!!,images_list)
+            gridview.adapter = g_adapter
+
         }
         if(requestCode==11){
             Log.d("test",data.toString())
@@ -205,6 +206,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         root!!.findViewById<TextView>(R.id.text_loc).setText("Latitude: Longitude")
         root!!.findViewById<EditText>(R.id.text_intro).setText("")
         root!!.findViewById<ImageView>(R.id.imageView).setImageDrawable(null)
+        root!!.findViewById<GridView>(R.id.gridview).removeAllViews()
     }
 
     //Check the validity of inputs (name, location, intro, )
@@ -227,7 +229,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
             return false
         }
 
-        if(root!!.findViewById<ImageView>(R.id.imageView).getDrawable()==null){
+        if(root!!.findViewById<GridView>(R.id.gridview).isEmpty()){
             Toast.makeText(activity!!.getApplicationContext(), "Please add images for the place.",
                 Toast.LENGTH_SHORT).show()
             return false
