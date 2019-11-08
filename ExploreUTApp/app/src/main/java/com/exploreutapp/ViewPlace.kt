@@ -59,7 +59,6 @@ class ViewPlace : AppCompatActivity() {
             .resize(480, 0).into(photo)
 
         // load reviews
-
         if (place.reviews != null && place.reviews!!.isNotEmpty()) {
             for (i in 0 until place.reviews!!.size) {
                 place_reviews.text = "Reviews: " + place!!.reviews!![i]
