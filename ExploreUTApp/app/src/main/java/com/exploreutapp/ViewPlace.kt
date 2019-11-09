@@ -14,6 +14,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import java.util.ArrayList
 
+import android.widget.ListView
+import kotlinx.android.synthetic.main.create_new_place.*
+
+
+
 
 class ViewPlace : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -45,8 +50,6 @@ class ViewPlace : AppCompatActivity() {
         place_reviews.text=""
         place_intro.text=""
 
-
-
         // load photo of place
 //        if (place!!.pics != null && place!!.pics!!.isNotEmpty()) {
 //            Picasso.get()
@@ -56,16 +59,14 @@ class ViewPlace : AppCompatActivity() {
 
 
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(480, 0).into(photo)
+            .resize(360, 0).into(photo)
 
-        // load reviews
-        if (place.reviews != null && place.reviews!!.isNotEmpty()) {
-            for (i in 0 until place.reviews!!.size) {
-                place_reviews.text = "Reviews: " + place!!.reviews!![i]
-            }
-        } else {
-            place_reviews.visibility = View.GONE
-        }
+
+        var listview = findViewById<ListView>(R.id.list)
+        var g_adapter = ListViewAdapter(this, place.reviews)
+        listview.adapter = g_adapter
+
+
 
         // load address
         if (place.address != null) {
