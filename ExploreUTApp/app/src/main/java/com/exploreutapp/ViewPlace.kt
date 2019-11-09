@@ -14,17 +14,18 @@ import com.exploreutapp.remote.ExploreUTService
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
-import java.util.ArrayList
+import java.util.*
 
 
 class ViewPlace : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var place:Place
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_place)
 
-        val place = intent.getSerializableExtra("place_to_show") as Place
+        place = intent.getSerializableExtra("place_to_show") as Place
 
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
@@ -113,6 +114,8 @@ class ViewPlace : AppCompatActivity() {
 
     fun addReport(view:View){
         val addReportIntent = Intent(this, CreateReportActivity::class.java)
+        addReportIntent.putExtra("place_id", place!!._id);
+        Log.d("viewplace",place!!._id)
         startActivity(addReportIntent)
     }
 }
