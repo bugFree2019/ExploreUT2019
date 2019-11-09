@@ -70,13 +70,11 @@
                     android:textSize="12sp" />
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView"
+            <GridView
+                android:id="@+id/gridview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="pickImages"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:numColumns="3" />
 
         </LinearLayout>
 

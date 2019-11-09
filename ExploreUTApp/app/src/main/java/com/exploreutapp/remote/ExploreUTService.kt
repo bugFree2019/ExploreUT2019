@@ -37,11 +37,11 @@ interface ExploreUTService {
 
     @POST("/subscribe/<place_id>")
     @Headers("Content-Type: application/json", "User-Agent: Android")
-    fun subscribe(@Path("place_id") place_id: String)
+    fun subscribe(@Path("place_id") place_id: String): Observable<Place>
 
     @POST("/unsubscribe/<place_id>")
     @Headers("Content-Type: application/json", "User-Agent: Android")
-    fun unsubscribe(@Path("place_id") place_id: String)
+    fun unsubscribe(@Path("place_id") place_id: String): Observable<Place>
 
     companion object {
         // This is the URL when developed on the local emulator

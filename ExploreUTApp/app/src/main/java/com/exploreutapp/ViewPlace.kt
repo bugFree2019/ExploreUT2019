@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import android.widget.Button
-import com.exploreutapp.ui.view_all.ViewAllFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -23,6 +22,7 @@ import io.reactivex.schedulers.Schedulers
 
 class ViewPlace : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var place:Place
 
     companion object {
         val exploreUTServe by lazy {
@@ -30,15 +30,12 @@ class ViewPlace : AppCompatActivity() {
         }
     }
 
-    lateinit var place: Place
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
-        exploreUTServe.getOnePlace(place._id)
-
+        // exploreUTServe.getOnePlace(place._id)
 
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
@@ -121,23 +118,37 @@ class ViewPlace : AppCompatActivity() {
         return true
     }
 
-    private fun view_place() {
-        var disposable: Disposable? = exploreUTServe.getPlace()
+    private fun view_place(place_id: String) {
+        var disposable: Disposable? = exploreUTServe.getOnePlace(place_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
     }
 
-    fun onSubscribe(place: Place) {
-        exploreUTServe.subscribe(place._id)
+    fun onSubscribe(place_id: String) {
+        var disposable: Disposable? = exploreUTServe.subscribe(place_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse2, this::handleError)
     }
 
     fun onUnsubscribe(place: Place) {
-        exploreUTServe.unsubscribe(place._id)
+        var disposable: Disposable? = exploreUTServe.unsubscribe(place._id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse3, this::handleError)
     }
+
+
+    private fun handleResponse(result: Place) {}
+    private fun handleResponse2(result: Place) {}
+    private fun handleResponse3(result: Place) {}
+    private fun handleError(error: Throwable) {}
 
     fun addReport(view:View){
         val addReportIntent = Intent(this, CreateReportActivity::class.java)
+        addReportIntent.putExtra("place_id", place!!._id);
+        Log.d("viewplace",place!!._id)
         startActivity(addReportIntent)
     }
 }
