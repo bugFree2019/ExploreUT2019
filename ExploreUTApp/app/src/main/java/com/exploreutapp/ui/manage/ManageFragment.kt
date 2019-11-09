@@ -19,7 +19,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
-import com.exploreutapp.ViewPlace.Companion.user
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
