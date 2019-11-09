@@ -15,7 +15,10 @@ import com.exploreutapp.remote.ExploreUTService
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
-import java.util.*
+import android.widget.Button
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 import android.widget.ListView
 import kotlinx.android.synthetic.main.create_new_place.*
@@ -27,16 +30,29 @@ class ViewPlace : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var place:Place
 
+    companion object {
+        val exploreUTServe by lazy {
+            ExploreUTService.create()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
+        // exploreUTServe.getOnePlace(place._id)
 
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
-            println(users!!.email)
-            Log.d("myTag", users!!.email)
+            println(users.email)
+            Log.d("myTag", users.email!!)
+            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+            subscribeButton.setVisibility(View.VISIBLE) //To set visible
+        }
+        else {
+            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+            subscribeButton.setVisibility(View.INVISIBLE) //To set visible
         }
 
         // set up navigation bar with back button
@@ -100,14 +116,6 @@ class ViewPlace : AppCompatActivity() {
         }
     }
 
-    companion object {
-
-        val user = User(email = "", _id = "", username = "", name = "",
-            profile = "", gender = "", age = 0, group = "",
-            level = 0, subscription = ArrayList<String>()
-        )
-    }
-
     // override some functions to make navigation bar work
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -120,6 +128,33 @@ class ViewPlace : AppCompatActivity() {
         onBackPressed()
         return true
     }
+
+    private fun view_place(place_id: String) {
+        var disposable: Disposable? = exploreUTServe.getOnePlace(place_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse, this::handleError)
+    }
+
+    fun onSubscribe(place_id: String) {
+        var disposable: Disposable? = exploreUTServe.subscribe(place_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse2, this::handleError)
+    }
+
+    fun onUnsubscribe(place: Place) {
+        var disposable: Disposable? = exploreUTServe.unsubscribe(place._id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponse3, this::handleError)
+    }
+
+
+    private fun handleResponse(result: Place) {}
+    private fun handleResponse2(result: Place) {}
+    private fun handleResponse3(result: Place) {}
+    private fun handleError(error: Throwable) {}
 
     fun addReport(view:View){
         val addReportIntent = Intent(this, CreateReportActivity::class.java)

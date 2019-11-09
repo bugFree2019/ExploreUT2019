@@ -25,7 +25,6 @@ class ViewAllFragment : Fragment() {
         val exploreUTServe by lazy {
             ExploreUTService.create()
         }
-
     }
 
     private var places: ArrayList<Place> = ArrayList()

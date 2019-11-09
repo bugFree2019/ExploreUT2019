@@ -65,13 +65,22 @@ class ManageFragment : Fragment() {
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
-
-        showSignInOptions()
+        if (users == null) {
+            showSignInOptions()
+            root.btn_sign_out.isEnabled=false
+        }
+        else {
+            val user = User(email = users.email!!, _id = "", username = "", name = "",
+                profile = "", gender = "", age = 0, group = "",
+                level = 0, subscription = ArrayList<String>()
+            )
+            checkUsers(user)
+            root.btn_sign_out.isEnabled = true
+        }
 
         root.btn_sign_out.setOnClickListener{
             //Signout
             AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
-                root.btn_sign_out.isEnabled=false
                 showSignInOptions()
             }.addOnFailureListener{
                 Log.d("myTag", "manage error")

@@ -223,7 +223,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
             return false
         }
 
-        if(root!!.findViewById<EditText>(R.id.text_loc).text.equals("Latitude: Longitude")){
+        if(root!!.findViewById<TextView>(R.id.text_loc).text.equals("Latitude: Longitude")){
             Toast.makeText(activity!!.getApplicationContext(), "Please get the current location.",
                 Toast.LENGTH_SHORT).show()
             return false
@@ -253,7 +253,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         var theme = root!!.findViewById<Spinner>(R.id.spinner_theme).selectedItem.toString()
         var tag = root!!.findViewById<Spinner>(R.id.spinner_tags).selectedItem.toString()
         var intro = root!!.findViewById<EditText>(R.id.text_intro).text.toString()
-        var coordinates = root!!.findViewById<EditText>(R.id.text_loc).text.toString()
+        var coordinates = root!!.findViewById<TextView>(R.id.text_loc).text.toString()
 
 
         var builder=OkHttpUtils.post()

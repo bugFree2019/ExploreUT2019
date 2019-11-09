@@ -120,12 +120,18 @@ def search():
 @app.route('/subscribe/<place_id>', methods=['POST'])
 def subscribe(place_id):
     subscribe_helper(place_id, True)
+    user_agent = request.headers.get('User-Agent')
+    if 'android' in user_agent.lower():
+        return None
     return redirect(url_for('.view_one_place', place_id=place_id))
 
 
 @app.route('/unsubscribe/<place_id>', methods=['POST'])
 def unsubscribe(place_id):
     subscribe_helper(place_id, False)
+    user_agent = request.headers.get('User-Agent')
+    if 'android' in user_agent.lower():
+        return None
     return redirect(url_for('.view_one_place', place_id=place_id))
 
 
@@ -141,35 +147,38 @@ def subscribe_helper(place_id, is_subscribe):
 
 @app.route('/view_one_place', methods=['GET'])
 def view_one_place():
-    if request.method == 'GET':
-        # subscribe_status: -1 denotes not logged in, 0 denotes not not subscribed 1 denotes subscribed
-        subscribe_status = -1
+    # subscribe_status: -1 denotes not logged in, 0 denotes not not subscribed 1 denotes subscribed
+    subscribe_status = -1
 
-        place_id = request.args.get('place_id')
-        if not place_id:
-            return render_template('view_one_place.html', place=[], subscribe_status=subscribe_status, error_message=None)
+    user_agent = request.headers.get('User-Agent')
+    place_id = request.args.get('place_id')
+    if not place_id:
+        if 'android' in user_agent.lower():
+            return abort(404)
+        return render_template('view_one_place.html', place=[], subscribe_status=subscribe_status, error_message=None)
 
-        place = read_place(db, '_id', ObjectId(place_id))
-        id_token = request.cookies.get('token')
-        if id_token:
-            try:
-                claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
-                current_user = read_user(db, 'email', claims['email'])
-                if current_user is not None:
-                    if ObjectId(place_id) in current_user['subscription']:
-                        subscribe_status = 1
-                        return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
-                                               error_message=None)
-                    else:
-                        subscribe_status = 0
-                        return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
-                                               error_message=None)
-            except ValueError as exc:
-                error_message = str(exc)
-                return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
-                                       error_message=error_message)
+    place = read_place(db, '_id', ObjectId(place_id))
+    id_token = request.cookies.get('token')
+    if id_token:
+        try:
+            claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+            current_user = read_user(db, 'email', claims['email'])
+            if current_user is not None:
+                if ObjectId(place_id) in current_user['subscription']:
+                    subscribe_status = 1
+                else:
+                    subscribe_status = 0
+        except ValueError as exc:
+            if 'android' in user_agent.lower():
+                return abort(400)
+            error_message = str(exc)
+            return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status,
+                                   error_message=error_message)
 
-        return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
+    if 'android' in user_agent.lower():
+        place['subscribe_status'] = subscribe_status
+        return json_response(place)
+    return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
 
 
 @app.route('/view_places', methods=['GET'])
@@ -235,7 +244,7 @@ def add_report():
 
 
 @app.route('/view_places_by_theme', methods=['GET'])
-def view_palces_by_theme():
+def view_places_by_theme():
     """
     The function that handle searching with a particular tag
     :return: a html page for rendering with the matching places found
@@ -349,4 +358,4 @@ def json_response(places):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
