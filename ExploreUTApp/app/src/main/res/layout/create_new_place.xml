@@ -34,7 +34,7 @@
             android:hint="Name"
             android:longClickable="false"
             android:textIsSelectable="true"
-            android:textCursorDrawable="@color/utOrange" />
+            android:textCursorDrawable="@drawable/cursor_color" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -151,7 +151,7 @@
             android:singleLine="false"
             android:longClickable="false"
             android:textIsSelectable="true"
-            android:textCursorDrawable="@color/utOrange" />
+            android:textCursorDrawable="@drawable/cursor_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
