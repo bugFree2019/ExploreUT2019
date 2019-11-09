@@ -1,6 +1,6 @@
 package com.exploreutapp.remote
 
-import com.exploreutapp.User
+import com.exploreutapp.model.User
 import com.exploreutapp.model.Place
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
