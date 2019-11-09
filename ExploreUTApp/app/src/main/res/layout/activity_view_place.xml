@@ -49,23 +49,34 @@
                 android:layout_marginTop="48dp"
                 android:numColumns="2" />
 
-            <Button
-                android:id="@+id/subscribe_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onSubscribe"
-                android:text="Subscribe"
-                android:visibility="invisible"
-                android:textColor="@color/utOrange"/>
 
-            <Button
-                android:id="@+id/unsubscribe_button"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onUnsubscribe"
-                android:text="Unsubscribe"
-                android:visibility="invisible"
-                android:textColor="@color/utOrange"/>
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/subscribe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onSubscribe"
+                    android:text="Subscribe"
+                    android:textSize="12sp"
+                    android:visibility="invisible"
+                    android:textColor="@color/utOrange"/>
+
+                <Button
+                    android:id="@+id/unsubscribe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onUnsubscribe"
+                    android:text="Unsubscribe"
+                    android:textSize="12sp"
+                    android:textColor="@color/utOrange"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +102,7 @@
                     android:layout_height="120dp"
                     android:text="Place Intro"
                     android:textColor="@color/utOrange"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="normal"
                     android:scrollbars="vertical"/>
 
@@ -102,10 +113,10 @@
                 android:id="@+id/list"
                 android:layout_width="wrap_content"
 
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:divider="@color/utOrange"
-                android:dividerHeight="2dp"
+                android:dividerHeight="1dp"
                 android:text="Place Reviews: "
                 android:textSize="18sp"
                 android:textStyle="bold" />
