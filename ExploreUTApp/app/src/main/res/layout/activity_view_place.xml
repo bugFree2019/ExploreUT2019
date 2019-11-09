@@ -32,8 +32,6 @@
         android:clipToPadding="true"
         tools:context=".ViewPlaceActivity">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,7 +103,6 @@
                     android:scrollbars="vertical"
                     android:visibility="visible"/>
 
-
             </LinearLayout>
 
             <ListView
@@ -120,14 +117,14 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
             <Button
                 android:id="@+id/button_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="addReport"
                 android:text="add report"
-                android:textColor="@color/utOrange"/>
+                android:textColor="@color/utOrange"
+                android:visibility="invisible" />
             </LinearLayout>
 
     </LinearLayout>
