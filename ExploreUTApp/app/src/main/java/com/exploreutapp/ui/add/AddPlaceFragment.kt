@@ -21,6 +21,7 @@ import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.GridViewAdapter
 import com.exploreutapp.R
+import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import okhttp3.Call
@@ -42,6 +43,12 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         setButtons()
         requestReadAndWritePermissions()
         registerLocationUpdates()
+
+        val users = FirebaseAuth.getInstance().currentUser
+        if (users != null) {
+            println(users!!.email)
+            Log.d("myTag", users!!.email)
+        }
 
         return root
     }

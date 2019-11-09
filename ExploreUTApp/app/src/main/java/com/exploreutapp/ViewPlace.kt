@@ -2,6 +2,7 @@ package com.exploreutapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import java.util.ArrayList
@@ -23,6 +25,12 @@ class ViewPlace : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         val place = intent.getSerializableExtra("place_to_show") as Place
+
+        val users = FirebaseAuth.getInstance().currentUser
+        if (users != null) {
+            println(users!!.email)
+            Log.d("myTag", users!!.email)
+        }
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)
