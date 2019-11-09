@@ -195,10 +195,10 @@ class ManageFragment : Fragment() {
 
     override fun onResume() {
         Log.d("myTag", "resume")
+        super.onResume()
         users = FirebaseAuth.getInstance().currentUser
         if (menu != null && users == null) {
             showSignInOptions()
         }
-        super.onResume()
     }
 }
