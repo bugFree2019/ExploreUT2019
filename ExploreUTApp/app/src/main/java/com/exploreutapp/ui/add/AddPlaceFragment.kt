@@ -188,6 +188,9 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             images = ImagePicker.getImages(data)
             var images_list = images as  ArrayList<Image>
+
+            // or get a single image only
+            //image = ImagePicker.getFirstImageOrNull(data)
             var gridview = root!!.findViewById<GridView>(R.id.gridview)
             var g_adapter = GridViewAdapter(context!!,images_list)
             gridview.adapter = g_adapter

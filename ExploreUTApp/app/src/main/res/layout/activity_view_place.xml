@@ -86,6 +86,16 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <ListView
+                android:id = "@+id/list"
+                android:layout_width = "wrap_content"
+                android:layout_height = "match_parent"
+                android:divider = "@color/utOrange"
+                android:dividerHeight = "1dp"
+                android:footerDividersEnabled = "false"
+                android:headerDividersEnabled = "false"
+                />
+
 
             <Button
                 android:id="@+id/button_report"
