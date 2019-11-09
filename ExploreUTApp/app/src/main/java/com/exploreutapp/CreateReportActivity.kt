@@ -6,22 +6,35 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import androidx.core.view.isEmpty
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
+import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import kotlinx.android.synthetic.main.create_new_report.*
 import okhttp3.Call
 import java.io.File
 
+
+
 class CreateReportActivity : AppCompatActivity(){
     var picker:ImagePicker = ImagePicker.create(this)
     var images: List<Image>? = null
     var image: Image? = null
+    var place_id:String? = null
+    var user_id: String?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_new_report)
+        place_id = intent.getStringExtra("place_id")
+        if(place_id==null){
+            Log.d("null","null")
+        }
+        var user = FirebaseAuth.getInstance().currentUser
+        Log.d("email",user!!.email)
+        //Log.d("place_id",place_id)
+        user_id = user!!.email
     }
 
     fun pickImages(view: View){
@@ -33,11 +46,9 @@ class CreateReportActivity : AppCompatActivity(){
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             // Get a list of picked images
             images = ImagePicker.getImages(data)
-            // or get a single image onlyp
-            image = ImagePicker.getFirstImageOrNull(data)
-            Glide.with(imageView)
-                .load(image!!.path)
-                .into(imageView)
+            var images_list = images as  ArrayList<Image>
+            var g_adapter = GridViewAdapter(this,images_list)
+            gridview.adapter = g_adapter
         }
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -46,10 +57,10 @@ class CreateReportActivity : AppCompatActivity(){
 
     fun reset(view:View){
         //views that need to be reset:
-        //text_name, spinner_theme, spinner_tags, text_loc, text_intro, imageView
+        //report_title,report_comment, gridview
         report_title.setText("")
         report_comment.setText("")
-        imageView.setImageDrawable(null)
+        gridview.adapter = null
     }
 
     private fun checkValidity():Boolean{
@@ -65,8 +76,8 @@ class CreateReportActivity : AppCompatActivity(){
             return false
         }
 
-        if(imageView.getDrawable()==null){
-            Toast.makeText(getApplicationContext(), "Please add images for the review.",
+        if(gridview.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please add images for the report.",
                 Toast.LENGTH_SHORT).show()
             return false
         }
@@ -86,6 +97,8 @@ class CreateReportActivity : AppCompatActivity(){
         builder.url("http://10.0.2.2:8080/create_new_report")
         builder.addParams("title", title)
         builder.addParams("comment", comment)
+        builder.addParams("place_id", place_id)
+        builder.addParams("user_id",user_id)
 
         val image_iterator = images!!.iterator()
         while(image_iterator.hasNext()){
@@ -108,6 +121,7 @@ class CreateReportActivity : AppCompatActivity(){
                         Toast.LENGTH_LONG).show()
                 }
             })
-
+        val viewPlaceIntent = Intent(this, ViewPlace::class.java)
+        startActivity(viewPlaceIntent)
     }
 }

@@ -61,16 +61,12 @@ class ManageFragment : Fragment() {
 
 //        println(users!!.email)
 
-
-
         providers = Arrays.asList<AuthUI.IdpConfig>(
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
 
         showSignInOptions()
-
-
 
         root.btn_sign_out.setOnClickListener{
             //Signout
@@ -92,7 +88,7 @@ class ManageFragment : Fragment() {
             val response = IdpResponse.fromResultIntent(data)
             if(resultCode == Activity.RESULT_OK) {
                 val users = FirebaseAuth.getInstance().currentUser
-//                println(users!!.email)
+                println(users!!.email)
                 Log.d("myTag", users!!.email)
                 val user = User(email = users!!.email!!, _id = "", username = "", name = "",
                     profile = "", gender = "", age = 0, group = "",

@@ -21,6 +21,7 @@ import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.GridViewAdapter
 import com.exploreutapp.R
+import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import okhttp3.Call
@@ -42,6 +43,12 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         setButtons()
         requestReadAndWritePermissions()
         registerLocationUpdates()
+
+        val users = FirebaseAuth.getInstance().currentUser
+        if (users != null) {
+            println(users!!.email)
+            Log.d("myTag", users!!.email)
+        }
 
         return root
     }
@@ -179,9 +186,9 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
     @Override
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
-            // Get a list of picked images
             images = ImagePicker.getImages(data)
             var images_list = images as  ArrayList<Image>
+
             // or get a single image only
             //image = ImagePicker.getFirstImageOrNull(data)
             var gridview = root!!.findViewById<GridView>(R.id.gridview)
@@ -205,8 +212,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         root!!.findViewById<Spinner>(R.id.spinner_tags).setSelection(0)
         root!!.findViewById<TextView>(R.id.text_loc).setText("Latitude: Longitude")
         root!!.findViewById<EditText>(R.id.text_intro).setText("")
-        root!!.findViewById<ImageView>(R.id.imageView).setImageDrawable(null)
-        root!!.findViewById<GridView>(R.id.gridview).removeAllViews()
+        root!!.findViewById<GridView>(R.id.gridview).adapter = null
     }
 
     //Check the validity of inputs (name, location, intro, )

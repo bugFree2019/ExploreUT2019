@@ -39,7 +39,7 @@ class ViewAllFragment : Fragment() {
         viewAll()
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
-//            println(users!!.email)
+            println(users!!.email)
             Log.d("myTag", users!!.email)
         }
         return root
