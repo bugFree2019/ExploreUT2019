@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.View
+import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -64,6 +65,11 @@ class ViewPlace : AppCompatActivity() {
         place_reviews.text=""
         place_intro.text=""
 
+
+        var gridview = findViewById<GridView>(R.id.gridview)
+        var g_adapter = GridViewAdapterShowPhotos(this, place)
+        gridview.adapter = g_adapter
+
         // load photo of place
 //        if (place!!.pics != null && place!!.pics!!.isNotEmpty()) {
 //            Picasso.get()
@@ -72,13 +78,15 @@ class ViewPlace : AppCompatActivity() {
 //        }
 
 
-        Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(360, 0).into(photo)
+//        Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
+//            .resize(360, 0).into(photo)
 
 
+
+        // load reviews
         var listview = findViewById<ListView>(R.id.list)
-        var g_adapter = ListViewAdapter(this, place.reviews)
-        listview.adapter = g_adapter
+        var l_adapter = ListViewAdapter(this, place.reviews)
+        listview.adapter = l_adapter
 
         // load address
         if (place.address != null) {
