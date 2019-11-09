@@ -3,8 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.exploreutapp">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -55,21 +55,12 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-<!--        <activity-->
-<!--            android:name=".MapsActivity"-->
-<!--            android:label="@string/title_activity_maps">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
         <activity
             android:name=".SearchActivity"
             android:theme="@style/AppTheme.NoActionBar">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.SEARCH" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
             <meta-data
                 android:name="android.app.searchable"
@@ -77,11 +68,6 @@
         </activity>
 
         <activity android:name=".CreateReportActivity"></activity>
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
     </application>
 
 </manifest>

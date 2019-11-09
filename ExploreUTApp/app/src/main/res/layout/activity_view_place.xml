@@ -45,6 +45,7 @@
                 android:layout_height="300dp"
                 android:src="@drawable/ic_search" />
             <Button
+                android:id="@+id/subscribe_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="subscribe"/>
