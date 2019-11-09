@@ -5,25 +5,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
 import com.exploreutapp.model.Place
+import com.exploreutapp.model.User
 import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -70,7 +64,8 @@ class ManageFragment : Fragment() {
             root.btn_sign_out.isEnabled=false
         }
         else {
-            val user = User(email = users.email!!, _id = "", username = "", name = "",
+            val user = User(
+                email = users.email!!, _id = "", username = "", name = "",
                 profile = "", gender = "", age = 0, group = "",
                 level = 0, subscription = ArrayList<String>()
             )
@@ -99,7 +94,8 @@ class ManageFragment : Fragment() {
                 val users = FirebaseAuth.getInstance().currentUser
                 println(users!!.email)
                 Log.d("myTag", users!!.email)
-                val user = User(email = users!!.email!!, _id = "", username = "", name = "",
+                val user = User(
+                    email = users!!.email!!, _id = "", username = "", name = "",
                     profile = "", gender = "", age = 0, group = "",
                     level = 0, subscription = ArrayList<String>()
                 )

@@ -1,6 +1,6 @@
 package com.exploreutapp.remote
 
-import com.exploreutapp.User
+import com.exploreutapp.model.User
 import com.exploreutapp.model.Place
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -45,7 +45,7 @@ interface ExploreUTService {
 
     companion object {
         // This is the URL when developed on the local emulator
-        const val baseURL: String = "http://10.145.232.63:8080"
+        const val baseURL: String = "http://10.0.2.2:8080"
 
         fun create(): ExploreUTService {
 

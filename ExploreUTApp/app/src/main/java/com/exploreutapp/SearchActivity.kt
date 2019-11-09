@@ -21,7 +21,7 @@ import com.exploreutapp.remote.ExploreUTService
 import java.io.Serializable
 
 
-class SearchActivity : AppCompatActivity() {
+class  SearchActivity : AppCompatActivity() {
     companion object {
         val exploreUTServe by lazy {
             ExploreUTService.create()

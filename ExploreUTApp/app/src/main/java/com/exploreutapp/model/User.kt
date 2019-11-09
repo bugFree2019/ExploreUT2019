@@ -1,4 +1,4 @@
-package com.exploreutapp
+package com.exploreutapp.model
 
 data class User(
                 val _id: String, val email: String = "", val username: String = "",
