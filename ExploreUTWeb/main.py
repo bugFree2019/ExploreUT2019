@@ -119,7 +119,6 @@ def search():
 
 @app.route('/subscribe/<place_id>', methods=['POST'])
 def subscribe(place_id):
-    print('subscribe')
     subscribe_helper(place_id, True)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
@@ -129,7 +128,6 @@ def subscribe(place_id):
 
 @app.route('/unsubscribe/<place_id>', methods=['POST'])
 def unsubscribe(place_id):
-    print('unsubscribe')
     subscribe_helper(place_id, False)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
@@ -140,7 +138,6 @@ def unsubscribe(place_id):
 def subscribe_helper(place_id, is_subscribe):
     id_token = request.cookies.get("token")
     user_email = request.args.get('user_email')
-    print(user_email)
     if id_token or user_email:
         if id_token:
             claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)

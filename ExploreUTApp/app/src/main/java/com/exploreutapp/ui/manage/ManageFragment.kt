@@ -39,7 +39,7 @@ class ManageFragment : Fragment() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
-    private lateinit var menu: Menu
+    private var menu: Menu? = null
     private var users: FirebaseUser? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -73,7 +73,7 @@ class ManageFragment : Fragment() {
             val response = IdpResponse.fromResultIntent(data)
             if(resultCode == Activity.RESULT_OK) {
                 users = FirebaseAuth.getInstance().currentUser
-                val sign_out = menu.findItem(R.id.sign_out_button)
+                val sign_out = menu!!.findItem(R.id.sign_out_button)
                 sign_out.setVisible(true)
                 Log.d("myTag", users!!.email!!)
                 val user = User(
@@ -93,6 +93,7 @@ class ManageFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        Log.d("myTag", "menu created")
         val sign_out = menu.findItem(R.id.sign_out_button)
         if (users == null) {
             sign_out.setVisible(false)
@@ -108,13 +109,11 @@ class ManageFragment : Fragment() {
         if(item.getItemId() == R.id.sign_out_button) {
             //Signout
             AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
-                Log.d("myTag", "before sign in option")
                 showSignInOptions()
             }.addOnFailureListener{
                 Log.d("myTag", "sign out error")
             }
             item.setVisible(false)
-            Log.d("myTag", "sign out done")
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -192,5 +191,14 @@ class ManageFragment : Fragment() {
             .setIsSmartLockEnabled(false)
             .setTheme(R.style.MyTheme)
             .build(),MY_REQUEST_CODE)
+    }
+
+    override fun onResume() {
+        Log.d("myTag", "resume")
+        users = FirebaseAuth.getInstance().currentUser
+        if (menu != null && users == null) {
+            showSignInOptions()
+        }
+        super.onResume()
     }
 }
