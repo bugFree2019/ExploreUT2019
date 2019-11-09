@@ -26,30 +26,35 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
         tools:context=".ViewPlace">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
-
             <GridView
                 android:id="@+id/gridview"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:numColumns="1" />
+                android:layout_width="1000px"
+                android:layout_height="400px"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:numColumns="2" />
 
             <Button
                 android:id="@+id/subscribe_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="subscribe"/>
+                android:text="subscribe"
+                android:textColor="@color/utOrange"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,37 +70,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Place Address"
-                    android:textSize="16sp"
+                    android:textColor="@color/utOrange"
+                    android:textSize="14sp"
                     android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/place_intro"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:text="Place Intro"
+                    android:textColor="@color/utOrange"
                     android:textSize="16sp"
-                    android:textStyle="italic" />
+                    android:textStyle="normal"
+                    android:scrollbars="vertical"/>
 
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/place_reviews"
+            <ListView
+                android:id="@+id/list"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:divider="@color/utOrange"
+                android:dividerHeight="2dp"
                 android:text="Place Reviews: "
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <ListView
-                android:id = "@+id/list"
-                android:layout_width = "wrap_content"
-                android:layout_height = "match_parent"
-                android:divider = "@color/utOrange"
-                android:dividerHeight = "1dp"
-                android:footerDividersEnabled = "false"
-                android:headerDividersEnabled = "false"
-                />
 
 
             <Button
@@ -103,9 +105,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="addReport"
-                android:text="add report" />
+                android:text="add report"
+                android:textColor="@color/utOrange"/>
             </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

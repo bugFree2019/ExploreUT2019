@@ -136,7 +136,7 @@ def unsubscribe(place_id):
 
 
 def subscribe_helper(place_id, is_subscribe):
-    id_token = request.cookies.get("token")
+    id_token = request.cookies.get('token')
     if id_token:
         claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
         if is_subscribe:
@@ -200,7 +200,7 @@ def add_place():
         data.pop('tag')
 
         location_str = data['location']
-        coordinates = location_str.split(" ")
+        coordinates = location_str.split(' ')
         lat = float(coordinates[0])
         lng = float(coordinates[1])
         location = {'lat': lat, 'lng': lng}
@@ -216,15 +216,16 @@ def add_place():
 
         return redirect(url_for('.view_one_place', placeId=place_id))
 
-    return render_template("add_new_place.html", action="Add", place={})
+    return render_template('add_new_place.html', action='Add', place={})
 
 
 @app.route('/create_new_report', methods=['GET', 'POST'])
 def add_report():
-    place_id = ""
+    place_id = ''
     if request.method == 'GET':
         place_id = request.args.get('placeId')
         place_name = get_place_name_by_id(db, ObjectId(place_id))
+
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
         place = read_place(db, '_id', ObjectId(data['place_id']))
@@ -240,7 +241,7 @@ def add_report():
         create_article(db, data)
         return redirect(url_for('.view_one_place', placeId=data['place_id']))
 
-    return render_template("add_new_report.html", action="Add", place_name=place_name, place_id=place_id, article={})
+    return render_template('add_new_report.html', action='Add', place_name=place_name, place_id=place_id, article={})
 
 
 @app.route('/view_places_by_theme', methods=['GET'])
@@ -271,17 +272,17 @@ def view_places_by_theme():
     return abort(404)
 
 
-@app.route('/map', methods=["GET"])
+@app.route('/map', methods=['GET'])
 def my_map():
     # creating a map in the view
     mymap = Map(
-        identifier="view-side",
+        identifier='view-side',
         lat=37.4419,
         lng=-122.1419,
         markers=[(37.4419, -122.1419)]
     )
     sndmap = Map(
-        identifier="sndmap",
+        identifier='sndmap',
         lat=37.4419,
         lng=-122.1419,
         markers=[
@@ -289,22 +290,22 @@ def my_map():
                 'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
                 'lat': 37.4419,
                 'lng': -122.1419,
-                'infobox': "<b>Hello World</b>"
+                'infobox': '<b>Hello World</b>'
             },
             {
                 'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
                 'lat': 37.4300,
                 'lng': -122.1400,
-                'infobox': "<b>Hello World from other place</b>"
+                'infobox': '<b>Hello World from other place</b>'
             }
         ]
     )
     return render_template('map.html', mymap=mymap, sndmap=sndmap)
 
 
-@app.route('/place_image/<place_id>/<image_id>.jpg', methods=["GET"])
+@app.route('/place_image/<place_id>/<image_id>.jpg', methods=['GET'])
 def get_place_image(place_id, image_id):
-    """
+    """"
     This method return the image with specified place id and image id (list index)
     Note that the extension of the file has to be jpg in this function
     :param place_id: the place id where we want  to extract image from

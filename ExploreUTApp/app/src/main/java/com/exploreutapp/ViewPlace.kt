@@ -2,6 +2,7 @@ package com.exploreutapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.Menu
 import android.view.View
@@ -13,7 +14,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.google.firebase.auth.FirebaseAuth
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_place.*
 import android.widget.Button
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,7 +21,13 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 import android.widget.ListView
+import android.widget.TextView
 import kotlinx.android.synthetic.main.create_new_place.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 
@@ -73,25 +79,12 @@ class ViewPlace : AppCompatActivity() {
         var imageId = 0
 
         place_address.text=""
-        place_reviews.text=""
         place_intro.text=""
 
 
         var gridview = findViewById<GridView>(R.id.gridview)
         var g_adapter = GridViewAdapterShowPhotos(this, place)
         gridview.adapter = g_adapter
-
-        // load photo of place
-//        if (place!!.pics != null && place!!.pics!!.isNotEmpty()) {
-//            Picasso.get()
-//                .load(IExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-//                .into(photo)
-//        }
-
-
-//        Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-//            .resize(360, 0).into(photo)
-
 
 
         // load reviews
@@ -110,6 +103,9 @@ class ViewPlace : AppCompatActivity() {
 
         // load introduction
         if (place.intro != null) {
+            var tv:TextView = findViewById(R.id.place_intro)
+            tv.setMovementMethod(ScrollingMovementMethod())
+
             place_intro.text = "Introduction: " + place!!.intro
         } else {
             place_intro.visibility = View.GONE

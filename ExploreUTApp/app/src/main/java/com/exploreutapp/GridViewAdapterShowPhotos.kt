@@ -41,7 +41,7 @@ class GridViewAdapterShowPhotos : BaseAdapter{
         var item_view = inflator.inflate(R.layout.photo_item, null)
 
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + place!!._id + "/" + i + ".jpg")
-            .resize(360, 0).into(item_view.image_view)
+            .resize(480, 0).into(item_view.image_view)
         return item_view
     }
 }
