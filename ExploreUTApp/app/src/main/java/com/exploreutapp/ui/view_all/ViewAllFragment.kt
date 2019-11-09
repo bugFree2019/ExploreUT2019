@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -35,6 +37,9 @@ class ViewAllFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(com.exploreutapp.R.layout.fragment_view_all, container, false)
+
+        setHasOptionsMenu(true)
+
         viewAll()
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
@@ -42,6 +47,20 @@ class ViewAllFragment : Fragment() {
             Log.d("myTag", users!!.email)
         }
         return root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun viewAll() {

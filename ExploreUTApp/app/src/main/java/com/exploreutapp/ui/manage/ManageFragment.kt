@@ -4,12 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.*
@@ -19,11 +16,10 @@ import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_manage.*
-import kotlinx.android.synthetic.main.activity_manage.view.*
 import org.json.JSONException
 import java.io.Serializable
 import java.util.*
@@ -39,45 +35,33 @@ class ManageFragment : Fragment() {
     private var allplaces: ArrayList<Place> = ArrayList()
     lateinit var providers: List<AuthUI.IdpConfig>
     val MY_REQUEST_CODE: Int = 7117
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var recyclerView: RecyclerView
+    private lateinit var menu: Menu
+    private var users: FirebaseUser? = null
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.activity_manage, container, false)
 
-        val users = FirebaseAuth.getInstance().currentUser
+        setHasOptionsMenu(true)
 
-//        println(users!!.email)
-
+        users = FirebaseAuth.getInstance().currentUser
         if (users == null) {
             Log.d("myTag", "not logged in")
             showSignInOptions()
-            root.btn_sign_out.isEnabled=false
         }
         else {
+            val localUser = users!!
             val user = User(
-                email = users.email!!, _id = "", username = "", name = "",
+                email = localUser.email!!, _id = "", username = "", name = "",
                 profile = "", gender = "", age = 0, group = "",
                 level = 0, subscription = ArrayList<String>()
             )
-            Log.d("myTag", users.email!!)
+            Log.d("myTag", localUser.email!!)
             checkUsers(user)
-            root.btn_sign_out.isEnabled = true
-        }
-
-        root.btn_sign_out.setOnClickListener{
-            //Signout
-            AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
-                showSignInOptions()
-            }.addOnFailureListener{
-                Log.d("myTag", "manage error")
-            }
         }
 
         return root
@@ -89,9 +73,10 @@ class ManageFragment : Fragment() {
         if(requestCode == MY_REQUEST_CODE) {
             val response = IdpResponse.fromResultIntent(data)
             if(resultCode == Activity.RESULT_OK) {
-                val users = FirebaseAuth.getInstance().currentUser
-                println(users!!.email)
-                Log.d("myTag", users!!.email)
+                users = FirebaseAuth.getInstance().currentUser
+                val sign_out = menu.findItem(R.id.sign_out_button)
+                sign_out.setVisible(true)
+                Log.d("myTag", users!!.email!!)
                 val user = User(
                     email = users!!.email!!, _id = "", username = "", name = "",
                     profile = "", gender = "", age = 0, group = "",
@@ -101,11 +86,39 @@ class ManageFragment : Fragment() {
 
                 Toast.makeText(context!!,""+users!!.email, Toast.LENGTH_SHORT).show()
 
-                btn_sign_out.isEnabled = true
             } else {
                 Toast.makeText(context!!,""+response!!.error!!.message, Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        val sign_out = menu.findItem(R.id.sign_out_button)
+        if (users == null) {
+            sign_out.setVisible(false)
+        }
+        else {
+            sign_out.setVisible(true)
+        }
+        this.menu = menu
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
+                Log.d("myTag", "before sign in option")
+                showSignInOptions()
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            Log.d("myTag", "sign out done")
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun checkUsers(user: User) {
@@ -173,6 +186,7 @@ class ManageFragment : Fragment() {
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
+        Log.d("myTag", "sing in option")
         startActivityForResult(AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
@@ -180,5 +194,4 @@ class ManageFragment : Fragment() {
             .setTheme(R.style.MyTheme)
             .build(),MY_REQUEST_CODE)
     }
-
 }

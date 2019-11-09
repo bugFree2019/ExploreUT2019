@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
 import java.io.Serializable
 
 
@@ -36,7 +39,6 @@ class  SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle("Search Result")
@@ -124,6 +126,14 @@ class  SearchActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val sign_out = menu.findItem(R.id.sign_out_button)
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            sign_out.setVisible(false)
+        }
+        else {
+            sign_out.setVisible(true)
+        }
         return true
     }
 
@@ -131,5 +141,19 @@ class  SearchActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(this).addOnCompleteListener{
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

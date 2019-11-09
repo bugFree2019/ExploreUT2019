@@ -1,7 +1,9 @@
 package com.exploreutapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -10,12 +12,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.firebase.ui.auth.AuthUI
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,19 +42,43 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        this.menu = menu
+        displayButton()
         return true
     }
+
+//    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.main, menu)
+//        this.menu = menu
+//        displayButton()
+//        return true
+//    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    override fun onResume() {
+        super.onResume()
+        displayButton()
+    }
+
+    fun displayButton() {
+        if (menu != null) {
+            val sign_out = menu!!.findItem(R.id.sign_out_button)
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user == null) {
+                sign_out.setVisible(false)
+            } else {
+                sign_out.setVisible(true)
+            }
+        }
+    }
 }

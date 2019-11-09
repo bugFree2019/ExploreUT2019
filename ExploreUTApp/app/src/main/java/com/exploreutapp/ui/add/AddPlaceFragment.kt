@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -21,6 +22,7 @@ import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.GridViewAdapter
 import com.exploreutapp.R
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
@@ -38,6 +40,8 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.create_new_place, container, false)
+
+        setHasOptionsMenu(true)
 
         setSpinners()
         setButtons()
@@ -286,5 +290,19 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                         Toast.LENGTH_LONG).show()
                 }
             })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

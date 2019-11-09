@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -21,6 +22,7 @@ import com.exploreutapp.R
 import com.exploreutapp.ViewPlace
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -61,6 +63,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.activity_maps, container, false)
+
+        setHasOptionsMenu(true)
 
         mMapView = root.findViewById(R.id.mapView) as MapView
         mMapView.onCreate(savedInstanceState)
@@ -363,5 +367,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onLowMemory() {
         mMapView.onLowMemory()
         super.onLowMemory()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(context!!).addOnCompleteListener{
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

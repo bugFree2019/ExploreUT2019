@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseUser
 import org.json.JSONException
 import java.io.Serializable
@@ -99,6 +101,14 @@ class ViewPlace : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val sign_out = menu.findItem(R.id.sign_out_button)
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            sign_out.setVisible(false)
+        }
+        else {
+            sign_out.setVisible(true)
+        }
         return true
     }
 
@@ -106,6 +116,22 @@ class ViewPlace : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if(item.getItemId() == R.id.sign_out_button) {
+            //Signout
+            AuthUI.getInstance().signOut(this).addOnCompleteListener{
+            }.addOnFailureListener{
+                Log.d("myTag", "sign out error")
+            }
+            item.setVisible(false)
+            user = null
+            hideButtons()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun view_place() {
@@ -188,8 +214,7 @@ class ViewPlace : AppCompatActivity() {
             }
             else {
                 Log.d("myTag", "not logged in")
-                subscribeButton.setVisibility(View.INVISIBLE)
-                addButton.setVisibility(View.INVISIBLE)
+                hideButtons()
             }
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -208,5 +233,14 @@ class ViewPlace : AppCompatActivity() {
 
     private fun handleError(error: Throwable) {
         Log.d("myTag", error.localizedMessage!!)
+    }
+
+    private fun hideButtons() {
+        val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+        val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
+        val addButton = findViewById<View>(R.id.button_report) as Button
+        subscribeButton.setVisibility(View.INVISIBLE)
+        unsubscribeButton.setVisibility(View.INVISIBLE)
+        addButton.setVisibility(View.INVISIBLE)
     }
 }
