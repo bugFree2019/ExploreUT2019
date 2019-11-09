@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/utOrange"
+        android:background="#fff"
         android:orientation="vertical"
         android:padding="16dp"
         tools:layout_editor_absoluteX="0dp"
@@ -22,7 +22,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="16dp"
             android:text="Create New Place"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/utOrange"
             android:textSize="26sp"
             android:typeface="serif" />
 
@@ -30,11 +30,11 @@
             android:id="@+id/text_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/utOrange"
             android:hint="Name"
             android:longClickable="false"
             android:textIsSelectable="true"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textCursorDrawable="@color/utOrange" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -60,10 +60,10 @@
             <Spinner
                 android:id="@+id/spinner_theme"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:overlapAnchor="false"
                 android:pointerIcon="arrow"
-                android:popupBackground="@color/colorPrimaryDark"
+                android:popupBackground="@color/utOrange"
                 android:popupElevation="18sp"
                 android:spinnerMode="dialog" />
 
@@ -94,10 +94,10 @@
             <Spinner
                 android:id="@+id/spinner_tags"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:overlapAnchor="false"
                 android:pointerIcon="arrow"
-                android:popupBackground="@color/colorPrimaryDark"
+                android:popupBackground="@color/utOrange"
                 android:popupElevation="18sp"
                 android:spinnerMode="dialog" />
         </LinearLayout>
@@ -141,7 +141,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/utOrange"
             android:breakStrategy="balanced"
             android:fitsSystemWindows="true"
             android:gravity="top"
@@ -151,7 +151,7 @@
             android:singleLine="false"
             android:longClickable="false"
             android:textIsSelectable="true"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textCursorDrawable="@color/utOrange" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -186,7 +186,7 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/utOrange"
             android:elevation="4dp"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
@@ -198,7 +198,8 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="4dp"
+            android:background="@color/utOrange"
             android:elevation="4dp"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"

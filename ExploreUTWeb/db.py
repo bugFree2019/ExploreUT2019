@@ -141,6 +141,7 @@ def get_place_name_by_id(db, place_id):
     :return: a string of the name of the place with given place_id
     """
     place = db.place.find_one({'_id': place_id})
+    print(place)
     return place['name']
 
 
