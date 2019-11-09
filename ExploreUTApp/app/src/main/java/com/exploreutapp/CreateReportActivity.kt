@@ -9,25 +9,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isEmpty
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
+import com.exploreutapp.model.Place
 import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import kotlinx.android.synthetic.main.create_new_report.*
 import okhttp3.Call
 import java.io.File
-
+import java.io.Serializable
 
 
 class CreateReportActivity : AppCompatActivity(){
     var picker:ImagePicker = ImagePicker.create(this)
     var images: List<Image>? = null
-    var image: Image? = null
     var place_id:String? = null
+    var place:Place?=null
     var user_id: String?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_new_report)
-        place_id = intent.getStringExtra("place_id")
+        place = intent.getSerializableExtra("place") as Place
+        place_id = place!!._id
         if(place_id==null){
             Log.d("null","null")
         }
@@ -122,6 +124,7 @@ class CreateReportActivity : AppCompatActivity(){
                 }
             })
         val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
+        viewPlaceIntent.putExtra("place_to_show", place as Serializable)
         startActivity(viewPlaceIntent)
     }
 }
