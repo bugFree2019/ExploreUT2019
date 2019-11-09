@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/utOrange"
+        android:background="#fff"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -21,7 +21,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="16dp"
             android:text="Create New Report"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/utOrange"
             android:textSize="26sp"
             android:typeface="serif" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/report_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/utOrange"
             android:hint="Title"
             android:inputType="textPersonName"
             android:textCursorDrawable="@drawable/cursor_color" />
@@ -40,7 +40,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/utOrange"
             android:breakStrategy="balanced"
             android:fitsSystemWindows="true"
             android:gravity="top"
@@ -83,7 +83,7 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/utOrange"
             android:elevation="4dp"
             android:onClick="reset"
             android:paddingLeft="70dp"
@@ -96,9 +96,10 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/utOrange"
             android:elevation="4dp"
             android:onClick="postData"
+            android:layout_marginTop="4dp"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
             android:text="SUBMIT"

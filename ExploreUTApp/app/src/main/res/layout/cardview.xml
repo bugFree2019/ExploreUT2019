@@ -16,11 +16,12 @@
 
             <ImageView
                 android:id="@+id/place_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="360px"
+                android:layout_height="270px"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/place_name"
