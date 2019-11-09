@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="onUnsubscribe"
                 android:text="Unsubscribe"
-                android:visibility="invisible" />
+                android:visibility="invisible"
                 android:textColor="@color/utOrange"/>
 
             <LinearLayout
