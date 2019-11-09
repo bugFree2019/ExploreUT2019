@@ -1,4 +1,4 @@
-package com.exploreutapp
+package com.exploreutapp.model
 
 data class Articles (
 

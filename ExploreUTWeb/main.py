@@ -22,7 +22,7 @@ def home_places():
     # return json object to android app
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return json_response(places)
+        return json_response(places, -2)
     return render_template('home.html', places=places)
 
 
@@ -78,13 +78,13 @@ def index():
             if 'android' in user_agent.lower():
                 if (len(allplaces) > 0):
                     print(allplaces[0]['name'])
-                return json_response(allplaces)
+                return json_response(allplaces, -2)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
         else:
             thisuser = create_user(db, email=user['email'])
             if 'android' in user_agent.lower():
-                return json_response(None)
+                return json_response(None, -2)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
 
@@ -104,14 +104,14 @@ def search():
     # return empty list if tag is None or null
     if not tag:
         if 'android' in user_agent.lower():
-            return json_response(None)
+            return json_response(None, -2)
         return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'tags': {'$regex': tag, '$options': 'i'}})
 
     if 'android' in user_agent.lower():
-        return json_response(places)
+        return json_response(places, -2)
 
     # send the search result to the front end html template
     return render_template('search.html', places=places, result_tag=tag)
@@ -176,8 +176,7 @@ def view_one_place():
                                    error_message=error_message)
 
     if 'android' in user_agent.lower():
-        place['subscribe_status'] = subscribe_status
-        return json_response(place)
+        return json_response(place, subscribe_status)
     return render_template('view_one_place.html', place=place, subscribe_status=subscribe_status, error_message=None)
 
 
@@ -187,7 +186,7 @@ def view_places():
     places = read_places(db, condition)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return json_response(places)
+        return json_response(places, -2)
     return render_template('view_places.html', places=places)
 
 
@@ -259,14 +258,14 @@ def view_places_by_theme():
     # return empty list if tag is None or null
     if not theme:
         if 'android' in user_agent.lower():
-            return json_response(None)
+            return json_response(None, -2)
         return abort(404)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'theme': {'$regex': theme, '$options': 'i'}})
 
     if 'android' in user_agent.lower():
-        return json_response(places)
+        return json_response(places, -2)
 
     # send the search result to the front end html template
     return abort(404)
@@ -329,10 +328,11 @@ def get_place_image(place_id, image_id):
         abort(404)
 
 
-def json_response(places):
+def json_response(places, subscribe_status):
     """
     return a json serialization of the place(s) and exclude images
-    :param places:
+    :param places: the place(s) object we want to convert to json
+    :param subscribe_status: used by view_one_place to return the status of the user subscription
     :return: a response of json form containing all the place(s)
     """
     # exclude the images
@@ -345,18 +345,19 @@ def json_response(places):
             place.update({'num_pics':num_pics})
             place['_id'] = str(place['_id'])
 
-    elif isinstance(places, Place):
+    elif isinstance(places, dict):
         num_pics = 0
         if places.__contains__('pics'):
-            num_pics = len(place['pics'])
+            num_pics = len(places['pics'])
         del places['pics']
         places.update({'num_pics':num_pics})
-        places['_id'] = places['_id']
-        print(num_pics)
+        if subscribe_status != -2:
+            places['subscribe_status'] = subscribe_status
+        places['_id'] = str(places['_id'])
     # serialize the places to json and return the response
     response = app.response_class(response=dumps(places), status=200, mimetype='application/json')
     return response
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
