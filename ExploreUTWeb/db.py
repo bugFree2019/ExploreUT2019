@@ -140,7 +140,7 @@ def get_place_name_by_id(db, place_id):
     :param place_id: the id of the place that we want to search
     :return: a string of the name of the place with given place_id
     """
-    place = db.place.find_one({"_id": place_id})
+    place = db.place.find_one({'_id': place_id})
     return place['name']
 
 
@@ -152,7 +152,7 @@ def update_place_pics_by_id(db, place_id, pic):
     :param pic: the binary form of a picture
     :return: None
     """
-    db.place.update({"_id": ObjectId(place_id)}, {"$addToSet": {"pics": pic}})
+    db.place.update({'_id': ObjectId(place_id)}, {'$addToSet': {'pics': pic}})
 
 
 def update_place_reviews_by_id(db, place_id, review):
@@ -163,7 +163,7 @@ def update_place_reviews_by_id(db, place_id, review):
     :param review: the review of the user
     :return: None
     """
-    db.place.update({"_id": ObjectId(place_id)}, {"$addToSet": {"reviews": review}})
+    db.place.update({'_id': ObjectId(place_id)}, {'$addToSet': {'reviews': review}})
 
 
 # User CRUD API

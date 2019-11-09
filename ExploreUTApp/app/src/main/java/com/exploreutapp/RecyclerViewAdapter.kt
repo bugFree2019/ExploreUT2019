@@ -45,7 +45,7 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
         val id = places[position]._id
         val imageId = 0
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
-            .resize(300, 0).into(holder.placePhoto)
+            .resize(360, 0).into(holder.placePhoto)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
