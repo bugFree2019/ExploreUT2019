@@ -19,7 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.exploreutapp.R
-import com.exploreutapp.ViewPlace
+import com.exploreutapp.ViewPlaceActivity
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
@@ -62,7 +62,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.activity_maps, container, false)
+        val root = inflater.inflate(R.layout.fragment_map, container, false)
 
         setHasOptionsMenu(true)
 
@@ -336,7 +336,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             // when user select marker, just get result of place assign to static variable
             currentResult = currentPlaces!![Integer.parseInt(marker.snippet)]
 
-            val viewIntent = Intent(activity!!, ViewPlace::class.java)
+            val viewIntent = Intent(activity!!, ViewPlaceActivity::class.java)
             // start new activity
             viewIntent.putExtra("place_to_show", currentResult as Serializable)
             startActivity(viewIntent)

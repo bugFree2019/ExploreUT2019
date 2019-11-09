@@ -44,7 +44,7 @@ class ManageFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.activity_manage, container, false)
+        val root = inflater.inflate(R.layout.fragment_manage, container, false)
 
         setHasOptionsMenu(true)
 
@@ -54,13 +54,12 @@ class ManageFragment : Fragment() {
             showSignInOptions()
         }
         else {
-            val localUser = users!!
             val user = User(
-                email = localUser.email!!, _id = "", username = "", name = "",
+                email = users!!.email!!, _id = "", username = "", name = "",
                 profile = "", gender = "", age = 0, group = "",
                 level = 0, subscription = ArrayList<String>()
             )
-            Log.d("myTag", localUser.email!!)
+            Log.d("myTag", users!!.email!!)
             checkUsers(user)
         }
 
@@ -154,7 +153,7 @@ class ManageFragment : Fragment() {
 
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
-                            val viewIntent = Intent(context!!, ViewPlace::class.java)
+                            val viewIntent = Intent(context!!, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", allplaces[position] as Serializable)
                             startActivity(viewIntent)
@@ -163,7 +162,7 @@ class ManageFragment : Fragment() {
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
                             // do whatever
-                            val viewIntent = Intent(context!!, ViewPlace::class.java)
+                            val viewIntent = Intent(context!!, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", allplaces[position] as Serializable)
                             startActivity(viewIntent)

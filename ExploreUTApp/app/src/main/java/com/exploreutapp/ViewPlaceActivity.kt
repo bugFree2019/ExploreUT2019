@@ -31,7 +31,7 @@ import org.json.JSONException
 import java.io.Serializable
 
 
-class ViewPlace : AppCompatActivity() {
+class ViewPlaceActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var place:Place
     private var user: FirebaseUser? = null
@@ -135,9 +135,8 @@ class ViewPlace : AppCompatActivity() {
     }
 
     private fun view_place() {
-        val localUser = user
-        if (localUser != null) {
-            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, localUser.email!!)
+        if (user != null) {
+            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, user!!.email!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleError)
@@ -152,14 +151,13 @@ class ViewPlace : AppCompatActivity() {
 
     fun onSubscribe(view: View) {
         Log.d("myTag", "on subscribe")
-        val localUser = user
-        if (localUser != null) {
+        if (user != null) {
             val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             subscribeButton.setVisibility(View.INVISIBLE)
             unsubscribeButton.setVisibility(View.VISIBLE)
 
-            var disposable: Disposable? = exploreUTServe.subscribe(place._id, localUser.email)
+            var disposable: Disposable? = exploreUTServe.subscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (this::handleResponseSubscribe, this::handleError)
@@ -168,14 +166,13 @@ class ViewPlace : AppCompatActivity() {
 
     fun onUnsubscribe(view: View) {
         Log.d("myTag", "on unsubscribe")
-        val localUser = user
-        if (localUser != null) {
+        if (user != null) {
             val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             subscribeButton.setVisibility(View.VISIBLE)
             unsubscribeButton.setVisibility(View.INVISIBLE)
 
-            var disposable: Disposable? = exploreUTServe.unsubscribe(place._id, localUser.email)
+            var disposable: Disposable? = exploreUTServe.unsubscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponseUnsubscribe, this::handleError)
@@ -192,14 +189,13 @@ class ViewPlace : AppCompatActivity() {
     private fun handleResponse(result: Place) {
         try {
             place = result
-            val localUser = user
             val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             val addButton = findViewById<View>(R.id.button_report) as Button
 
-            if (localUser != null) {
+            if (user != null) {
                 Log.d("myTag", "logged in")
-                Log.d("myTag", localUser.email!!)
+                Log.d("myTag", user!!.email!!)
                 Log.d("myTag", "subscribe status: " + place.subscribe_status.toString())
 
                 if (place.subscribe_status == 0) {

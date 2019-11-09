@@ -99,7 +99,7 @@ class ViewAllFragment : Fragment() {
                     object : RecyclerItemClickListener.OnItemClickListener {
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
-                            val viewIntent = Intent(activity!!, ViewPlace::class.java)
+                            val viewIntent = Intent(activity!!, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", places[position] as Serializable)
                             startActivity(viewIntent)
@@ -107,7 +107,7 @@ class ViewAllFragment : Fragment() {
 
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
-                            val viewIntent = Intent(activity!!, ViewPlace::class.java)
+                            val viewIntent = Intent(activity!!, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", places[position] as Serializable)
                             startActivity(viewIntent)

@@ -31,6 +31,7 @@ class  SearchActivity : AppCompatActivity() {
         }
     }
 
+    private var menu: Menu? = null
     private var places: ArrayList<Place> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -39,8 +40,9 @@ class  SearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_search)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        val toolbar: Toolbar = findViewById(R.id.search_toolbar)
         toolbar.setTitle("Search Result")
         setSupportActionBar(toolbar)
 
@@ -95,7 +97,7 @@ class  SearchActivity : AppCompatActivity() {
 
                         override fun onItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item clicked")
-                            val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
+                            val viewIntent = Intent(this@SearchActivity, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", places[position] as Serializable)
                             startActivity(viewIntent)
@@ -104,7 +106,7 @@ class  SearchActivity : AppCompatActivity() {
                         override fun onLongItemClick(view: View, position: Int) {
                             Log.d("myTag", "$position item long clicked")
                             // do whatever
-                            val viewIntent = Intent(this@SearchActivity, ViewPlace::class.java)
+                            val viewIntent = Intent(this@SearchActivity, ViewPlaceActivity::class.java)
                             // start new activity
                             viewIntent.putExtra("place_to_show", places[position] as Serializable)
                             startActivity(viewIntent)
@@ -126,14 +128,8 @@ class  SearchActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        val sign_out = menu.findItem(R.id.sign_out_button)
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user == null) {
-            sign_out.setVisible(false)
-        }
-        else {
-            sign_out.setVisible(true)
-        }
+        this.menu = menu
+        displayButton()
         return true
     }
 
@@ -155,5 +151,22 @@ class  SearchActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        displayButton()
+    }
+
+    fun displayButton() {
+        if (menu != null) {
+            val sign_out = menu!!.findItem(R.id.sign_out_button)
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user == null) {
+                sign_out.setVisible(false)
+            } else {
+                sign_out.setVisible(true)
+            }
+        }
     }
 }

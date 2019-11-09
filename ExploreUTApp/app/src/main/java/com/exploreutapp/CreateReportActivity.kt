@@ -121,7 +121,7 @@ class CreateReportActivity : AppCompatActivity(){
                         Toast.LENGTH_LONG).show()
                 }
             })
-        val viewPlaceIntent = Intent(this, ViewPlace::class.java)
+        val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
         startActivity(viewPlaceIntent)
     }
 }
