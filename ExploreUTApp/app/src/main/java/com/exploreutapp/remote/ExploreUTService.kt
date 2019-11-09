@@ -27,7 +27,7 @@ interface ExploreUTService {
     @Headers("Accept: application/json", "Content-Type: application/json", "User-Agent: Android")
     fun checkUsers(@Body user: User) : Observable<ArrayList<Place>>
 
-    @GET("view_one_place")
+    @GET("/view_one_place")
     @Headers("Accept: application/json", "User-Agent: Android")
     fun getOnePlace(@Query("place_id")  place_id: String): Observable<Place>
 
