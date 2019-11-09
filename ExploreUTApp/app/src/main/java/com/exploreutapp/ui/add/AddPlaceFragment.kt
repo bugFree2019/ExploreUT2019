@@ -290,6 +290,8 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                         Toast.LENGTH_LONG).show()
                 }
             })
+        Toast.makeText(activity!!.getApplicationContext(), "Successfully add the place "+root!!.findViewById<EditText>(R.id.text_name).text.toString(),
+            Toast.LENGTH_LONG).show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

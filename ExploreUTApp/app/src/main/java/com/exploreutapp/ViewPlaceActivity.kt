@@ -7,26 +7,23 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.GridView
+import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_view_place.*
-import android.widget.Button
+import com.google.firebase.auth.FirebaseUser
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import android.widget.ListView
-import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.auth.AuthUI
-import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_view_place.*
 import org.json.JSONException
 import java.io.Serializable
 
@@ -181,8 +178,7 @@ class ViewPlaceActivity : AppCompatActivity() {
 
     fun addReport(view:View){
         val addReportIntent = Intent(this, CreateReportActivity::class.java)
-        addReportIntent.putExtra("place_id", place!!._id);
-        Log.d("viewplace",place!!._id)
+        addReportIntent.putExtra("place", place as Serializable)
         startActivity(addReportIntent)
     }
 
