@@ -221,7 +221,7 @@ def add_place():
 
         place_id = create_place(db, data)
 
-        return redirect(url_for('.view_one_place', placeId=place_id))
+        return redirect(url_for('.view_one_place', place_id=place_id))
 
     return render_template('add_new_place.html', action='Add', place={})
 
@@ -230,12 +230,11 @@ def add_place():
 def add_report():
     place_id = ''
     if request.method == 'GET':
-        place_id = request.args.get('placeId')
+        place_id = request.args.get('place_id')
         place_name = get_place_name_by_id(db, ObjectId(place_id))
 
     if request.method == 'POST':
         data = request.form.to_dict(flat=True)
-        place = read_place(db, '_id', ObjectId(data['place_id']))
         image_files = request.files.getlist('pic_files')
         #update_place_pics_by_id(db, data['place_id'], base64.b64encode(image_file.read()))
         # add this pic to the pics array of the place
@@ -246,7 +245,7 @@ def add_report():
         data['user_id'] = get_user_id_from_email(db, data['user_id'])
         data['create_date'] = time.asctime(time.localtime(time.time()))
         create_article(db, data)
-        return redirect(url_for('.view_one_place', placeId=data['place_id']))
+        return redirect(url_for('.view_one_place', place_id=data['place_id']))
 
     return render_template('add_new_report.html', action='Add', place_name=place_name, place_id=place_id, article={})
 
