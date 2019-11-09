@@ -23,13 +23,15 @@ import android.widget.ListView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseUser
 import org.json.JSONException
 import java.io.Serializable
 
 
 class ViewPlace : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var place:Place
+    private lateinit var place:Place
+    private var user: FirebaseUser? = null
 
     companion object {
         val exploreUTServe by lazy {
@@ -42,7 +44,8 @@ class ViewPlace : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
-        view_place(place._id)
+        user = FirebaseAuth.getInstance().currentUser
+        view_place()
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -65,7 +68,6 @@ class ViewPlace : AppCompatActivity() {
         place_reviews.text=""
         place_intro.text=""
 
-
         var gridview = findViewById<GridView>(R.id.gridview)
         var g_adapter = GridViewAdapterShowPhotos(this, place)
         gridview.adapter = g_adapter
@@ -80,8 +82,6 @@ class ViewPlace : AppCompatActivity() {
 
 //        Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")
 //            .resize(360, 0).into(photo)
-
-
 
         // load reviews
         var listview = findViewById<ListView>(R.id.list)
@@ -116,29 +116,87 @@ class ViewPlace : AppCompatActivity() {
         return true
     }
 
+    private fun view_place() {
+        val localUser = user
+        if (localUser != null) {
+            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, localUser.email!!)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleError)
+        }
+        else {
+            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, null)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleError)
+        }
+    }
+
+    fun onSubscribe(view: View) {
+        Log.d("myTag", "on subscribe")
+        val localUser = user
+        if (localUser != null) {
+            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+            val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
+            subscribeButton.setVisibility(View.INVISIBLE)
+            unsubscribeButton.setVisibility(View.VISIBLE)
+
+            var disposable: Disposable? = exploreUTServe.subscribe(place._id, localUser.email)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe (this::handleResponseSubscribe, this::handleError)
+        }
+    }
+
+    fun onUnsubscribe(view: View) {
+        Log.d("myTag", "on unsubscribe")
+        val localUser = user
+        if (localUser != null) {
+            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+            val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
+            subscribeButton.setVisibility(View.VISIBLE)
+            unsubscribeButton.setVisibility(View.INVISIBLE)
+
+            var disposable: Disposable? = exploreUTServe.unsubscribe(place._id, localUser.email)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponseUnsubscribe, this::handleError)
+        }
+    }
+
+    fun addReport(view:View){
+        val addReportIntent = Intent(this, CreateReportActivity::class.java)
+        addReportIntent.putExtra("place_id", place!!._id);
+        Log.d("viewplace",place!!._id)
+        startActivity(addReportIntent)
+    }
+
     private fun handleResponse(result: Place) {
         try {
             place = result
-            val users = FirebaseAuth.getInstance().currentUser
-            if (users != null) {
+            val localUser = user
+            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+            val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
+            val addButton = findViewById<View>(R.id.button_report) as Button
+
+            if (localUser != null) {
                 Log.d("myTag", "logged in")
-                Log.d("myTag", users.email!!)
-                val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
-                subscribeButton.setVisibility(View.VISIBLE)
+                Log.d("myTag", localUser.email!!)
+                Log.d("myTag", "subscribe status: " + place.subscribe_status.toString())
+
                 if (place.subscribe_status == 0) {
-                    subscribeButton()
+                    subscribeButton.setVisibility(View.VISIBLE)
+                    unsubscribeButton.setVisibility(View.INVISIBLE)
                 }
                 else if (place.subscribe_status == 1) {
-                    unsubscribeButton()
+                    subscribeButton.setVisibility(View.INVISIBLE)
+                    unsubscribeButton.setVisibility(View.VISIBLE)
                 }
-                val addButton = findViewById<View>(R.id.button_report) as Button
                 addButton.setVisibility(View.VISIBLE)
             }
             else {
                 Log.d("myTag", "not logged in")
-                val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
                 subscribeButton.setVisibility(View.INVISIBLE)
-                val addButton = findViewById<View>(R.id.button_report) as Button
                 addButton.setVisibility(View.INVISIBLE)
             }
         } catch (e: JSONException) {
@@ -148,60 +206,15 @@ class ViewPlace : AppCompatActivity() {
         Log.d("myTag", "Done")
     }
 
-    private fun handleResponse2(result: Place) {
-        unsubscribeButton()
+    private fun handleResponseSubscribe(result: Place) {
+
     }
 
-    private fun handleResponse3(result: Place) {
-        subscribeButton()
-    }
+    private fun handleResponseUnsubscribe(result: Place) {
 
-    private fun view_place(place_id: String) {
-        Log.d("myTag", "in view_place")
-        var disposable: Disposable? = exploreUTServe.getOnePlace(place_id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (this::handleResponse, this::handleError)
-    }
-
-    fun onSubscribe(place_id: String) {
-        var disposable: Disposable? = exploreUTServe.subscribe(place_id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (this::handleResponse2, this::handleError)
-    }
-
-    fun onUnsubscribe(place_id: String) {
-        var disposable: Disposable? = exploreUTServe.unsubscribe(place_id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (this::handleResponse3, this::handleError)
     }
 
     private fun handleError(error: Throwable) {
         Log.d("myTag", error.localizedMessage!!)
-    }
-
-    private fun subscribeButton() {
-        val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
-        subscribeButton.setOnClickListener {
-            onSubscribe(place._id)
-        }
-        subscribeButton.text = "Subscribe"
-    }
-
-    private fun unsubscribeButton() {
-        val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
-        subscribeButton.setOnClickListener {
-            onUnsubscribe(place._id)
-        }
-        subscribeButton.text = "Unsubscribe"
-    }
-
-    fun addReport(view:View){
-        val addReportIntent = Intent(this, CreateReportActivity::class.java)
-        addReportIntent.putExtra("place_id", place!!._id);
-        Log.d("viewplace",place!!._id)
-        startActivity(addReportIntent)
     }
 }

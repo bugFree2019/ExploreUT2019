@@ -29,19 +29,22 @@ interface ExploreUTService {
 
     @GET("/view_one_place")
     @Headers("Accept: application/json", "User-Agent: Android")
-    fun getOnePlace(@Query("place_id")  place_id: String): Observable<Place>
+    fun getOnePlace(@Query("place_id")  place_id: String,
+                    @Query("user_email") user_email: String?): Observable<Place>
 
     @GET("/view_places_by_theme")
     @Headers("Accept: application/json", "User-Agent: Android")
     fun getThemePlaces(@Query("theme")  tag: String): Observable<ArrayList<Place>>
 
-    @POST("/subscribe/<place_id>")
+    @POST("/subscribe/{place_id}")
     @Headers("Content-Type: application/json", "User-Agent: Android")
-    fun subscribe(@Path("place_id") place_id: String): Observable<Place>
+    fun subscribe(@Path("place_id")  place_id: String,
+                  @Query("user_email") user_email: String?): Observable<Place>
 
-    @POST("/unsubscribe/<place_id>")
+    @POST("/unsubscribe/{place_id}")
     @Headers("Content-Type: application/json", "User-Agent: Android")
-    fun unsubscribe(@Path("place_id") place_id: String): Observable<Place>
+    fun unsubscribe(@Path("place_id")  place_id: String,
+                    @Query("user_email") user_email: String?): Observable<Place>
 
     companion object {
         // This is the URL when developed on the local emulator

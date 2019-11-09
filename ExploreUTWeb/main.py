@@ -22,7 +22,7 @@ def home_places():
     # return json object to android app
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return json_response(places, -2)
+        return json_response(places)
     return render_template('home.html', places=places)
 
 
@@ -78,13 +78,13 @@ def index():
             if 'android' in user_agent.lower():
                 if (len(allplaces) > 0):
                     print(allplaces[0]['name'])
-                return json_response(allplaces, -2)
+                return json_response(allplaces)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
         else:
             thisuser = create_user(db, email=user['email'])
             if 'android' in user_agent.lower():
-                return json_response(None, -2)
+                return json_response(None)
             return render_template('index.html', users=thisuser,
                                places=allplaces, articles=allarticles)
 
@@ -104,14 +104,14 @@ def search():
     # return empty list if tag is None or null
     if not tag:
         if 'android' in user_agent.lower():
-            return json_response(None, -2)
+            return json_response(None)
         return render_template('search.html', places=[], result_tag=tag)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'tags': {'$regex': tag, '$options': 'i'}})
 
     if 'android' in user_agent.lower():
-        return json_response(places, -2)
+        return json_response(places)
 
     # send the search result to the front end html template
     return render_template('search.html', places=places, result_tag=tag)
@@ -119,30 +119,36 @@ def search():
 
 @app.route('/subscribe/<place_id>', methods=['POST'])
 def subscribe(place_id):
+    print('subscribe')
     subscribe_helper(place_id, True)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return None
+        return app.response_class(response=dumps(Place().__dict__), status=200, mimetype='application/json')
     return redirect(url_for('.view_one_place', place_id=place_id))
 
 
 @app.route('/unsubscribe/<place_id>', methods=['POST'])
 def unsubscribe(place_id):
+    print('unsubscribe')
     subscribe_helper(place_id, False)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return None
+        return app.response_class(response=dumps(Place().__dict__), status=200, mimetype='application/json')
     return redirect(url_for('.view_one_place', place_id=place_id))
 
 
 def subscribe_helper(place_id, is_subscribe):
     id_token = request.cookies.get("token")
-    if id_token:
-        claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+    user_email = request.args.get('user_email')
+    print(user_email)
+    if id_token or user_email:
+        if id_token:
+            claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+            user_email = claims['email']
         if is_subscribe:
-            update_user_subscription(db, claims['email'], ObjectId(place_id))
+            update_user_subscription(db, user_email, ObjectId(place_id))
         else:
-            update_user_unsubscription(db, claims['email'], ObjectId(place_id))
+            update_user_unsubscription(db, user_email, ObjectId(place_id))
 
 
 @app.route('/view_one_place', methods=['GET'])
@@ -156,13 +162,15 @@ def view_one_place():
         if 'android' in user_agent.lower():
             return abort(404)
         return render_template('view_one_place.html', place=[], subscribe_status=subscribe_status, error_message=None)
-
     place = read_place(db, '_id', ObjectId(place_id))
     id_token = request.cookies.get('token')
-    if id_token:
+    user_email = request.args.get('user_email')
+    if id_token or user_email:
         try:
-            claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
-            current_user = read_user(db, 'email', claims['email'])
+            if id_token:
+                claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+                user_email = claims['email']
+            current_user = read_user(db, 'email', user_email)
             if current_user is not None:
                 if ObjectId(place_id) in current_user['subscription']:
                     subscribe_status = 1
@@ -186,7 +194,7 @@ def view_places():
     places = read_places(db, condition)
     user_agent = request.headers.get('User-Agent')
     if 'android' in user_agent.lower():
-        return json_response(places, -2)
+        return json_response(places)
     return render_template('view_places.html', places=places)
 
 
@@ -257,14 +265,14 @@ def view_places_by_theme():
     # return empty list if tag is None or null
     if not theme:
         if 'android' in user_agent.lower():
-            return json_response(None, -2)
+            return json_response(None)
         return abort(404)
 
     # query the database and extract the places corresponding to that tag
     places = read_places(db, {'theme': {'$regex': theme, '$options': 'i'}})
 
     if 'android' in user_agent.lower():
-        return json_response(places, -2)
+        return json_response(places)
 
     # send the search result to the front end html template
     return abort(404)
@@ -327,7 +335,7 @@ def get_place_image(place_id, image_id):
         abort(404)
 
 
-def json_response(places, subscribe_status):
+def json_response(places, subscribe_status=-2):
     """
     return a json serialization of the place(s) and exclude images
     :param places: the place(s) object we want to convert to json

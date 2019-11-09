@@ -66,7 +66,7 @@ class ManageFragment : Fragment() {
                 profile = "", gender = "", age = 0, group = "",
                 level = 0, subscription = ArrayList<String>()
             )
-            Log.d("myTag", users.email)
+            Log.d("myTag", users.email!!)
             checkUsers(user)
             root.btn_sign_out.isEnabled = true
         }
@@ -109,7 +109,7 @@ class ManageFragment : Fragment() {
     }
 
     private fun checkUsers(user: User) {
-        var disposable: Disposable? = SearchActivity.exploreUTServe.checkUsers(user)
+        var disposable: Disposable? = exploreUTServe.checkUsers(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponseTest, this::handleError)

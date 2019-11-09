@@ -55,8 +55,6 @@ class ViewAllFragment : Fragment() {
     private fun handleResponse(result: ArrayList<Place>) {
         try {
             places = result
-
-            Log.d("myTag", "handling response")
             for (r in result) {
                 Log.d("myTag", r.name)
             }
