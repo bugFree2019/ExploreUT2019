@@ -61,11 +61,8 @@ class ManageFragment : Fragment() {
 
 //        println(users!!.email)
 
-        providers = Arrays.asList<AuthUI.IdpConfig>(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build()
-        )
         if (users == null) {
+            Log.d("myTag", "not logged in")
             showSignInOptions()
             root.btn_sign_out.isEnabled=false
         }
@@ -74,6 +71,7 @@ class ManageFragment : Fragment() {
                 profile = "", gender = "", age = 0, group = "",
                 level = 0, subscription = ArrayList<String>()
             )
+            Log.d("myTag", users.email)
             checkUsers(user)
             root.btn_sign_out.isEnabled = true
         }
@@ -175,7 +173,10 @@ class ManageFragment : Fragment() {
     }
 
     private fun showSignInOptions() {
-
+        providers = Arrays.asList<AuthUI.IdpConfig>(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
         startActivityForResult(AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)

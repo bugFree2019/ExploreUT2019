@@ -18,11 +18,12 @@ import android.widget.Button
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-
 import android.widget.ListView
-import kotlinx.android.synthetic.main.create_new_place.*
-
-
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONException
+import java.io.Serializable
 
 
 class ViewPlace : AppCompatActivity() {
@@ -40,19 +41,7 @@ class ViewPlace : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
-        // exploreUTServe.getOnePlace(place._id)
-
-        val users = FirebaseAuth.getInstance().currentUser
-        if (users != null) {
-            println(users.email)
-            Log.d("myTag", users.email!!)
-            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
-            subscribeButton.setVisibility(View.VISIBLE) //To set visible
-        }
-        else {
-            val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
-            subscribeButton.setVisibility(View.INVISIBLE) //To set visible
-        }
+        view_place(place._id)
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -91,8 +80,6 @@ class ViewPlace : AppCompatActivity() {
         var g_adapter = ListViewAdapter(this, place.reviews)
         listview.adapter = g_adapter
 
-
-
         // load address
         if (place.address != null) {
             place_address.text = place!!.address
@@ -121,7 +108,44 @@ class ViewPlace : AppCompatActivity() {
         return true
     }
 
+    private fun handleResponse(result: Place) {
+        try {
+            place = result
+            val users = FirebaseAuth.getInstance().currentUser
+            if (users != null) {
+                Log.d("myTag", "logged in")
+                Log.d("myTag", users.email!!)
+                val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+                subscribeButton.setVisibility(View.VISIBLE)
+                if (place.subscribe_status == 0) {
+                    subscribeButton()
+                }
+                else if (place.subscribe_status == 1) {
+                    unsubscribeButton()
+                }
+            }
+            else {
+                Log.d("myTag", "not logged in")
+                val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+                subscribeButton.setVisibility(View.INVISIBLE)
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            Log.d("myTag", "No valid json")
+        }
+        Log.d("myTag", "Done")
+    }
+
+    private fun handleResponse2(result: Place) {
+        unsubscribeButton()
+    }
+
+    private fun handleResponse3(result: Place) {
+        subscribeButton()
+    }
+
     private fun view_place(place_id: String) {
+        Log.d("myTag", "in view_place")
         var disposable: Disposable? = exploreUTServe.getOnePlace(place_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -135,18 +159,32 @@ class ViewPlace : AppCompatActivity() {
             .subscribe (this::handleResponse2, this::handleError)
     }
 
-    fun onUnsubscribe(place: Place) {
-        var disposable: Disposable? = exploreUTServe.unsubscribe(place._id)
+    fun onUnsubscribe(place_id: String) {
+        var disposable: Disposable? = exploreUTServe.unsubscribe(place_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse3, this::handleError)
     }
 
+    private fun handleError(error: Throwable) {
+        Log.d("myTag", error.localizedMessage!!)
+    }
 
-    private fun handleResponse(result: Place) {}
-    private fun handleResponse2(result: Place) {}
-    private fun handleResponse3(result: Place) {}
-    private fun handleError(error: Throwable) {}
+    private fun subscribeButton() {
+        val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+        subscribeButton.setOnClickListener {
+            onSubscribe(place._id)
+        }
+        subscribeButton.text = "Subscribe"
+    }
+
+    private fun unsubscribeButton() {
+        val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
+        subscribeButton.setOnClickListener {
+            onUnsubscribe(place._id)
+        }
+        subscribeButton.text = "Unsubscribe"
+    }
 
     fun addReport(view:View){
         val addReportIntent = Intent(this, CreateReportActivity::class.java)

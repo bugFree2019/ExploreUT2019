@@ -13,6 +13,7 @@ class Place: Serializable {
     var intro: String? = ""
     var location: Location = Location()
     var num_pics:Int = 0
+    var subscribe_status: Int = -1
     var likes: Int = 0
  //   var website:String?=null
 
