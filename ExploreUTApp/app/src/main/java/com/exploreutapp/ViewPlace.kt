@@ -131,11 +131,15 @@ class ViewPlace : AppCompatActivity() {
                 else if (place.subscribe_status == 1) {
                     unsubscribeButton()
                 }
+                val addButton = findViewById<View>(R.id.button_report) as Button
+                addButton.setVisibility(View.VISIBLE)
             }
             else {
                 Log.d("myTag", "not logged in")
                 val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
                 subscribeButton.setVisibility(View.INVISIBLE)
+                val addButton = findViewById<View>(R.id.button_report) as Button
+                addButton.setVisibility(View.INVISIBLE)
             }
         } catch (e: JSONException) {
             e.printStackTrace()
