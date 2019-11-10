@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -35,6 +34,10 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
     var images: List<Image>? = null
     var loc:String?=null
     var root:View?=null
+    val LOCATION_PERMISSION_REQUEST = 10
+    val PICK_IMAGES_PERMISSION_REQUEST = 11
+    var could_get_location = false
+    var could_pick_images = false
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +48,6 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
         setSpinners()
         setButtons()
-        requestReadAndWritePermissions()
-        registerLocationUpdates()
 
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
@@ -109,40 +110,27 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun requestReadAndWritePermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)  {
+    private fun requestPickImagesPermissions() {
+        if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+            ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+            ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED )  {
             requestPermissions(
                 arrayOf(
                     android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )
-                , 11
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    android.Manifest.permission.CAMERA
+                ),PICK_IMAGES_PERMISSION_REQUEST
             )
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            11 -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return
-            }
-
-            // Add other 'when' lines to check for other
-            // permissions this app might request.
-            else -> {
-                // Ignore all other requests.
-            }
+    private fun requestLocationPermissions(){
+        if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION)
+                ,LOCATION_PERMISSION_REQUEST)
         }
     }
+
 
     private fun registerLocationUpdates(){
 
@@ -171,18 +159,67 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         }
 
         var i:Float=5f
-        if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION)
-                ,10)
+        if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager?.requestLocationUpdates("gps", 5000, i, listener)
+            could_get_location=true
         }
-        locationManager?.requestLocationUpdates("gps", 5000, i, listener)
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            LOCATION_PERMISSION_REQUEST -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty())) {
+                    var all_permissions_granted = true
+                    for(grant_result in grantResults){
+                        if(grant_result!=PackageManager.PERMISSION_GRANTED){
+                            all_permissions_granted=false
+                        }
+                    }
+                    if(all_permissions_granted){
+                        registerLocationUpdates()
+                    }
+                }
+                else {
+                }
+                return
+            }
+
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            PICK_IMAGES_PERMISSION_REQUEST -> {
+                if ((grantResults.isNotEmpty())){
+                    var all_permissions_granted = true
+                    for(grant_result in grantResults){
+                        if(grant_result!=PackageManager.PERMISSION_GRANTED){
+                            all_permissions_granted=false
+                        }
+                    }
+                    if(all_permissions_granted){
+                        could_pick_images=true
+                    }
+                }
+            }
+        }
     }
 
     fun getLocation(view: View){
+        requestLocationPermissions()
+        if(!could_get_location){
+            Toast.makeText(activity!!.getApplicationContext(), "Not all the relevant permissions are granted. The function can't work.",Toast.LENGTH_LONG).show()
+            return
+        }
         root!!.findViewById<TextView>(R.id.text_loc).setText(loc)
     }
 
     fun pickImages(view: View){
+        requestPickImagesPermissions()
+        if(!could_pick_images){
+            Toast.makeText(activity!!.getApplicationContext(), "Not all the relevant permissions are granted. The function can't work.",Toast.LENGTH_LONG).show()
+            return
+        }
         var picker: ImagePicker = ImagePicker.create(this)
         picker.imageDirectory("Camera").start()
     }
@@ -282,7 +319,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
             .execute(object: StringCallback(){
                 override fun onResponse(p0: String?, p1: Int) {
                     Toast.makeText(activity!!.getApplicationContext(), p0,
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_LONG).show()
                 }
 
                 override fun onError(p0: Call?, p1: java.lang.Exception?, p2: Int) {
