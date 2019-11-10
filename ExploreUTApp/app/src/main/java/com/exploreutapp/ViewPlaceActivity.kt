@@ -78,8 +78,6 @@ class ViewPlaceActivity : AppCompatActivity() {
              list.visibility = View.GONE
         }
 
-
-
         // load address
         if (place.address != null) {
             place_address.text = place!!.address

@@ -6,7 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isEmpty
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.ui.AppBarConfiguration
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.model.Place
@@ -20,6 +23,7 @@ import java.io.Serializable
 
 
 class CreateReportActivity : AppCompatActivity(){
+    private lateinit var appBarConfiguration: AppBarConfiguration
     var picker:ImagePicker = ImagePicker.create(this)
     var images: List<Image>? = null
     var place_id:String? = null
@@ -28,6 +32,10 @@ class CreateReportActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_new_report)
+
+        // enable the back button on top left corner
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         place = intent.getSerializableExtra("place") as Place
         place_id = place!!._id
         if(place_id==null){
@@ -126,5 +134,11 @@ class CreateReportActivity : AppCompatActivity(){
         val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
         viewPlaceIntent.putExtra("place_to_show", place as Serializable)
         startActivity(viewPlaceIntent)
+    }
+
+    // for back button navigation
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
