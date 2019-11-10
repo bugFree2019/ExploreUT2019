@@ -270,15 +270,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             // Permission is not granted
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(
-                    activity!!, arrayOf(
+                requestPermissions(
+                    arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
                         //Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
                 )
             } else {
-                ActivityCompat.requestPermissions(
-                    activity!!, arrayOf(
+                requestPermissions(
+                    arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
                         //Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
@@ -342,7 +342,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onStop() {
 
         //remove current location information when stop app
-        // fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+        if (::fusedLocationProviderClient.isInitialized) {
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+        }
 
         super.onStop()
     }
