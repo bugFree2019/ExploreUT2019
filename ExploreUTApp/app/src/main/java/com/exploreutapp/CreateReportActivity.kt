@@ -6,9 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isEmpty
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
@@ -131,9 +129,10 @@ class CreateReportActivity : AppCompatActivity(){
                         Toast.LENGTH_LONG).show()
                 }
             })
-        val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
-        viewPlaceIntent.putExtra("place_to_show", place as Serializable)
-        startActivity(viewPlaceIntent)
+//        val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
+//        viewPlaceIntent.putExtra("place_to_show", place as Serializable)
+//        startActivity(viewPlaceIntent)
+        finish()
     }
 
     // for back button navigation

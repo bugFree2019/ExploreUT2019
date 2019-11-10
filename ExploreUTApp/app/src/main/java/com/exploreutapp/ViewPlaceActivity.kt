@@ -64,36 +64,12 @@ class ViewPlaceActivity : AppCompatActivity() {
         place_address.text=""
         place_intro.text=""
 
-        // load photo to GridView adapter
-        var gridview = findViewById<GridView>(R.id.gridview)
-        var g_adapter = GridViewAdapterShowPhotos(this, place)
-        gridview.adapter = g_adapter
+        showUI()
+    }
 
-        // load reviews
-        if (place.reviews != null && place.reviews.isNotEmpty()) {
-            var listview = findViewById<ListView>(R.id.list)
-            var l_adapter = ListViewAdapter(this, place.reviews)
-            listview.adapter = l_adapter
-        } else {
-             list.visibility = View.GONE
-        }
-
-        // load address
-        if (place.address != null) {
-            place_address.text = place!!.address
-        } else {
-            place_address.visibility = View.GONE
-        }
-
-        // load introduction
-        if (place.intro != null) {
-            var tv: TextView = findViewById(R.id.place_intro)
-            tv.setMovementMethod(ScrollingMovementMethod())
-
-            place_intro.text = "Introduction: " + place!!.intro
-        } else {
-            place_intro.visibility = View.GONE
-        }
+    override fun onResume() {
+        super.onResume()
+        view_place()
     }
 
     // override some functions to make navigation bar work
@@ -131,6 +107,39 @@ class ViewPlaceActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showUI() {
+        // load photo to GridView adapter
+        var gridview = findViewById<GridView>(R.id.gridview)
+        var g_adapter = GridViewAdapterShowPhotos(this, place)
+        gridview.adapter = g_adapter
+
+        // load reviews
+        if (place.reviews != null && place.reviews.isNotEmpty()) {
+            var listview = findViewById<ListView>(R.id.list)
+            var l_adapter = ListViewAdapter(this, place.reviews)
+            listview.adapter = l_adapter
+        } else {
+            list.visibility = View.GONE
+        }
+
+        // load address
+        if (place.address != null) {
+            place_address.text = place!!.address
+        } else {
+            place_address.visibility = View.GONE
+        }
+
+        // load introduction
+        if (place.intro != null) {
+            var tv: TextView = findViewById(R.id.place_intro)
+            tv.setMovementMethod(ScrollingMovementMethod())
+
+            place_intro.text = "Introduction: " + place!!.intro
+        } else {
+            place_intro.visibility = View.GONE
+        }
     }
 
     private fun view_place() {
@@ -187,6 +196,7 @@ class ViewPlaceActivity : AppCompatActivity() {
     private fun handleResponse(result: Place) {
         try {
             place = result
+            showUI()
             val subscribeButton = findViewById<View>(R.id.subscribe_button) as Button
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             val addButton = findViewById<View>(R.id.button_report) as Button
