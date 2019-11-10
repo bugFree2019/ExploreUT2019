@@ -72,25 +72,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMapView.onResume() // needed to get the map to display immediately
 
         try {
-            MapsInitializer.initialize(getActivity()!!.getApplicationContext());
+            MapsInitializer.initialize(getActivity()!!.getApplicationContext())
         } catch (e: Exception) {
-            e.printStackTrace();
+            e.printStackTrace()
         }
 
         mMapView.getMapAsync(this)
 
-        //1. if the operation is not permitted, should we request the permissions?
+        // check if current build version is higher than Marshmallow
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
                 buildLocationRequest()
                 buildLocationCallBack()
 
+                Log.d("location", checkLocationPermission().toString())
+
                 fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(activity!!)
+
+                Log.d("location", fusedLocationProviderClient.toString())
+                
                 fusedLocationProviderClient.requestLocationUpdates(
                     locationRequest,
                     locationCallback,
                     Looper.myLooper()
                 )
+            } else {
+                Toast.makeText(context,"Permission Denied", Toast.LENGTH_LONG).show()
             }
         }
         else {
@@ -245,6 +252,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun buildLocationRequest() {
         locationRequest = LocationRequest()
+
+        Log.d("location", locationRequest.toString())
+
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 5000
         locationRequest.fastestInterval = 3000
@@ -256,34 +266,49 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 context!!,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 ActivityCompat.requestPermissions(
                     activity!!, arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                        //Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
                 )
-            } else ActivityCompat.requestPermissions(
-                activity!!, arrayOf(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                ), MY_PERMISSION_CODE
-            )
+            } else {
+                ActivityCompat.requestPermissions(
+                    activity!!, arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                        //Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                    ), MY_PERMISSION_CODE
+                )
+            }
             return false
         } else
             return true
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode) {
-            MY_PERMISSION_CODE ->{
-                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(ContextCompat.checkSelfPermission(
-                            context!!,
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                        ) == PackageManager.PERMISSION_GRANTED) {
-                        if (checkLocationPermission()) {
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+
+
+            Log.d("grant", grantResults.toString())
+
+        when (requestCode) {
+            MY_PERMISSION_CODE -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+//                    if (ContextCompat.checkSelfPermission(
+//                            context!!,
+//                            Manifest.permission.ACCESS_FINE_LOCATION
+//                        ) == PackageManager.PERMISSION_GRANTED) {
+//                        if (checkLocationPermission()) {
+
                             buildLocationRequest()
                             buildLocationCallBack()
 
@@ -294,23 +319,31 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                 locationCallback,
                                 Looper.myLooper()
                             )
-
                             mMap.isMyLocationEnabled = true
-
-                        }
-                    }
+//                        }
+//                    }
                 } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
                     Toast.makeText(context,"Permission Denied", Toast.LENGTH_LONG).show()
                 }
+                return
+            }
+
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            else -> {
+                // Ignore all other requests.
             }
         }
-
     }
+
 
     override fun onStop() {
 
         //remove current location information when stop app
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+        // fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+
         super.onStop()
     }
 
