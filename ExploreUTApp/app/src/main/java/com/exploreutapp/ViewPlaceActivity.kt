@@ -60,21 +60,25 @@ class ViewPlaceActivity : AppCompatActivity() {
         // enable the back button on top left corner
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        // Set empty for all text view
-        val id = place!!._id
-        var imageId = 0
-
+        // Set empty for simple text views
         place_address.text=""
         place_intro.text=""
 
+        // load photo to GridView adapter
         var gridview = findViewById<GridView>(R.id.gridview)
         var g_adapter = GridViewAdapterShowPhotos(this, place)
         gridview.adapter = g_adapter
 
         // load reviews
-        var listview = findViewById<ListView>(R.id.list)
-        var l_adapter = ListViewAdapter(this, place.reviews)
-        listview.adapter = l_adapter
+        if (place.reviews != null && place.reviews.isNotEmpty()) {
+            var listview = findViewById<ListView>(R.id.list)
+            var l_adapter = ListViewAdapter(this, place.reviews)
+            listview.adapter = l_adapter
+        } else {
+             list.visibility = View.GONE
+        }
+
+
 
         // load address
         if (place.address != null) {

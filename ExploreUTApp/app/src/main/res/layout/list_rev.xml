@@ -8,6 +8,9 @@
         android:id="@+id/text_rev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Review" />
+        android:layout_marginVertical="@dimen/ef_spacing"
+        android:text="Review"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
 </LinearLayout>
