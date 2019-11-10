@@ -15,7 +15,6 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.exploreutapp.R
@@ -269,18 +268,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
             // Permission is not granted
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 requestPermissions(
                     arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                        //Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
                 )
             } else {
                 requestPermissions(
                     arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                        //Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
                     ), MY_PERMISSION_CODE
                 )
             }
@@ -303,29 +302,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
 
-//                    if (ContextCompat.checkSelfPermission(
-//                            context!!,
-//                            Manifest.permission.ACCESS_FINE_LOCATION
-//                        ) == PackageManager.PERMISSION_GRANTED) {
-//                        if (checkLocationPermission()) {
 
-                            buildLocationRequest()
-                            buildLocationCallBack()
+                    buildLocationRequest()
+                    buildLocationCallBack()
 
-                            fusedLocationProviderClient =
-                                LocationServices.getFusedLocationProviderClient(activity!!)
-                            fusedLocationProviderClient.requestLocationUpdates(
-                                locationRequest,
-                                locationCallback,
-                                Looper.myLooper()
-                            )
-                            mMap.isMyLocationEnabled = true
-//                        }
-//                    }
+                    fusedLocationProviderClient =
+                        LocationServices.getFusedLocationProviderClient(activity!!)
+                    fusedLocationProviderClient.requestLocationUpdates(
+                        locationRequest,
+                        locationCallback,
+                        Looper.myLooper()
+                    )
+                    mMap.isMyLocationEnabled = true
+
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(context,"Permission Denied", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,"Please change location permission preferences", Toast.LENGTH_LONG).show()
                 }
                 return
             }
@@ -334,6 +327,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             // permissions this app might request.
             else -> {
                 // Ignore all other requests.
+                // Since we do not have any other permission request in this fragment, this left blank
             }
         }
     }
