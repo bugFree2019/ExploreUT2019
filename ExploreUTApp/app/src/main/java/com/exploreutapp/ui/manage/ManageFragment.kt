@@ -41,6 +41,7 @@ class ManageFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var menu: Menu? = null
     private var users: FirebaseUser? = null
+    private var disposable: Disposable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -122,7 +123,7 @@ class ManageFragment : Fragment() {
     }
 
     private fun checkUsers(user: User) {
-        var disposable: Disposable? = exploreUTServe.checkUsers(user)
+        disposable = exploreUTServe.checkUsers(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponseTest, this::handleError)
@@ -202,5 +203,10 @@ class ManageFragment : Fragment() {
         if (menu != null && users == null) {
             showSignInOptions()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
     }
 }

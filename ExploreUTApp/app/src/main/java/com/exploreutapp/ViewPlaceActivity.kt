@@ -32,6 +32,9 @@ class ViewPlaceActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var place:Place
     private var user: FirebaseUser? = null
+    private var disposable: Disposable? = null
+    private var disposable2: Disposable? = null
+    private var disposable3: Disposable? = null
 
     companion object {
         val exploreUTServe by lazy {
@@ -109,6 +112,13 @@ class ViewPlaceActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
+        disposable2?.dispose()
+        disposable3?.dispose()
+    }
+
     private fun showUI() {
         // load photo to GridView adapter
         var gridview = findViewById<GridView>(R.id.gridview)
@@ -144,13 +154,13 @@ class ViewPlaceActivity : AppCompatActivity() {
 
     private fun view_place() {
         if (user != null) {
-            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, user!!.email!!)
+            disposable = exploreUTServe.getOnePlace(place._id, user!!.email!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleError)
         }
         else {
-            var disposable: Disposable? = exploreUTServe.getOnePlace(place._id, null)
+            disposable = exploreUTServe.getOnePlace(place._id, null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponse, this::handleError)
@@ -165,7 +175,7 @@ class ViewPlaceActivity : AppCompatActivity() {
             subscribeButton.setVisibility(View.INVISIBLE)
             unsubscribeButton.setVisibility(View.VISIBLE)
 
-            var disposable: Disposable? = exploreUTServe.subscribe(place._id, user!!.email)
+            disposable2 = exploreUTServe.subscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (this::handleResponseSubscribe, this::handleError)
@@ -180,7 +190,7 @@ class ViewPlaceActivity : AppCompatActivity() {
             subscribeButton.setVisibility(View.VISIBLE)
             unsubscribeButton.setVisibility(View.INVISIBLE)
 
-            var disposable: Disposable? = exploreUTServe.unsubscribe(place._id, user!!.email)
+            disposable3 = exploreUTServe.unsubscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponseUnsubscribe, this::handleError)

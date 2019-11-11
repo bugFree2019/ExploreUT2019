@@ -32,6 +32,7 @@ class  SearchActivity : AppCompatActivity() {
     }
 
     private var menu: Menu? = null
+    private var disposable: Disposable? = null
     private var places: ArrayList<Place> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -63,7 +64,7 @@ class  SearchActivity : AppCompatActivity() {
     }
 
     private fun search(tag: String) {
-        var disposable: Disposable? = exploreUTServe.getTagPlaces(tag)
+        disposable = exploreUTServe.getTagPlaces(tag)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
@@ -156,6 +157,11 @@ class  SearchActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         displayButton()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
     }
 
     fun displayButton() {

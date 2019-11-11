@@ -44,6 +44,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mLastLocation: Location
     private var mMarker: Marker?=null
+    private var disposable: Disposable? = null
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
@@ -134,13 +135,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         return root
     }
 
-
     private fun nearByPlace(place_theme: String) {
 
         // Clear all marker on Map
         mMap.clear()
 
-        var disposable: Disposable? = mService.getThemePlaces(place_theme)
+        disposable = mService.getThemePlaces(place_theme)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
@@ -386,6 +386,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onPause() {
         mMapView.onPause()
         super.onPause()
+        disposable?.dispose()
     }
 
     override fun onDestroy() {
