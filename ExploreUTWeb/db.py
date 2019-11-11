@@ -4,6 +4,7 @@ from bson import ObjectId
 from pymongo import MongoClient
 
 # connect to the remote database instance
+# AWS MongoDB
 DB_URL = 'mongodb+srv://hlzhou:hlzhoumongodb@cluster0-ribbv.mongodb.net/test?retryWrites=true&w=majority'
 client = MongoClient(DB_URL)
 # this db is for app testing, eventually we have to change it back to 'utdb'
