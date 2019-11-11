@@ -86,7 +86,9 @@ class ManageFragment : Fragment() {
                 Toast.makeText(context!!,""+users!!.email, Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(context!!,""+response!!.error!!.message, Toast.LENGTH_SHORT).show()
+                if (context != null && response != null) {
+                    Toast.makeText(context!!,""+response!!.error!!.message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
