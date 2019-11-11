@@ -21,6 +21,7 @@ import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.GridViewAdapter
 import com.exploreutapp.R
+import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
@@ -320,10 +321,10 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
         var builder=OkHttpUtils.post()
 //        builder.url("http://10.0.2.2:8080/create_new_place")
-        builder.url("https://explore-ut.appspot.com/")
+        builder.url(ExploreUTService.baseURL)
+        builder.addParams("name", name)
         builder.addParams("theme", theme)
         builder.addParams("tag", tag)
-        builder.addParams("name", name)
         builder.addParams("intro", intro)
         builder.addParams("location", coordinates)
 
@@ -349,7 +350,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                         Toast.LENGTH_LONG).show()
                 }
             })
-        Toast.makeText(activity!!.getApplicationContext(), "Successfully add the place "+root!!.findViewById<EditText>(R.id.text_name).text.toString(),
+        Toast.makeText(activity!!.getApplicationContext(), "Successfully added the place "+root!!.findViewById<EditText>(R.id.text_name).text.toString(),
             Toast.LENGTH_LONG).show()
     }
 

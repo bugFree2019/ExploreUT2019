@@ -30,6 +30,7 @@ class ViewAllFragment : Fragment() {
     }
 
     private var places: ArrayList<Place> = ArrayList()
+    private var disposable: Disposable? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerViewAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -63,8 +64,13 @@ class ViewAllFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
+    }
+
     private fun viewAll() {
-        var disposable: Disposable? = exploreUTServe.getAllPlaces()
+        disposable = exploreUTServe.getAllPlaces()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (this::handleResponse, this::handleError)
