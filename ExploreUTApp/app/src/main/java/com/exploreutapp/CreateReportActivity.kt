@@ -102,7 +102,8 @@ class CreateReportActivity : AppCompatActivity(){
 
 
         var builder=OkHttpUtils.post()
-        builder.url("http://10.0.2.2:8080/create_new_report")
+//        builder.url("http://10.0.2.2:8080/create_new_report")
+        builder.url("https://explore-ut.appspot.com/")
         builder.addParams("title", title)
         builder.addParams("comment", comment)
         builder.addParams("place_id", place_id)

@@ -48,16 +48,14 @@ interface ExploreUTService {
 
     companion object {
         // This is the URL when developed on the local emulator
-
-//        const val baseURL: String = "http://10.145.232.63:8080"
-
-        const val baseURL: String = "http://10.0.2.2:8080"
+//        const val baseURL: String = "http://10.0.2.2:8080"
+        const val baseURL: String = "https://explore-ut.appspot.com/"
 
         fun create(): ExploreUTService {
 
             val client = OkHttpClient().newBuilder()
-                .readTimeout(10, TimeUnit.SECONDS)
-                .connectTimeout(10, TimeUnit.SECONDS).build()
+                .readTimeout(3, TimeUnit.MINUTES)
+                .connectTimeout(3, TimeUnit.MINUTES).build()
 
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
