@@ -48,6 +48,9 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
         setSpinners()
         setButtons()
+        //request the permissions for "get location" functions when the fragment is created, if the permissions needed are granted succesfuuly, the "registerLocationUpdates" function  will be called
+        //Note that the registerLocationUpdates function only needs to be called once (we'll check if the LocationManager has been initialized before we call this method.)
+        requestLocationPermissions()
 
         val users = FirebaseAuth.getInstance().currentUser
         if (users != null) {
@@ -122,12 +125,23 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                 ),PICK_IMAGES_PERMISSION_REQUEST
             )
         }
+        else{
+            could_pick_images=true
+        }
     }
 
     private fun requestLocationPermissions(){
         if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION)
                 ,LOCATION_PERMISSION_REQUEST)
+            Log.d("result","have visited here1")
+        }
+        else{
+            Log.d("result","have visited here2")
+            could_get_location=true
+            if(locationManager==null){
+                registerLocationUpdates()
+            }
         }
     }
 
@@ -140,6 +154,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
             override fun onLocationChanged(location: Location) {
                 loc = "" + location.getLatitude() + " " + location.getLongitude()
+                Log.d("location",loc)
             }
 
 
@@ -160,8 +175,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
         var i:Float=5f
         if (ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager?.requestLocationUpdates("gps", 5000, i, listener)
-            could_get_location=true
+            locationManager?.requestLocationUpdates("gps", 1, i, listener)
         }
 
     }
@@ -179,10 +193,14 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                         }
                     }
                     if(all_permissions_granted){
-                        registerLocationUpdates()
+                        could_get_location=true
+                        if(locationManager==null){
+                            registerLocationUpdates()
+                        }
                     }
                 }
                 else {
+                    Log.d("result","have visited here3")
                 }
                 return
             }
@@ -216,10 +234,13 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
     fun pickImages(view: View){
         requestPickImagesPermissions()
+        Log.d("debug","1")
         if(!could_pick_images){
+            Log.d("debug","2")
             Toast.makeText(activity!!.getApplicationContext(), "Not all the relevant permissions are granted. The function can't work.",Toast.LENGTH_LONG).show()
             return
         }
+        Log.d("debug","3")
         var picker: ImagePicker = ImagePicker.create(this)
         picker.imageDirectory("Camera").start()
     }
