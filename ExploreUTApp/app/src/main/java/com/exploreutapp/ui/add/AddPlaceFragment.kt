@@ -321,7 +321,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
 
         var builder=OkHttpUtils.post()
 //        builder.url("http://10.0.2.2:8080/create_new_place")
-        builder.url(ExploreUTService.baseURL)
+        builder.url(ExploreUTService.baseURL+"create_new_place")
         builder.addParams("name", name)
         builder.addParams("theme", theme)
         builder.addParams("tag", tag)
@@ -331,6 +331,7 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         val image_iterator = images!!.iterator()
         while(image_iterator.hasNext()){
             var image = image_iterator.next()
+
             var pic_file = File(image.path)
             builder.addFile("pic_files",pic_file.name,pic_file)
             Log.d("image_path",image.path)

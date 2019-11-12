@@ -11,13 +11,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.exploreutapp.model.Place
+import com.exploreutapp.remote.ExploreUTService
 import com.google.firebase.auth.FirebaseAuth
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import kotlinx.android.synthetic.main.create_new_report.*
 import okhttp3.Call
 import java.io.File
-import java.io.Serializable
 
 
 class CreateReportActivity : AppCompatActivity(){
@@ -103,7 +103,7 @@ class CreateReportActivity : AppCompatActivity(){
 
         var builder=OkHttpUtils.post()
 //        builder.url("http://10.0.2.2:8080/create_new_report")
-        builder.url("https://explore-ut.appspot.com/")
+        builder.url(ExploreUTService.baseURL+"create_new_report")
         builder.addParams("title", title)
         builder.addParams("comment", comment)
         builder.addParams("place_id", place_id)
