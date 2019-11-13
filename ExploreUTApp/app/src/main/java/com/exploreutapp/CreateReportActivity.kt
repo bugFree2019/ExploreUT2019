@@ -118,22 +118,25 @@ class CreateReportActivity : AppCompatActivity(){
             Log.d("image_name",pic_file.name)
         }
 
+        //val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
+        //viewPlaceIntent.putExtra("place_to_show", place)
+
         builder.addHeader("Connection","close").build()
             .execute(object: StringCallback(){
                 override fun onResponse(p0: String?, p1: Int) {
-                    Toast.makeText(getApplicationContext(), p0,
-                        Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(getApplicationContext(), p0,
+                        //Toast.LENGTH_SHORT).show()
+                    //startActivity(viewPlaceIntent)
+                    Toast.makeText(getApplicationContext(), "Successfully added the report ",
+                        Toast.LENGTH_LONG).show()
+                    finish()
                 }
 
                 override fun onError(p0: Call?, p1: java.lang.Exception?, p2: Int) {
-                    Toast.makeText(getApplicationContext(), p1.toString(),
-                        Toast.LENGTH_LONG).show()
+                    //Toast.makeText(getApplicationContext(), p1.toString(),
+                        //Toast.LENGTH_LONG).show()
                 }
             })
-//        val viewPlaceIntent = Intent(this, ViewPlaceActivity::class.java)
-//        viewPlaceIntent.putExtra("place_to_show", place as Serializable)
-//        startActivity(viewPlaceIntent)
-        finish()
     }
 
     // for back button navigation
