@@ -28,7 +28,7 @@ interface ExploreUTService {
     fun checkUsers(@Body user: User) : Observable<ArrayList<Place>>
 
     @GET("/view_one_place")
-    @Headers("Accept: application/json", "User-Agent: Android")
+    @Headers("Accept: application/json", "User-Agent: Android", "Cache-Control: no-cache")
     fun getOnePlace(@Query("place_id")  place_id: String,
                     @Query("user_email") user_email: String?): Observable<Place>
 
@@ -55,7 +55,9 @@ interface ExploreUTService {
 
             val client = OkHttpClient().newBuilder()
                 .readTimeout(3, TimeUnit.MINUTES)
-                .connectTimeout(3, TimeUnit.MINUTES).build()
+                .connectTimeout(3, TimeUnit.MINUTES)
+                .writeTimeout(3, TimeUnit.MINUTES)
+                .build()
 
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

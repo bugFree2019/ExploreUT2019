@@ -342,17 +342,29 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
         builder.addHeader("Connection","close").build()
             .execute(object: StringCallback(){
                 override fun onResponse(p0: String?, p1: Int) {
-                    Toast.makeText(activity!!.getApplicationContext(), p0,
-                        Toast.LENGTH_LONG).show()
+                    if (activity != null) {
+//                        Toast.makeText(
+//                            activity!!.getApplicationContext(), p0,
+//                            Toast.LENGTH_LONG
+//                        ).show()
+                        Toast.makeText(
+                            activity!!.getApplicationContext(), "Successfully added the place "
+                                    + root!!.findViewById<EditText>(R.id.text_name).text.toString(),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
 
                 override fun onError(p0: Call?, p1: java.lang.Exception?, p2: Int) {
-                    Toast.makeText(activity!!.getApplicationContext(), p1.toString(),
-                        Toast.LENGTH_LONG).show()
+                    if (activity != null) {
+                        Toast.makeText(
+                            activity!!.getApplicationContext(), p1.toString(), Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             })
-        Toast.makeText(activity!!.getApplicationContext(), "Successfully added the place "+root!!.findViewById<EditText>(R.id.text_name).text.toString(),
-            Toast.LENGTH_LONG).show()
+        Toast.makeText(activity!!.getApplicationContext(), "Sending new place's information to " +
+                "the server. This might take a while for the server to process.", Toast.LENGTH_LONG).show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

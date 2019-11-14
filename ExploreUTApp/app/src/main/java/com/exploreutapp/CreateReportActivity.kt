@@ -137,6 +137,9 @@ class CreateReportActivity : AppCompatActivity(){
                         //Toast.LENGTH_LONG).show()
                 }
             })
+        Toast.makeText(getApplicationContext(), "Sending new report's information to " +
+                "the server. This might take a while for the server to process.",
+            Toast.LENGTH_LONG).show()
     }
 
     // for back button navigation
