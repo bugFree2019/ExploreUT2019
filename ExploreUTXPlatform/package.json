@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.4"
+    "react-native": "0.61.4",
+    "react-native-cardview": "^2.0.5",
+    "react-native-search-bar": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

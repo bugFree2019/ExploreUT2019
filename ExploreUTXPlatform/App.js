@@ -1,114 +1,112 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React from 'react';
+import React, {Component} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+  Image,
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+import CardView from 'react-native-cardview';
+import SearchBar from 'react-native-search-bar';
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
+export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state ={ isLoading: false,
+                  searchTag: '' }
+  }
+
+  async searchPlaceAsync() {
+    this.setState({isLoading: true})
+    try {
+      let response = await fetch(
+        baseURL + 'search?tag=' + this.state.searchTag,
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Android'
+          }
+        }
+      );
+      let responseJson = await response.json();
+      console.log(responseJson)
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+        searchTag: '',
+      });
+    }
+    catch (error) {
+      console.error(error);
+    };
+  }
+
+  componentDidMount() {
+    // this.searchPlaceAsync('study');
+  }
+
+  render() {
+    if(this.state.isLoading) {
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
+
+    return (
+      <View style={styles.container}>
+        <SearchBar
+          ref="searchBar"
+          placeholder="Search places by tags"
+          onChangeText={(text) => this.setState({searchTag: text})}
+          onSearchButtonPress={() => this.searchPlaceAsync()}
+          onCancelButtonPress={() => searchBar.current.blur()}
+        />
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) =>
+          <CardView style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'flex-start'}}
+          cardElevation={2}
+          cornerRadius={5}>
+              <View>
+                <Image source={{uri: baseURL + "place_image/" + item['_id'] + "/0.jpg"}} 
+                  style={{flex: 1,
+                    width: 150,
+                    height: 150,
+                    resizeMode: 'contain'
+                    }}/>
+              </View>
+              <View style={{marginStart: 10, justifyContent: 'center'}}>
+                <Text style={styles.title}>{item['name']} </Text>
+                <Text>Theme: {item['theme']}</Text>
+                <Text>Tags: {item['tags']}</Text>
+              </View>
+            </CardView>}
+            keyExtractor={(item, index) => item['_id']}
+        />
+      </View>
+    );
+  }
+}
+
+var baseURL = "https://explore-ut.appspot.com/";
+
+var styles = StyleSheet.create({
+  title: {
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF'
   },
 });
-
-export default App;
