@@ -131,7 +131,7 @@ class ViewPlaceActivity : AppCompatActivity() {
             var l_adapter = ListViewAdapter(this, place.reviews)
             listview.adapter = l_adapter
         } else {
-            list.visibility = View.GONE
+//            list.visibility = View.GONE
         }
 
         // load address
