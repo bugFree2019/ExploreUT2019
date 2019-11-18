@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
 
-import SearchBar from 'react-native-search-bar';
 import ListCardView from '../layouts/ListCardView';
 
-export default class SearchScreen extends Component {
+export default class ViewAllScreen extends Component {
   static navigationOptions = {
-    title: 'Search',
+    title: 'View All',
   };
 
   constructor(props){
     super(props);
-    this.state ={ isLoading: false,
-                  searchTag: '' }
+    this.state ={ isLoading: true}
     this.baseURL = "https://explore-ut.appspot.com/";
   }
 
-  async searchPlaceAsync() {
+  componentDidMount() {
+    this.viewAllPlaceAsync();
+  }
+
+  async viewAllPlaceAsync() {
     this.setState({isLoading: true})
     try {
       let response = await fetch(
-        this.baseURL + 'search?tag=' + this.state.searchTag,
+        this.baseURL + '/view_places',
         {
           method: 'GET',
           headers: {
@@ -34,7 +36,6 @@ export default class SearchScreen extends Component {
       this.setState({
         isLoading: false,
         dataSource: responseJson,
-        searchTag: '',
       });
     }
     catch (error) {
@@ -53,13 +54,6 @@ export default class SearchScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <SearchBar
-          ref="searchBar"
-          placeholder="Search places by tags"
-          onChangeText={(text) => this.setState({searchTag: text})}
-          onSearchButtonPress={() => this.searchPlaceAsync()}
-          onCancelButtonPress={() => searchBar.current.blur()}
-        />
         <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} />
       </View>
     );
