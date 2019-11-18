@@ -13,7 +13,13 @@
     "react": "16.9.0",
     "react-native": "0.61.4",
     "react-native-cardview": "^2.0.5",
-    "react-native-search-bar": "^3.5.1"
+    "react-native-gesture-handler": "^1.5.0",
+    "react-native-reanimated": "^1.4.0",
+    "react-native-screens": "^2.0.0-alpha.11",
+    "react-native-search-bar": "^3.5.1",
+    "react-navigation": "^4.0.10",
+    "react-navigation-drawer": "^2.3.3",
+    "react-navigation-stack": "^1.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
