@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
-
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import SearchBar from 'react-native-search-bar';
-import ListCardView from '../layouts/ListCardView';
 
-export default class SearchScreen extends Component {
+import ListCardView from '../layouts/ListCardView';
+import ViewPlaceScreen from './ViewPlaceScreen';
+
+class SearchScreen extends Component {
   static navigationOptions = {
     title: 'Search',
   };
@@ -13,7 +16,7 @@ export default class SearchScreen extends Component {
     super(props);
     this.state ={ isLoading: false,
                   searchTag: '' }
-    this.baseURL = "https://explore-ut.appspot.com/";
+    this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
   async searchPlaceAsync() {
@@ -60,7 +63,7 @@ export default class SearchScreen extends Component {
           onSearchButtonPress={() => this.searchPlaceAsync()}
           onCancelButtonPress={() => searchBar.current.blur()}
         />
-        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} />
+        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} navigate={this.props.navigation} />
       </View>
     );
   }
@@ -72,3 +75,10 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
 });
+
+const stackNavigator = createStackNavigator({
+  Search: SearchScreen,
+  ViewPlace: ViewPlaceScreen,
+});
+
+export default createAppContainer(stackNavigator);
