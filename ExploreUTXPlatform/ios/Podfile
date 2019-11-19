@@ -38,7 +38,12 @@ target 'ExploreUTXPlatform' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  # added according to https://github.com/react-native-community/react-native-maps/blob/master/docs/installation.md
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+  # the above are the added lines
   use_native_modules!
 end
 

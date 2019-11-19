@@ -3,6 +3,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import ViewAllScreen from './screens/ViewAllScreen';
 import SearchScreen from './screens/SearchScreen';
 import ManageScreen from './screens/ManageScreen';
+import MapScreen from './screens/MapScreen';
 
 // class MyHomeScreen extends Component {
 //   static navigationOptions = {
@@ -24,6 +25,9 @@ import ManageScreen from './screens/ManageScreen';
 // }
 
 const MyDrawerNavigator = createDrawerNavigator({
+  Map: {
+    screen: MapScreen,
+  },
   ViewAll: {
     screen: ViewAllScreen,
   },
