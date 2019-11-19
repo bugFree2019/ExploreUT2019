@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import ViewAllScreen from './screens/ViewAllScreen';
 import SearchScreen from './screens/SearchScreen';
+import ViewPlaceScreen from './screens/ViewPlaceScreen';
 
 // class MyHomeScreen extends Component {
 //   static navigationOptions = {
@@ -23,12 +24,15 @@ import SearchScreen from './screens/SearchScreen';
 // }
 
 const MyDrawerNavigator = createDrawerNavigator({
-  ViewAllScreen: {
+  ViewAll: {
     screen: ViewAllScreen,
   },
   Search: {
     screen: SearchScreen,
   },
+  ViewPlace: {
+    screen: ViewPlaceScreen,
+  }
 });
 
 export default createAppContainer(MyDrawerNavigator);

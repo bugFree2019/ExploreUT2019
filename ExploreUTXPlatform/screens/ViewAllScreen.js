@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import ListCardView from '../layouts/ListCardView';
+import ViewPlaceScreen from './ViewPlaceScreen';
 
-export default class ViewAllScreen extends Component {
+class ViewAllScreen extends Component {
   static navigationOptions = {
-    title: 'View All',
+    title: 'View All Places',
   };
 
   constructor(props){
     super(props);
-    this.state ={ isLoading: true}
-    this.baseURL = "https://explore-ut.appspot.com/";
+    this.state ={isLoading: true}
+    this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
   componentDidMount() {
@@ -22,7 +25,7 @@ export default class ViewAllScreen extends Component {
     this.setState({isLoading: true})
     try {
       let response = await fetch(
-        this.baseURL + '/view_places',
+        this.baseURL + 'view_places',
         {
           method: 'GET',
           headers: {
@@ -54,7 +57,7 @@ export default class ViewAllScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} />
+        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} navigate={this.props.navigation} />
       </View>
     );
   }
@@ -66,3 +69,10 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
 });
+
+const stackNavigator = createStackNavigator({
+  ViewAll: ViewAllScreen,
+  ViewPlace: ViewPlaceScreen,
+});
+
+export default createAppContainer(stackNavigator);

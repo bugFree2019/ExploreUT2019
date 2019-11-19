@@ -13,7 +13,7 @@ export default class SearchScreen extends Component {
     super(props);
     this.state ={ isLoading: false,
                   searchTag: '' }
-    this.baseURL = "https://explore-ut.appspot.com/";
+    this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
   async searchPlaceAsync() {

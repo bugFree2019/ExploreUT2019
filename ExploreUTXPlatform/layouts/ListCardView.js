@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, TouchableNativeFeedback } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -11,6 +11,7 @@ export default class ListCardView extends Component {
       <FlatList
         data={this.props.dataSource}
         renderItem={({item}) =>
+        <TouchableNativeFeedback onPress={() => this.props.navigate.push('ViewPlace', {placeId: item['_id'], title: item['name']})}>
         <CardView style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'flex-start'}}
           cardElevation={2}
           cornerRadius={5}>
@@ -27,7 +28,8 @@ export default class ListCardView extends Component {
             <Text>Theme: {item['theme']}</Text>
             <Text>Tags: {item['tags']}</Text>
           </View>
-        </CardView>}
+        </CardView>
+        </TouchableNativeFeedback>}
         keyExtractor={(item, index) => item['_id']}
       />
     );
