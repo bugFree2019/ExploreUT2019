@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, PermissionsAndroid } from 'react-native';
+
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import {PermissionsAndroid} from 'react-native';
+
+import ViewPlaceScreen from './ViewPlaceScreen';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
+const LATITUDE = 30.289017;
+const LONGITUDE = -97.736480;
 const LATITUDE_DELTA = 0.0222;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -17,13 +21,10 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
-export default class map extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.getParam('title', 'Map'),
-    };
+class MapScreen extends Component {
+  static navigationOptions = {
+    title: 'Map',
   };
-  
 
   constructor() {
     super();
@@ -90,21 +91,21 @@ export default class map extends Component {
   getInitialState() {
     return {
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: 30.289017,
+        longitude: -97.736480,
+        latitudeDelta: 0.0222,
+        longitudeDelta: 0.0111,
       },
     };
   }
 
-  onRegionChange(region) {
-    this.setState({ region });
-  }
+  // onRegionChange(region) {
+  //   this.setState({ region });
+  // }
 
-  onRegionChangeComplete(region) {
-    this.setState({ region });
-  }
+  // onRegionChangeComplete(region) {
+  //   this.setState({ region });
+  // }
 
   render() {
     return (
@@ -139,3 +140,10 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFill,
   },
 });
+
+const stackNavigator = createStackNavigator({
+  Map: MapScreen,
+  ViewPlace: ViewPlaceScreen,
+});
+
+export default createAppContainer(stackNavigator);
