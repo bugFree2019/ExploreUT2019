@@ -8,6 +8,7 @@ import Geolocation from '@react-native-community/geolocation';
 
 import ViewPlaceScreen from './ViewPlaceScreen';
 
+
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE = 30.289017;
@@ -98,13 +99,17 @@ class MapScreen extends Component {
     this.setState({ region });
   }
 
-  onMapReady = () => this.setState({marginBottom: 0})
+  onMapReady = () => {
+    this.setState({marginBottom: 0})
+  }
 
 
   render() {
     return (
       <MapView
-
+        ref={map => {
+          this.map = map;
+        }}
         provider={ PROVIDER_GOOGLE }
         style={ {...styles.map, marginBottom: this.state.marginBottom} }
         // style={ {...StyleSheet.absoluteFill, marginBottom: this.state.marginBottom} }
@@ -115,8 +120,7 @@ class MapScreen extends Component {
         region={ this.state.region }
         // onRegionChange={ region => this.setState({region}) }
         // onRegionChangeComplete={ region => this.setState({region}) }
-        // onRegionChange={this.onRegionChange}
-        onRegionChangeComplete={this.onRegionChangeComplete}
+        onRegionChangeComplete={ this.onRegionChangeComplete }
       >
         {/* <MapView.Marker
           coordinate={ this.state.region }
