@@ -9,6 +9,10 @@ import ViewPlaceScreen from './ViewPlaceScreen';
 class ViewAllScreen extends Component {
   static navigationOptions = {
     title: 'View All Places',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#BF5700',
+    },
   };
 
   constructor(props){

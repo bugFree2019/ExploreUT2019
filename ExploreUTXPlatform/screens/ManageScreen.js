@@ -1,18 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Alert} from 'react-native';
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import ViewPlaceScreen from './ViewPlaceScreen';
 
-export default class ManageScreen extends Component {
+class ManageScreen extends Component {
   static navigationOptions = {
     title: 'Manage',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#BF5700',
+    },
   };
 
   async componentDidMount() {
@@ -88,3 +87,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+const stackNavigator = createStackNavigator({
+  Manage: ManageScreen,
+  ViewPlace: ViewPlaceScreen,
+});
+
+export default createAppContainer(stackNavigator);

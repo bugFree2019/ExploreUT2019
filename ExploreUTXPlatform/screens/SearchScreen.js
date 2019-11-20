@@ -10,6 +10,10 @@ import ViewPlaceScreen from './ViewPlaceScreen';
 class SearchScreen extends Component {
   static navigationOptions = {
     title: 'Search',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#BF5700',
+    },
   };
 
   constructor(props){
