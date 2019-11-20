@@ -20,6 +20,7 @@
 		465FCCA24C6BB2DE00DF5AA6 /* libPods-ExploreUTXPlatform-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55115D23C9B7A284F5E423BC /* libPods-ExploreUTXPlatform-tvOSTests.a */; };
 		A0B6150A5EBA240671767E57 /* libPods-ExploreUTXPlatform-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEECAE0F49D06C1AD759D3 /* libPods-ExploreUTXPlatform-tvOS.a */; };
 		C730E88F3573899964443416 /* libPods-ExploreUTXPlatformTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A00BFFDA04FDE63563AC30 /* libPods-ExploreUTXPlatformTests.a */; };
+		C9E1B9E72385000500BEB63C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9E1B9E52385000500BEB63C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A01019CD0EA47900A43C9CBB /* Pods-ExploreUTXPlatform-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExploreUTXPlatform-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ExploreUTXPlatform-tvOS/Pods-ExploreUTXPlatform-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A7EB0CC72C2C27750D6BC2C7 /* Pods-ExploreUTXPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExploreUTXPlatform.debug.xcconfig"; path = "Target Support Files/Pods-ExploreUTXPlatform/Pods-ExploreUTXPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		C2B398D35290499B08D9E803 /* Pods-ExploreUTXPlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExploreUTXPlatformTests.debug.xcconfig"; path = "Target Support Files/Pods-ExploreUTXPlatformTests/Pods-ExploreUTXPlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9E1B9E52385000500BEB63C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC3788F0B0FEDF7790DF9B92 /* Pods-ExploreUTXPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExploreUTXPlatform.release.xcconfig"; path = "Target Support Files/Pods-ExploreUTXPlatform/Pods-ExploreUTXPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,6 +127,7 @@
 		13B07FAE1A68108700A75B9A /* ExploreUTXPlatform */ = {
 			isa = PBXGroup;
 			children = (
+				C9E1B9E52385000500BEB63C /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,7 +164,6 @@
 				C2B398D35290499B08D9E803 /* Pods-ExploreUTXPlatformTests.debug.xcconfig */,
 				49D066946D228160460C9804 /* Pods-ExploreUTXPlatformTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -251,6 +253,7 @@
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+				EC514B5799D8C45234D55629 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +312,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C9E1B9E72385000500BEB63C /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,10 +423,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ExploreUTXPlatform/Pods-ExploreUTXPlatform-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -492,6 +499,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC514B5799D8C45234D55629 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExploreUTXPlatform-tvOS/Pods-ExploreUTXPlatform-tvOS-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExploreUTXPlatform-tvOS/Pods-ExploreUTXPlatform-tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {

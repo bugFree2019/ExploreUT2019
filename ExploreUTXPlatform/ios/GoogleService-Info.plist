@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1062639050908-brgjjlnbv2osu243bjucvorbtv02n943.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1062639050908-brgjjlnbv2osu243bjucvorbtv02n943</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1062639050908-2g4tf4dreiq8o0ileto5ecp2brgb9rad.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBN-rIsTDFV0DLF1G4hlM6AgG6JImW4qtY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1062639050908</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>exploreutios</string>
+	<key>PROJECT_ID</key>
+	<string>explore-ut</string>
+	<key>STORAGE_BUCKET</key>
+	<string>explore-ut.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1062639050908:ios:93758559ec3a0996ff8d59</string>
+	<key>DATABASE_URL</key>
+	<string>https://explore-ut.firebaseio.com</string>
+</dict>
+</plist>
