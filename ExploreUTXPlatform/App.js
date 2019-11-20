@@ -25,11 +25,11 @@ import MapScreen from './screens/MapScreen';
 // }
 
 const MyDrawerNavigator = createDrawerNavigator({
-  Map: {
-    screen: MapScreen,
-  },
   ViewAll: {
     screen: ViewAllScreen,
+  },
+  Map: {
+    screen: MapScreen,
   },
   Search: {
     screen: SearchScreen,

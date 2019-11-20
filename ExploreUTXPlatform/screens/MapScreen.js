@@ -25,6 +25,10 @@ const GEOLOCATION_OPTIONS = {
 class MapScreen extends Component {
   static navigationOptions = {
     title: 'Map',
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#BF5700',
+    },
   };
 
   constructor() {
