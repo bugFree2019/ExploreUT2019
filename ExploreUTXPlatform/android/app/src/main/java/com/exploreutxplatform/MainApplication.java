@@ -5,12 +5,21 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 import com.kishanjvaghela.cardview.RNCardViewPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.swmansion.reanimated.ReanimatedPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -21,15 +30,21 @@ public class MainApplication extends Application implements ReactApplication {
           return BuildConfig.DEBUG;
         }
 
-        @Override
-        protected List<ReactPackage> getPackages() {
-          @SuppressWarnings("UnnecessaryLocalVariable")
-          List<ReactPackage> packages = new PackageList(this).getPackages();
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
-          // packages.add(new RNCardViewPackage());
-          return packages;
-        }
+
+
+          @Override
+          protected List<ReactPackage> getPackages() {
+              return Arrays.<ReactPackage>asList(
+                      new MainReactPackage(),
+                      new MapsPackage(),
+                      new GeolocationPackage(),
+                      new ReanimatedPackage(),
+                      new RNGestureHandlerPackage(),
+                      new RNGoogleSigninPackage() // <-- this needs to be in the list
+              );
+          }
+
+
 
         @Override
         protected String getJSMainModuleName() {
