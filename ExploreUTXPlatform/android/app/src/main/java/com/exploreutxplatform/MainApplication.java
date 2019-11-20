@@ -36,8 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
           protected List<ReactPackage> getPackages() {
               return Arrays.<ReactPackage>asList(
                       new MainReactPackage(),
-                      new MapsPackage(),
-                      new GeolocationPackage(),
+            new GeolocationPackage(),
                       new ReanimatedPackage(),
                       new RNGestureHandlerPackage(),
                       new RNGoogleSigninPackage() // <-- this needs to be in the list
