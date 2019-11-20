@@ -32,17 +32,28 @@ public class MainApplication extends Application implements ReactApplication {
 
 
 
-          @Override
-          protected List<ReactPackage> getPackages() {
-              return Arrays.<ReactPackage>asList(
-                      new MainReactPackage(),
-                      new MapsPackage(),
-                      new GeolocationPackage(),
-                      new ReanimatedPackage(),
-                      new RNGestureHandlerPackage(),
-                      new RNGoogleSigninPackage() // <-- this needs to be in the list
-              );
+        @Override
+        protected List<ReactPackage> getPackages() {
+          // return Arrays.<ReactPackage>asList(
+          //   new MainReactPackage(),
+          //   new MapsPackage(),
+          //   new GeolocationPackage(),
+          //   new ReanimatedPackage(),
+          //   new RNGestureHandlerPackage(),
+          //   new RNCardViewPackage(),
+          //   new RNGoogleSigninPackage() // <-- this needs to be in the list
+          // );
+          List<ReactPackage> packages = new PackageList(this).getPackages();
+          // Packages that cannot be autolinked yet can be added manually here, for example:
+          for (int i = 0; i < packages.size(); i++) {
+            if (packages.get(i) instanceof RNGoogleSigninPackage) {
+              packages.remove(i);
+              break;
+            }
           }
+          //packages.add(new MyReactNativePackage());
+          return packages;
+        }
 
 
 

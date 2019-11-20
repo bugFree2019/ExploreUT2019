@@ -20,10 +20,12 @@ export default class ManageScreen extends Component {
   }
 
   _configureGoogleSignIn() {
-    GoogleSignin.configure({
+    GoogleSignin.configure(
+      {
       webClientId: '1062639050908-c26utn16jdp6ab1m1hbijphee5tblh50.apps.googleusercontent.com',  //Replace with your own client id
       offlineAccess: false,
-    });
+      }
+    );
   }
 
   _signIn = async () => {
