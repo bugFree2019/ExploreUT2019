@@ -54,5 +54,5 @@ target 'ExploreUTXPlatform-tvOS' do
     inherit! :search_paths
     # Pods for testing
   end
-
+pod 'GoogleSignIn', '~> 5.0.2'
 end
