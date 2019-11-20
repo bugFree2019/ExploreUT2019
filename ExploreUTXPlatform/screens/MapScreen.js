@@ -34,11 +34,12 @@ class MapScreen extends Component {
         longitude: LONGITUDE,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
-      }
+      },
+      marginBottom : 1,
     };
   }
 
-  watchLocation() {
+  GetLocation() {
     Geolocation.getCurrentPosition(
       position => {
         this.setState({
@@ -51,10 +52,11 @@ class MapScreen extends Component {
         });
       },
     (error) => console.log(error.message),
-    // { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     {GEOLOCATION_OPTIONS},
     );
+  }
 
+  WatchLocation() {
     this.watchID = Geolocation.watchPosition(
       position => {
         this.setState({
@@ -70,56 +72,51 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    // this.mounted = true;
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
       ).then(granted => {
         if (granted) {
-          this.watchLocation();
+          this.GetLocation();
+          this.WatchLocation();
         }
       });
     } else {
-      this.watchLocation();
+      this.GetLocation();
+      this.WatchLocation();
     }
   }
   componentWillUnmount() {
-    // this.mounted = false;
     Geolocation.clearWatch(this.watchID);
   }
 
-  getInitialState() {
-    return {
-      region: {
-        latitude: 30.289017,
-        longitude: -97.736480,
-        latitudeDelta: 0.0222,
-        longitudeDelta: 0.0111,
-      },
-    };
+  // onRegionChange = region => {
+  //   this.setState({ region });
+  // }
+
+  onRegionChangeComplete = region => {
+    this.setState({ region });
   }
 
-  // onRegionChange(region) {
-  //   this.setState({ region });
-  // }
+  onMapReady = () => this.setState({marginBottom: 0})
 
-  // onRegionChangeComplete(region) {
-  //   this.setState({ region });
-  // }
 
   render() {
     return (
       <MapView
 
         provider={ PROVIDER_GOOGLE }
-        style={ styles.container }
+        style={ {...styles.map, marginBottom: this.state.marginBottom} }
+        // style={ {...StyleSheet.absoluteFill, marginBottom: this.state.marginBottom} }
+        onMapReady={this.onMapReady}
         showsUserLocation={ true }
+        showsMyLocationButton={ true }
         rotateEnabled={ true }
         region={ this.state.region }
-        onRegionChange={ region => this.setState({region}) }
+        // onRegionChange={ region => this.setState({region}) }
         // onRegionChangeComplete={ region => this.setState({region}) }
         // onRegionChange={this.onRegionChange}
-        // onRegionChangeComplete={this.onRegionChangeComplete}
+        onRegionChangeComplete={this.onRegionChangeComplete}
       >
         {/* <MapView.Marker
           coordinate={ this.state.region }
@@ -131,10 +128,6 @@ class MapScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFill,
-    height: '100%',
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
   },
   map: {
     ...StyleSheet.absoluteFill,
