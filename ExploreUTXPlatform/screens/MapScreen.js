@@ -43,15 +43,15 @@ class MapScreen extends Component {
       },
       marginBottom : 1,
       isLoading: true,
+      myPlaces: [],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
-  async viewAllPlaceAsync() {
-    this.setState({isLoading: true})
-    try {
-      let response = await fetch(
-        this.baseURL + 'view_places',
+  getPlaces() {
+    this.setState({isLoading: true});
+
+    fetch(this.baseURL + 'view_places',
         {
           method: 'GET',
           headers: {
@@ -59,17 +59,29 @@ class MapScreen extends Component {
             'User-Agent': 'Android'
           }
         }
-      );
-      let responseJson = await response.json();
-      console.log(responseJson)
-      this.setState({
-        isLoading: false,
-        dataSource: responseJson,
-      });
-    }
-    catch (error) {
-      console.error(error);
-    };
+      )
+      .then(res => res.json())
+      .then(parsedRes => {
+        const placesArray = [];
+        for (const key in parsedRes) {
+          placesArray.push({
+            latitude: parsedRes[key].location.lat,
+            longitude: parsedRes[key].location.lng,
+            placeId: key,
+            title: parsedRes[key].name,
+            theme: parsedRes[key].theme
+          });
+        }
+        this.setState({ 
+          isLoading: false,
+          myPlaces: placesArray
+         });
+        console.log(placesArray);
+      })
+      .catch(err => console.log(err));
+      
+      
+      
   }
 
   GetLocation() {
@@ -105,7 +117,7 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    this.viewAllPlaceAsync();
+    this.getPlaces();
 
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
