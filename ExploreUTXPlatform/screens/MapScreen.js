@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import ViewPlaceScreen from './ViewPlaceScreen';
 
@@ -41,6 +42,33 @@ class MapScreen extends Component {
         longitudeDelta: LONGITUDE_DELTA,
       },
       marginBottom : 1,
+      isLoading: true,
+    };
+    this.baseURL = 'https://explore-ut.appspot.com/';
+  }
+
+  async viewAllPlaceAsync() {
+    this.setState({isLoading: true})
+    try {
+      let response = await fetch(
+        this.baseURL + 'view_places',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Android'
+          }
+        }
+      );
+      let responseJson = await response.json();
+      console.log(responseJson)
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      });
+    }
+    catch (error) {
+      console.error(error);
     };
   }
 
@@ -77,6 +105,8 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
+    this.viewAllPlaceAsync();
+
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -147,4 +177,15 @@ const stackNavigator = createStackNavigator({
   ViewPlace: ViewPlaceScreen,
 });
 
-export default createAppContainer(stackNavigator);
+// const buttomTabNavigator = createMaterialBottomTabNavigator({
+//   Album: { screen: Map },
+//   // Library: { screen: Library },
+//   // History: { screen: History },
+//   // Cart: { screen: Cart },
+// }, 
+// {
+//   initialRouteName: 'Album',
+//   activeColor: '#F44336',
+// });
+
+export default createAppContainer(stackNavigator);  

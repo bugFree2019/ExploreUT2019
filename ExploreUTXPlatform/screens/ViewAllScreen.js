@@ -61,7 +61,8 @@ class ViewAllScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} navigate={this.props.navigation} />
+        <ListCardView dataSource={this.state.dataSource} 
+        baseURL={this.baseURL} navigate={this.props.navigation} />
       </View>
     );
   }

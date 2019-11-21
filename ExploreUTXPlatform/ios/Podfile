@@ -39,6 +39,7 @@ target 'ExploreUTXPlatform' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
+
   target 'ExploreUTXPlatformTests' do
     inherit! :search_paths
     # Pods for testing
