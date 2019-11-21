@@ -4,8 +4,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createMaterialBottomTabNavigator } 
+from 'react-navigation-material-bottom-tabs';
 
+// import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
 
 
@@ -40,12 +42,17 @@ class MapScreen extends Component {
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
+      // this marginBottom is here to ensure the get my current location button
+      // appear on the screen.
       marginBottom : 1,
+      // initialize the places from our database.
       myPlaces: [],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
+  // get places from database and save only name, id, location, theme,
+  // and restructure the location to the form Map.Marker needs.
   getPlaces() {
     fetch(this.baseURL + 'view_places',
         {
@@ -113,14 +120,22 @@ class MapScreen extends Component {
     this.getPlaces();
 
     if (Platform.OS === 'android') {
-      PermissionsAndroid.request(
+      const hasPermission = PermissionsAndroid.check(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-      ).then(granted => {
-        if (granted) {
-          this.GetLocation();
-          this.WatchLocation();
-        }
-      });
+      );
+      if (!hasPermission) {
+        PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+        ).then(granted => {
+          if (granted) {
+            this.GetLocation();
+            this.WatchLocation();
+          }
+        });
+      } else {
+        this.GetLocation();
+        this.WatchLocation();
+      } 
     } else {
       this.GetLocation();
       this.WatchLocation();
@@ -149,15 +164,16 @@ class MapScreen extends Component {
         key={place.key} 
         placeId={place.placeId}
         title={place.name}
+        // if the marker gets pressed, forward to view one place page.
         onPress={() => this.props.navigation.push('ViewPlace', 
         {placeId: place.placeId, title: place.name})}
-        />)) ;
+        />));
 
     return (
       <MapView
-        ref={map => {
-          this.map = map;
-        }}
+        // ref={map => {
+        //   this.map = map;
+        // }}
         provider={ PROVIDER_GOOGLE }
         style={ {...styles.map, marginBottom: this.state.marginBottom} }
         onMapReady={this.onMapReady}
@@ -198,5 +214,6 @@ const stackNavigator = createStackNavigator({
 //   initialRouteName: 'Album',
 //   activeColor: '#F44336',
 // });
+
 
 export default createAppContainer(stackNavigator);  
