@@ -5,6 +5,10 @@ export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.getParam('title', 'View One Place'),
+      headerTintColor: '#fff',
+      headerStyle: {
+      backgroundColor: '#BF5700',
+    },
     };
   };
 

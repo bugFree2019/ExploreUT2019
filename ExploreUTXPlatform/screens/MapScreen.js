@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions, PermissionsAndroid } from 'react-native';
-
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -67,9 +66,10 @@ class MapScreen extends Component {
           placesArray.push({
             latitude: parsedRes[key].location.lat,
             longitude: parsedRes[key].location.lng,
-            placeId: key,
-            title: parsedRes[key].name,
-            theme: parsedRes[key].theme
+            placeId: parsedRes[key]._id,
+            name: parsedRes[key].name,
+            theme: parsedRes[key].theme,
+            key: key,
           });
         }
         this.setState({ 
@@ -150,8 +150,10 @@ class MapScreen extends Component {
     this.placeMarkers =  this.state.myPlaces.map(place =>
        (<MapView.Marker 
         coordinate={place} 
-        key={place.placeId} 
+        key={place.key} 
+        placeId={place.placeId}
         title={place.name}
+        onPress={() => this.props.navigation.push('ViewPlace', {placeId: place.placeId, title: place.name})}
         />)) ;
 
     return (
