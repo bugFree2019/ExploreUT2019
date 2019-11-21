@@ -132,7 +132,7 @@ export default class ViewPlaceScreen extends Component {
                 }}/>
             </View>
           </View>}
-          keyExtractor={(item, index) => item} 
+          keyExtractor={(item, index) => item.toString()} 
         />
         <View>
           <SubscribeButton title="Subscribe" 
@@ -156,7 +156,7 @@ export default class ViewPlaceScreen extends Component {
               <Text> {item} </Text>
             </View>
           </View>}
-          keyExtractor={(item, index) => item} 
+          keyExtractor={(item, index) => item.toString()} 
         />
         <View>
           <AddReportButton title="Add Report"

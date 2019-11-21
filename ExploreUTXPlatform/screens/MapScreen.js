@@ -41,15 +41,12 @@ class MapScreen extends Component {
         longitudeDelta: LONGITUDE_DELTA,
       },
       marginBottom : 1,
-      isLoading: true,
       myPlaces: [],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
   getPlaces() {
-    this.setState({isLoading: true});
-
     fetch(this.baseURL + 'view_places',
         {
           method: 'GET',
@@ -69,11 +66,10 @@ class MapScreen extends Component {
             placeId: parsedRes[key]._id,
             name: parsedRes[key].name,
             theme: parsedRes[key].theme,
-            key: key,
+            key: key.toString(),
           });
         }
         this.setState({ 
-          isLoading: false,
           myPlaces: placesArray
          });
         console.log(placesArray);
