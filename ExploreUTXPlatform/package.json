@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/google-signin": "^3.0.3",
+    "firebase": "^7.4.0",
     "mem": "^6.0.0",
     "native-base": "^2.13.8",
     "react": "16.9.0",

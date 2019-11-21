@@ -7,6 +7,22 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewPlaceScreen from './ViewPlaceScreen';
 
+import * as firebase from 'firebase';
+
+try {
+firebase.initializeApp({
+apiKey: "AIzaSyD_H1xRkNuLBh4LP4RzXbZ-LuKVojIka3E",
+authDomain: "explore-ut.firebaseapp.com",
+databaseURL: "https://explore-ut.firebaseio.com",
+storageBucket: "",
+})
+} catch (err) {
+// we skip the "already exists" message which is
+// not an actual error when we're hot-reloading
+if (!/already exists/.test(err.message)) {
+console.error('Firebase initialization error raised', err.stack)
+}}
+
 class ManageScreen extends Component {
   static navigationOptions = {
     title: 'Manage',
@@ -27,6 +43,15 @@ class ManageScreen extends Component {
       offlineAccess: false,
       }
     );
+  }
+
+    constructor(props) {
+    super(props);
+
+    this.state = ({
+      email: '',
+      password: ''
+    })
   }
 
   _signIn = async () => {
@@ -54,6 +79,26 @@ class ManageScreen extends Component {
     }
   };
 
+    signUpUser = (email, password) => {
+    try {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+    }
+    catch(error) {
+      console.log(error.toString())
+    }
+  }
+
+    loginUser = (email, password) => {
+    try {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+        console.log(user)
+      })
+    }
+    catch (error) {
+      console.log(error,toString())
+    }
+  }
+
   render() {
     return (
       // <View style={styles.container}>
@@ -61,20 +106,20 @@ class ManageScreen extends Component {
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>
-            // <Input
-            //   autoCorrect={false}
-            //   autoCapitalize="none"
-            //   onChangeText={(email) => this.setState({email})}
+             <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(email) => this.setState({email})}
             />
           </Item>
 
           <Item floatingLabel>
             <Label>Password</Label>
-            // <Input
-            //   secureTextEntry={true}
-            //   autoCorrect={false}
-            //   autoCapitalize="none"
-            //   onChangeText={(password) => this.setState({password})}
+             <Input
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(password) => this.setState({password})}
             />
           </Item>
 
@@ -82,7 +127,7 @@ class ManageScreen extends Component {
             full
             rounded
             success
-            // onPress={()=> this.loginUser(this.state.email, this.state.password)}
+            onPress={()=> this.loginUser(this.state.email, this.state.password)}
           >
             <Text style={{ color: 'white' }}>Login</Text>
           </Button>
@@ -91,7 +136,7 @@ class ManageScreen extends Component {
             full
             rounded
             primary
-            // onPress={()=> this.signUpUser(this.state.email, this.state.password)}
+            onPress={()=> this.signUpUser(this.state.email, this.state.password)}
           >
             <Text style={{ color: 'white' }}>Sign Up</Text>
           </Button>
