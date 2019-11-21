@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Alert} from 'react-native';
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin';
+import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewPlaceScreen from './ViewPlaceScreen';
@@ -54,14 +56,57 @@ class ManageScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-     <GoogleSigninButton
-        style={{ width: 192, height: 48 }}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={this._signIn}
-        />
-      </View>
+      // <View style={styles.container}>
+      <Container style={styles.container}>
+        <Form>
+          <Item floatingLabel>
+            <Label>Email</Label>
+            // <Input
+            //   autoCorrect={false}
+            //   autoCapitalize="none"
+            //   onChangeText={(email) => this.setState({email})}
+            />
+          </Item>
+
+          <Item floatingLabel>
+            <Label>Password</Label>
+            // <Input
+            //   secureTextEntry={true}
+            //   autoCorrect={false}
+            //   autoCapitalize="none"
+            //   onChangeText={(password) => this.setState({password})}
+            />
+          </Item>
+
+          <Button style={{ marginTop: 10, width: 320, height: 48 }}
+            full
+            rounded
+            success
+            // onPress={()=> this.loginUser(this.state.email, this.state.password)}
+          >
+            <Text style={{ color: 'white' }}>Login</Text>
+          </Button>
+
+          <Button style={{ marginTop: 10, width: 320, height: 48 }}
+            full
+            rounded
+            primary
+            // onPress={()=> this.signUpUser(this.state.email, this.state.password)}
+          >
+            <Text style={{ color: 'white' }}>Sign Up</Text>
+          </Button>
+
+        </Form>
+       <GoogleSigninButton
+          style={{ width: 320, height: 48 }}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Dark}
+          onPress={this._signIn}
+          />
+      </Container>
+      
+
+      // </View>
     );
   }
 
@@ -75,6 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    padding: 10,
   },
   welcome: {
     fontSize: 20,
