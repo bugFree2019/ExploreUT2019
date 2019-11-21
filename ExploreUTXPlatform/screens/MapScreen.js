@@ -79,9 +79,6 @@ class MapScreen extends Component {
         console.log(placesArray);
       })
       .catch(err => console.log(err));
-      
-      
-      
   }
 
   GetLocation() {
@@ -149,8 +146,14 @@ class MapScreen extends Component {
     this.setState({marginBottom: 0})
   }
 
-
   render() {
+    this.placeMarkers =  this.state.myPlaces.map(place =>
+       (<MapView.Marker 
+        coordinate={place} 
+        key={place.placeId} 
+        title={place.name}
+        />)) ;
+
     return (
       <MapView
         ref={map => {
@@ -158,7 +161,6 @@ class MapScreen extends Component {
         }}
         provider={ PROVIDER_GOOGLE }
         style={ {...styles.map, marginBottom: this.state.marginBottom} }
-        // style={ {...StyleSheet.absoluteFill, marginBottom: this.state.marginBottom} }
         onMapReady={this.onMapReady}
         showsUserLocation={ true }
         showsMyLocationButton={ true }
@@ -168,9 +170,7 @@ class MapScreen extends Component {
         // onRegionChangeComplete={ region => this.setState({region}) }
         onRegionChangeComplete={ this.onRegionChangeComplete }
       >
-        {/* <MapView.Marker
-          coordinate={ this.state.region }
-        /> */}
+        { this.placeMarkers }
       </MapView>
     );
   }
