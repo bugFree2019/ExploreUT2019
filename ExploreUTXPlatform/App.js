@@ -4,6 +4,7 @@ import ViewAllScreen from './screens/ViewAllScreen';
 import SearchScreen from './screens/SearchScreen';
 import ManageScreen from './screens/ManageScreen';
 import MapScreen from './screens/MapScreen';
+import CreateNewPlaceScreen from './screens/CreateNewPlaceScreen';
 
 // class MyHomeScreen extends Component {
 //   static navigationOptions = {
@@ -37,6 +38,9 @@ const MyDrawerNavigator = createDrawerNavigator({
   Manage: {
   	screen: ManageScreen,
   },
+  CreateNewPlace:{
+    screen: CreateNewPlaceScreen,
+  }
 
 });
 
