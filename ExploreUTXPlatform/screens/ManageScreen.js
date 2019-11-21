@@ -56,10 +56,12 @@ class ManageScreen extends Component {
 
   _signIn = async () => {
     try {
-      await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      await GoogleSignin.revokeAccess();
-      console.log('Success:',userInfo);
+      const accessToken = undefined;
+      const idToken = userInfo.idToken;
+      const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+      await firebase.auth().signInWithCredential(credential);
+      console.log('userEmail:',userInfo.user.email);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // sign in was cancelled
