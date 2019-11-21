@@ -149,7 +149,8 @@ class MapScreen extends Component {
         key={place.key} 
         placeId={place.placeId}
         title={place.name}
-        onPress={() => this.props.navigation.push('ViewPlace', {placeId: place.placeId, title: place.name})}
+        onPress={() => this.props.navigation.push('ViewPlace', 
+        {placeId: place.placeId, title: place.name})}
         />)) ;
 
     return (

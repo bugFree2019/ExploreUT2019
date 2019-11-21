@@ -126,8 +126,8 @@ export default class ViewPlaceScreen extends Component {
             <View>
               <Image source={{uri: this.baseURL + 'place_image/' + this.placeId + '/' + item.toString() + '.jpg'}} 
                 style={{flex: 1,
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
                 resizeMode: 'contain'
                 }}/>
             </View>
