@@ -97,7 +97,7 @@ class MapScreen extends Component {
         });
       },
     (error) => console.log(error.message),
-    {GEOLOCATION_OPTIONS},
+    {GEOLOCATION_OPTIONS}
     );
   }
 
@@ -120,29 +120,23 @@ class MapScreen extends Component {
     this.getPlaces();
 
     if (Platform.OS === 'android') {
-      const hasPermission = PermissionsAndroid.check(
+      PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-      );
-      if (!hasPermission) {
-        PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-        ).then(granted => {
-          if (granted) {
-            this.GetLocation();
-            this.WatchLocation();
-          }
-        });
-      } else {
-        this.GetLocation();
-        this.WatchLocation();
-      } 
+      ).then(granted => {
+        if (granted) {
+          this.GetLocation();
+          this.WatchLocation();
+        }
+      }); 
     } else {
       this.GetLocation();
       this.WatchLocation();
     }
   }
   componentWillUnmount() {
-    Geolocation.clearWatch(this.watchID);
+    if (this.watchID) {
+      Geolocation.clearWatch(this.watchID);
+    }
   }
 
   // onRegionChange = region => {
@@ -154,7 +148,7 @@ class MapScreen extends Component {
   }
 
   onMapReady = () => {
-    this.setState({marginBottom: 0})
+    this.setState({marginBottom: 0});
   }
 
   render() {
@@ -174,9 +168,9 @@ class MapScreen extends Component {
         // ref={map => {
         //   this.map = map;
         // }}
-        provider={ PROVIDER_GOOGLE }
         style={ {...styles.map, marginBottom: this.state.marginBottom} }
-        onMapReady={this.onMapReady}
+        provider={ PROVIDER_GOOGLE }
+        onMapReady={ this.onMapReady }
         showsUserLocation={ true }
         showsMyLocationButton={ true }
         rotateEnabled={ true }
@@ -203,17 +197,5 @@ const stackNavigator = createStackNavigator({
   Map: MapScreen,
   ViewPlace: ViewPlaceScreen,
 });
-
-// const buttomTabNavigator = createMaterialBottomTabNavigator({
-//   Album: { screen: Map },
-//   // Library: { screen: Library },
-//   // History: { screen: History },
-//   // Cart: { screen: Cart },
-// }, 
-// {
-//   initialRouteName: 'Album',
-//   activeColor: '#F44336',
-// });
-
 
 export default createAppContainer(stackNavigator);  
