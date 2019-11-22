@@ -21,10 +21,13 @@ export default class ManageUserScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state ={isLoading: true}
+    this.state ={
+      isLoading: true,
+      }
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.userEmail = this.props.navigation.getParam('userEmail', 'changpengtong');
   }
+
 
   componentDidMount() {
     this.manageAsync();

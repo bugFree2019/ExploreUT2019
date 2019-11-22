@@ -5,8 +5,10 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import ViewPlaceScreen from './ViewPlaceScreen';
 
+import { ToastAndroid } from "react-native";
+
+import ViewPlaceScreen from './ViewPlaceScreen';
 import ManageUserScreen from './ManageUserScreen';
 
 import * as firebase from 'firebase';
@@ -39,6 +41,23 @@ class ManageScreen extends Component {
     // this._userExist();
   }
 
+  showSignInToast = () => {
+  ToastAndroid.showWithGravityAndOffset(
+    "Signed In",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    25,
+    50
+  );}
+
+  showSignUpToast = () => {
+  ToastAndroid.showWithGravityAndOffset(
+    "Signed In",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    25,
+    50
+  );}
 
   _configureGoogleSignIn() {
     GoogleSignin.configure(
@@ -66,11 +85,14 @@ class ManageScreen extends Component {
       const accessToken = undefined;
       const idToken = userInfo.idToken;
       const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+
       await firebase.auth().signInWithCredential(credential);
       this.setState({email: userInfo.user.email});
 
       const { navigate } = this.props.navigation;
       navigate('ManageUser', {userEmail: this.state.email});
+
+      this.showSignInToast();
 
       // console.log('userEmail:', this.state.email);
     } catch (error) {
@@ -95,6 +117,11 @@ class ManageScreen extends Component {
     signUpUser = (email, password) => {
     try {
       firebase.auth().createUserWithEmailAndPassword(email, password)
+
+      const { navigate } = this.props.navigation;
+      navigate('ManageUser', {userEmail: this.state.email});
+
+      this.showSignUpToast();
     }
     catch(error) {
       console.log(error.toString())
@@ -106,6 +133,11 @@ class ManageScreen extends Component {
       firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
         console.log(user)
       })
+
+      const { navigate } = this.props.navigation;
+      navigate('ManageUser', {userEmail: this.state.email});
+
+      this.showSignInToast();
     }
     catch (error) {
       console.log(error,toString())
@@ -162,14 +194,6 @@ class ManageScreen extends Component {
           onPress={this._signIn}
           // onPress={console.log('pressed')}
           />
-        <Button style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, width: 320, height: 48 }}
-          full
-          rounded
-          primary
-          onPress={() => this.props.navigation.navigate('ManageUser')}
-        >
-        <Text style={{ color: 'white' }}>Jump</Text>
-        </Button>
       </Container>
       
 
