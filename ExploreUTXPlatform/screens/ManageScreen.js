@@ -87,7 +87,7 @@ class ManageScreen extends Component {
       this.setState({email: userInfo.user.email});
 
       const { navigate } = this.props.navigation;
-      navigate('ManageUser');
+      navigate('ManageUser', {userEmail: this.state.email});
 
       console.log('userEmail:', this.state.email);
     } catch (error) {
@@ -198,8 +198,11 @@ class ManageScreen extends Component {
 
 class ManageUsersScreen extends Component {
   render() {
+    const { navigation } = this.props;
+    const userEmail = navigation.getParam('userEmail');
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>userEmail: {JSON.stringify(userEmail)}</Text>
         <Text>Details Screen</Text>
       </View>
     );
