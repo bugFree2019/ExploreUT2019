@@ -7,6 +7,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewPlaceScreen from './ViewPlaceScreen';
 
+import ManageUserScreen from './ManageUserScreen';
+
 import * as firebase from 'firebase';
 
 try {
@@ -37,13 +39,6 @@ class ManageScreen extends Component {
     // this._userExist();
   }
 
-  // _userExist() {
-  //   if (this.state.email == '') {
-  //     console.log('no user');
-  //   } else {
-  //     console.log('exist user');
-  //   }
-  // }
 
   _configureGoogleSignIn() {
     GoogleSignin.configure(
@@ -63,18 +58,6 @@ class ManageScreen extends Component {
     })
   }
 
-  // _decideSignIn = async () => {
-  //   try {
-  //     console.log('now user ', this.state.email);
-  //     if (this.state.email == '') {
-  //       console.log('ready to login ', this.state.email);
-  //       this._signIn();
-  //       console.log('after login ', this.state.email);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   _signIn = async () => {
     try {
@@ -87,7 +70,7 @@ class ManageScreen extends Component {
       this.setState({email: userInfo.user.email});
 
       const { navigate } = this.props.navigation;
-      navigate('ManageUser');
+      navigate('ManageUser', {userEmail: this.state.email});
 
       console.log('userEmail:', this.state.email);
     } catch (error) {
@@ -196,16 +179,6 @@ class ManageScreen extends Component {
 
 }
 
-class ManageUsersScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-      </View>
-    );
-  }
-}
-
 type Props = {};
 
 const styles = StyleSheet.create({
@@ -230,14 +203,8 @@ const styles = StyleSheet.create({
 
 const stackNavigator = createStackNavigator({
   Manage: ManageScreen,
-  ManageUser: ManageUsersScreen,
+  ManageUser: ManageUserScreen,
 
 });
 
-const AppContainer = createAppContainer(stackNavigator);
-
-export default class App extends Component {
-  render() {
-    return <AppContainer />;
-  }
-}
+export default createAppContainer(stackNavigator);
