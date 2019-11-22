@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, Button, Image, FlatList } from 'react-native';
+import HorizontalLine from '../layouts/HorizontalLine';
+import VerticalMargin from '../layouts/VerticalMargin';
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -143,11 +145,13 @@ export default class ViewPlaceScreen extends Component {
             subscribe_status={this.state.dataSource['subscribe_status']} />
         </View>
         <View style={{marginStart: 10, justifyContent: 'center'}}>
-          <Text style={styles.title}>{this.state.dataSource['name']} </Text>
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>
+          <VerticalMargin />
           <Text>Introduction: {this.state.dataSource['intro']}</Text>
         </View>
+        <VerticalMargin />
+        <View><Text>Comments about this place:</Text></View>
         <FlatList
           data={this.state.dataSource['reviews']}
           renderItem={({item}) =>
@@ -155,7 +159,9 @@ export default class ViewPlaceScreen extends Component {
             <View>
               <Text> {item} </Text>
             </View>
-          </View>}
+            <HorizontalLine/>
+          </View>
+          }
           keyExtractor={(item, index) => item.toString()} 
         />
         <View>
