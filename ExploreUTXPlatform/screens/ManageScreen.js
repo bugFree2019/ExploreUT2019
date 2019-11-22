@@ -6,6 +6,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewPlaceScreen from './ViewPlaceScreen';
+import ManageUserScreen from './ManageUserScreen';
 
 import * as firebase from 'firebase';
 
@@ -196,18 +197,18 @@ class ManageScreen extends Component {
 
 }
 
-class ManageUsersScreen extends Component {
-  render() {
-    const { navigation } = this.props;
-    const userEmail = navigation.getParam('userEmail');
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>userEmail: {JSON.stringify(userEmail)}</Text>
-        <Text>Details Screen</Text>
-      </View>
-    );
-  }
-}
+// class ManageUsersScreen extends Component {
+//   render() {
+//     const { navigation } = this.props;
+//     const userEmail = navigation.getParam('userEmail');
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>userEmail: {JSON.stringify(userEmail)}</Text>
+//         <Text>Details Screen</Text>
+//       </View>
+//     );
+//   }
+// }
 
 type Props = {};
 
