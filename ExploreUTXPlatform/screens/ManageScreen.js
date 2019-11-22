@@ -61,7 +61,7 @@ class ManageScreen extends Component {
 
   _signIn = async () => {
     try {
-      console.log('userEmail:', this.state.email);
+      // console.log('userEmail:', this.state.email);
       const userInfo = await GoogleSignin.signIn();
       const accessToken = undefined;
       const idToken = userInfo.idToken;
@@ -72,7 +72,7 @@ class ManageScreen extends Component {
       const { navigate } = this.props.navigation;
       navigate('ManageUser', {userEmail: this.state.email});
 
-      console.log('userEmail:', this.state.email);
+      // console.log('userEmail:', this.state.email);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // sign in was cancelled
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
 const stackNavigator = createStackNavigator({
   Manage: ManageScreen,
   ManageUser: ManageUserScreen,
-
+  ViewPlace: ViewPlaceScreen,
 });
 
 export default createAppContainer(stackNavigator);
