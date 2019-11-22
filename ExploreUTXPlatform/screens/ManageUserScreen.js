@@ -6,10 +6,10 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import ManageScreen from './ManageScreen';
 
 
-
-class ManageUserScreen extends Component {
+export default class ManageUserScreen extends Component {
   render() {
     const { navigation } = this.props;
     const userEmail = navigation.getParam('userEmail');
@@ -43,17 +43,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-const stackNavigator = createStackNavigator({
-  Manage: ManageScreen,
-  ManageUser: ManageUsersScreen,
-
-});
-
-const AppContainer = createAppContainer(stackNavigator);
-
-export default class App extends Component {
-  render() {
-    return <AppContainer />;
-  }
-}

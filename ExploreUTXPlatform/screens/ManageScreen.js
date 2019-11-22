@@ -6,6 +6,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewPlaceScreen from './ViewPlaceScreen';
+
 import ManageUserScreen from './ManageUserScreen';
 
 import * as firebase from 'firebase';
@@ -38,13 +39,6 @@ class ManageScreen extends Component {
     // this._userExist();
   }
 
-  // _userExist() {
-  //   if (this.state.email == '') {
-  //     console.log('no user');
-  //   } else {
-  //     console.log('exist user');
-  //   }
-  // }
 
   _configureGoogleSignIn() {
     GoogleSignin.configure(
@@ -64,18 +58,6 @@ class ManageScreen extends Component {
     })
   }
 
-  // _decideSignIn = async () => {
-  //   try {
-  //     console.log('now user ', this.state.email);
-  //     if (this.state.email == '') {
-  //       console.log('ready to login ', this.state.email);
-  //       this._signIn();
-  //       console.log('after login ', this.state.email);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   _signIn = async () => {
     try {
@@ -197,19 +179,6 @@ class ManageScreen extends Component {
 
 }
 
-// class ManageUsersScreen extends Component {
-//   render() {
-//     const { navigation } = this.props;
-//     const userEmail = navigation.getParam('userEmail');
-//     return (
-//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//         <Text>userEmail: {JSON.stringify(userEmail)}</Text>
-//         <Text>Details Screen</Text>
-//       </View>
-//     );
-//   }
-// }
-
 type Props = {};
 
 const styles = StyleSheet.create({
@@ -234,14 +203,8 @@ const styles = StyleSheet.create({
 
 const stackNavigator = createStackNavigator({
   Manage: ManageScreen,
-  ManageUser: ManageUsersScreen,
+  ManageUser: ManageUserScreen,
 
 });
 
-const AppContainer = createAppContainer(stackNavigator);
-
-export default class App extends Component {
-  render() {
-    return <AppContainer />;
-  }
-}
+export default createAppContainer(stackNavigator);
