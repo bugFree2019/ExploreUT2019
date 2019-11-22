@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, Text } from 'react-native';
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 
@@ -7,6 +7,10 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import ListCardView from '../layouts/ListCardView';
+import ManageScreen from './ManageScreen';
+import * as firebase from 'firebase';
+
+import { ToastAndroid } from "react-native";
 
 
 export default class ManageUserScreen extends Component {
@@ -28,6 +32,38 @@ export default class ManageUserScreen extends Component {
     this.userEmail = this.props.navigation.getParam('userEmail', 'changpengtong');
   }
 
+  showSignOutToast = () => {
+  ToastAndroid.showWithGravityAndOffset(
+    "Signed Out",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    25,
+    50
+  );}
+
+  signOutUser = () => {
+      try {
+        firebase.auth().signOut();
+        const { navigate } = this.props.navigation;
+        navigate('Manage');
+        this.showSignOutToast();
+      }
+      catch (error) {
+        console.log(error,toString())
+      }
+  }
+
+  signOut = async () => {
+  try {
+    await GoogleSignin.revokeAccess();
+    await GoogleSignin.signOut();
+    // this.setState({ user: null }); // Remember to remove the user from your app's state as well
+    const { navigate } = this.props.navigation;
+    navigate('Manage');
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   componentDidMount() {
     this.manageAsync();
@@ -75,8 +111,17 @@ export default class ManageUserScreen extends Component {
 
     return (
       <View style={styles.container}>
+          <Button style={{ marginTop: 10, width: 100, height: 48 }}
+            full
+            rounded
+            success
+            onPress={()=> this.signOutUser()}
+          >
+            <Text style={{ color: 'white' }}>Sign Out</Text>
+          </Button>
         <ListCardView dataSource={this.state.dataSource} 
         baseURL={this.baseURL} navigate={this.props.navigation} />
+
       </View>
     );
   }

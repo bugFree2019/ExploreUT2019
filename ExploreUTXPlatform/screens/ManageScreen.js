@@ -52,7 +52,7 @@ class ManageScreen extends Component {
 
   showSignUpToast = () => {
   ToastAndroid.showWithGravityAndOffset(
-    "Signed In",
+    "Signed Up",
     ToastAndroid.LONG,
     ToastAndroid.BOTTOM,
     25,
@@ -115,17 +115,37 @@ class ManageScreen extends Component {
   };
 
     signUpUser = (email, password) => {
-    try {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
+    // try {
+    //   firebase.auth().createUserWithEmailAndPassword(email, password)
 
-      const { navigate } = this.props.navigation;
-      navigate('ManageUser', {userEmail: this.state.email});
+      // const { navigate } = this.props.navigation;
+      // navigate('ManageUser', {userEmail: this.state.email});
 
-      this.showSignUpToast();
-    }
-    catch(error) {
-      console.log(error.toString())
-    }
+    //   if (error == null) this.showSignUpToast();
+    // }
+    // catch(error) {
+    //   const errorCode = error.code;
+    //   const errorMessage = error.message;
+    //   if (errorCode == 'auth/weak-password') {
+    //     alert('The password is too weak.');
+    //   } else {
+    //     alert(errorMessage);
+    //   }
+    //   console.log(error.toString())
+    // }
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    });
+    this.showSignUpToast();
   }
 
     loginUser = (email, password) => {
@@ -143,6 +163,10 @@ class ManageScreen extends Component {
       console.log(error,toString())
     }
   }
+
+
+
+
 
   render() {
     return (
