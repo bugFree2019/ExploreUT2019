@@ -30,6 +30,7 @@ export default class ManageUserScreen extends Component {
       }
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.userEmail = this.props.navigation.getParam('userEmail', 'changpengtong');
+    this.focusListener=null;
   }
 
   showSignOutToast = () => {
@@ -66,7 +67,12 @@ export default class ManageUserScreen extends Component {
 };
 
   componentDidMount() {
-    this.manageAsync();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.manageAsync());
+  }
+
+  componentWillUnmount() {
+    // remove event listener
+    this.focusListener.remove();
   }
 
   async manageAsync() {

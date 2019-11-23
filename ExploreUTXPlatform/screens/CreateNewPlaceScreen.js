@@ -103,6 +103,15 @@ class CreateNewPlaceScreen extends Component {
       location: "",
       value:{}
     };
+    this.focusListener=null;
+  }
+
+  componentDidMount() {
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.handleReset());
+  }
+
+  componentWillUnmount() {
+    this.focusListener.remove();
   }
 
   //Check if location-related permissions have been granted. If not, request corresponding permissions through "PermissionsAndroid.request()" method.
@@ -201,7 +210,7 @@ class CreateNewPlaceScreen extends Component {
           {
               title: 'request read_external_storage permission.',
               message:
-                  'The picking images function needs the permission to readthe storage.',
+                  'The picking images function needs the permission to read the storage.',
               buttonNeutral: 'Ask Me Later',
               buttonNegative: 'Cancel',
               buttonPositive: 'Ok'
@@ -292,6 +301,7 @@ class CreateNewPlaceScreen extends Component {
     if(this.formDataValid()){
       await this.postForm();
       Toast.show('Successfully created the new place.', Toast.LONG);
+      this.props.navigation.navigate('ViewAll');
     }
   }
 
@@ -377,7 +387,7 @@ class CreateNewPlaceScreen extends Component {
             <Button title="Reset" onPress={this.handleReset} />
           </View>
           <View style={{marginTop: 15}}>
-            <Button title="Submit" onPress={this.postForm} />
+            <Button title="Submit" onPress={this.handleSubmit} />
           </View>
           </View>
         </View>
