@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, PermissionsAndroid } from 'react-native';
+import { StyleSheet, Dimensions, PermissionsAndroid, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -9,6 +9,7 @@ from 'react-navigation-material-bottom-tabs';
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
+import BottomNavigator from '../layouts/BottomNavigator';
 
 
 const { width, height } = Dimensions.get('window');
@@ -165,6 +166,11 @@ class MapScreen extends Component {
         />));
 
     return (
+      <View style={{
+        flex: 1,
+        //flexDirection: 'column',
+        paddingTop: 550,
+      }}>
       <MapView
         // ref={map => {
         //   this.map = map;
@@ -180,8 +186,10 @@ class MapScreen extends Component {
         // onRegionChangeComplete={ region => this.setState({region}) }
         onRegionChangeComplete={ this.onRegionChangeComplete }
       >
-        { this.placeMarkers }
+        { this.placeMarkers } 
       </MapView>
+      <BottomNavigator/>
+  </View>
     );
   }
 }
