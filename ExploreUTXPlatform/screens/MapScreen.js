@@ -133,6 +133,7 @@ class MapScreen extends Component {
       this.WatchLocation();
     }
   }
+
   componentWillUnmount() {
     if (this.watchID) {
       Geolocation.clearWatch(this.watchID);
@@ -184,6 +185,7 @@ class MapScreen extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFill,
