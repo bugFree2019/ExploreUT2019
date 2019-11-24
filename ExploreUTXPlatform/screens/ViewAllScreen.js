@@ -8,6 +8,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
 import CreateNewReportScreen from'./CreateNewReportScreen';
+import * as firebase from 'firebase';
 
 class ViewAllScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -55,8 +56,20 @@ class ViewAllScreen extends Component {
       }
     }
     else {
-      this.userEmail = '';
-      console.log('user not logged in')
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          // this.userEmail = user.email;
+          console.log(user.email);
+        } else {
+          // No user is signed in.
+          this.userEmail = '';
+          console.log('user not logged in')
+        }
+      });
+
+
     }
   }
 
@@ -75,7 +88,7 @@ class ViewAllScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.setState({
         isLoading: false,
         dataSource: responseJson,
