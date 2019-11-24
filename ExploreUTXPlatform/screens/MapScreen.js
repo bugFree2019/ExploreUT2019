@@ -4,13 +4,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-<<<<<<< HEAD
-=======
 import { GoogleSignin } from '@react-native-community/google-signin';
-
->>>>>>> f8c44a94014643005b00c7ac64752d41b8445dc9
 import { BottomNavigation, Text } from 'react-native-paper';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
@@ -29,10 +25,10 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
-const myIconBuilding = <Icon name="building-o" />;
-const myIconStudy = <Icon name="book" />;
-const myIconActivity = <Icon name="local-activity" />;
-const myIconStatue = <Icon name="streetview" />;
+const myIconBuilding = <FontAwesome5 name={'building'} solid />;
+const myIconStudy = <FontAwesome5 name={'book-open'} />;
+const myIconActivity = <FontAwesome5 name={'local-activity'} />;
+const myIconStatue = <FontAwesome5 name={'monument'} />;
 
 const AllRoute = () => <Text></Text>;
 
@@ -74,8 +70,8 @@ class MapScreen extends Component {
       theme: "All",
       index: 0,
         routes: [
-        { key: 'all', title: 'All', icon: 'places' },
-        { key: 'building', title: 'Building', tabBarIcon: {myIconBuilding} },
+        { key: 'all', title: 'All', icon: 'all' },
+        { key: 'building', title: 'Building', icon: {myIconBuilding} },
         { key: 'study', title: 'Study', icon: {myIconStudy} },
         { key: 'activity', title: 'Activity', icon: {myIconActivity} },
         { key: 'statue', title: 'Statue', icon: {myIconStatue} }
