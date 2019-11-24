@@ -7,8 +7,8 @@ import Geolocation from '@react-native-community/geolocation';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
-// import Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Icon from "react-native-vector-icons/Ionicons";
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
@@ -47,12 +47,19 @@ const themes = ["All", "Buildings", "Study", "Activity", "Monument"];
 
 
 class MapScreen extends Component {
-  static navigationOptions = {
-    title: 'Map',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Map',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#BF5700',
     },
+    headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   constructor() {
