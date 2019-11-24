@@ -21,6 +21,7 @@ export default class ManageUserScreen extends Component {
     headerStyle: {
       backgroundColor: '#BF5700',
     },
+    headerLeft: null,
   };
 
   constructor(props){
@@ -42,9 +43,14 @@ export default class ManageUserScreen extends Component {
     50
   );}
 
-  signOutUser = () => {
+  signOutUser = async () => {
       try {
         firebase.auth().signOut();
+        const isSignedIn = await GoogleSignin.isSignedIn();
+        if (isSignedIn) {
+          await GoogleSignin.revokeAccess();
+          await GoogleSignin.signOut();
+        }
         const { navigate } = this.props.navigation;
         navigate('Manage');
         this.showSignOutToast();
