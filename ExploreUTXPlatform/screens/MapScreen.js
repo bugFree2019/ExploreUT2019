@@ -5,8 +5,8 @@ import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import { BottomNavigation, Text } from 'react-native-paper';
+
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
 
@@ -29,6 +29,8 @@ const myIconStudy = <Icon name="book" />;
 const myIconActivity = <Icon name="local-activity" />;
 const myIconStatue = <Icon name="streetview" />;
 
+const AllRoute = () => <Text></Text>;
+
 const BuildingRoute = () => <Text></Text>;
 
 const StudyRoute = () => <Text></Text>;
@@ -37,7 +39,7 @@ const ActivityRoute = () => <Text></Text>;
 
 const StatueRoute = () => <Text></Text>;
 
-const themes = ["Buildings", "Study", "Activity", "Monument"];
+const themes = ["All", "Buildings", "Study", "Activity", "Monument"];
 
 
 class MapScreen extends Component {
@@ -64,9 +66,10 @@ class MapScreen extends Component {
       // initialize the places from our database.
       myPlaces: [],
 
-      theme: "Buildings",
+      theme: "All",
       index: 0,
         routes: [
+        { key: 'all', title: 'All', icon: 'places' },
         { key: 'building', title: 'Building', tabBarIcon: {myIconBuilding} },
         { key: 'study', title: 'Study', icon: {myIconStudy} },
         { key: 'activity', title: 'Activity', icon: {myIconActivity} },
@@ -83,10 +86,17 @@ class MapScreen extends Component {
     });
     console.log(index);
     console.log(this.state.theme);
-    this.getThemePlaces();
+    if (index === 0) {
+      this.getPlaces();
+    } else {
+      this.getThemePlaces();
+    }
+    this.createMarkers();
+    this.forceUpdate();
   };
 
   renderScene = BottomNavigation.SceneMap({
+    all: AllRoute,
     building: BuildingRoute,
     study: StudyRoute,
     activity: ActivityRoute,
@@ -213,6 +223,9 @@ class MapScreen extends Component {
     }
   }
 
+  // componentDidUpdate() {
+  //   this.render();
+  // }
   // onRegionChange = region => {
   //   this.setState({ region });
   // }
@@ -227,11 +240,11 @@ class MapScreen extends Component {
 
   createMarkers() {
     return this.state.myPlaces.map(place =>
-      (<MapView.Marker.Animated
+      (<MapView.Marker
        coordinate={place} 
        key={place.key} 
        placeId={place.placeId}
-       title={place.name}
+       // title={place.name}
        // if the marker gets pressed, forward to view one place page.
        onPress={() => this.props.navigation.push('ViewPlace', 
        {placeId: place.placeId, title: place.name})}
