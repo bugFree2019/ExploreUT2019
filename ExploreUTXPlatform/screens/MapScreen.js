@@ -6,6 +6,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import Icon from "react-native-vector-icons/Ionicons";
 import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
 // import Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';

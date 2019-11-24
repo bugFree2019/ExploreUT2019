@@ -4,6 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SearchBar from 'react-native-search-bar';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';

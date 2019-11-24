@@ -9,7 +9,6 @@ import * as firebase from 'firebase';
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
 import CreateNewReportScreen from'./CreateNewReportScreen';
-import * as firebase from 'firebase';
 
 class ViewAllScreen extends Component {
   static navigationOptions = ({ navigation }) => {
