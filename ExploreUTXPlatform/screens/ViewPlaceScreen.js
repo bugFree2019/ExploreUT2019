@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, Button, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 
@@ -21,6 +21,8 @@ export default class ViewPlaceScreen extends Component {
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
     console.log(this.placeId);
+    this.userEmail = this.props.navigation.getParam('userEmail', '');
+    console.log(this.userEmail);
     this.focusListener=null;
   }
 
@@ -36,9 +38,10 @@ export default class ViewPlaceScreen extends Component {
   async viewPlaceAsync() {
     this.setState({isLoading: true})
     try {
+      console.log(this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail);
       let response = await fetch(
         // needs to add user email in the URL if the user already logins
-        this.baseURL + 'view_one_place?place_id=' + this.placeId,
+        this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail,
         {
           method: 'GET',
           headers: {
@@ -132,7 +135,7 @@ export default class ViewPlaceScreen extends Component {
     return (
       <View style={styles.container}>
         <FlatList 
-        horizontal={true}
+          horizontal={true}
           data={this.state.pictureNumbers}
           renderItem={({item}) =>
           <View style={{flexDirection: "row", marginEnd: 10}}>
@@ -192,8 +195,9 @@ class SubscribeButton extends Component {
       return null;
     }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress}>
+        <View style={styles.button}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
@@ -205,21 +209,23 @@ class UnsubscribeButton extends Component {
       return null;
     }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress}>
+        <View style={styles.button}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
 
 class AddReportButton extends Component {
   render() {
-    //to update: uncomment the following statements when 'subscribe_status' works
-    //if (this.props.subscribe_status < 0) {
-    //  return null;
-    //}
+    // to update: uncomment the following statements when 'subscribe_status' works
+    if (this.props.subscribe_status < 0) {
+     return null;
+    }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress} >
+        <View style={[styles.button, {marginBottom: 50}]}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
@@ -228,5 +234,18 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  button: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: 130,
+    alignItems: 'center',
+    backgroundColor: '#d3d3d3'
+  },
+  buttonText: {
+    textAlign: 'center',
+    padding: 10,
+    color: '#BF5700',
+    fontWeight: 'bold'
   },
 });

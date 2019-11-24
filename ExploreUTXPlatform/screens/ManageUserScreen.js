@@ -126,7 +126,7 @@ export default class ManageUserScreen extends Component {
             <Text style={{ color: 'white' }}>Sign Out</Text>
           </Button>
         <ListCardView dataSource={this.state.dataSource} 
-        baseURL={this.baseURL} navigate={this.props.navigation} />
+        baseURL={this.baseURL} navigate={this.props.navigation} userEmail={this.userEmail} />
 
       </View>
     );
