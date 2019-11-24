@@ -4,17 +4,25 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SearchBar from 'react-native-search-bar';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
 
 class SearchScreen extends Component {
-  static navigationOptions = {
-    title: 'Search',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Search',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   constructor(props){

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Alert} from 'react-native';
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
-
+import Icon from "react-native-vector-icons/Ionicons";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -28,12 +28,19 @@ console.error('Firebase initialization error raised', err.stack)
 }}
 
 class ManageScreen extends Component {
-  static navigationOptions = {
-    title: 'Manage',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Manage',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   async componentDidMount() {
