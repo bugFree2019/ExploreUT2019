@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, PermissionsAndroid } from 'react-native';
+import { StyleSheet, Dimensions, PermissionsAndroid, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { createMaterialBottomTabNavigator } 
-from 'react-navigation-material-bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { BottomNavigation, Text } from 'react-native-paper';
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
 
@@ -23,6 +23,22 @@ const GEOLOCATION_OPTIONS = {
   timeout: 20000,
   maximumAge: 1000,
 };
+
+const myIconBuilding = <Icon name="building-o" />;
+const myIconStudy = <Icon name="book" />;
+const myIconActivity = <Icon name="local-activity" />;
+const myIconStatue = <Icon name="streetview" />;
+
+const BuildingRoute = () => <Text></Text>;
+
+const StudyRoute = () => <Text></Text>;
+
+const ActivityRoute = () => <Text></Text>;
+
+const StatueRoute = () => <Text></Text>;
+
+const themes = ["Buildings", "Study", "Activity", "Monument"];
+
 
 class MapScreen extends Component {
   static navigationOptions = {
@@ -47,14 +63,71 @@ class MapScreen extends Component {
       marginBottom : 1,
       // initialize the places from our database.
       myPlaces: [],
+
+      theme: "Buildings",
+      index: 0,
+        routes: [
+        { key: 'building', title: 'Building', tabBarIcon: {myIconBuilding} },
+        { key: 'study', title: 'Study', icon: {myIconStudy} },
+        { key: 'activity', title: 'Activity', icon: {myIconActivity} },
+        { key: 'statue', title: 'Statue', icon: {myIconStatue} }
+        ],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
+
+  handleIndexChange = index => {
+    this.setState({ 
+      index: index,
+      theme: themes[index],
+    });
+    console.log(index);
+    console.log(this.state.theme);
+    this.getThemePlaces();
+  };
+
+  renderScene = BottomNavigation.SceneMap({
+    building: BuildingRoute,
+    study: StudyRoute,
+    activity: ActivityRoute,
+    statue: StatueRoute,
+  });
 
   // get places from database and save only name, id, location, theme,
   // and restructure the location to the form Map.Marker needs.
   getPlaces() {
     fetch(this.baseURL + 'view_places',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Android'
+          }
+        }
+      )
+      .then(res => res.json())
+      .then(parsedRes => {
+        const placesArray = [];
+        for (const key in parsedRes) {
+          placesArray.push({
+            latitude: parsedRes[key].location.lat,
+            longitude: parsedRes[key].location.lng,
+            placeId: parsedRes[key]._id,
+            name: parsedRes[key].name,
+            theme: parsedRes[key].theme,
+            key: key.toString(),
+          });
+        }
+        this.setState({ 
+          myPlaces: placesArray
+         });
+        console.log(placesArray);
+      })
+      .catch(err => console.log(err));
+  }
+
+  getThemePlaces() {
+    fetch(this.baseURL + 'view_places_by_theme' + '?theme=' + this.state.theme,
         {
           method: 'GET',
           headers: {
@@ -152,36 +225,63 @@ class MapScreen extends Component {
     this.setState({marginBottom: 0});
   }
 
-  render() {
-    this.placeMarkers =  this.state.myPlaces.map(place =>
-       (<MapView.Marker 
-        coordinate={place} 
-        key={place.key} 
-        placeId={place.placeId}
-        title={place.name}
-        // if the marker gets pressed, forward to view one place page.
-        onPress={() => this.props.navigation.push('ViewPlace', 
-        {placeId: place.placeId, title: place.name})}
-        />));
+  createMarkers() {
+    return this.state.myPlaces.map(place =>
+      (<MapView.Marker.Animated
+       coordinate={place} 
+       key={place.key} 
+       placeId={place.placeId}
+       title={place.name}
+       // if the marker gets pressed, forward to view one place page.
+       onPress={() => this.props.navigation.push('ViewPlace', 
+       {placeId: place.placeId, title: place.name})}
+       />));
+  }
 
+  render() {  
     return (
+      <View style={{
+        flex: 1,
+        //flexDirection: 'column',
+        paddingTop: 550,
+      }}>
+      
       <MapView
-        // ref={map => {
-        //   this.map = map;
-        // }}
-        style={ {...styles.map, marginBottom: this.state.marginBottom} }
+        ref={map => {
+          this.map = map;
+        }}
+        style={ {...styles.map, marginBottom: this.state.marginBottom } }
         provider={ PROVIDER_GOOGLE }
         onMapReady={ this.onMapReady }
         showsUserLocation={ true }
         showsMyLocationButton={ true }
         rotateEnabled={ true }
-        region={ this.state.region }
+        initialRegion={{
+          latitude: 30.2852,
+          longitude: -97.7340,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}
+        // region={ this.state.region }
+        mapPadding={{
+          top: 0,
+          right: 0,
+          bottom: 50,
+          left: 0
+        }}
         // onRegionChange={ region => this.setState({region}) }
         // onRegionChangeComplete={ region => this.setState({region}) }
         onRegionChangeComplete={ this.onRegionChangeComplete }
       >
-        { this.placeMarkers }
+        { this.createMarkers() } 
       </MapView>
+      <BottomNavigation
+        navigationState={this.state}
+        onIndexChange={this.handleIndexChange}
+        renderScene={this.renderScene}
+        barStyle={{backgroundColor:'#BF5700'}}
+      />
+  </View>
     );
   }
 }
