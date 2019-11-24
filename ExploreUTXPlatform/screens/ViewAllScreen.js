@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
 import CreateNewReportScreen from'./CreateNewReportScreen';
+import * as firebase from 'firebase';
 
 class ViewAllScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -84,7 +85,7 @@ class ViewAllScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.setState({
         isLoading: false,
         dataSource: responseJson,
