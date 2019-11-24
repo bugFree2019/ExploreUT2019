@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
+import CreateNewReportScreen from'./CreateNewReportScreen';
 
 class ViewAllScreen extends Component {
   static navigationOptions = {
@@ -19,11 +20,17 @@ class ViewAllScreen extends Component {
     super(props);
     this.state ={isLoading: true}
     this.baseURL = 'https://explore-ut.appspot.com/';
+    this.focusListener=null;
   }
 
   componentDidMount() {
-    this.viewAllPlaceAsync();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.viewAllPlaceAsync());
   }
+
+  componentWillUnmount() {
+    // remove event listener
+    this.focusListener.remove();
+}
 
   async viewAllPlaceAsync() {
     this.setState({isLoading: true})
@@ -78,6 +85,7 @@ var styles = StyleSheet.create({
 const stackNavigator = createStackNavigator({
   ViewAll: ViewAllScreen,
   ViewPlace: ViewPlaceScreen,
+  CreateNewReport : CreateNewReportScreen,
 });
 
 export default createAppContainer(stackNavigator);

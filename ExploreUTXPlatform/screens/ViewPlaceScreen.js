@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator, Button, Image, FlatList } fr
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 
+
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -20,10 +21,16 @@ export default class ViewPlaceScreen extends Component {
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
     console.log(this.placeId);
+    this.focusListener=null;
   }
 
   componentDidMount() {
-    this.viewPlaceAsync();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.viewPlaceAsync());
+  }
+
+  componentWillUnmount() {
+    // remove event listener
+    this.focusListener.remove();
   }
 
   async viewPlaceAsync() {
@@ -97,6 +104,10 @@ export default class ViewPlaceScreen extends Component {
     };
   }
 
+  addReport() {
+    this.props.navigation.push('CreateNewReport', {placeId: this.placeId});
+  }
+
   toggleSubscribeStatus() {
     let dataSource = this.state.dataSource;
     if (dataSource['subscribe_status'] == 1) {
@@ -166,7 +177,8 @@ export default class ViewPlaceScreen extends Component {
         />
         <View>
           <AddReportButton title="Add Report"
-            subscribe_status={this.state.dataSource['subscribe_status']}  />
+            subscribe_status={this.state.dataSource['subscribe_status']} 
+            onPress={()=>{this.addReport();}} />
         </View>
       </View>
     );
@@ -176,6 +188,7 @@ export default class ViewPlaceScreen extends Component {
 class SubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 0) {
+      console.log("subscribe_status is "+this.props.subscribe_status);
       return null;
     }
     return (
@@ -188,6 +201,7 @@ class SubscribeButton extends Component {
 class UnsubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 1) {
+      console.log("subscribe_status is "+this.props.subscribe_status);
       return null;
     }
     return (
@@ -199,9 +213,10 @@ class UnsubscribeButton extends Component {
 
 class AddReportButton extends Component {
   render() {
-    if (this.props.subscribe_status < 0) {
-      return null;
-    }
+    //to update: uncomment the following statements when 'subscribe_status' works
+    //if (this.props.subscribe_status < 0) {
+    //  return null;
+    //}
     return (
       <Button title={this.props.title}
       onPress={this.props.onPress} />
