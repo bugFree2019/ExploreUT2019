@@ -7,11 +7,15 @@ import CardView from 'react-native-cardview';
 
 export default class ListCardView extends Component {
   render() {
+    var userEmail = '';
+    if (this.props.userEmail) {
+      userEmail = this.props.userEmail;
+    }
     return (
       <FlatList
         data={this.props.dataSource}
         renderItem={({item}) =>
-        <TouchableHighlight  onPress={() => this.props.navigate.push('ViewPlace', {placeId: item['_id'], title: item['name']})}>
+        <TouchableHighlight  onPress={() => this.props.navigate.push('ViewPlace', {placeId: item['_id'], title: item['name'], userEmail: userEmail})}>
         <CardView style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'flex-start'}}
           cardElevation={2}
           cornerRadius={5}>
