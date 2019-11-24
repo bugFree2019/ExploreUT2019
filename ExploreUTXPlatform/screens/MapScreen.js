@@ -6,6 +6,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { BottomNavigation, Text } from 'react-native-paper';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 // import View One Place to enable the screen forward to it.
@@ -25,6 +26,7 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
+const myIconAllPlaces = <FontAwesome5 name={'place-of-worship'} size={24} color="#FFF" />;
 const myIconBuilding = <FontAwesome5 name={'building'} solid />;
 const myIconStudy = <FontAwesome5 name={'book-open'} />;
 const myIconActivity = <FontAwesome5 name={'local-activity'} />;
@@ -70,7 +72,7 @@ class MapScreen extends Component {
       theme: "All",
       index: 0,
         routes: [
-        { key: 'all', title: 'All', icon: 'all' },
+        { key: 'all', title: 'All', icon: myIconAllPlaces },
         { key: 'building', title: 'Building', icon: {myIconBuilding} },
         { key: 'study', title: 'Study', icon: {myIconStudy} },
         { key: 'activity', title: 'Activity', icon: {myIconActivity} },
