@@ -46,8 +46,16 @@ class SearchScreen extends Component {
       }
     }
     else {
-      this.userEmail = '';
-      console.log('user not logged in')
+      var user = await firebase.auth().currentUser;
+      if (user) {
+        // User is signed in.
+        this.userEmail = user.email;
+        console.log(user.email);
+      } else {
+        // No user is signed in.
+        this.userEmail = '';
+        console.log('user not logged in')
+      }
     }
   }
 

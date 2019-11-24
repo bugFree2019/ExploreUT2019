@@ -4,6 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import Icon from "react-native-vector-icons/Ionicons";
+import * as firebase from 'firebase';
 
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
@@ -55,8 +56,16 @@ class ViewAllScreen extends Component {
       }
     }
     else {
-      this.userEmail = '';
-      console.log('user not logged in')
+        var user = await firebase.auth().currentUser;
+        if (user) {
+          // User is signed in.
+          this.userEmail = user.email;
+          console.log(user.email);
+        } else {
+          // No user is signed in.
+          this.userEmail = '';
+          console.log('user not logged in')
+        }
     }
   }
 
