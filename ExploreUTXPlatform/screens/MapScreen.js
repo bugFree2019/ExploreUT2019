@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+// import {Icon as NavIcon} from "react-native-vector-icons/Ionicons";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { GoogleSignin } from '@react-native-community/google-signin';
 
@@ -42,12 +43,19 @@ const themes = ["Buildings", "Study", "Activity", "Monument"];
 
 
 class MapScreen extends Component {
-  static navigationOptions = {
-    title: 'Map',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Map',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name="menu"
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   constructor() {

@@ -1,5 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import Icon from "react-native-vector-icons/Ionicons";
 import ViewAllScreen from './screens/ViewAllScreen';
 import SearchScreen from './screens/SearchScreen';
 import ManageScreen from './screens/ManageScreen';
@@ -27,7 +28,7 @@ import CreateNewPlaceScreen from './screens/CreateNewPlaceScreen';
 
 const MyDrawerNavigator = createDrawerNavigator({
   ViewAll: {
-    screen: ViewAllScreen,
+    screen: ViewAllScreen, 
   },
   Map: {
     screen: MapScreen,
@@ -42,6 +43,12 @@ const MyDrawerNavigator = createDrawerNavigator({
     screen: CreateNewPlaceScreen,
   }
 
+}, {
+  drawerPosition: 'left',
+  // contentComponent: CustomDrawerNavigation,
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle',
 });
 
 export default createAppContainer(MyDrawerNavigator);

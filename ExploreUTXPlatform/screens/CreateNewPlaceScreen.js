@@ -6,6 +6,7 @@ import {
 import t from 'tcomb-form-native';
 import Geolocation from 'react-native-geolocation-service';
 import SYImagePicker from 'react-native-syan-image-picker';
+import Icon from "react-native-vector-icons/Ionicons";
 import Toast from 'react-native-simple-toast';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
@@ -80,15 +81,21 @@ const options = {
 
 //the component for "create new place"
 class CreateNewPlaceScreen extends Component {
-
-  static navigationOptions = {
-    title: 'Creat New Place',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Creat New Place',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
-
+  
   constructor() {
     super();
     //state for the current component includes:
