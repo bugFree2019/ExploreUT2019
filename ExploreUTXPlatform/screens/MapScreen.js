@@ -5,6 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
 // import Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -121,9 +122,17 @@ class MapScreen extends Component {
       }
     }
     else {
-      this.userEmail = '';
-      console.log('user not logged in')
-    }
+      var user = await firebase.auth().currentUser;
+      if (user) {
+        // User is signed in.
+        this.userEmail = user.email;
+        console.log(user.email);
+      } else {
+        // No user is signed in.
+        this.userEmail = '';
+        console.log('user not logged in')
+      }
+  }
   }
 
   // get places from database and save only name, id, location, theme,
