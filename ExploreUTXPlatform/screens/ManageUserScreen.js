@@ -18,7 +18,7 @@ export default class ManageUserScreen extends Component {
       headerStyle: {
         backgroundColor: '#BF5700',
       },
-      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+      headerLeft : <Icon name={Platform.OS === "ios" ? "md-menu" : "md-menu"}  
                          size={30} 
                          color='#fff'
                          style={{marginLeft: 10}}

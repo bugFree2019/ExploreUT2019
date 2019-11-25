@@ -7,7 +7,6 @@ import Geolocation from '@react-native-community/geolocation';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Icon from "react-native-vector-icons/Ionicons";
 
 // import View One Place to enable the screen forward to it.
@@ -26,12 +25,6 @@ const GEOLOCATION_OPTIONS = {
   timeout: 20000,
   maximumAge: 1000,
 };
-
-const myIconAllPlaces = <Icon name={'place-of-worship'} size={12} color="#FFF" />;
-const myIconBuilding = <Icon name={'building'} />;
-const myIconStudy = <Icon name={'book-open'} />;
-const myIconActivity = <Icon name={'local-activity'} />;
-const myIconStatue = <Icon name={'monument'} />;
 
 const AllRoute = () => <Text>all</Text>;
 
@@ -54,7 +47,7 @@ class MapScreen extends Component {
     headerStyle: {
       backgroundColor: '#BF5700',
     },
-    headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+    headerLeft : <Icon name={Platform.OS === "ios" ? "md-menu" : "md-menu"}  
                          size={30} 
                          color='#fff'
                          style={{marginLeft: 10}}
@@ -82,11 +75,11 @@ class MapScreen extends Component {
 
       index: 0,
         routes: [
-        { key: 'all', title: 'All', icon: 'places' },
-        { key: 'building', title: 'Building', icon: 'buildings' },
-        { key: 'study', title: 'Study', icon: 'study' },
-        { key: 'activity', title: 'Activity', icon: 'activity' },
-        { key: 'statue', title: 'Statue', icon: 'statue' }
+        { key: 'all', title: 'All', icon: 'map-marker' },
+        { key: 'building', title: 'Building', icon: 'office-building' },
+        { key: 'study', title: 'Study', icon: 'book-open-variant' },
+        { key: 'activity', title: 'Activity', icon: 'ticket' },
+        { key: 'statue', title: 'Statue', icon: 'google-street-view' }
         ],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
@@ -251,7 +244,7 @@ class MapScreen extends Component {
   }
   
   async initializeState() {
-    console.log("initialize");
+    this.setState({index: 0});
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION

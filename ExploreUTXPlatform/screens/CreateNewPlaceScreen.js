@@ -83,12 +83,12 @@ const options = {
 class CreateNewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Creat New Place',
+      title: 'Creat A New Place',
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: '#BF5700',
       },
-      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+      headerLeft : <Icon name={Platform.OS === "ios" ? "md-menu" : "md-menu"}  
                          size={30} 
                          color='#fff'
                          style={{marginLeft: 10}}
@@ -355,7 +355,7 @@ class CreateNewPlaceScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <Text style={styles.header}>Create New Place</Text>
+        <Text style={styles.header}>Create A New Place</Text>
         <View style={styles.container}>
           <Form ref={(c) => (this.formRef = c)}
                 type={Place} 
