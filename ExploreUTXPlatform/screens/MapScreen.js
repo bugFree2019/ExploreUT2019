@@ -11,6 +11,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
+import SignOutButton from '../layouts/SignOutButton';
 
 
 const { width, height } = Dimensions.get('window');
@@ -52,6 +53,7 @@ class MapScreen extends Component {
                          color='#fff'
                          style={{marginLeft: 10}}
                          onPress={() => navigation.openDrawer()} />,
+      headerRight: <SignOutButton navigation={navigation} screen="Map"/>,
     };
   };
 

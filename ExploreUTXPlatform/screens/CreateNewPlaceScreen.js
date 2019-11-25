@@ -11,6 +11,7 @@ import Toast from 'react-native-simple-toast';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import ViewPlaceScreen from './ViewPlaceScreen';
+import SignOutButton from '../layouts/SignOutButton';
 
 const Form = t.form.Form;
 
@@ -93,6 +94,7 @@ class CreateNewPlaceScreen extends Component {
                          color='#fff'
                          style={{marginLeft: 10}}
                          onPress={() => navigation.openDrawer()} />,
+      headerRight: <SignOutButton navigation={navigation} screen="CreatNewPlace"/>,
     };
   };
   
