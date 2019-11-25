@@ -4,8 +4,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { GoogleSignin } from '@react-native-community/google-signin';
-import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -85,7 +83,6 @@ class MapScreen extends Component {
         ],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
-    this.userEmail = '';
   }
 
   handleIndexChange = index => {
@@ -111,32 +108,6 @@ class MapScreen extends Component {
     statue: StatueRoute,
   });
 
-  async checkUser() {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
-      try {
-        const userInfo = await GoogleSignin.signIn();
-        this.userEmail = userInfo.user.email;
-        console.log(this.userEmail);
-      }
-      catch(error) {
-        console.log('user not logged in')
-      }
-    }
-    else {
-      var user = await firebase.auth().currentUser;
-      if (user) {
-        // User is signed in.
-        this.userEmail = user.email;
-        console.log(user.email);
-      } else {
-        // No user is signed in.
-        this.userEmail = '';
-        console.log('user not logged in')
-      }
-  }
-  }
-
   // get places from database and save only name, id, location, theme,
   // and restructure the location to the form Map.Marker needs.
   getPlaces() {
@@ -151,7 +122,6 @@ class MapScreen extends Component {
       )
       .then(res => res.json())
       .then(parsedRes => {
-        this.checkUser();
         const placesArray = [];
         for (const key in parsedRes) {
           placesArray.push({
@@ -280,7 +250,7 @@ class MapScreen extends Component {
        // title={place.name}
        // if the marker gets pressed, forward to view one place page.
        onPress={() => this.props.navigation.push('ViewPlace', 
-       {placeId: place.placeId, title: place.name, userEmail: this.userEmail})}
+       {placeId: place.placeId, title: place.name})}
        />));
   }
 
