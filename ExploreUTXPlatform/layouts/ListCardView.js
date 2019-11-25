@@ -15,7 +15,7 @@ export default class ListCardView extends Component {
       <FlatList
         data={this.props.dataSource}
         renderItem={({item}) =>
-        <TouchableHighlight  onPress={() => this.props.navigate.push('ViewPlace', {placeId: item['_id'], title: item['name'], userEmail: userEmail})}>
+        <TouchableHighlight  onPress={() => this.props.navigate.push('ViewPlace', {placeId: item['_id'], title: item['name']})}>
         <CardView style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'flex-start'}}
           cardElevation={2}
           cornerRadius={5}>
