@@ -9,6 +9,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
+import SignOutButton from '../layouts/SignOutButton';
 
 class SearchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -23,6 +24,7 @@ class SearchScreen extends Component {
                          color='#fff'
                          style={{marginLeft: 10}}
                          onPress={() => navigation.openDrawer()} />,
+      headerRight: <SignOutButton navigation={navigation} screen="Search"/>,
     };
   };
 

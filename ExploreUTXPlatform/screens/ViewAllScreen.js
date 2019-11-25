@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import * as firebase from 'firebase';
 
 import ListCardView from '../layouts/ListCardView';
+import SignOutButton from '../layouts/SignOutButton';
 import ViewPlaceScreen from './ViewPlaceScreen';
 import CreateNewReportScreen from'./CreateNewReportScreen';
 
@@ -23,12 +24,13 @@ class ViewAllScreen extends Component {
                          color='#fff'
                          style={{marginLeft: 10}}
                          onPress={() => navigation.openDrawer()} />,
+      headerRight: <SignOutButton navigation={navigation} screen="ViewAll"/>,
     };
   };
 
   constructor(props){
     super(props);
-    this.state ={isLoading: true}
+    this.state ={isLoading: true};
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.userEmail = '';
     this.focusListener=null;
@@ -41,7 +43,7 @@ class ViewAllScreen extends Component {
   componentWillUnmount() {
     // remove event listener
     this.focusListener.remove();
-}
+  }
 
   async checkUser() {
     const isSignedIn = await GoogleSignin.isSignedIn();
@@ -49,10 +51,10 @@ class ViewAllScreen extends Component {
       try {
         const userInfo = await GoogleSignin.signIn();
         this.userEmail = userInfo.user.email;
-        console.log(this.userEmail);
+        // console.log(this.userEmail);
       }
       catch(error) {
-        console.log('user not logged in')
+        // console.log('user not logged in')
       }
     }
     else {
@@ -60,11 +62,11 @@ class ViewAllScreen extends Component {
         if (user) {
           // User is signed in.
           this.userEmail = user.email;
-          console.log(user.email);
+          // console.log(user.email);
         } else {
           // No user is signed in.
           this.userEmail = '';
-          console.log('user not logged in')
+          // console.log('user not logged in')
         }
     }
   }
