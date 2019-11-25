@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 import SignOutButton from '../layouts/SignOutButton';
@@ -156,7 +156,7 @@ export default class ViewPlaceScreen extends Component {
     }
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <FlatList 
           horizontal={true}
           data={this.state.pictureNumbers}
@@ -166,8 +166,8 @@ export default class ViewPlaceScreen extends Component {
               <Image source={{uri: this.baseURL + 'place_image/' + this.placeId + '/' + item.toString() + '.jpg'}} 
                 style={{flex: 1,
                 width: 200,
-                height: 200,
-                resizeMode: 'contain'
+                height: 150,
+                resizeMode: 'cover'
                 }}/>
             </View>
           </View>}
@@ -206,7 +206,7 @@ export default class ViewPlaceScreen extends Component {
             subscribe_status={this.state.dataSource['subscribe_status']} 
             onPress={()=>{this.addReport();}} />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

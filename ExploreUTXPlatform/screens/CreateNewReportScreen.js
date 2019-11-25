@@ -270,7 +270,7 @@ export default class CreateNewReportScreen extends Component {
                           key={`image-${index}`}
                           style={styles.image}
                           source={source}
-                          resizeMode={"stretch"}
+                          resizeMode={"cover"}
                       />
                   )
               })}
