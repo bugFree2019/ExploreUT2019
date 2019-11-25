@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ActivityIndicator, Text } from 'react-native';
 import { GoogleSignin } from '@react-native-community/google-signin';
-import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
 import SignOutButton from '../layouts/SignOutButton';
+import SearchButton from '../layouts/SearchButton';
+import MySearchBar from '../layouts/MySearchBar';
 import * as firebase from 'firebase';
 
 import { ToastAndroid } from "react-native";
@@ -32,7 +33,7 @@ export default class ManageUserScreen extends Component {
     super(props);
     this.state ={
       isLoading: true,
-      }
+      isSearching: false}
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.userEmail = null;
     this.focusListener=null;
@@ -112,7 +113,7 @@ export default class ManageUserScreen extends Component {
   }
 
   async manageAsync() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true, isSearching: false})
     try {
       console.log(this.userEmail);
       await this.checkUser();
@@ -158,17 +159,13 @@ export default class ManageUserScreen extends Component {
 
     return (
       <View style={styles.container}>
-          {/* <Button style={{ marginTop: 10, width: 100, height: 48 }}
-            full
-            rounded
-            success
-            onPress={()=> this.signOutUser()}
-          >
-            <Text style={{ color: 'white' }}>Sign Out</Text>
-          </Button> */}
+        { 
+          this.state.isSearching &&
+          <MySearchBar navigation={this.props.navigation} onCancel={() => {this.setState({isSearching: false});}}/>
+        }
         <ListCardView dataSource={this.state.dataSource} 
-        baseURL={this.baseURL} navigate={this.props.navigation} userEmail={this.userEmail} />
-
+        baseURL={this.baseURL} navigate={this.props.navigation} />
+        <SearchButton onPress={() => {this.setState({isSearching: true});}} />
       </View>
     );
   }

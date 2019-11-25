@@ -11,7 +11,10 @@ import Toast from 'react-native-simple-toast';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import ViewPlaceScreen from './ViewPlaceScreen';
+import SearchScreen from './SearchScreen';
 import SignOutButton from '../layouts/SignOutButton';
+import SearchButton from '../layouts/SearchButton';
+import MySearchBar from '../layouts/MySearchBar';
 
 const Form = t.form.Form;
 
@@ -110,7 +113,8 @@ class CreateNewPlaceScreen extends Component {
       photos: [],
       loc_loading: false,
       location: "",
-      value:{}
+      value:{},
+      isSearching: false
     };
     this.focusListener=null;
   }
@@ -302,7 +306,7 @@ class CreateNewPlaceScreen extends Component {
 
   //Reset the form's inputs
   handleReset = () => {
-    this.setState({value:{},location:"",photos:[]});
+    this.setState({value:{},location:"",photos:[], isSearching: false});
   }
 
   //Submit the form's content when it passes the validation
@@ -356,51 +360,58 @@ class CreateNewPlaceScreen extends Component {
   //Render using JSX
   render() {
     return (
-      <ScrollView>
-        <Text style={styles.header}>Create A New Place</Text>
-        <View style={styles.container}>
-          <Form ref={(c) => (this.formRef = c)}
-                type={Place} 
-                options={options}
-                value={this.state.value}
-                onChange={this.handleFormChange} />
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.button_container}>
-              <Button title="Get Location" onPress={this.getLocation} disabled={this.state.loc_loading}/>
+      <View>
+        { 
+          this.state.isSearching &&
+          <MySearchBar navigation={this.props.navigation} onCancel={() => {this.setState({isSearching: false});}}/>
+        }
+        <ScrollView>
+          <Text style={styles.header}>Create A New Place</Text>
+          <View style={styles.container}>
+            <Form ref={(c) => (this.formRef = c)}
+                  type={Place} 
+                  options={options}
+                  value={this.state.value}
+                  onChange={this.handleFormChange} />
+            <View style={{flexDirection: 'row'}}>
+              <View style={styles.button_container}>
+                <Button title="Get Location" onPress={this.getLocation} disabled={this.state.loc_loading}/>
+              </View>
+              <Text style={styles.text}>
+                {this.state.location}
+              </Text>
             </View>
-            <Text style={styles.text}>
-              {this.state.location}
-            </Text>
-          </View>
-          <View style={{flexDirection: 'column',marginTop:15}}>
-            <View style={styles.button_container}>
-              <Button title="Pick Images" onPress={this.handlePromiseSelectPhoto}/>
+            <View style={{flexDirection: 'column',marginTop:15}}>
+              <View style={styles.button_container}>
+                <Button title="Pick Images" onPress={this.handlePromiseSelectPhoto}/>
+              </View>
+              <ScrollView style={{flex: 1}} contentContainerStyle={styles.scroll}>
+                {this.state.photos.map((photo, index) => {
+                    let source = {uri: photo.uri};
+                    if (photo.enableBase64) {
+                        source = {uri: photo.base64};
+                    }
+                    return (
+                        <Image
+                            key={`image-${index}`}
+                            style={styles.image}
+                            source={source}
+                            resizeMode={"stretch"}
+                        />
+                    )
+                })}
+              </ScrollView>
+            <View style={{marginTop: 15}}>
+              <Button title="Reset" onPress={this.handleReset} />
             </View>
-            <ScrollView style={{flex: 1}} contentContainerStyle={styles.scroll}>
-              {this.state.photos.map((photo, index) => {
-                  let source = {uri: photo.uri};
-                  if (photo.enableBase64) {
-                      source = {uri: photo.base64};
-                  }
-                  return (
-                      <Image
-                          key={`image-${index}`}
-                          style={styles.image}
-                          source={source}
-                          resizeMode={"stretch"}
-                      />
-                  )
-              })}
-            </ScrollView>
-          <View style={{marginTop: 15}}>
-            <Button title="Reset" onPress={this.handleReset} />
+            <View style={{marginTop: 15}}>
+              <Button title="Submit" onPress={this.handleSubmit} />
+            </View>
+            </View>
           </View>
-          <View style={{marginTop: 15}}>
-            <Button title="Submit" onPress={this.handleSubmit} />
-          </View>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+        <SearchButton onPress={() => {this.setState({isSearching: true});}} />
+      </View>
     );
   }
 }
@@ -461,6 +472,7 @@ const styles = StyleSheet.create({
 const stackNavigator = createStackNavigator({
   CreatNewPlace: CreateNewPlaceScreen,
   ViewPlace: ViewPlaceScreen,
+  Search: SearchScreen,
 });
 
 export default createAppContainer(stackNavigator);

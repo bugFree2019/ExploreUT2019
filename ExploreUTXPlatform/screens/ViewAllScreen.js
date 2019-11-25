@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, TouchableOpacity  } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
 import SignOutButton from '../layouts/SignOutButton';
+import MySearchBar from '../layouts/MySearchBar';
+import SearchButton from '../layouts/SearchButton';
 import ViewPlaceScreen from './ViewPlaceScreen';
 import CreateNewReportScreen from'./CreateNewReportScreen';
+import SearchScreen from './SearchScreen';
 
 class ViewAllScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -28,7 +31,8 @@ class ViewAllScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state ={isLoading: true};
+    this.state ={isLoading: true,
+                 isSearching: false};
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.focusListener=null;
   }
@@ -43,7 +47,8 @@ class ViewAllScreen extends Component {
   }
 
   async viewAllPlaceAsync() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true,
+                   isSearching: false});
     try {
       let response = await fetch(
         this.baseURL + 'view_places',
@@ -78,8 +83,13 @@ class ViewAllScreen extends Component {
 
     return (
       <View style={styles.container}>
+        { 
+          this.state.isSearching &&
+          <MySearchBar navigation={this.props.navigation} onCancel={() => {this.setState({isSearching: false});}}/>
+        }
         <ListCardView dataSource={this.state.dataSource} 
         baseURL={this.baseURL} navigate={this.props.navigation} />
+        <SearchButton onPress={() => {this.setState({isSearching: true});}} />
       </View>
     );
   }
@@ -94,6 +104,7 @@ var styles = StyleSheet.create({
 
 const stackNavigator = createStackNavigator({
   ViewAll: ViewAllScreen,
+  Search: SearchScreen,
   ViewPlace: ViewPlaceScreen,
   CreateNewReport : CreateNewReportScreen,
 });

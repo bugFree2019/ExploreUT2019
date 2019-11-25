@@ -9,7 +9,10 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
+import SearchScreen from './SearchScreen';
 import SignOutButton from '../layouts/SignOutButton';
+import SearchButton from '../layouts/SearchButton';
+import MySearchBar from '../layouts/MySearchBar';
 
 
 const { width, height } = Dimensions.get('window');
@@ -79,6 +82,8 @@ class MapScreen extends Component {
         { key: 'activity', title: 'Activity', icon: 'ticket' },
         { key: 'statue', title: 'Statue', icon: 'google-street-view' }
         ],
+
+      isSearching: false,
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
@@ -214,7 +219,7 @@ class MapScreen extends Component {
   }
   
   async initializeState() {
-    this.setState({index: 0});
+    this.setState({index: 0, isSearching: false});
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -254,47 +259,56 @@ class MapScreen extends Component {
 
   render() { 
     return (
-      <View style={{
-        flex: 1,
-        //flexDirection: 'column',
-        paddingTop: 550,
-      }}>
-      <MapView
-        ref={map => {
-          this.map = map;
-        }}
-        style={ {...styles.map, marginBottom: this.state.marginBottom } }
-        provider={ PROVIDER_GOOGLE }
-        onMapReady={ this.onMapReady }
-        showsUserLocation={ true }
-        showsMyLocationButton={ true }
-        rotateEnabled={ true }
-        initialRegion={{
-          latitude: 30.2852,
-          longitude: -97.7340,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
-        }}
-        // region={ this.state.region }
-        mapPadding={{
-          top: 0,
-          right: 0,
-          bottom: 50,
-          left: 0
-        }}
-        // onRegionChange={ region => this.setState({region}) }
-        // onRegionChangeComplete={ region => this.setState({region}) }
-        onRegionChangeComplete={ this.onRegionChangeComplete }
-      >
-      {this.createMarkers()}
-      </MapView>
-      <BottomNavigation
-        navigationState={this.state}
-        onIndexChange={this.handleIndexChange}
-        renderScene={this.renderScene}
-        barStyle={{backgroundColor:'#BF5700'}}
-      />
-  </View>
+      <View style={{flex: 1}}>
+        { 
+          this.state.isSearching &&
+          <MySearchBar style={{position: 'absolute'}}
+                      navigation={this.props.navigation} 
+                      onCancel={() => {this.setState({isSearching: false});}}/>
+        }
+        <View style={{
+          flex: 1,
+          //flexDirection: 'column',
+          paddingTop: 550,
+        }}>
+          <MapView
+            ref={map => {
+              this.map = map;
+            }}
+            style={ {...styles.map, marginBottom: this.state.marginBottom } }
+            provider={ PROVIDER_GOOGLE }
+            onMapReady={ this.onMapReady }
+            showsUserLocation={ true }
+            showsMyLocationButton={ true }
+            rotateEnabled={ true }
+            initialRegion={{
+              latitude: 30.2852,
+              longitude: -97.7340,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta: LONGITUDE_DELTA,
+            }}
+            // region={ this.state.region }
+            mapPadding={{
+              top: 0,
+              right: 0,
+              bottom: 50,
+              left: 0
+            }}
+            // onRegionChange={ region => this.setState({region}) }
+            // onRegionChangeComplete={ region => this.setState({region}) }
+            onRegionChangeComplete={ this.onRegionChangeComplete }
+          >
+          {this.createMarkers()}
+          </MapView>
+          <SearchButton onPress={() => {this.setState({isSearching: true});}} />
+          <BottomNavigation 
+            navigationState={this.state}
+            onIndexChange={this.handleIndexChange}
+            renderScene={this.renderScene}
+            barStyle={{backgroundColor:'#BF5700'}}
+          />
+       </View>
+      </View>
     );
   }
 }
@@ -310,6 +324,7 @@ const styles = StyleSheet.create({
 
 const stackNavigator = createStackNavigator({
   Map: MapScreen,
+  Search: SearchScreen,
   ViewPlace: ViewPlaceScreen,
 });
 
