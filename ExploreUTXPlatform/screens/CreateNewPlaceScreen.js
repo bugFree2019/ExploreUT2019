@@ -81,17 +81,6 @@ const options = {
 
 //the component for "create new place"
 class CreateNewPlaceScreen extends Component {
-<<<<<<< HEAD
-
-  static navigationOptions = {
-    title: 'Creat New Place',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
-  };
-
-=======
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Creat New Place',
@@ -107,7 +96,6 @@ class CreateNewPlaceScreen extends Component {
     };
   };
   
->>>>>>> XPlatformSearch
   constructor() {
     super();
     //state for the current component includes:
@@ -122,8 +110,6 @@ class CreateNewPlaceScreen extends Component {
       location: "",
       value:{}
     };
-<<<<<<< HEAD
-=======
     this.focusListener=null;
   }
 
@@ -133,7 +119,6 @@ class CreateNewPlaceScreen extends Component {
 
   componentWillUnmount() {
     this.focusListener.remove();
->>>>>>> XPlatformSearch
   }
 
   //Check if location-related permissions have been granted. If not, request corresponding permissions through "PermissionsAndroid.request()" method.
@@ -232,11 +217,7 @@ class CreateNewPlaceScreen extends Component {
           {
               title: 'request read_external_storage permission.',
               message:
-<<<<<<< HEAD
-                  'The picking images function needs the permission to readthe storage.',
-=======
                   'The picking images function needs the permission to read the storage.',
->>>>>>> XPlatformSearch
               buttonNeutral: 'Ask Me Later',
               buttonNegative: 'Cancel',
               buttonPositive: 'Ok'
@@ -327,10 +308,7 @@ class CreateNewPlaceScreen extends Component {
     if(this.formDataValid()){
       await this.postForm();
       Toast.show('Successfully created the new place.', Toast.LONG);
-<<<<<<< HEAD
-=======
       this.props.navigation.navigate('ViewAll');
->>>>>>> XPlatformSearch
     }
   }
 
@@ -416,11 +394,7 @@ class CreateNewPlaceScreen extends Component {
             <Button title="Reset" onPress={this.handleReset} />
           </View>
           <View style={{marginTop: 15}}>
-<<<<<<< HEAD
-            <Button title="Submit" onPress={this.postForm} />
-=======
             <Button title="Submit" onPress={this.handleSubmit} />
->>>>>>> XPlatformSearch
           </View>
           </View>
         </View>
