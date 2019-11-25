@@ -4,59 +4,27 @@ import {
   Image,Button,Dimensions
 } from 'react-native';
 import t from 'tcomb-form-native';
-import Geolocation from 'react-native-geolocation-service';
 import SYImagePicker from 'react-native-syan-image-picker';
-import Icon from "react-native-vector-icons/Ionicons";
 import Toast from 'react-native-simple-toast';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
-import ViewPlaceScreen from './ViewPlaceScreen';
 
 const Form = t.form.Form;
 
 //the width of phone screen
 const {width} = Dimensions.get('window');
 
-//enum variables: used to build pickers for the attributes of theme and tag
-var Theme = t.enums.of([
-  'Museum',
-  'Statue',
-  'Stadium',
-  'Outdoors',
-  'Buildings',
-  'Monuments',
-  'Libraries'
-],'theme');
-
-var Tag = t.enums.of([
-   'Best Scenic View',
-   'Best Dating Place',
-   'Most Famous Place',
-   'Landmark',
-   'Study'
-],'tag');
-
 //Place struct: used to build the form's inputs
-const Place = t.struct({
-  name: t.String,
-  theme: Theme,
-  tag: Tag,
-  intro: t.String,
+const Report = t.struct({
+  title: t.String,
+  comment: t.String,
 });
 
 // extra options for the form's inputs
 const options = {
   fields: {
-    name: {
-      error: 'Please input the place name.'
+    title: {
+      error: 'Please input the report title.'
     },
-    theme: {
-      error: 'Please choose the theme for the place.'
-    },
-    tag: {
-      error: 'Please choose the tag for the place.'
-    },
-    intro: {
+    comment: {
         multiline: true,
         stylesheet: {
             ...Form.stylesheet,
@@ -74,117 +42,32 @@ const options = {
                 }
             }
         },
-        error: 'Please input the place intro.'
+        error: 'Please input the report content.'
     },
   },
 };
 
 //the component for "create new place"
-class CreateNewPlaceScreen extends Component {
-<<<<<<< HEAD
+export default class CreateNewReportScreen extends Component {
 
   static navigationOptions = {
-    title: 'Creat New Place',
+    title: 'Create New Report',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#BF5700',
     },
   };
 
-=======
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Creat New Place',
-      headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#BF5700',
-      },
-      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
-                         size={30} 
-                         color='#fff'
-                         style={{marginLeft: 10}}
-                         onPress={() => navigation.openDrawer()} />,
-    };
-  };
-  
->>>>>>> XPlatformSearch
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     //state for the current component includes:
     //1) photos(array): photos which the user picks from the gallery or camera
-    //2) loc_loading(boolean): the flag which shows if the getLocation function has already got the result. If not, the "Get Location"
-    //button should stay disabled. 
-    //3) location(String): store the latitude and longitude of the current location ("latitude longitude")
-    //4) value(object): the values of the form's inputs
+    //2) value(object): the values of the form's inputs
     this.state = {
       photos: [],
-      loc_loading: false,
-      location: "",
       value:{}
     };
-<<<<<<< HEAD
-=======
-    this.focusListener=null;
-  }
-
-  componentDidMount() {
-    this.focusListener = this.props.navigation.addListener("didFocus", () => this.handleReset());
-  }
-
-  componentWillUnmount() {
-    this.focusListener.remove();
->>>>>>> XPlatformSearch
-  }
-
-  //Check if location-related permissions have been granted. If not, request corresponding permissions through "PermissionsAndroid.request()" method.
-  hasLocationPermission = async () => {
-    if (Platform.OS === 'ios' ||
-        (Platform.OS === 'android' && Platform.Version < 23)) {
-      return true;
-    }
-
-    const hasPermission = await PermissionsAndroid.check(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-    );
-
-    if (hasPermission) return true;
-
-    const status = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-    );
-
-    if (status === PermissionsAndroid.RESULTS.GRANTED) return true;
-
-    if (status === PermissionsAndroid.RESULTS.DENIED) {
-      Toast.show('Location permission denied by user.', Toast.LONG);
-    } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-      Toast.show('Location permission revoked by user.', Toast.LONG);
-    }
-
-    return false;
-  }
-
-  //Get the current location info through "Geolocation.getCurrentPosition" method
-  getLocation = async () => {
-    const hasLocationPermission = await this.hasLocationPermission();
-
-    if (!hasLocationPermission) return;
-
-    this.setState({ loc_loading: true }, () => {
-      Geolocation.getCurrentPosition(
-        (position) => {
-          var latitude = position.coords.latitude
-          var longitude = position.coords.longitude
-          this.setState({ location: latitude+' '+longitude, loc_loading: false });
-          console.log(position);
-        },
-        (error) => {
-          this.setState({ location: error, loc_loading: false });
-          console.log(error);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
-      );
-    });
+    this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
   }
 
   //Check if picking-images-related permissions have been granted. If not, request corresponding permissions through "PermissionsAndroid.request()" method.
@@ -232,11 +115,7 @@ class CreateNewPlaceScreen extends Component {
           {
               title: 'request read_external_storage permission.',
               message:
-<<<<<<< HEAD
-                  'The picking images function needs the permission to readthe storage.',
-=======
                   'The picking images function needs the permission to read the storage.',
->>>>>>> XPlatformSearch
               buttonNeutral: 'Ask Me Later',
               buttonNegative: 'Cancel',
               buttonPositive: 'Ok'
@@ -301,13 +180,8 @@ class CreateNewPlaceScreen extends Component {
   //check if the current inputs of the form  are valid. If not, show the corresponding toasts.
   formDataValid = () => {
     const value = this.formRef.getValue();
-    const location = this.state.location;
     const photos=this.state.photos;
     if(value==null){
-      return false;
-    }
-    if(location.length==0){
-      Toast.show('Please get the current location info before submission.', Toast.LONG);
       return false;
     }
     if(photos.length==0){
@@ -319,18 +193,15 @@ class CreateNewPlaceScreen extends Component {
 
   //Reset the form's inputs
   handleReset = () => {
-    this.setState({value:{},location:"",photos:[]});
+    this.setState({value:{},photos:[]});
   }
 
   //Submit the form's content when it passes the validation
   handleSubmit = async() => {
     if(this.formDataValid()){
       await this.postForm();
-      Toast.show('Successfully created the new place.', Toast.LONG);
-<<<<<<< HEAD
-=======
-      this.props.navigation.navigate('ViewAll');
->>>>>>> XPlatformSearch
+      Toast.show('Successfully created the new report.', Toast.LONG);
+      this.props.navigation.goBack();
     }
   }
 
@@ -339,7 +210,6 @@ class CreateNewPlaceScreen extends Component {
     const formData = new FormData();
     const photos = this.state.photos;
     const value = this.state.value;
-    const location = this.state.location;
 
     for (let i = 0; i < photos.length; i++) {
       formData.append('pic_files', {
@@ -348,19 +218,20 @@ class CreateNewPlaceScreen extends Component {
         uri:
           Platform.OS === 'android' ? photos[i].original_uri : photos[i].original_uri.replace('file://', '')
       });
-      console.log("test1",photos[i].original_uri);
-      console.log("test2","photo"+i+'.jpg');
-      console.log("test3",photos[i].type);
     }
     
     Object.keys(value).forEach(key => {
       formData.append(key, value[key]);
     });
 
-    formData.append('location',location);
+    //add place_id & user_id
+    formData.append('place_id',this.placeId);
+
+    //to update: change the current default user_id to the current logged-in user's id
+    formData.append('user_id','jiayiyang1997@gmail.com');
 
     try {
-      const response = await fetch('https://explore-ut.appspot.com/create_new_place', {
+      const response = await fetch('https://explore-ut.appspot.com/create_new_report', {
         method: 'POST',
         body: formData,
         headers: {
@@ -377,21 +248,13 @@ class CreateNewPlaceScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <Text style={styles.header}>Create New Place</Text>
+        <Text style={styles.header}>Create New Report</Text>
         <View style={styles.container}>
           <Form ref={(c) => (this.formRef = c)}
-                type={Place} 
+                type={Report} 
                 options={options}
                 value={this.state.value}
                 onChange={this.handleFormChange} />
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.button_container}>
-              <Button title="Get Location" onPress={this.getLocation} disabled={this.state.loc_loading}/>
-            </View>
-            <Text style={styles.text}>
-              {this.state.location}
-            </Text>
-          </View>
           <View style={{flexDirection: 'column',marginTop:15}}>
             <View style={styles.button_container}>
               <Button title="Pick Images" onPress={this.handlePromiseSelectPhoto}/>
@@ -416,11 +279,7 @@ class CreateNewPlaceScreen extends Component {
             <Button title="Reset" onPress={this.handleReset} />
           </View>
           <View style={{marginTop: 15}}>
-<<<<<<< HEAD
-            <Button title="Submit" onPress={this.postForm} />
-=======
             <Button title="Submit" onPress={this.handleSubmit} />
->>>>>>> XPlatformSearch
           </View>
           </View>
         </View>
@@ -482,9 +341,3 @@ const styles = StyleSheet.create({
   }
 });
 
-const stackNavigator = createStackNavigator({
-  CreatNewPlace: CreateNewPlaceScreen,
-  ViewPlace: ViewPlaceScreen,
-});
-
-export default createAppContainer(stackNavigator);

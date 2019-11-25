@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, Button, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
+import HorizontalLine from '../layouts/HorizontalLine';
+import VerticalMargin from '../layouts/VerticalMargin';
+
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -18,18 +21,27 @@ export default class ViewPlaceScreen extends Component {
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
     console.log(this.placeId);
+    this.userEmail = this.props.navigation.getParam('userEmail', '');
+    console.log(this.userEmail);
+    this.focusListener=null;
   }
 
   componentDidMount() {
-    this.viewPlaceAsync();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.viewPlaceAsync());
+  }
+
+  componentWillUnmount() {
+    // remove event listener
+    this.focusListener.remove();
   }
 
   async viewPlaceAsync() {
     this.setState({isLoading: true})
     try {
+      console.log(this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail);
       let response = await fetch(
         // needs to add user email in the URL if the user already logins
-        this.baseURL + 'view_one_place?place_id=' + this.placeId,
+        this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail,
         {
           method: 'GET',
           headers: {
@@ -95,6 +107,10 @@ export default class ViewPlaceScreen extends Component {
     };
   }
 
+  addReport() {
+    this.props.navigation.push('CreateNewReport', {placeId: this.placeId});
+  }
+
   toggleSubscribeStatus() {
     let dataSource = this.state.dataSource;
     if (dataSource['subscribe_status'] == 1) {
@@ -119,20 +135,20 @@ export default class ViewPlaceScreen extends Component {
     return (
       <View style={styles.container}>
         <FlatList 
-        horizontal={true}
+          horizontal={true}
           data={this.state.pictureNumbers}
           renderItem={({item}) =>
           <View style={{flexDirection: "row", marginEnd: 10}}>
             <View>
               <Image source={{uri: this.baseURL + 'place_image/' + this.placeId + '/' + item.toString() + '.jpg'}} 
                 style={{flex: 1,
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
                 resizeMode: 'contain'
                 }}/>
             </View>
           </View>}
-          keyExtractor={(item, index) => item} 
+          keyExtractor={(item, index) => item.toString()} 
         />
         <View>
           <SubscribeButton title="Subscribe" 
@@ -143,11 +159,13 @@ export default class ViewPlaceScreen extends Component {
             subscribe_status={this.state.dataSource['subscribe_status']} />
         </View>
         <View style={{marginStart: 10, justifyContent: 'center'}}>
-          <Text style={styles.title}>{this.state.dataSource['name']} </Text>
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>
+          <VerticalMargin />
           <Text>Introduction: {this.state.dataSource['intro']}</Text>
         </View>
+        <VerticalMargin />
+        <View><Text>Comments about this place:</Text></View>
         <FlatList
           data={this.state.dataSource['reviews']}
           renderItem={({item}) =>
@@ -155,12 +173,15 @@ export default class ViewPlaceScreen extends Component {
             <View>
               <Text> {item} </Text>
             </View>
-          </View>}
-          keyExtractor={(item, index) => item} 
+            <HorizontalLine/>
+          </View>
+          }
+          keyExtractor={(item, index) => item.toString()} 
         />
         <View>
           <AddReportButton title="Add Report"
-            subscribe_status={this.state.dataSource['subscribe_status']}  />
+            subscribe_status={this.state.dataSource['subscribe_status']} 
+            onPress={()=>{this.addReport();}} />
         </View>
       </View>
     );
@@ -170,11 +191,13 @@ export default class ViewPlaceScreen extends Component {
 class SubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 0) {
+      console.log("subscribe_status is "+this.props.subscribe_status);
       return null;
     }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress}>
+        <View style={styles.button}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
@@ -182,23 +205,27 @@ class SubscribeButton extends Component {
 class UnsubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 1) {
+      console.log("subscribe_status is "+this.props.subscribe_status);
       return null;
     }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress}>
+        <View style={styles.button}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
 
 class AddReportButton extends Component {
   render() {
+    // to update: uncomment the following statements when 'subscribe_status' works
     if (this.props.subscribe_status < 0) {
-      return null;
+     return null;
     }
     return (
-      <Button title={this.props.title}
-      onPress={this.props.onPress} />
+      <TouchableHighlight onPress={this.props.onPress} >
+        <View style={[styles.button, {marginBottom: 50}]}><Text style={styles.buttonText}>{this.props.title}</Text></View>
+      </TouchableHighlight>
     );
   }
 }
@@ -207,5 +234,18 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  button: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: 130,
+    alignItems: 'center',
+    backgroundColor: '#d3d3d3'
+  },
+  buttonText: {
+    textAlign: 'center',
+    padding: 10,
+    color: '#BF5700',
+    fontWeight: 'bold'
   },
 });

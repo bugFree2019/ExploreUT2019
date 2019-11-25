@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Alert} from 'react-native';
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
-
+import Icon from "react-native-vector-icons/Ionicons";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+
+import { ToastAndroid } from "react-native";
+
 import ViewPlaceScreen from './ViewPlaceScreen';
+import ManageUserScreen from './ManageUserScreen';
 
 import * as firebase from 'firebase';
 
@@ -24,17 +28,43 @@ console.error('Firebase initialization error raised', err.stack)
 }}
 
 class ManageScreen extends Component {
-  static navigationOptions = {
-    title: 'Manage',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Manage',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   async componentDidMount() {
     this._configureGoogleSignIn();
+    // this._userExist();
   }
+
+  showSignInToast = () => {
+  ToastAndroid.showWithGravityAndOffset(
+    "Signed In",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    25,
+    50
+  );}
+
+  showSignUpToast = () => {
+  ToastAndroid.showWithGravityAndOffset(
+    "Signed Up",
+    ToastAndroid.LONG,
+    ToastAndroid.BOTTOM,
+    25,
+    50
+  );}
 
   _configureGoogleSignIn() {
     GoogleSignin.configure(
@@ -54,14 +84,24 @@ class ManageScreen extends Component {
     })
   }
 
+
   _signIn = async () => {
     try {
+      // console.log('userEmail:', this.state.email);
       const userInfo = await GoogleSignin.signIn();
       const accessToken = undefined;
       const idToken = userInfo.idToken;
       const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+
       await firebase.auth().signInWithCredential(credential);
-      console.log('userEmail:',userInfo.user.email);
+      this.setState({email: userInfo.user.email});
+
+      const { navigate } = this.props.navigation;
+      navigate('ManageUser', {userEmail: this.state.email});
+
+      this.showSignInToast();
+
+      // console.log('userEmail:', this.state.email);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // sign in was cancelled
@@ -81,25 +121,64 @@ class ManageScreen extends Component {
     }
   };
 
-    signUpUser = (email, password) => {
-    try {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-    }
-    catch(error) {
-      console.log(error.toString())
-    }
+    signUpUser = async(email, password) => {
+      // var existError = false;
+      // console.log('defined: ', existError);
+      // try {
+      //   firebase.auth().createUserWithEmailAndPassword(email, password)
+      //   // console.log('final: ', existError);
+      //   // const { navigate } = this.props.navigation;
+      //   // navigate('ManageUser', {userEmail: this.state.email});
+
+      //   // this.showSignUpToast();
+      // }
+      // catch(error) {
+      //   existError = true;
+      //   console.log('mid: ', existError);
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      //   if (errorCode == 'auth/weak-password') {
+      //     alert('The password is too weak.');
+      //   } else {
+      //     alert(errorMessage);
+      //   }
+      //   console.log(error.toString())
+      // }
+    var existError = false;
+    console.log('defined: ', existError);
+    await firebase.auth().createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+          existError = true;
+          console.log('mid: ', existError);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.'); 
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    });
+    console.log('final: ', existError);
+    if (!existError) this.showSignUpToast();
   }
 
-    loginUser = (email, password) => {
-    try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
-        console.log(user)
-      })
+    loginUser = async(email, password) => {
+      var existError = false;
+      await firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(function(error) {
+              existError = true;
+              console.log(error.toString());
+              alert(error.toString());
+            })
+       if (!existError) {
+          const { navigate } = this.props.navigation;
+          navigate('ManageUser', {userEmail: this.state.email});
+
+          this.showSignInToast();
+       }
     }
-    catch (error) {
-      console.log(error,toString())
-    }
-  }
+
 
   render() {
     return (
@@ -149,6 +228,7 @@ class ManageScreen extends Component {
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
           onPress={this._signIn}
+          // onPress={console.log('pressed')}
           />
       </Container>
       
@@ -183,6 +263,7 @@ const styles = StyleSheet.create({
 
 const stackNavigator = createStackNavigator({
   Manage: ManageScreen,
+  ManageUser: ManageUserScreen,
   ViewPlace: ViewPlaceScreen,
 });
 

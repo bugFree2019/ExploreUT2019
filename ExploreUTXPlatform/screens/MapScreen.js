@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, PermissionsAndroid } from 'react-native';
+import { StyleSheet, Dimensions, PermissionsAndroid, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
+import { BottomNavigation, Text } from 'react-native-paper';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Icon from "react-native-vector-icons/Ionicons";
 
+// import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
 
 
@@ -22,17 +27,44 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
+const myIconAllPlaces = <Icon name={'place-of-worship'} size={12} color="#FFF" />;
+const myIconBuilding = <Icon name={'building'} />;
+const myIconStudy = <Icon name={'book-open'} />;
+const myIconActivity = <Icon name={'local-activity'} />;
+const myIconStatue = <Icon name={'monument'} />;
+
+const AllRoute = () => <Text>all</Text>;
+
+const BuildingRoute = () => <Text>building</Text>;
+
+const StudyRoute = () => <Text>study</Text>;
+
+const ActivityRoute = () => <Text>activity</Text>;
+
+const StatueRoute = () => <Text>statue</Text>;
+
+const themes = ["All", "Buildings", "Study", "Activity", "Monument"];
+
+
 class MapScreen extends Component {
-  static navigationOptions = {
-    title: 'Map',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Map',
     headerTintColor: '#fff',
     headerStyle: {
       backgroundColor: '#BF5700',
     },
+    headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   constructor() {
     super();
+    this.focusListener=null;
     this.state = {
       region: {
         latitude: LATITUDE,
@@ -40,17 +72,112 @@ class MapScreen extends Component {
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
+      // this marginBottom is here to ensure the get my current location button
+      // appear on the screen.
       marginBottom : 1,
-      isLoading: true,
+      // initialize the places from our database.
       myPlaces: [],
+
+      // theme: "All",
+
+      index: 0,
+        routes: [
+        { key: 'all', title: 'All', icon: 'places' },
+        { key: 'building', title: 'Building', icon: 'buildings' },
+        { key: 'study', title: 'Study', icon: 'study' },
+        { key: 'activity', title: 'Activity', icon: 'activity' },
+        { key: 'statue', title: 'Statue', icon: 'statue' }
+        ],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
+    this.userEmail = '';
   }
 
-  getPlaces() {
-    this.setState({isLoading: true});
+  handleIndexChange = index => {
+    this.setState({ 
+      index: index,
+    });
+    this.updateMap(index);
+  };
 
+  async updateMap (index) {
+    if (index === 0) {
+      await this.getPlaces();
+    } else {
+      await this.getThemePlaces(themes[index]);
+    }
+  }
+
+  renderScene = BottomNavigation.SceneMap({
+    all: AllRoute,
+    building: BuildingRoute,
+    study: StudyRoute,
+    activity: ActivityRoute,
+    statue: StatueRoute,
+  });
+
+  async checkUser() {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      try {
+        const userInfo = await GoogleSignin.signIn();
+        this.userEmail = userInfo.user.email;
+        console.log(this.userEmail);
+      }
+      catch(error) {
+        console.log('user not logged in')
+      }
+    }
+    else {
+      var user = await firebase.auth().currentUser;
+      if (user) {
+        // User is signed in.
+        this.userEmail = user.email;
+        console.log(user.email);
+      } else {
+        // No user is signed in.
+        this.userEmail = '';
+        console.log('user not logged in')
+      }
+  }
+  }
+
+  // get places from database and save only name, id, location, theme,
+  // and restructure the location to the form Map.Marker needs.
+  getPlaces() {
     fetch(this.baseURL + 'view_places',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Android'
+          }
+        }
+      )
+      .then(res => res.json())
+      .then(parsedRes => {
+        this.checkUser();
+        const placesArray = [];
+        for (const key in parsedRes) {
+          placesArray.push({
+            latitude: parsedRes[key].location.lat,
+            longitude: parsedRes[key].location.lng,
+            placeId: parsedRes[key]._id,
+            name: parsedRes[key].name,
+            theme: parsedRes[key].theme,
+            key: key.toString(),
+          });
+        }
+        this.setState({ 
+          myPlaces: placesArray
+         });
+        console.log(placesArray);
+      })
+      .catch(err => console.log(err));
+  }
+
+  getThemePlaces(theme) {
+    fetch(this.baseURL + 'view_places_by_theme' + '?theme=' + theme,
         {
           method: 'GET',
           headers: {
@@ -69,11 +196,10 @@ class MapScreen extends Component {
             placeId: parsedRes[key]._id,
             name: parsedRes[key].name,
             theme: parsedRes[key].theme,
-            key: key,
+            key: key.toString(),
           });
         }
         this.setState({ 
-          isLoading: false,
           myPlaces: placesArray
          });
         console.log(placesArray);
@@ -81,7 +207,7 @@ class MapScreen extends Component {
       .catch(err => console.log(err));
   }
 
-  GetLocation() {
+  async GetLocation() {
     Geolocation.getCurrentPosition(
       position => {
         this.setState({
@@ -94,7 +220,7 @@ class MapScreen extends Component {
         });
       },
     (error) => console.log(error.message),
-    {GEOLOCATION_OPTIONS},
+    {GEOLOCATION_OPTIONS}
     );
   }
 
@@ -114,8 +240,18 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    this.getPlaces();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.initializeState());
+  }
 
+  componentWillUnmount() {
+    if (this.watchID) {
+      Geolocation.clearWatch(this.watchID);
+    }
+    this.focusListener.remove();
+  }
+  
+  async initializeState() {
+    console.log("initialize");
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -124,59 +260,82 @@ class MapScreen extends Component {
           this.GetLocation();
           this.WatchLocation();
         }
-      });
+      }); 
     } else {
       this.GetLocation();
       this.WatchLocation();
     }
+    await this.getPlaces();
   }
-  componentWillUnmount() {
-    Geolocation.clearWatch(this.watchID);
-  }
-
-  // onRegionChange = region => {
-  //   this.setState({ region });
-  // }
 
   onRegionChangeComplete = region => {
     this.setState({ region });
   }
 
   onMapReady = () => {
-    this.setState({marginBottom: 0})
+    this.setState({marginBottom: 0});
   }
 
-  render() {
-    this.placeMarkers =  this.state.myPlaces.map(place =>
-       (<MapView.Marker 
-        coordinate={place} 
-        key={place.key} 
-        placeId={place.placeId}
-        title={place.name}
-        onPress={() => this.props.navigation.push('ViewPlace', {placeId: place.placeId, title: place.name})}
-        />)) ;
+  createMarkers() {
+    return this.state.myPlaces.map(place =>
+      (<MapView.Marker
+       coordinate={place} 
+       key={place.key} 
+       placeId={place.placeId}
+       // title={place.name}
+       // if the marker gets pressed, forward to view one place page.
+       onPress={() => this.props.navigation.push('ViewPlace', 
+       {placeId: place.placeId, title: place.name, userEmail: this.userEmail})}
+       />));
+  }
 
+  render() { 
     return (
+      <View style={{
+        flex: 1,
+        //flexDirection: 'column',
+        paddingTop: 550,
+      }}>
       <MapView
         ref={map => {
           this.map = map;
         }}
+        style={ {...styles.map, marginBottom: this.state.marginBottom } }
         provider={ PROVIDER_GOOGLE }
-        style={ {...styles.map, marginBottom: this.state.marginBottom} }
-        onMapReady={this.onMapReady}
+        onMapReady={ this.onMapReady }
         showsUserLocation={ true }
         showsMyLocationButton={ true }
         rotateEnabled={ true }
-        region={ this.state.region }
+        initialRegion={{
+          latitude: 30.2852,
+          longitude: -97.7340,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}
+        // region={ this.state.region }
+        mapPadding={{
+          top: 0,
+          right: 0,
+          bottom: 50,
+          left: 0
+        }}
         // onRegionChange={ region => this.setState({region}) }
         // onRegionChangeComplete={ region => this.setState({region}) }
         onRegionChangeComplete={ this.onRegionChangeComplete }
       >
-        { this.placeMarkers }
+      {this.createMarkers()}
       </MapView>
+      <BottomNavigation
+        navigationState={this.state}
+        onIndexChange={this.handleIndexChange}
+        renderScene={this.renderScene}
+        barStyle={{backgroundColor:'#BF5700'}}
+      />
+  </View>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFill,
@@ -190,16 +349,5 @@ const stackNavigator = createStackNavigator({
   Map: MapScreen,
   ViewPlace: ViewPlaceScreen,
 });
-
-// const buttomTabNavigator = createMaterialBottomTabNavigator({
-//   Album: { screen: Map },
-//   // Library: { screen: Library },
-//   // History: { screen: History },
-//   // Cart: { screen: Cart },
-// }, 
-// {
-//   initialRouteName: 'Album',
-//   activeColor: '#F44336',
-// });
 
 export default createAppContainer(stackNavigator);  

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ExploreUTXPlatformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ExploreUTXPlatformTests.m */; };
 		0AF313BC24682F372FC0757A /* libPods-ExploreUTXPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DE080EA1462B22FFE8DD2F /* libPods-ExploreUTXPlatform.a */; };

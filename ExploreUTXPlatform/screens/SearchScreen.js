@@ -3,17 +3,27 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SearchBar from 'react-native-search-bar';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
+import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
 import ViewPlaceScreen from './ViewPlaceScreen';
 
 class SearchScreen extends Component {
-  static navigationOptions = {
-    title: 'Search',
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Search',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#BF5700',
+      },
+      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+                         size={30} 
+                         color='#fff'
+                         style={{marginLeft: 10}}
+                         onPress={() => navigation.openDrawer()} />,
+    };
   };
 
   constructor(props){
@@ -21,9 +31,38 @@ class SearchScreen extends Component {
     this.state ={ isLoading: false,
                   searchTag: '' }
     this.baseURL = 'https://explore-ut.appspot.com/';
+    this.userEmail = '';
+  }
+
+  async checkUser() {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      try {
+        const userInfo = await GoogleSignin.signIn();
+        this.userEmail = userInfo.user.email;
+        console.log(this.userEmail);
+      }
+      catch(error) {
+        console.log('user not logged in')
+      }
+    }
+    else {
+      var user = await firebase.auth().currentUser;
+      if (user) {
+        // User is signed in.
+        this.userEmail = user.email;
+        console.log(user.email);
+      } else {
+        // No user is signed in.
+        this.userEmail = '';
+        console.log('user not logged in')
+      }
+    }
   }
 
   async searchPlaceAsync() {
+    await this.checkUser();
+    
     this.setState({isLoading: true})
     try {
       let response = await fetch(
@@ -67,7 +106,8 @@ class SearchScreen extends Component {
           onSearchButtonPress={() => this.searchPlaceAsync()}
           onCancelButtonPress={() => searchBar.current.blur()}
         />
-        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} navigate={this.props.navigation} />
+        <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} 
+          navigate={this.props.navigation} userEmail={this.userEmail}/>
       </View>
     );
   }
