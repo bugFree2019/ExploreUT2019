@@ -70,6 +70,7 @@ class ManageScreen extends Component {
     GoogleSignin.configure(
       {
       webClientId: '1062639050908-c26utn16jdp6ab1m1hbijphee5tblh50.apps.googleusercontent.com',  //Replace with your own client id
+      iosClientId: '1062639050908-brgjjlnbv2osu243bjucvorbtv02n943.apps.googleusercontent.com',
       offlineAccess: false,
       }
     );

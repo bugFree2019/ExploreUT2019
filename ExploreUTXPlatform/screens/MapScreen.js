@@ -70,9 +70,7 @@ class MapScreen extends Component {
       marginBottom : 1,
       // initialize the places from our database.
       myPlaces: [],
-
-      // theme: "All",
-
+      // states used in bottom navigator (index, routes)
       index: 0,
         routes: [
         { key: 'all', title: 'All', icon: 'map-marker' },
