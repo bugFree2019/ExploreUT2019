@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
-
+import SignOutButton from '../layouts/SignOutButton';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import * as firebase from 'firebase';
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -10,8 +12,9 @@ export default class ViewPlaceScreen extends Component {
       title: navigation.getParam('title', 'View One Place'),
       headerTintColor: '#fff',
       headerStyle: {
-      backgroundColor: '#BF5700',
-    },
+        backgroundColor: '#BF5700',
+      },
+      headerRight: <SignOutButton navigation={navigation} screen="ViewPlace"/>,
     };
   };
 
@@ -20,14 +23,39 @@ export default class ViewPlaceScreen extends Component {
     this.state ={isLoading: true}
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
-    console.log(this.placeId);
-    this.userEmail = this.props.navigation.getParam('userEmail', '');
-    console.log(this.userEmail);
+    // console.log(this.placeId);
+    this.userEmail = '';
     this.focusListener=null;
   }
 
   componentDidMount() {
     this.focusListener = this.props.navigation.addListener("didFocus", () => this.viewPlaceAsync());
+  }
+
+  async checkUser() {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      try {
+        const userInfo = await GoogleSignin.signIn();
+        this.userEmail = userInfo.user.email;
+        // console.log(this.userEmail);
+      }
+      catch(error) {
+        // console.log('user not logged in')
+      }
+    }
+    else {
+        var user = await firebase.auth().currentUser;
+        if (user) {
+          // User is signed in.
+          this.userEmail = user.email;
+          // console.log(user.email);
+        } else {
+          // No user is signed in.
+          this.userEmail = '';
+          // console.log('user not logged in')
+        }
+    }
   }
 
   componentWillUnmount() {
@@ -36,9 +64,10 @@ export default class ViewPlaceScreen extends Component {
   }
 
   async viewPlaceAsync() {
+    await this.checkUser();
     this.setState({isLoading: true})
     try {
-      console.log(this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail);
+      // console.log(this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail);
       let response = await fetch(
         // needs to add user email in the URL if the user already logins
         this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail,
@@ -51,7 +80,7 @@ export default class ViewPlaceScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.setState({
         isLoading: false,
         dataSource: responseJson,
@@ -77,7 +106,7 @@ export default class ViewPlaceScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.toggleSubscribeStatus();
     }
     catch (error) {
@@ -99,7 +128,7 @@ export default class ViewPlaceScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.toggleSubscribeStatus();
     }
     catch (error) {
@@ -191,7 +220,7 @@ export default class ViewPlaceScreen extends Component {
 class SubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 0) {
-      console.log("subscribe_status is "+this.props.subscribe_status);
+      // console.log("subscribe_status is "  +this.props.subscribe_status);
       return null;
     }
     return (
@@ -205,7 +234,7 @@ class SubscribeButton extends Component {
 class UnsubscribeButton extends Component {
   render() {
     if (this.props.subscribe_status != 1) {
-      console.log("subscribe_status is "+this.props.subscribe_status);
+      // console.log("subscribe_status is " + this.props.subscribe_status);
       return null;
     }
     return (

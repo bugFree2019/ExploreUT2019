@@ -5,6 +5,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
+import SignOutButton from '../layouts/SignOutButton';
 import * as firebase from 'firebase';
 
 import { ToastAndroid } from "react-native";
@@ -23,6 +24,7 @@ export default class ManageUserScreen extends Component {
                          color='#fff'
                          style={{marginLeft: 10}}
                          onPress={() => navigation.openDrawer()} />,
+      headerRight: <SignOutButton navigation={navigation} screen="Manage" />,
     };
   };
 
@@ -32,8 +34,34 @@ export default class ManageUserScreen extends Component {
       isLoading: true,
       }
     this.baseURL = 'https://explore-ut.appspot.com/';
-    this.userEmail = this.props.navigation.getParam('userEmail', 'changpengtong');
+    this.userEmail = null;
     this.focusListener=null;
+  }
+
+  async checkUser() {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      try {
+        const userInfo = await GoogleSignin.signIn();
+        this.userEmail = userInfo.user.email;
+        console.log(this.userEmail);
+      }
+      catch(error) {
+        console.log('user not logged in')
+      }
+    }
+    else {
+        var user = await firebase.auth().currentUser;
+        if (user) {
+          // User is signed in.
+          this.userEmail = user.email;
+          console.log(user.email);
+        } else {
+          // No user is signed in.
+          this.userEmail = '';
+          console.log('user not logged in')
+        }
+    }
   }
 
   showSignOutToast = () => {
@@ -87,6 +115,11 @@ export default class ManageUserScreen extends Component {
     this.setState({isLoading: true})
     try {
       console.log(this.userEmail);
+      await this.checkUser();
+      if (!this.userEmail) {
+        const { navigate } = this.props.navigation;
+        navigate('Manage');
+      }
       const data = {};
       data.email = this.userEmail;
       let response = await fetch(
@@ -125,14 +158,14 @@ export default class ManageUserScreen extends Component {
 
     return (
       <View style={styles.container}>
-          <Button style={{ marginTop: 10, width: 100, height: 48 }}
+          {/* <Button style={{ marginTop: 10, width: 100, height: 48 }}
             full
             rounded
             success
             onPress={()=> this.signOutUser()}
           >
             <Text style={{ color: 'white' }}>Sign Out</Text>
-          </Button>
+          </Button> */}
         <ListCardView dataSource={this.state.dataSource} 
         baseURL={this.baseURL} navigate={this.props.navigation} userEmail={this.userEmail} />
 
