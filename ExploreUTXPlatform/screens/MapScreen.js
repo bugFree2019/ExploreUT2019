@@ -95,11 +95,11 @@ class MapScreen extends Component {
     this.updateMap(index);
   };
 
-  async updateMap (index) {
+  updateMap (index) {
     if (index === 0) {
-      await this.getPlaces();
+      this.getPlaces();
     } else {
-      await this.getThemePlaces(themes[index]);
+      this.getThemePlaces(themes[index]);
     }
   }
 
@@ -233,7 +233,7 @@ class MapScreen extends Component {
       this.GetLocation();
       this.WatchLocation();
     }
-    await this.getPlaces();
+    this.getPlaces();
   }
 
   onRegionChangeComplete = region => {
