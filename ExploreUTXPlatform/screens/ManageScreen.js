@@ -10,6 +10,7 @@ import { ToastAndroid } from "react-native";
 
 import ViewPlaceScreen from './ViewPlaceScreen';
 import ManageUserScreen from './ManageUserScreen';
+import SearchScreen from './SearchScreen';
 
 import * as firebase from 'firebase';
 
@@ -264,6 +265,7 @@ const styles = StyleSheet.create({
 const stackNavigator = createStackNavigator({
   Manage: ManageScreen,
   ManageUser: ManageUserScreen,
+  Search: SearchScreen,
   ViewPlace: ViewPlaceScreen,
 });
 

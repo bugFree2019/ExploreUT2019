@@ -23,7 +23,6 @@ export default class ViewPlaceScreen extends Component {
     this.state ={isLoading: true}
     this.baseURL = 'https://explore-ut.appspot.com/';
     this.placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
-    // console.log(this.placeId);
     this.userEmail = '';
     this.focusListener=null;
   }
@@ -36,12 +35,12 @@ export default class ViewPlaceScreen extends Component {
     const isSignedIn = await GoogleSignin.isSignedIn();
     if (isSignedIn) {
       try {
+        // user is signed in
         const userInfo = await GoogleSignin.signIn();
         this.userEmail = userInfo.user.email;
-        // console.log(this.userEmail);
       }
       catch(error) {
-        // console.log('user not logged in')
+        // user is signed in
       }
     }
     else {
@@ -49,11 +48,9 @@ export default class ViewPlaceScreen extends Component {
         if (user) {
           // User is signed in.
           this.userEmail = user.email;
-          // console.log(user.email);
         } else {
           // No user is signed in.
           this.userEmail = '';
-          // console.log('user not logged in')
         }
     }
   }
@@ -67,7 +64,6 @@ export default class ViewPlaceScreen extends Component {
     await this.checkUser();
     this.setState({isLoading: true})
     try {
-      // console.log(this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail);
       let response = await fetch(
         // needs to add user email in the URL if the user already logins
         this.baseURL + 'view_one_place?place_id=' + this.placeId + '&user_email=' + this.userEmail,
@@ -106,7 +102,6 @@ export default class ViewPlaceScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      // console.log(responseJson)
       this.toggleSubscribeStatus();
     }
     catch (error) {
@@ -128,7 +123,6 @@ export default class ViewPlaceScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      // console.log(responseJson)
       this.toggleSubscribeStatus();
     }
     catch (error) {

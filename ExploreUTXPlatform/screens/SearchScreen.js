@@ -1,40 +1,34 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import SearchBar from 'react-native-search-bar';
-import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
-import ViewPlaceScreen from './ViewPlaceScreen';
 import SignOutButton from '../layouts/SignOutButton';
 
-class SearchScreen extends Component {
+export default class SearchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Search',
+      title: 'Search Result',
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: '#BF5700',
       },
-      headerLeft : <Icon name={Platform.OS === "ios" ? "md-menu" : "md-menu"}  
-                         size={30} 
-                         color='#fff'
-                         style={{marginLeft: 10}}
-                         onPress={() => navigation.openDrawer()} />,
       headerRight: <SignOutButton navigation={navigation} screen="Search"/>,
     };
   };
 
   constructor(props){
     super(props);
-    this.state ={ isLoading: false,
-                  searchTag: '' }
+    this.state = {isLoading: true,
+                  searchTag: this.props.navigation.getParam('searchTag', '') };
     this.baseURL = 'https://explore-ut.appspot.com/';
   }
 
+  componentDidMount() {
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.searchPlaceAsync());
+  }
+
   async searchPlaceAsync() {
-    this.setState({isLoading: true})
+    this.setState({isLoading: true});
     try {
       let response = await fetch(
         this.baseURL + 'search?tag=' + this.state.searchTag,
@@ -47,11 +41,10 @@ class SearchScreen extends Component {
         }
       );
       let responseJson = await response.json();
-      console.log(responseJson)
+      // console.log(responseJson)
       this.setState({
         isLoading: false,
         dataSource: responseJson,
-        searchTag: '',
       });
     }
     catch (error) {
@@ -70,13 +63,6 @@ class SearchScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <SearchBar
-          ref="searchBar"
-          placeholder="Search places by tags"
-          onChangeText={(text) => this.setState({searchTag: text})}
-          onSearchButtonPress={() => this.searchPlaceAsync()}
-          onCancelButtonPress={() => searchBar.current.blur()}
-        />
         <ListCardView dataSource={this.state.dataSource} baseURL={this.baseURL} 
           navigate={this.props.navigation} />
       </View>
@@ -90,10 +76,3 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
 });
-
-const stackNavigator = createStackNavigator({
-  Search: SearchScreen,
-  ViewPlace: ViewPlaceScreen,
-});
-
-export default createAppContainer(stackNavigator);
