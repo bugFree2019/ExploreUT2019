@@ -40,7 +40,7 @@ export default class SignOutButton extends Component {
       this.setState({user: null});
       this.showSignOutToast();
       if (this.props.screen === 'Manage') {
-        this.props.navigation.navigate(this.props.title);
+        this.props.navigation.navigate(this.props.screen);
       }
       else if (this.props.screen === 'ViewPlace') {
         let placeId = this.props.navigation.getParam('placeId', '5dca01e229953646f96aebda');
