@@ -4,12 +4,11 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import Icon from "react-native-vector-icons/Ionicons";
 import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
 import { BottomNavigation, Text } from 'react-native-paper';
-// import Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Icon from "react-native-vector-icons/Ionicons";
 
 // import View One Place to enable the screen forward to it.
 import ViewPlaceScreen from './ViewPlaceScreen';
@@ -29,21 +28,21 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
-const myIconAllPlaces = <FontAwesome5 name={'place-of-worship'} size={24} color="#FFF" />;
-const myIconBuilding = <FontAwesome5 name={'building'} solid />;
-const myIconStudy = <FontAwesome5 name={'book-open'} />;
-const myIconActivity = <FontAwesome5 name={'local-activity'} />;
-const myIconStatue = <FontAwesome5 name={'monument'} />;
+const myIconAllPlaces = <Icon name={'place-of-worship'} size={12} color="#FFF" />;
+const myIconBuilding = <Icon name={'building'} />;
+const myIconStudy = <Icon name={'book-open'} />;
+const myIconActivity = <Icon name={'local-activity'} />;
+const myIconStatue = <Icon name={'monument'} />;
 
-const AllRoute = () => <Text></Text>;
+const AllRoute = () => <Text>all</Text>;
 
-const BuildingRoute = () => <Text></Text>;
+const BuildingRoute = () => <Text>building</Text>;
 
-const StudyRoute = () => <Text></Text>;
+const StudyRoute = () => <Text>study</Text>;
 
-const ActivityRoute = () => <Text></Text>;
+const ActivityRoute = () => <Text>activity</Text>;
 
-const StatueRoute = () => <Text></Text>;
+const StatueRoute = () => <Text>statue</Text>;
 
 const themes = ["All", "Buildings", "Study", "Activity", "Monument"];
 
@@ -52,11 +51,11 @@ class MapScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Map',
-      headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#BF5700',
-      },
-      headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#BF5700',
+    },
+    headerLeft : <Icon name={Platform.OS === "ios" ? "ios-menu-outline" : "md-menu"}  
                          size={30} 
                          color='#fff'
                          style={{marginLeft: 10}}
@@ -67,6 +66,7 @@ class MapScreen extends Component {
 
   constructor() {
     super();
+    this.focusListener=null;
     this.state = {
       region: {
         latitude: LATITUDE,
@@ -80,14 +80,15 @@ class MapScreen extends Component {
       // initialize the places from our database.
       myPlaces: [],
 
-      theme: "All",
+      // theme: "All",
+
       index: 0,
         routes: [
-        { key: 'all', title: 'All', icon: myIconAllPlaces },
-        { key: 'building', title: 'Building', icon: {myIconBuilding} },
-        { key: 'study', title: 'Study', icon: {myIconStudy} },
-        { key: 'activity', title: 'Activity', icon: {myIconActivity} },
-        { key: 'statue', title: 'Statue', icon: {myIconStatue} }
+        { key: 'all', title: 'All', icon: 'places' },
+        { key: 'building', title: 'Building', icon: 'buildings' },
+        { key: 'study', title: 'Study', icon: 'study' },
+        { key: 'activity', title: 'Activity', icon: 'activity' },
+        { key: 'statue', title: 'Statue', icon: 'statue' }
         ],
     };
     this.baseURL = 'https://explore-ut.appspot.com/';
@@ -97,18 +98,17 @@ class MapScreen extends Component {
   handleIndexChange = index => {
     this.setState({ 
       index: index,
-      theme: themes[index],
     });
-    console.log(index);
-    console.log(this.state.theme);
-    if (index === 0) {
-      this.getPlaces();
-    } else {
-      this.getThemePlaces();
-    }
-    this.createMarkers();
-    this.forceUpdate();
+    this.updateMap(index);
   };
+
+  async updateMap (index) {
+    if (index === 0) {
+      await this.getPlaces();
+    } else {
+      await this.getThemePlaces(themes[index]);
+    }
+  }
 
   renderScene = BottomNavigation.SceneMap({
     all: AllRoute,
@@ -178,8 +178,8 @@ class MapScreen extends Component {
       .catch(err => console.log(err));
   }
 
-  getThemePlaces() {
-    fetch(this.baseURL + 'view_places_by_theme' + '?theme=' + this.state.theme,
+  getThemePlaces(theme) {
+    fetch(this.baseURL + 'view_places_by_theme' + '?theme=' + theme,
         {
           method: 'GET',
           headers: {
@@ -209,7 +209,7 @@ class MapScreen extends Component {
       .catch(err => console.log(err));
   }
 
-  GetLocation() {
+  async GetLocation() {
     Geolocation.getCurrentPosition(
       position => {
         this.setState({
@@ -242,8 +242,18 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    this.getPlaces();
+    this.focusListener = this.props.navigation.addListener("didFocus", () => this.initializeState());
+  }
 
+  componentWillUnmount() {
+    if (this.watchID) {
+      Geolocation.clearWatch(this.watchID);
+    }
+    this.focusListener.remove();
+  }
+  
+  async initializeState() {
+    console.log("initialize");
     if (Platform.OS === 'android') {
       PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -257,20 +267,8 @@ class MapScreen extends Component {
       this.GetLocation();
       this.WatchLocation();
     }
+    await this.getPlaces();
   }
-
-  componentWillUnmount() {
-    if (this.watchID) {
-      Geolocation.clearWatch(this.watchID);
-    }
-  }
-
-  // componentDidUpdate() {
-  //   this.render();
-  // }
-  // onRegionChange = region => {
-  //   this.setState({ region });
-  // }
 
   onRegionChangeComplete = region => {
     this.setState({ region });
@@ -293,14 +291,13 @@ class MapScreen extends Component {
        />));
   }
 
-  render() {  
+  render() { 
     return (
       <View style={{
         flex: 1,
         //flexDirection: 'column',
         paddingTop: 550,
       }}>
-      
       <MapView
         ref={map => {
           this.map = map;
@@ -328,7 +325,7 @@ class MapScreen extends Component {
         // onRegionChangeComplete={ region => this.setState({region}) }
         onRegionChangeComplete={ this.onRegionChangeComplete }
       >
-        { this.createMarkers() } 
+      {this.createMarkers()}
       </MapView>
       <BottomNavigation
         navigationState={this.state}
