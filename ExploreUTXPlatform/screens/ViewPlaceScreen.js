@@ -185,14 +185,14 @@ export default class ViewPlaceScreen extends Component {
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>
           <VerticalMargin />
-          <Text>Introduction: {this.state.dataSource['intro']}</Text>
+          <Text style={{color: "#BF5700"}}>Introduction: {this.state.dataSource['intro']}</Text>
         </View>
         <VerticalMargin />
         <View><Text>Comments about this place:</Text></View>
         <FlatList
           data={this.state.dataSource['reviews']}
           renderItem={({item}) =>
-          <View>
+          <View style={{marginTop: 10}}>
             <View>
               <Text> {item} </Text>
             </View>
@@ -256,7 +256,6 @@ class AddReportButton extends Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
   },
   button: {
     marginTop: 10,
