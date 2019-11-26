@@ -28,7 +28,7 @@ const GEOLOCATION_OPTIONS = {
   maximumAge: 1000,
 };
 
-const AllRoute = () => <Text>all</Text>;
+const AllRoute = () => <Text style={{height:0}}>all</Text>;
 
 const BuildingRoute = () => <Text>building</Text>;
 
@@ -269,7 +269,7 @@ class MapScreen extends Component {
         <View style={{
           flex: 1,
           //flexDirection: 'column',
-          paddingTop: 550,
+          paddingTop: height - 136,
         }}>
           <MapView
             ref={map => {
