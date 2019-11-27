@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ExploreUTXPlatform</string>
+    <string name="title_activity_share">ExploreUTXPlatform</string>
 </resources>
