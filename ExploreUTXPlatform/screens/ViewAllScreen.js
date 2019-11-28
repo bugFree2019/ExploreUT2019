@@ -98,6 +98,10 @@ class ViewAllScreen extends Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingLeft: 2,
+    paddingRight: 2,
+    paddingTop: 2,
+    paddingBottom: 2,
     backgroundColor: '#F5FCFF'
   },
 });
