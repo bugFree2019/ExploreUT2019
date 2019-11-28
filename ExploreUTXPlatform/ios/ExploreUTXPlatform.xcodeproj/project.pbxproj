@@ -20,6 +20,7 @@
 		A0B6150A5EBA240671767E57 /* libPods-ExploreUTXPlatform-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEECAE0F49D06C1AD759D3 /* libPods-ExploreUTXPlatform-tvOS.a */; };
 		C730E88F3573899964443416 /* libPods-ExploreUTXPlatformTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A00BFFDA04FDE63563AC30 /* libPods-ExploreUTXPlatformTests.a */; };
 		C9E1B9E72385000500BEB63C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9E1B9E52385000500BEB63C /* GoogleService-Info.plist */; };
+		F113BC2A199A43C3BC2E8F94 /* libReactNativeShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DBC94B098F48C497579BF6 /* libReactNativeShareExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F2A00BFFDA04FDE63563AC30 /* libPods-ExploreUTXPlatformTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExploreUTXPlatformTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB5D2EED24643D1A490CB7E /* ReactNativeShareExtension.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeShareExtension.xcodeproj"; path = "../node_modules/react-native-share-extension/ios/ReactNativeShareExtension.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		88DBC94B098F48C497579BF6 /* libReactNativeShareExtension.a */ = {isa = PBXFileReference; name = "libReactNativeShareExtension.a"; path = "libReactNativeShareExtension.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF313BC24682F372FC0757A /* libPods-ExploreUTXPlatform.a in Frameworks */,
+				F113BC2A199A43C3BC2E8F94 /* libReactNativeShareExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +181,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9AB5D2EED24643D1A490CB7E /* ReactNativeShareExtension.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -682,6 +687,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExploreUTXPlatform.app/ExploreUTXPlatform";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -702,6 +715,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExploreUTXPlatform.app/ExploreUTXPlatform";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Release;
 		};
@@ -722,6 +743,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ExploreUTXPlatform;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -741,6 +766,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ExploreUTXPlatform;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Release;
 		};
@@ -769,6 +798,14 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -797,6 +834,14 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Release;
 		};
@@ -824,6 +869,14 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExploreUTXPlatform-tvOS.app/ExploreUTXPlatform-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -851,6 +904,14 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExploreUTXPlatform-tvOS.app/ExploreUTXPlatform-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-share-extension/ios",
+				);
 			};
 			name = Release;
 		};

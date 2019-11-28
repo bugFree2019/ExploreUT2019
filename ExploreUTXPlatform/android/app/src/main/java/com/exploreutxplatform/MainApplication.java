@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.alinz.parkerdan.shareextension.SharePackage;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -18,6 +19,9 @@ import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.airbnb.android.react.maps.MapsPackage;
+import android.util.Log;
+import com.facebook.react.ReactInstanceManager;
+
 
 
 
@@ -36,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           // return Arrays.<ReactPackage>asList(
           //   new MainReactPackage(),
+//            new SharePackage(),
           //   new VectorIconsPackage(),
           //   new MapsPackage(),
           //   new GeolocationPackage(),
@@ -52,7 +57,8 @@ public class MainApplication extends Application implements ReactApplication {
               break;
             }
           }
-          //packages.add(new MyReactNativePackage());
+//          packages.add(new MainReactPackage());
+//          packages.add(new SharePackage());
           return packages;
         }
 
