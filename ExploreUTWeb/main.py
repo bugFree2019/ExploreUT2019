@@ -280,30 +280,36 @@ def my_map():
     # creating a map in the view
     mymap = Map(
         identifier='view-side',
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=30.289017,
+        lng=-97.736480,
+        markers=[(30.289017, -97.736480)]
     )
-    sndmap = Map(
-        identifier='sndmap',
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[
-            {
-                'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                'lat': 37.4419,
-                'lng': -122.1419,
-                'infobox': '<b>Hello World</b>'
-            },
-            {
-                'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                'lat': 37.4300,
-                'lng': -122.1400,
-                'infobox': '<b>Hello World from other place</b>'
-            }
-        ]
+
+    condition = request.args.get('condition')  # in the future, condition will be nearby location
+    places = read_places(db, condition)
+    my_markers = []
+    for place in places:
+        if place.__contains__('location') and place['location'] != None:
+            place_name = place['name']
+            place_id = place['_id']
+            link = '/view_one_place?place_id=' + str(place_id)
+            my_markers.append({
+                'icon': 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                'lat': place['location']['lat'],
+                'lng': place['location']['lng'],
+                'infobox': "<a href=" + link + ">" + place_name + "</a>"
+                })
+
+    mymap = Map(
+        identifier='mymap',
+        lat=30.285017,
+        lng=-97.735480,
+        markers=my_markers,
+        style="height:600px; width:1080px; margin:0;",
+        zoom=15.5
+
     )
-    return render_template('map.html', mymap=mymap, sndmap=sndmap)
+    return render_template('map.html', mymap=mymap)
 
 
 @app.route('/place_image/<place_id>/<image_id>.jpg', methods=['GET'])

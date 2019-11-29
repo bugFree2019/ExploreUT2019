@@ -266,14 +266,14 @@ PODS:
     - React-cxxreact (= 0.61.4)
     - React-jsi (= 0.61.4)
     - ReactCommon/jscallinvoker (= 0.61.4)
-  - RNGestureHandler (1.5.0):
+  - RNGestureHandler (1.5.1):
     - React
   - RNGoogleSignin (3.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNScreens (2.0.0-alpha.11):
+  - RNScreens (2.0.0-alpha.13):
     - React
   - RNSearchBar (3.5.1):
     - React
@@ -449,10 +449,10 @@ SPEC CHECKSUMS:
   React-RCTText: 21934e0a51d522abcd0a275407e80af45d6fd9ec
   React-RCTVibration: 0f76400ee3cec6edb9c125da49fed279340d145a
   ReactCommon: a6a294e7028ed67b926d29551aa9394fd989c24c
-  RNGestureHandler: a4ddde1ffc6e590c8127b8b7eabfdade45475c74
+  RNGestureHandler: 7add966bb5d90ee8cf38d4341f87814474357972
   RNGoogleSignin: a10b849c165088c737d4465de6c2062f24d06002
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNScreens: ad3661f864ef18d952e9a4799b6791683e33c1fc
+  RNScreens: 3a9ec369c7608d36f037bd14340a95a005f3f9d5
   RNSearchBar: 54ad41edd78385681730b02b5e069900436d996b
   RNSyanImagePicker: cf226581ede73b211da58d976a4469e86da8af9c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
