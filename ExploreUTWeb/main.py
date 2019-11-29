@@ -307,7 +307,6 @@ def my_map():
         markers=my_markers,
         style="height:600px; width:1080px; margin:0;",
         zoom=15.5
-
     )
     return render_template('map.html', mymap=mymap)
 
