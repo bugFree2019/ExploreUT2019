@@ -277,15 +277,7 @@ def view_places_by_theme():
 
 @app.route('/map', methods=['GET'])
 def my_map():
-    # creating a map in the view
-    mymap = Map(
-        identifier='view-side',
-        lat=30.289017,
-        lng=-97.736480,
-        markers=[(30.289017, -97.736480)]
-    )
-
-    condition = request.args.get('condition')  # in the future, condition will be nearby location
+    condition = request.args.get('condition')  # in the future, condition could be nearby location
     places = read_places(db, condition)
     my_markers = []
     for place in places:
@@ -305,7 +297,11 @@ def my_map():
         lat=30.285017,
         lng=-97.735480,
         markers=my_markers,
-        style="height:600px; width:1080px; margin:0;",
+        style=(
+            "height:80%;"
+            "width:80%;"
+            "position:absolute;"
+        ),
         zoom=15.5
     )
     return render_template('map.html', mymap=mymap)
