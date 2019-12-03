@@ -33,7 +33,7 @@ export default class ViewPlaceScreen extends Component {
     try {
       const result = await Share.share({
         message:
-          this.baseURL + 'view_one_place?place_id=' + this.placeId,
+          'React Native | A framework for building native apps using React',
       });
 
       if (result.action === Share.sharedAction) {
