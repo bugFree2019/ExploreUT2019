@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    {% block meta %} {% endblock %}
     {% block css %}
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {% endblock %}
@@ -84,6 +84,7 @@
       {% block content %} {% endblock %}
       {% block gallery %} {% endblock %}
       {% block reviews %} {% endblock %}
+	  {% block share %} {% endblock %}
     </div>
   </body>
 </html>
