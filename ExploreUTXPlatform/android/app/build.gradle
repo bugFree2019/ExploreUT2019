@@ -129,7 +129,7 @@ android {
 
     defaultConfig {
         applicationId "com.exploreutxplatform"
-        minSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -179,7 +179,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-share-extension')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
