@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
+{% block meta %} 
+  <meta property="og:url"           content="https://explore-ut.appspot.com/view_one_place?place_id={{ place['_id'] }}" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Explore UT" />
+  <meta property="og:description"   content="Explore fun places around UT Austin" />
+  <meta property="og:image"         content="https://explore-ut.appspot.com/place_image/{{ place['_id'] }}/0.jpg" />
+{% endblock %}
+
 {% block title %}
-<h1>{{ place['name'] }}</h1>
+    <h1>{{ place['name'] }}</h1>
     <h5>Tags:
         {% for tag in place['tags'] %}
             <a href="/search?tag={{ tag }}">{{ tag }}</a>
@@ -86,4 +94,23 @@
         </ul>
     {% endif %}
     </div>
+{% endblock%}
+
+{% block share %}
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="https://explore-ut.appspot.com/view_one_place?place_id={{ place['_id'] }}" 
+    data-layout="button"
+	data-size="large">
+  </div>
 {% endblock%}
