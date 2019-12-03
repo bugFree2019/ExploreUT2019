@@ -33,7 +33,7 @@ export default class ViewPlaceScreen extends Component {
 
   async checkUser() {
     const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
+    if (!isSignedIn) {
       try {
         // user is signed in
         const userInfo = await GoogleSignin.signIn();
