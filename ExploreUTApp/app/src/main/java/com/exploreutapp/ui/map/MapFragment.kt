@@ -114,16 +114,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         // get current location button shown on map
         val buttonHelper: View = (mMapView.findViewById<View>(Integer.parseInt("1")).getParent()) as View
-        val locationButton: View = buttonHelper.findViewById(Integer.parseInt("2"));
+        val locationButton: View = buttonHelper.findViewById(Integer.parseInt("2"))
         val rlp: RelativeLayout.LayoutParams = locationButton.getLayoutParams() as RelativeLayout.LayoutParams
 
         // position on right bottom
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-        rlp.setMargins(0, 180, 180, 0);
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
+        rlp.setMargins(0, 180, 180, 0)
 
         root.findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnNavigationItemSelectedListener { item->
             when(item.itemId) {
+                R.id.action_all -> nearByPlace("All")
                 R.id.action_activity -> nearByPlace("Activity")
                 R.id.action_library -> nearByPlace("Study")
                 R.id.action_building -> nearByPlace("Building")
@@ -139,11 +140,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         // Clear all marker on Map
         mMap.clear()
-
-        disposable = mService.getThemePlaces(place_theme)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (this::handleResponse, this::handleError)
+        if (place_theme == "All") {
+            disposable = mService.getAllPlaces()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleError)
+        } else {
+            disposable = mService.getThemePlaces(place_theme)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleError)
+        }
     }
 
     // handle the response with an arraylist of places
@@ -175,9 +182,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         val placeName = utPlace.name
                         val lat = utPlace.location!!.lat
                         val lng = utPlace.location!!.lng
-
-//                    println(lat.toString())
-//                    println(lng.toString())
 
                         val latLng = LatLng(lat,lng)
 
