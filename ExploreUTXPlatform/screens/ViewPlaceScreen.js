@@ -104,6 +104,9 @@ export default class ViewPlaceScreen extends Component {
       );
       let responseJson = await response.json();
       this.toggleSubscribeStatus();
+      let dataSource = this.state.dataSource;
+      dataSource['likes']++;
+      this.setState({dataSource: dataSource});
     }
     catch (error) {
       console.error(error);
@@ -125,6 +128,9 @@ export default class ViewPlaceScreen extends Component {
       );
       let responseJson = await response.json();
       this.toggleSubscribeStatus();
+      let dataSource = this.state.dataSource;
+      dataSource['likes']--;
+      this.setState({dataSource: dataSource});
     }
     catch (error) {
       console.error(error);
