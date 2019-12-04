@@ -216,6 +216,8 @@ def add_place():
             binary = Binary(base64.b64encode(image_file.read()))
             data['pics'].append(binary)
 
+        data['likes'] = 0
+
         place_id = create_place(db, data)
 
         return redirect(url_for('.view_one_place', place_id=place_id))

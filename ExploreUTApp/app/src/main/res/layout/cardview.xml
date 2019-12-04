@@ -38,6 +38,15 @@
                 android:layout_below="@+id/place_name"
                 android:layout_toRightOf="@+id/place_photo" />
 
+            <TextView
+                android:id="@+id/place_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/place_tag"
+                android:layout_toRightOf="@+id/place_photo"
+                android:drawableLeft="@drawable/ic_thumb_up_black_24dp"
+                android:drawablePadding="2dp" />
+
 
         </RelativeLayout>
 

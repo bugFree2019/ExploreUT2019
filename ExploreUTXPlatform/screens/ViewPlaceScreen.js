@@ -5,6 +5,7 @@ import VerticalMargin from '../layouts/VerticalMargin';
 import SignOutButton from '../layouts/SignOutButton';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -184,6 +185,7 @@ export default class ViewPlaceScreen extends Component {
         <View style={{marginStart: 10, justifyContent: 'center'}}>
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>
+          <Icon name="md-thumbs-up">{this.state.dataSource['likes']}</Icon>
           <VerticalMargin />
           <Text style={{color: "#BF5700"}}>Introduction: {this.state.dataSource['intro']}</Text>
         </View>

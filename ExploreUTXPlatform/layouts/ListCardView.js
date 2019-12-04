@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, FlatList, TouchableHighlight  } from 'react-native';
+import Icon from "react-native-vector-icons/Ionicons";
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -31,6 +32,7 @@ export default class ListCardView extends Component {
             <Text style={styles.title}>{item['name']} </Text>
             <Text>Theme: {item['theme']}</Text>
             <Text>Tags: {item['tags']}</Text>
+            <Icon name="md-thumbs-up">{item['likes']}</Icon>
           </View>
         </CardView>
         </TouchableHighlight >}

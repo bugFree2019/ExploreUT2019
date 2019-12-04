@@ -20,9 +20,7 @@
                     {% endfor %}
                 </h5>
                 <p>{{ place['intro'] }}</p>
-                {% if places['reviews'] %}
-                    <p>{{ place['reviews'][0] }}</p>
-                {% endif %}
+				<i class="far fa-thumbs-up" style="font-size:24px;">{{ place['likes'] }}</i>
             </div>
             <div class="col-3">
                 {% if place['pics'] %}

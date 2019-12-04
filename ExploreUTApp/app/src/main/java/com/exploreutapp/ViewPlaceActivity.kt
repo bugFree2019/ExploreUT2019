@@ -66,6 +66,7 @@ class ViewPlaceActivity : AppCompatActivity() {
         // Set empty for simple text views
         place_address.text=""
         place_intro.text=""
+        place_likes.text = "0"
 
         showUI()
     }
@@ -133,6 +134,8 @@ class ViewPlaceActivity : AppCompatActivity() {
         } else {
 //            list.visibility = View.GONE
         }
+
+        place_likes.text = place.likes.toString()
 
         // load address
         if (place.address != null) {
