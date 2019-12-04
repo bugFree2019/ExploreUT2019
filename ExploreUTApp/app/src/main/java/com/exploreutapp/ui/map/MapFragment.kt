@@ -187,6 +187,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
                         markerOptions.position(latLng)
                         markerOptions.title(placeName)
+
                         if (Regex("Activity").containsMatchIn(placeTheme) ||
                             Regex("Museum").containsMatchIn(placeTheme)) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource((R.drawable.ic_activity)))
