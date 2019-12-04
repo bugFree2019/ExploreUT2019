@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ActivityIndicator, Text } from 'react-native';
-import { GoogleSignin } from '@react-native-community/google-signin';
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ListCardView from '../layouts/ListCardView';
@@ -40,28 +39,13 @@ export default class ManageUserScreen extends Component {
   }
 
   async checkUser() {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
-      try {
-        const userInfo = await GoogleSignin.signIn();
-        this.userEmail = userInfo.user.email;
-        console.log(this.userEmail);
-      }
-      catch(error) {
-        console.log('user not logged in')
-      }
+    if (firebase.auth().currentUser) {
+      this.userEmail = firebase.auth().currentUser.email
+      console.log(this.userEmail);
     }
     else {
-        var user = await firebase.auth().currentUser;
-        if (user) {
-          // User is signed in.
-          this.userEmail = user.email;
-          console.log(user.email);
-        } else {
-          // No user is signed in.
-          this.userEmail = '';
-          console.log('user not logged in')
-        }
+      this.userEmail = '';
+      console.log('user not logged in')
     }
   }
 
@@ -73,35 +57,6 @@ export default class ManageUserScreen extends Component {
     25,
     50
   );}
-
-  signOutUser = async () => {
-      try {
-        firebase.auth().signOut();
-        const isSignedIn = await GoogleSignin.isSignedIn();
-        if (isSignedIn) {
-          await GoogleSignin.revokeAccess();
-          await GoogleSignin.signOut();
-        }
-        const { navigate } = this.props.navigation;
-        navigate('Manage');
-        this.showSignOutToast();
-      }
-      catch (error) {
-        console.log(error,toString())
-      }
-  }
-
-  signOut = async () => {
-  try {
-    await GoogleSignin.revokeAccess();
-    await GoogleSignin.signOut();
-    // this.setState({ user: null }); // Remember to remove the user from your app's state as well
-    const { navigate } = this.props.navigation;
-    navigate('Manage');
-  } catch (error) {
-    console.error(error);
-  }
-};
 
   componentDidMount() {
     this.focusListener = this.props.navigation.addListener("didFocus", () => this.manageAsync());

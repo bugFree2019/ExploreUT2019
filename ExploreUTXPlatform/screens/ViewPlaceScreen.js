@@ -3,7 +3,6 @@ import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TouchableHighlig
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 import SignOutButton from '../layouts/SignOutButton';
-import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -33,26 +32,13 @@ export default class ViewPlaceScreen extends Component {
   }
 
   async checkUser() {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (!isSignedIn) {
-      try {
-        // user is signed in
-        const userInfo = await GoogleSignin.signIn();
-        this.userEmail = userInfo.user.email;
-      }
-      catch(error) {
-        // user is signed in
-      }
+    if (firebase.auth().currentUser) {
+      this.userEmail = firebase.auth().currentUser.email
+      console.log(this.userEmail);
     }
     else {
-        var user = await firebase.auth().currentUser;
-        if (user) {
-          // User is signed in.
-          this.userEmail = user.email;
-        } else {
-          // No user is signed in.
-          this.userEmail = '';
-        }
+      this.userEmail = '';
+      console.log('user not logged in')
     }
   }
 
