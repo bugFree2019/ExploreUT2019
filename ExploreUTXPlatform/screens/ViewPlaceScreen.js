@@ -3,8 +3,8 @@ import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TouchableHighlig
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 import SignOutButton from '../layouts/SignOutButton';
-import { GoogleSignin } from '@react-native-community/google-signin';
 import * as firebase from 'firebase';
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -32,26 +32,13 @@ export default class ViewPlaceScreen extends Component {
   }
 
   async checkUser() {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (!isSignedIn) {
-      try {
-        // user is signed in
-        const userInfo = await GoogleSignin.signIn();
-        this.userEmail = userInfo.user.email;
-      }
-      catch(error) {
-        // user is signed in
-      }
+    if (firebase.auth().currentUser) {
+      this.userEmail = firebase.auth().currentUser.email
+      console.log(this.userEmail);
     }
     else {
-        var user = await firebase.auth().currentUser;
-        if (user) {
-          // User is signed in.
-          this.userEmail = user.email;
-        } else {
-          // No user is signed in.
-          this.userEmail = '';
-        }
+      this.userEmail = '';
+      console.log('user not logged in')
     }
   }
 
@@ -103,6 +90,9 @@ export default class ViewPlaceScreen extends Component {
       );
       let responseJson = await response.json();
       this.toggleSubscribeStatus();
+      let dataSource = this.state.dataSource;
+      dataSource['likes']++;
+      this.setState({dataSource: dataSource});
     }
     catch (error) {
       console.error(error);
@@ -124,6 +114,9 @@ export default class ViewPlaceScreen extends Component {
       );
       let responseJson = await response.json();
       this.toggleSubscribeStatus();
+      let dataSource = this.state.dataSource;
+      dataSource['likes']--;
+      this.setState({dataSource: dataSource});
     }
     catch (error) {
       console.error(error);
@@ -184,23 +177,22 @@ export default class ViewPlaceScreen extends Component {
         <View style={{marginStart: 10, justifyContent: 'center'}}>
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>
+          <Icon name="md-thumbs-up">{this.state.dataSource['likes']}</Icon>
           <VerticalMargin />
           <Text style={{color: "#BF5700"}}>Introduction: {this.state.dataSource['intro']}</Text>
         </View>
         <VerticalMargin />
         <View style={{alignItems: 'center'}}><Text>Comments about this place:</Text></View>
-        <FlatList
-          data={this.state.dataSource['reviews']}
-          renderItem={({item}) =>
-          <View style={{marginTop: 10}}>
-            <View>
-              <Text> {item} </Text>
-            </View>
-            <HorizontalLine/>
+        {this.state.dataSource['reviews'].map((item, key) => (
+          //key is the index of the array 
+          //item is the single item of the array
+          <View key={key} style={{marginTop: 10}}>
+          <View>
+            <Text> {item} </Text>
           </View>
-          }
-          keyExtractor={(item, index) => item.toString()} 
-        />
+          <HorizontalLine/>
+        </View>
+        ))}
         <View>
           <AddReportButton title="Add Report"
             subscribe_status={this.state.dataSource['subscribe_status']} 

@@ -22,6 +22,7 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
         var cv: CardView = itemView.findViewById(R.id.cv)
         var placeName: TextView = itemView.findViewById(R.id.place_name)
         var placeTag: TextView = itemView.findViewById(R.id.place_tag)
+        var placeLikes: TextView = itemView.findViewById(R.id.place_likes)
         var placePhoto: ImageView = itemView.findViewById(R.id.place_photo)
     }
 
@@ -42,6 +43,7 @@ class RecyclerViewAdapter(private val places: ArrayList<Place>) :
             tags += "$tag "
         }
         holder.placeTag.setText(tags)
+        holder.placeLikes.setText(places[position].likes.toString())
         val id = places[position]._id
         val imageId = 0
         Picasso.get().load(ExploreUTService.baseURL + "/place_image/" + id + "/" + imageId + ".jpg")

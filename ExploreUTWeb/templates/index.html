@@ -28,9 +28,7 @@
 	            {% endif %}
 
 	            <p>{{ place['intro'] }}</p>
-	            {% if places['reviews'] %}
-	            <p>{{ place['reviews'][0] }}</p>
-	            {% endif %}
+				<i class="far fa-thumbs-up" style="font-size:24px;">{{ place['likes'] }}</i>
 	        </div>
 	    {% endfor %}
 

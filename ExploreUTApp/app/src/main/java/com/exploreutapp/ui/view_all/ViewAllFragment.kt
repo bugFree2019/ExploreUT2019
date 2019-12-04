@@ -37,7 +37,7 @@ class ViewAllFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(com.exploreutapp.R.layout.fragment_view_all, container, false)
+        val root = inflater.inflate(R.layout.fragment_view_all, container, false)
 
         setHasOptionsMenu(true)
 
@@ -67,6 +67,12 @@ class ViewAllFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         disposable?.dispose()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("myTag", "resume")
+        //viewAll()
     }
 
     private fun viewAll() {

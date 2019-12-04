@@ -1,7 +1,7 @@
 import datetime as dt
 
 from bson import ObjectId
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 
 # connect to the remote database instance
 # AWS MongoDB
@@ -87,7 +87,7 @@ def read_places(db, condition):
     :param condition: a dict with key value pair(s) specifying the field(s) and value(s) we are interested in
     :return: a list of all places matching the search criteria with decoded pictures
     """
-    places = list(db.place.find(condition))
+    places = list(db.place.find(condition).sort('likes', DESCENDING))
     for place in places:
         # skip places with empty photos
         if not place['pics']:

@@ -30,6 +30,8 @@
         </div>
     </div>
 
+    <span> <i class="far fa-thumbs-up" style="font-size:24px;">{{ place['likes'] }}</i> </span>
+
     <div>
         <form method="POST" action="/subscribe/{{ place['_id'] }}">
             <button id="subscribe" class="btn btn-outline-danger" hidden=true type="submit">Subscribe</button>

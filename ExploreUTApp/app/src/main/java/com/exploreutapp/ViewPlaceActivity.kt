@@ -66,6 +66,7 @@ class ViewPlaceActivity : AppCompatActivity() {
         // Set empty for simple text views
         place_address.text=""
         place_intro.text=""
+        place_likes.text = "0"
 
         showUI()
     }
@@ -134,6 +135,8 @@ class ViewPlaceActivity : AppCompatActivity() {
 //            list.visibility = View.GONE
         }
 
+        place_likes.text = place.likes.toString()
+
         // load address
         if (place.address != null) {
             place_address.text = place!!.address
@@ -174,6 +177,7 @@ class ViewPlaceActivity : AppCompatActivity() {
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             subscribeButton.setVisibility(View.INVISIBLE)
             unsubscribeButton.setVisibility(View.VISIBLE)
+            place_likes.text = (Integer.parseInt(place_likes.text.toString()) + 1).toString()
 
             disposable2 = exploreUTServe.subscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
@@ -189,6 +193,7 @@ class ViewPlaceActivity : AppCompatActivity() {
             val unsubscribeButton = findViewById<View>(R.id.unsubscribe_button) as Button
             subscribeButton.setVisibility(View.VISIBLE)
             unsubscribeButton.setVisibility(View.INVISIBLE)
+            place_likes.text = (Integer.parseInt(place_likes.text.toString()) - 1).toString()
 
             disposable3 = exploreUTServe.unsubscribe(place._id, user!!.email)
                 .subscribeOn(Schedulers.io())
