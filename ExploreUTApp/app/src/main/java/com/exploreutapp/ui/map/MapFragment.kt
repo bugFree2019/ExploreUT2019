@@ -379,6 +379,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.setAllGesturesEnabled(true)
+        nearByPlace("All")
     }
 
     override fun onResume() {

@@ -183,18 +183,16 @@ export default class ViewPlaceScreen extends Component {
         </View>
         <VerticalMargin />
         <View style={{alignItems: 'center'}}><Text>Comments about this place:</Text></View>
-        <FlatList
-          data={this.state.dataSource['reviews']}
-          renderItem={({item}) =>
-          <View style={{marginTop: 10}}>
-            <View>
-              <Text> {item} </Text>
-            </View>
-            <HorizontalLine/>
+        {this.state.dataSource['reviews'].map((item, key) => (
+          //key is the index of the array 
+          //item is the single item of the array
+          <View key={key} style={{marginTop: 10}}>
+          <View>
+            <Text> {item} </Text>
           </View>
-          }
-          keyExtractor={(item, index) => item.toString()} 
-        />
+          <HorizontalLine/>
+        </View>
+        ))}
         <View>
           <AddReportButton title="Add Report"
             subscribe_status={this.state.dataSource['subscribe_status']} 
