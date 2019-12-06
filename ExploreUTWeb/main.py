@@ -203,7 +203,7 @@ def add_place():
         data['tags'].append(data['tag'])
         data.pop('tag')
 
-        if data['location'] is not None :
+        if data.__contains__('location') and data['location'] is not None:
             location_str = data['location']
             coordinates = location_str.split(' ')
             lat = float(coordinates[0])
@@ -284,7 +284,7 @@ def my_map():
     places = read_places(db, condition)
     my_markers = []
     for place in places:
-        if place.__contains__('location') and place['location'] != None:
+        if place.__contains__('location') and place['location'] is not None:
             place_name = place['name']
             place_id = place['_id']
             link = '/view_one_place?place_id=' + str(place_id)
