@@ -203,12 +203,13 @@ def add_place():
         data['tags'].append(data['tag'])
         data.pop('tag')
 
-        location_str = data['location']
-        coordinates = location_str.split(' ')
-        lat = float(coordinates[0])
-        lng = float(coordinates[1])
-        location = {'lat': lat, 'lng': lng}
-        data['location'] = location
+        if data['location'] is not None :
+            location_str = data['location']
+            coordinates = location_str.split(' ')
+            lat = float(coordinates[0])
+            lng = float(coordinates[1])
+            location = {'lat': lat, 'lng': lng}
+            data['location'] = location
 
         data['pics'] = []
         image_files = request.files.getlist('pic_files')
