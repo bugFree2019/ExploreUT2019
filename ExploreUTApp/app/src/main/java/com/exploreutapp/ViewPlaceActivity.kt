@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.GridView
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -69,6 +66,20 @@ class ViewPlaceActivity : AppCompatActivity() {
         place_likes.text = "0"
 
         showUI()
+
+        // get reference to button
+        val place_share = findViewById(R.id.place_share) as TextView
+        // set on-click listener
+        place_share.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "https://explore-ut.appspot.com/view_one_place?place_id=" + place!!._id)
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+            
+        }
     }
 
     override fun onResume() {
@@ -262,4 +273,5 @@ class ViewPlaceActivity : AppCompatActivity() {
         unsubscribeButton.setVisibility(View.INVISIBLE)
         addButton.setVisibility(View.INVISIBLE)
     }
+
 }
