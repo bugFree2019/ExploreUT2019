@@ -17,6 +17,7 @@ import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.messaging.FirebaseMessaging
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -37,6 +38,7 @@ class ViewPlaceActivity : AppCompatActivity() {
         val exploreUTServe by lazy {
             ExploreUTService.create()
         }
+        private const val TAG = "ViewPlace"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -194,6 +196,17 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (this::handleResponseSubscribe, this::handleError)
+
+            // notification subscription
+            FirebaseMessaging.getInstance().subscribeToTopic(place.name)
+                .addOnCompleteListener { task ->
+                    var msg = getString(R.string.place_subscribed)
+                    if (!task.isSuccessful) {
+                        msg = getString(R.string.place_subscribe_failed)
+                    }
+                    Log.d(TAG, msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
@@ -210,6 +223,17 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::handleResponseUnsubscribe, this::handleError)
+
+            // notification unsubscribe
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(place.name)
+                .addOnCompleteListener { task ->
+                    var msg = getString(R.string.place_unsubscribed)
+                    if (!task.isSuccessful) {
+                        msg = getString(R.string.place_unsubscribe_failed)
+                    }
+                    Log.d(TAG, msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
