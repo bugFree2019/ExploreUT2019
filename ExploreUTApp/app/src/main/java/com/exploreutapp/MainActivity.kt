@@ -98,22 +98,22 @@ class MainActivity : AppCompatActivity() {
 //        logTokenButton.setOnClickListener {
 //            // Get token
 //            // [START retrieve_current_token]
-//            FirebaseInstanceId.getInstance().instanceId
-//                .addOnCompleteListener(OnCompleteListener { task ->
-//                    if (!task.isSuccessful) {
-//                        Log.w(TAG, "getInstanceId failed", task.exception)
-//                        return@OnCompleteListener
-//                    }
-//
-//                    // Get new Instance ID token
-//                    val token = task.result?.token
-//
-//                    // Log and toast
-//                    val msg = getString(R.string.msg_token_fmt, token)
-//                    Log.d(TAG, msg)
-//                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
-//                })
-//            // [END retrieve_current_token]
+            FirebaseInstanceId.getInstance().instanceId
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w(TAG, "getInstanceId failed", task.exception)
+                        return@OnCompleteListener
+                    }
+
+                    // Get new Instance ID token
+                    val token = task.result?.token
+
+                    // Log and toast
+                    val msg = getString(R.string.msg_token_fmt, token)
+                    Log.d(TAG, msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
+                })
+            // [END retrieve_current_token]
 //        }
 
         Toast.makeText(this, "See README for setup instructions", Toast.LENGTH_SHORT).show()
