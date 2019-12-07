@@ -7,37 +7,54 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true" />
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/network_security"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-
+        <service
+            android:name=".MyFCMService"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+     Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_notification" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/utOrange" />
         <meta-data
             android:name="android.app.default_searchable"
-            android:value=".SearchActivity" />
-
-<!--     The API key for Google Maps-based APIs is defined as a string resource.-->
-<!--     (See the file "res/values/google_maps_api.xml").-->
-<!--     Note that the API key is linked to the encryption key used to sign the APK.-->
-<!--     You need a different API key for each encryption key, including the release key that is used to-->
-<!--     sign the APK for publishing.-->
-<!--     You can define the keys for the debug and release targets in src/debug/ and src/release/.-->
-
+            android:value=".SearchActivity" /> <!-- The API key for Google Maps-based APIs is defined as a string resource. -->
+        <!-- (See the file "res/values/google_maps_api.xml"). -->
+        <!-- Note that the API key is linked to the encryption key used to sign the APK. -->
+        <!-- You need a different API key for each encryption key, including the release key that is used to -->
+        <!-- sign the APK for publishing. -->
+        <!-- You can define the keys for the debug and release targets in src/debug/ and src/release/. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -53,20 +70,20 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data android:scheme="http"
+                <data
                     android:host="explore-ut.appspot.com"
-                    android:pathPrefix="/" />
-                <!-- note that the leading "/" is required for pathPrefix-->
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix -->
             </intent-filter>
         </activity>
-
-        <activity android:name=".ViewPlaceActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+        <activity
+            android:name=".ViewPlaceActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".SearchActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -78,8 +95,7 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/search" />
         </activity>
-
-        <activity android:name=".CreateReportActivity"></activity>
+        <activity android:name=".CreateReportActivity" />
     </application>
 
 </manifest>

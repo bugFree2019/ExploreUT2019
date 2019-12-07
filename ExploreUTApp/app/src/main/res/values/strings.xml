@@ -35,4 +35,11 @@
         <item>Monuments</item>
         <item>Libraries</item>
     </string-array>
+
+    <string name="default_notification_channel_id">default_channel_id</string>
+    <string name="fcm_message">fcmMessageTest</string>
+    <string name="default_notification_channel_name">default_channel_name</string>
+    <string name="msg_subscribed">msg_subscribed</string>
+    <string name="msg_subscribe_failed">message subscribe failed</string>
+    <string name="msg_token_fmt">token: %1$s.</string>
 </resources>
