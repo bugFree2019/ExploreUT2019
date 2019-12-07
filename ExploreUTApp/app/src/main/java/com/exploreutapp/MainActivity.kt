@@ -80,43 +80,40 @@ class MainActivity : AppCompatActivity() {
         }
         // [END handle_data_extras]
 
-//        subscribeButton.setOnClickListener {
-//            Log.d(TAG, "Subscribing to weather topic")
-//            // [START subscribe_topics]
-//            FirebaseMessaging.getInstance().subscribeToTopic("weather")
-//                .addOnCompleteListener { task ->
-//                    var msg = getString(R.string.msg_subscribed)
-//                    if (!task.isSuccessful) {
-//                        msg = getString(R.string.msg_subscribe_failed)
-//                    }
-//                    Log.d(TAG, msg)
-//                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-//                }
-//            // [END subscribe_topics]
-//        }
+        // subscribe general place topic, thereby, user will receive notifications
+        // on newly created place.
+        Log.d(TAG, "Subscribing to general place topic")
+            // [START subscribe_topics]
+        FirebaseMessaging.getInstance().subscribeToTopic("place")
+            .addOnCompleteListener { task ->
+                var msg = getString(R.string.place_subscribed)
+                if (!task.isSuccessful) {
+                    msg = getString(R.string.place_subscribe_failed)
+                }
+                Log.d(TAG, msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            }
+            // [END subscribe_topics]
 
-//        logTokenButton.setOnClickListener {
 //            // Get token
 //            // [START retrieve_current_token]
-            FirebaseInstanceId.getInstance().instanceId
-                .addOnCompleteListener(OnCompleteListener { task ->
-                    if (!task.isSuccessful) {
-                        Log.w(TAG, "getInstanceId failed", task.exception)
-                        return@OnCompleteListener
-                    }
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
 
-                    // Get new Instance ID token
-                    val token = task.result?.token
+                // Get new Instance ID token
+                val token = task.result?.token
 
-                    // Log and toast
-                    val msg = getString(R.string.msg_token_fmt, token)
-                    Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
-                })
+                // Log and toast
+                val msg = getString(R.string.msg_token_fmt, token)
+                Log.d(TAG, msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
+            })
             // [END retrieve_current_token]
-//        }
 
-        Toast.makeText(this, "See README for setup instructions", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
