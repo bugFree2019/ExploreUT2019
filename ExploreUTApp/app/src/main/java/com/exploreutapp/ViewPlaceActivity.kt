@@ -17,7 +17,6 @@ import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.messaging.FirebaseMessaging
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -26,7 +25,6 @@ import org.json.JSONException
 import java.io.Serializable
 import com.pusher.pushnotifications.PushNotifications
 import kotlinx.android.synthetic.main.activity_view_place.place_likes
-import kotlinx.android.synthetic.main.cardview.*
 
 
 class ViewPlaceActivity : AppCompatActivity() {

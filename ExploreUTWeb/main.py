@@ -286,7 +286,7 @@ def add_report():
                 'fcm': {
                     'notification': {
                         'title': 'A new report has been created.',
-                        'body': 'A new report about ' + place_name_processed + ' has been created.'
+                        'body': 'A new report about ' + place_name + ' has been created.'
                     }
                 }
             }
