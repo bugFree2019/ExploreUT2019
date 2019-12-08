@@ -238,7 +238,7 @@ def add_place():
                 'fcm': {
                     'notification': {
                         'title': 'A new place has been created.',
-                        'body': data['name'] + 'has been created.'
+                        'body': data['name'] + ' has been created.'
                     }
                 }
             }
@@ -266,11 +266,34 @@ def add_report():
         # add this pic to the pics array of the place
         for image in image_files:
             update_place_pics_by_id(db,data['place_id'],Binary(base64.b64encode(image.read())))
-        # add the comment to the reviews array of the plac
+        # add the comment to the reviews array of the place
         update_place_reviews_by_id(db,data['place_id'],data['comment'])
         data['user_id'] = get_user_id_from_email(db, data['user_id'])
         data['create_date'] = time.asctime(time.localtime(time.time()))
         create_article(db, data)
+
+        # notify users through fcm
+        place_name = get_place_name_by_id(db, ObjectId(data['place_id']))
+        place_name_processed = place_name.replace(' ', '_')
+        response = beams_client.publish_to_interests(
+            interests=[place_name_processed],
+            publish_body={
+                'apns': {
+                    'aps': {
+                        'alert': 'Hello!'
+                    }
+                },
+                'fcm': {
+                    'notification': {
+                        'title': 'A new report has been created.',
+                        'body': 'A new report about ' + place_name_processed + ' has been created.'
+                    }
+                }
+            }
+        )
+
+        print(response['publishId'])
+
         return redirect(url_for('.view_one_place', place_id=data['place_id']))
 
     return render_template('add_new_report.html', action='Add', place_name=place_name, place_id=place_id, article={})
@@ -394,5 +417,5 @@ def json_response(places, subscribe_status=-2):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8082, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
     # app.run(host='0.0.0.0', port=8080, debug=True)

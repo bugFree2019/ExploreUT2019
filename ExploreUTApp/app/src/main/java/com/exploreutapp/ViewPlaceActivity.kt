@@ -24,6 +24,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_view_place.*
 import org.json.JSONException
 import java.io.Serializable
+import com.pusher.pushnotifications.PushNotifications
+import kotlinx.android.synthetic.main.activity_view_place.place_likes
+import kotlinx.android.synthetic.main.cardview.*
 
 
 class ViewPlaceActivity : AppCompatActivity() {
@@ -38,7 +41,6 @@ class ViewPlaceActivity : AppCompatActivity() {
         val exploreUTServe by lazy {
             ExploreUTService.create()
         }
-        private const val TAG = "ViewPlace"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -198,15 +200,9 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribe (this::handleResponseSubscribe, this::handleError)
 
             // notification subscription
-            FirebaseMessaging.getInstance().subscribeToTopic(place.name)
-                .addOnCompleteListener { task ->
-                    var msg = getString(R.string.place_subscribed)
-                    if (!task.isSuccessful) {
-                        msg = getString(R.string.place_subscribe_failed)
-                    }
-                    Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                }
+            // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
+            val place_name : String = place.name.replace(' ', '_', false)
+            PushNotifications.addDeviceInterest(place_name)
         }
     }
 
@@ -225,15 +221,9 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribe(this::handleResponseUnsubscribe, this::handleError)
 
             // notification unsubscribe
-            FirebaseMessaging.getInstance().unsubscribeFromTopic(place.name)
-                .addOnCompleteListener { task ->
-                    var msg = getString(R.string.place_unsubscribed)
-                    if (!task.isSuccessful) {
-                        msg = getString(R.string.place_unsubscribe_failed)
-                    }
-                    Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                }
+            // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
+            val place_name : String = place.name.replace(' ', '_', false)
+            PushNotifications.removeDeviceInterest(place_name)
         }
     }
 

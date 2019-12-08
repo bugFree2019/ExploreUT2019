@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -20,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import com.pusher.pushnotifications.PushNotifications
 
 
@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc");
-        PushNotifications.addDeviceInterest("Place");
+        PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
+        PushNotifications.addDeviceInterest("Place")
 
 
         // notification related:
@@ -81,21 +81,6 @@ class MainActivity : AppCompatActivity() {
         }
         // [END handle_data_extras]
 
-        // subscribe general place topic, thereby, user will receive notifications
-        // on newly created place.
-        Log.d(TAG, "Subscribing to general place topic")
-            // [START subscribe_topics]
-        FirebaseMessaging.getInstance().subscribeToTopic("place")
-            .addOnCompleteListener { task ->
-                var msg = getString(R.string.place_subscribed)
-                if (!task.isSuccessful) {
-                    msg = getString(R.string.place_subscribe_failed)
-                }
-                Log.d(TAG, msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-            }
-            // [END subscribe_topics]
-
 //            // Get token
 //            // [START retrieve_current_token]
         FirebaseInstanceId.getInstance().instanceId
@@ -111,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                 // Log and toast
                 val msg = getString(R.string.msg_token_fmt, token)
                 Log.d(TAG, msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
             })
             // [END retrieve_current_token]
 
