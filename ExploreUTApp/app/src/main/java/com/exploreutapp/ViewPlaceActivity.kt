@@ -199,8 +199,7 @@ class ViewPlaceActivity : AppCompatActivity() {
 
             // notification subscription
             // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
-            val place_name : String = place.name.replace(' ', '_', false)
-            PushNotifications.addDeviceInterest(place_name)
+            PushNotifications.addDeviceInterest(place._id)
         }
     }
 
@@ -220,8 +219,7 @@ class ViewPlaceActivity : AppCompatActivity() {
 
             // notification unsubscribe
             // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
-            val place_name : String = place.name.replace(' ', '_', false)
-            PushNotifications.removeDeviceInterest(place_name)
+            PushNotifications.removeDeviceInterest(place._id)
         }
     }
 

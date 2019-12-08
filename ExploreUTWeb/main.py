@@ -274,9 +274,9 @@ def add_report():
 
         # notify users through fcm
         place_name = get_place_name_by_id(db, ObjectId(data['place_id']))
-        place_name_processed = place_name.replace(' ', '_')
+        # place_name_processed = place_name.replace(' ', '_')
         response = beams_client.publish_to_interests(
-            interests=[place_name_processed],
+            interests=[data['place_id']],
             publish_body={
                 'apns': {
                     'aps': {
