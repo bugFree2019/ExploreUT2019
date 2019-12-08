@@ -10,10 +10,15 @@ from google.auth.transport import requests
 from flask_googlemaps import GoogleMaps, Map
 from db import *
 from bson.binary import Binary
+from pusher_push_notifications import PushNotifications
 
 app = Flask(__name__)
 GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
 firebase_request_adapter = requests.Request()
+beams_client = PushNotifications(
+    instance_id='1fabe242-9415-454e-822c-67211e2ebcbc',
+    secret_key='70F711CAC7FE57D7588609A93F833291AD66987E19B7AF949E4D8905ABECCE03',
+)
 
 
 @app.route('/', methods=['GET'])
@@ -221,6 +226,27 @@ def add_place():
 
         place_id = create_place(db, data)
 
+        # publish the notifications to users through fcm
+        response = beams_client.publish_to_interests(
+            interests=['Place'],
+            publish_body={
+                'apns': {
+                    'aps': {
+                        'alert': 'Hello!'
+                    }
+                },
+                'fcm': {
+                    'notification': {
+                        'title': 'A new place has been created.',
+                        'body': data['name'] + 'has been created.'
+                    }
+                }
+            }
+        )
+
+        print(response['publishId'])
+
+
         return redirect(url_for('.view_one_place', place_id=place_id))
 
     return render_template('add_new_place.html', action='Add', place={})
@@ -368,5 +394,5 @@ def json_response(places, subscribe_status=-2):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8082, debug=True)
     # app.run(host='0.0.0.0', port=8080, debug=True)
