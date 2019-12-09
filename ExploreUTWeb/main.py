@@ -238,7 +238,7 @@ def add_place():
                 'fcm': {
                     'notification': {
                         'title': 'A new place has been created.',
-                        'body': data['name'] + ' has been created.'
+                        'body': data['name'] + ' has been created. Come and check it out!'
                     }
                 }
             }
@@ -274,7 +274,6 @@ def add_report():
 
         # notify users through fcm
         place_name = get_place_name_by_id(db, ObjectId(data['place_id']))
-        # place_name_processed = place_name.replace(' ', '_')
         response = beams_client.publish_to_interests(
             interests=[data['place_id']],
             publish_body={
@@ -286,8 +285,11 @@ def add_report():
                 'fcm': {
                     'notification': {
                         'title': 'A new report has been created.',
-                        'body': 'A new report about ' + place_name + ' has been created.'
-                    }
+                        'body': 'A new report about ' + place_name + ' has been created. Come and check it out!'
+                    },
+                    'data': {
+                        'inAppNotificationMessage": "Display me somewhere in the app ui!',
+                    },
                 }
             }
         )

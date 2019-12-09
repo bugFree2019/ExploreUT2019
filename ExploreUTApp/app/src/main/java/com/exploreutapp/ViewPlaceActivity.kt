@@ -198,7 +198,6 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribe (this::handleResponseSubscribe, this::handleError)
 
             // notification subscription
-            // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
             PushNotifications.addDeviceInterest(place._id)
         }
     }
@@ -218,7 +217,6 @@ class ViewPlaceActivity : AppCompatActivity() {
                 .subscribe(this::handleResponseUnsubscribe, this::handleError)
 
             // notification unsubscribe
-            // PushNotifications.start(getApplicationContext(), "1fabe242-9415-454e-822c-67211e2ebcbc")
             PushNotifications.removeDeviceInterest(place._id)
         }
     }
