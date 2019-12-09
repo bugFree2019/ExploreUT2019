@@ -72,10 +72,11 @@ class MainActivity : AppCompatActivity() {
             override fun onMessageReceived(remoteMessage: RemoteMessage) {
                 val messagePayload : String? = remoteMessage.data["inAppNotificationMessage"]
                 if (messagePayload == null) {
-                   Log.i("MyActivity", "Payload was missing")
+                    Log.i("MyActivity", "Payload was missing")
                 } else {
-                   Log.i("MyActivity", messagePayload)
-                   // Now update the UI based on your message payload!  
+                    Log.i("MyActivity", messagePayload)
+                    // Now update the UI based on your message payload!
+                    // it seems that we should do something here to redirect the user to the new activity
                 }
             }
         })
