@@ -230,13 +230,8 @@ def add_place():
         response = beams_client.publish_to_interests(
             interests=['Place'],
             publish_body={
-                'apns': {
-                    'aps': {
-                        'alert': 'Hello!'
-                    }
-                },
                 'fcm': {
-                    'notification': {
+                    'data': {
                         'title': 'A new place has been created.',
                         'body': data['name'] + ' has been created. Come and check it out!'
                     }
@@ -283,13 +278,13 @@ def add_report():
                     }
                 },
                 'fcm': {
-                    'notification': {
-                        'title': 'A new report has been created.',
-                        'body': 'A new report about ' + place_name + ' has been created. Come and check it out!'
-                    },
                     'data': {
-                        'inAppNotificationMessage": "Display me somewhere in the app ui!',
-                    },
+                        'title': 'A new report has been created.',
+                        'body': 'A new report about ' + place_name + ' has been created. Come and check it out!',
+                        'click_action': 'ViewPlaceActivity',
+                        'place_id': data['place_id'],
+                        'place_name': place_name
+                    }
                 }
             }
         )
@@ -419,5 +414,5 @@ def json_response(places, subscribe_status=-2):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8082, debug=True)
     # app.run(host='0.0.0.0', port=8080, debug=True)

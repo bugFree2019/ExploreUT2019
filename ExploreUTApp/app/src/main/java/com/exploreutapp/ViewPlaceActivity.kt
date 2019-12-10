@@ -7,7 +7,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.GridView
+import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,14 +20,13 @@ import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.pusher.pushnotifications.PushNotifications
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_view_place.*
 import org.json.JSONException
 import java.io.Serializable
-import com.pusher.pushnotifications.PushNotifications
-import kotlinx.android.synthetic.main.activity_view_place.place_likes
 
 
 class ViewPlaceActivity : AppCompatActivity() {
@@ -46,12 +48,16 @@ class ViewPlaceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
+        var place_name = intent.getStringExtra("place_name")
+        Log.d("showname2","name:"+place.name)
+        Log.d("showname2","name:"+place_name)
+
         user = FirebaseAuth.getInstance().currentUser
         view_place()
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-        toolbar.setTitle(place.name)
+        toolbar.setTitle(place_name)
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.view_place_container)

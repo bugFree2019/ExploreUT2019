@@ -66,19 +66,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         displayButton()
-
-        PushNotifications.setOnMessageReceivedListenerForVisibleActivity(this, object:
-            PushNotificationReceivedListener {
-            override fun onMessageReceived(remoteMessage: RemoteMessage) {
-                val messagePayload : String? = remoteMessage.data["inAppNotificationMessage"]
-                if (messagePayload == null) {
-                   Log.i("MyActivity", "Payload was missing")
-                } else {
-                   Log.i("MyActivity", messagePayload)
-                   // Now update the UI based on your message payload!  
-                }
-            }
-        })
     }
 
     fun displayButton() {
