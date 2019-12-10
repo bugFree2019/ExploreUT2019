@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, ActivityIndicator, TouchableHighlight, Image, FlatList } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  ScrollView, 
+  View, 
+  ActivityIndicator, 
+  TouchableHighlight, 
+  Image, 
+  FlatList,
+  Share,
+  } from 'react-native';
 import HorizontalLine from '../layouts/HorizontalLine';
 import VerticalMargin from '../layouts/VerticalMargin';
 import SignOutButton from '../layouts/SignOutButton';
-import * as firebase from 'firebase';
+import { GoogleSignin } from '@react-native-community/google-signin';
 import Icon from "react-native-vector-icons/Ionicons";
+import * as firebase from 'firebase';
 
 export default class ViewPlaceScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -16,6 +27,27 @@ export default class ViewPlaceScreen extends Component {
       },
       headerRight: <SignOutButton navigation={navigation} screen="ViewPlace"/>,
     };
+  };
+
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          this.baseURL + 'view_one_place?place_id=' + this.placeId,
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   constructor(props){
@@ -173,7 +205,17 @@ export default class ViewPlaceScreen extends Component {
           <UnsubscribeButton title="Unsubscribe" 
             onPress={()=>{this.unsubscribe();}}
             subscribe_status={this.state.dataSource['subscribe_status']} />
+
+
         </View>
+
+        <View>
+          <Icon name={Platform.OS === "ios" ? "md-share" : "md-share"} 
+            size={50} 
+            onPress={this.onShare} title="Share"
+          />    
+          </View>
+
         <View style={{marginStart: 10, justifyContent: 'center'}}>
           <Text>Theme: {this.state.dataSource['theme']}</Text>
           <Text>Tags: {this.state.dataSource['tags']}</Text>

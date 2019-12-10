@@ -15,6 +15,7 @@ import com.exploreutapp.model.Place
 import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.pusher.pushnotifications.PushNotifications
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -59,6 +60,12 @@ class ViewAllFragment : Fragment() {
                 Log.d("myTag", "sign out error")
             }
             item.setVisible(false)
+
+            PushNotifications.clearDeviceInterests()
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("clearInterest", interests.toString())
+
             return true
         }
         return super.onOptionsItemSelected(item)

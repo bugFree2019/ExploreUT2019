@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pusher.pushnotifications.PushNotifications
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -414,6 +415,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 Log.d("myTag", "sign out error")
             }
             item.setVisible(false)
+
+            PushNotifications.clearDeviceInterests()
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("clearInterest", interests.toString())
+
             return true
         }
         return super.onOptionsItemSelected(item)

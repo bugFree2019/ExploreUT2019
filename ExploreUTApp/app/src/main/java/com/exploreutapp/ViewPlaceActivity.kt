@@ -127,6 +127,12 @@ class ViewPlaceActivity : AppCompatActivity() {
             item.setVisible(false)
             user = null
             hideButtons()
+
+            PushNotifications.clearDeviceInterests()
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("clearInterest", interests.toString())
+
             return true
         }
         return super.onOptionsItemSelected(item)

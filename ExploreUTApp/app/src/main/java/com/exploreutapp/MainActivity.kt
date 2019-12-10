@@ -11,18 +11,26 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.exploreutapp.model.Place
+import com.exploreutapp.model.User
+import com.exploreutapp.remote.ExploreUTService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.RemoteMessage
-import com.pusher.pushnotifications.PushNotificationReceivedListener
 import com.pusher.pushnotifications.PushNotifications
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import org.json.JSONException
+import java.util.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private var menu: Menu? = null
     private val instanceId = "1fabe242-9415-454e-822c-67211e2ebcbc"
+    private var disposable: Disposable? = null
+    private var allplaces: ArrayList<Place> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         PushNotifications.start(applicationContext, instanceId)
-        PushNotifications.addDeviceInterest("Place")
+        refreshInterests()
 
     }
 
@@ -66,6 +74,10 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         displayButton()
+        refreshInterests()
+
+        val interests = PushNotifications.getDeviceInterests()
+        Log.d("interests", interests.toString())
     }
 
     fun displayButton() {
@@ -80,4 +92,55 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun refreshInterests() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            PushNotifications.setDeviceInterests(setOf("Place"))
+        } else {
+            val user = User(
+                email = currentUser!!.email!!, _id = "", username = "", name = "",
+                profile = "", gender = "", age = 0, group = "",
+                level = 0, subscription = ArrayList<String>()
+            )
+            checkUsers(user)
+        }
+
+    }
+
+
+    private fun checkUsers(user: User) {
+        disposable = exploreUTServe.checkUsers(user)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe (this::handleResponseTest, this::handleError)
+    }
+
+    private fun handleResponseTest(result: ArrayList<Place>) {
+        try {
+            allplaces = result
+            val setSubscribed = mutableSetOf<String>()
+            for (p in allplaces) {
+                setSubscribed.add(p._id)
+            }
+            Log.d("user", setSubscribed.toString())
+
+            PushNotifications.setDeviceInterests(setSubscribed)
+            PushNotifications.addDeviceInterest("Place")
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            Log.d("myTag", "No valid json")
+        }
+        Log.d("myTag", "Done")
+    }
+
+    private fun handleError(error: Throwable) {
+        Log.d("myTag", error.localizedMessage!!)
+    }
+
+    companion object {
+        val exploreUTServe by lazy {
+            ExploreUTService.create()
+        }
+    }
 }

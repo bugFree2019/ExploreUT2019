@@ -24,6 +24,7 @@ import com.exploreutapp.R
 import com.exploreutapp.remote.ExploreUTService
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.pusher.pushnotifications.PushNotifications
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.StringCallback
 import okhttp3.Call
@@ -376,6 +377,12 @@ class AddPlaceFragment : Fragment(), View.OnClickListener {
                 Log.d("myTag", "sign out error")
             }
             item.setVisible(false)
+
+            PushNotifications.clearDeviceInterests()
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("clearInterest", interests.toString())
+
             return true
         }
         return super.onOptionsItemSelected(item)
