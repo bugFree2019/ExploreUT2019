@@ -33,7 +33,7 @@ class NotificationsMessagingService : MessagingService() {
         val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
         val notification = NotificationCompat.Builder(this, "events")
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_stat_notification)
             .setContentTitle(data["title"])
             .setContentText(data["body"])
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
