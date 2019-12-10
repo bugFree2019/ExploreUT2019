@@ -231,7 +231,7 @@ def add_place():
             interests=['Place'],
             publish_body={
                 'fcm': {
-                    'data': {
+                    'notification': {
                         'title': 'A new place has been created.',
                         'body': data['name'] + ' has been created. Come and check it out!'
                     }
