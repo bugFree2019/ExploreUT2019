@@ -18,6 +18,27 @@ export default class ViewPlaceScreen extends Component {
     };
   };
 
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          this.baseURL + 'view_one_place?place_id=' + this.placeId,
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   constructor(props){
     super(props);
     this.state ={isLoading: true}
