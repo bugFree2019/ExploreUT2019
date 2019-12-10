@@ -22,6 +22,7 @@
 		A0B6150A5EBA240671767E57 /* libPods-ExploreUTXPlatform-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BEECAE0F49D06C1AD759D3 /* libPods-ExploreUTXPlatform-tvOS.a */; };
 		C730E88F3573899964443416 /* libPods-ExploreUTXPlatformTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A00BFFDA04FDE63563AC30 /* libPods-ExploreUTXPlatformTests.a */; };
 		C9E1B9E72385000500BEB63C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9E1B9E52385000500BEB63C /* GoogleService-Info.plist */; };
+		F113BC2A199A43C3BC2E8F94 /* libReactNativeShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DBC94B098F48C497579BF6 /* libReactNativeShareExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF313BC24682F372FC0757A /* libPods-ExploreUTXPlatform.a in Frameworks */,
+				F113BC2A199A43C3BC2E8F94 /* libReactNativeShareExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +190,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9AB5D2EED24643D1A490CB7E /* ReactNativeShareExtension.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
