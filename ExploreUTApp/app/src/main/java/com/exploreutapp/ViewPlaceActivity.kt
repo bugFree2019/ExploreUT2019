@@ -48,7 +48,7 @@ class ViewPlaceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_place)
 
         place = intent.getSerializableExtra("place_to_show") as Place
-        var place_name = intent.getStringExtra("place_name")
+        var place_name = place.name
         Log.d("showname2","name:"+place.name)
         Log.d("showname2","name:"+place_name)
 
@@ -57,7 +57,7 @@ class ViewPlaceActivity : AppCompatActivity() {
 
         // set up navigation bar with back button
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-        toolbar.setTitle(place_name)
+        toolbar.setTitle(place.name)
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.view_place_container)
