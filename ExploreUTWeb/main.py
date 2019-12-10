@@ -231,9 +231,12 @@ def add_place():
             interests=['Place'],
             publish_body={
                 'fcm': {
-                    'notification': {
+                    'data': {
                         'title': 'A new place has been created.',
-                        'body': data['name'] + ' has been created. Come and check it out!'
+                        'body': 'A new place ' + data['name'] + ' has been created. Come and check it out!',
+                        'click_action': 'ViewPlaceActivity',
+                        'place_id': str(place_id),
+                        'place_name': data['name']
                     }
                 }
             }

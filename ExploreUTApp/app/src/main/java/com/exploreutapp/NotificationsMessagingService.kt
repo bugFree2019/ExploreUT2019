@@ -29,7 +29,7 @@ class NotificationsMessagingService : MessagingService() {
         Log.d("showname",place.name)
         Log.d("showname",place_id)
         intent.putExtra("place_to_show", place as Serializable)
-        // intent.putExtra("place_name",place.name)
+
         val pendingIntent = PendingIntent.getActivity(applicationContext, (Math.random()*100).toInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val notification = NotificationCompat.Builder(this, "events")
