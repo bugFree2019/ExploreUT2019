@@ -1,10 +1,8 @@
 package com.exploreutapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -13,23 +11,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.exploreutapp.model.Place
 import com.exploreutapp.model.User
 import com.exploreutapp.remote.ExploreUTService
-import com.exploreutapp.ui.manage.ManageFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.RemoteMessage
-import com.pusher.pushnotifications.PushNotificationReceivedListener
 import com.pusher.pushnotifications.PushNotifications
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.json.JSONException
-import java.io.Serializable
 import java.util.ArrayList
 
 
@@ -63,7 +55,6 @@ class MainActivity : AppCompatActivity() {
 
         PushNotifications.start(applicationContext, instanceId)
         refreshInterests()
-        // PushNotifications.addDeviceInterest("Place")
 
     }
 
@@ -88,19 +79,6 @@ class MainActivity : AppCompatActivity() {
         val interests = PushNotifications.getDeviceInterests()
         Log.d("interests", interests.toString())
 
-        PushNotifications.setOnMessageReceivedListenerForVisibleActivity(this, object:
-            PushNotificationReceivedListener {
-            override fun onMessageReceived(remoteMessage: RemoteMessage) {
-                val messagePayload : String? = remoteMessage.data["inAppNotificationMessage"]
-                if (messagePayload == null) {
-                    Log.i("MyActivity", "Payload was missing")
-                } else {
-                    Log.i("MyActivity", messagePayload)
-                    // Now update the UI based on your message payload!
-                    // it seems that we should do something here to redirect the user to the new activity
-                }
-            }
-        })
     }
 
     fun displayButton() {
@@ -130,9 +108,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun checkUsers(user: User) {
-//        exploreUTServe.checkUsers(user)
-//    }
 
     private fun checkUsers(user: User) {
         disposable = exploreUTServe.checkUsers(user)
@@ -169,5 +144,4 @@ class MainActivity : AppCompatActivity() {
             ExploreUTService.create()
         }
     }
-
 }
