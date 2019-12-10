@@ -155,7 +155,7 @@ def subscribe_helper(place_id, is_subscribe):
 
 @app.route('/view_one_place', methods=['GET'])
 def view_one_place():
-    # subscribe_status: -1 denotes not logged in, 0 denotes not not subscribed 1 denotes subscribed
+    # subscribe_status: -1 denotes not logged in, 0 denotes not subscribed 1 denotes subscribed
     subscribe_status = -1
 
     user_agent = request.headers.get('User-Agent')

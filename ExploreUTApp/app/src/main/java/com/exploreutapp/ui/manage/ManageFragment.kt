@@ -17,6 +17,7 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.pusher.pushnotifications.PushNotifications
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -117,6 +118,12 @@ class ManageFragment : Fragment() {
                 Log.d("myTag", "sign out error")
             }
             item.setVisible(false)
+
+            PushNotifications.clearDeviceInterests()
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("clearInterest", interests.toString())
+
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -132,9 +139,17 @@ class ManageFragment : Fragment() {
     private fun handleResponseTest(result: ArrayList<Place>) {
         try {
             allplaces = result
+            val setSubscribed = mutableSetOf<String>()
             for (p in allplaces) {
+                setSubscribed.add(p._id)
                 Log.d("myTag", p.name)
             }
+
+            PushNotifications.setDeviceInterests(setSubscribed)
+            PushNotifications.addDeviceInterest("Place")
+            val interests = PushNotifications.getDeviceInterests()
+            Log.d("manage", interests.toString())
+
             viewManager = LinearLayoutManager(context!!)
             viewAdapter = RecyclerViewAdapter(allplaces)
             recyclerView = getView()!!.findViewById<RecyclerView>(R.id.my_recycler_view).apply {
