@@ -33,15 +33,14 @@ def home_places():
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    this_user = None
+    all_places = []
+    all_articles = []
     if request.method == 'GET':
         id_token = request.cookies.get('token')
         error_message = None
         claims = None
         times = None
-        thisuser = None
-        allplaces = None
-        allarticles = None
-
         if id_token:
             try:
                 # Verify the token against the Firebase Auth API. This example
@@ -51,47 +50,44 @@ def index():
                 # http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
                 claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
 
-                thisuser = read_user(db, 'email', claims['email'])
-                if thisuser != None:
-                    # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
-                    allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
-                    allarticles = read_articles(db, {'user_id': thisuser['_id']})
+                this_user = read_user(db, 'email', claims['email'])
+                if this_user != None:
+                    # user_subscriptions = [ObjectId(subscription) for subscription in this_user['subscription']]
+                    all_places = read_places(db, {'_id': {'$in': this_user['subscription']}})
+                    all_articles = read_articles(db, {'user_id': this_user['_id']})
                 else:
-                    thisuser = create_user(db, email=claims['email'])
+                    this_user = create_user(db, email=claims['email'])
 
             except ValueError as exc:
                 # This will be raised if the token is expired or any other
                 # verification checks fail.
                 error_message = str(exc)
 
-        return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=thisuser,
-                               places=allplaces, articles=allarticles)
+        return render_template('index.html', user_data=claims, error_message=error_message, times=times, users=this_user,
+                               places=all_places, articles=all_articles)
 
     else:
-        thisuser = None
-        allplaces = None
-        allarticles = None
         user = request.get_json()
         user_agent = request.headers.get('User-Agent')
         # print(user['email'])
-        thisuser = read_user(db, 'email', user['email'])
+        this_user = read_user(db, 'email', user['email'])
 
-        if thisuser != None:
-    # user_subscriptions = [ObjectId(subscription) for subscription in thisuser['subscription']]
-            allplaces = read_places(db, {'_id': {'$in': thisuser['subscription']}})
-            allarticles = read_articles(db, {'user_id': thisuser['_id']})
+        if this_user != None:
+    # user_subscriptions = [ObjectId(subscription) for subscription in thi_suser['subscription']]
+            all_places = read_places(db, {'_id': {'$in': this_user['subscription']}})
+            all_articles = read_articles(db, {'user_id': this_user['_id']})
             if 'android' in user_agent.lower():
-                if (len(allplaces) > 0):
-                    print(allplaces[0]['name'])
-                return json_response(allplaces)
-            return render_template('index.html', users=thisuser,
-                               places=allplaces, articles=allarticles)
+                if not all_places:
+                    print(all_places[0]['name'])
+                return json_response(all_places)
+            return render_template('index.html', users=this_user,
+                               places=all_places, articles=all_articles)
         else:
-            thisuser = create_user(db, email=user['email'])
+            this_user = create_user(db, email=user['email'])
             if 'android' in user_agent.lower():
                 return json_response(None)
-            return render_template('index.html', users=thisuser,
-                               places=allplaces, articles=allarticles)
+            return render_template('index.html', users=this_user,
+                               places=all_places, articles=all_articles)
 
 
 @app.route('/search', methods=['GET'])
