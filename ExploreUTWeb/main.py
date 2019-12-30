@@ -15,6 +15,7 @@ from pusher_push_notifications import PushNotifications
 app = Flask(__name__)
 GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
 firebase_request_adapter = requests.Request()
+# pusher beams client:
 beams_client = PushNotifications(
     instance_id='1fabe242-9415-454e-822c-67211e2ebcbc',
     secret_key='70F711CAC7FE57D7588609A93F833291AD66987E19B7AF949E4D8905ABECCE03',
@@ -51,7 +52,7 @@ def index():
                 claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
 
                 this_user = read_user(db, 'email', claims['email'])
-                if this_user != None:
+                if not this_user:
                     # user_subscriptions = [ObjectId(subscription) for subscription in this_user['subscription']]
                     all_places = read_places(db, {'_id': {'$in': this_user['subscription']}})
                     all_articles = read_articles(db, {'user_id': this_user['_id']})
@@ -69,10 +70,9 @@ def index():
     else:
         user = request.get_json()
         user_agent = request.headers.get('User-Agent')
-        # print(user['email'])
         this_user = read_user(db, 'email', user['email'])
 
-        if this_user != None:
+        if not this_user:
     # user_subscriptions = [ObjectId(subscription) for subscription in thi_suser['subscription']]
             all_places = read_places(db, {'_id': {'$in': this_user['subscription']}})
             all_articles = read_articles(db, {'user_id': this_user['_id']})
@@ -326,9 +326,11 @@ def view_places_by_theme():
 @app.route('/map', methods=['GET'])
 def my_map():
     condition = request.args.get('condition')  # in the future, condition could be nearby location
+    # Currently, this condition is None, therefore, we read all places from database.
     places = read_places(db, condition)
     my_markers = []
     for place in places:
+        # location could be None, since the web does not set default value.
         if place.__contains__('location') and place['location'] is not None:
             place_name = place['name']
             place_id = place['_id']
@@ -342,6 +344,7 @@ def my_map():
 
     mymap = Map(
         identifier='mymap',
+        # default map position covers UT
         lat=30.285017,
         lng=-97.735480,
         markers=my_markers,
