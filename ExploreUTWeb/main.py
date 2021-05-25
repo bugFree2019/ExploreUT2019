@@ -13,12 +13,12 @@ from bson.binary import Binary
 from pusher_push_notifications import PushNotifications
 
 app = Flask(__name__)
-GoogleMaps(app, key='AIzaSyDfiw9D8Ga_cvPreutbTmjdLZ1lBwyE3Qw')
+GoogleMaps(app, key=GOOGLE_MAP_API_KEY)
 firebase_request_adapter = requests.Request()
 # pusher beams client:
 beams_client = PushNotifications(
     instance_id='1fabe242-9415-454e-822c-67211e2ebcbc',
-    secret_key='70F711CAC7FE57D7588609A93F833291AD66987E19B7AF949E4D8905ABECCE03',
+    secret_key=PUSH_NOTIFICATION_KEY,
 )
 
 
