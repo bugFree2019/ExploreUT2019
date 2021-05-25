@@ -53,7 +53,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD43MaJy_JRExxuAOQPzb7hkYcplpMBdYI"
+          "current_key": GOOGLE_MAP_API_KEY
         }
       ],
       "services": {
@@ -97,7 +97,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD43MaJy_JRExxuAOQPzb7hkYcplpMBdYI"
+          "current_key": GOOGLE_MAP_API_KEY
         }
       ],
       "services": {
